@@ -74,3 +74,7 @@ end
 gem "devise", "~> 4.8"
 
 gem "faker", "~> 2.23"
+
+gem "pundit", "~> 2.2"
+
+gem "pry", "~> 0.14.1"

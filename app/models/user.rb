@@ -5,11 +5,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+
+  enum role: [:user, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
+  def is_admin?
+    self.role == 'admin'
+  end
   def first_name
-    name.split.first
+    self.name.split.first
   end
 
   def last_name
-    name.split.last
+    self.name.split.last
   end
 end
