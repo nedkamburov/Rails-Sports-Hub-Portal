@@ -1,0 +1,15 @@
+<header>
+  <article class="logo">
+    <h1>Sports Hub</h1>
+  </article>
+  <% unless @is_admin_panel  %>
+    <article class="search-bar">Search</article>
+    <article class="social-media">FB, TW, INS</article>
+  <% else %>
+    <%= link_to 'Go to User page', root_path %>
+  <% end %>
+  <article>
+    <%= render 'shared/header_user_dropdown' %>
+    <div class="lang">EN</div>
+  </article>
+</header>
