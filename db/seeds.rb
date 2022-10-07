@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nkamb@softserveinc.com")
+User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nkamb@softserveinc.com", role: 'admin')
 
 3.times do
   name =  Faker::FunnyName.name
