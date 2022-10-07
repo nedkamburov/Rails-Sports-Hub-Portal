@@ -1,7 +1,19 @@
+<%
+  require 'faker'
+  image_avatar = Faker::Avatar.image
+%>
+
 <article class="user-dropdown">
-  <div class="user-details">
-    <h4><%= current_user.name %></h4>
-    <h5><%= current_user.role %></h5>
+  <% unless current_user.nil? %>
+    <div class="user-details">
+      <%= image_tag image_avatar %>
+      <div>
+        <h5><%= current_user.name %></h5>
+        <h6><%= current_user.role %></h6>
+      </div>
+    </div>
+  <% end %>
+  <div class="nav dropdown">
+    <%= login_helper 'nav-link' %>
   </div>
-  <%= login_helper 'nav-link' %>
 </article>
