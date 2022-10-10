@@ -3,6 +3,6 @@
   <div>
     <h3>You are logged in as:</h3>
     <span><%= current_user.inspect %></span>
-    <div><%= "You\'re an admin, #{current_user.first_name}" if current_user&.is_admin? %></div>
+    <div><%= "You\'re an admin, #{current_user.first_name}" if current_user&.admin? %></div>
   </div>
 </div>
