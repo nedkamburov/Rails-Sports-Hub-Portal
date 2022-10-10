@@ -2,11 +2,11 @@ module ApplicationHelper
 
   def login_helper style=''
     if current_user.nil?
-      (link_to "Register", new_user_registration_path, class: style) +
+      (link_to "Sign up", new_user_registration_path, class: style) +
         " ".html_safe +
-        (link_to "Login", new_user_session_path, class: style)
+        (link_to "Log in", new_user_session_path, class: style)
     else
-      link_to "Logout", destroy_user_session_path, method: :delete, class: style
+      link_to "Log out", destroy_user_session_path, method: :delete, class: style
     end
   end
 
@@ -42,7 +42,13 @@ module ApplicationHelper
       link_path = admin_root_path
     end
 
-    link_to image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKFH6q9yjjevT9nhCNFI9kFezyq5RtiAd6q9GUhihua50ljFHm1lMZZ_VpXaNoykXfQOs&usqp=CAU", alt: alt_message),
+    link_to show_svg('dashboard-switcher.svg'),
             link_path, class: 'switch-dashboards', title: alt_message if current_user&.admin?
+  end
+
+  def show_svg(path)
+    File.open("app/assets/images/#{path}", "rb") do |file|
+      raw file.read
+    end
   end
 end

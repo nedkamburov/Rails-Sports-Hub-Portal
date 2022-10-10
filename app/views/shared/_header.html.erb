@@ -4,8 +4,18 @@
   </section>
   <section class="header-middle">
     <% if !@is_admin_panel  %>
-      <article class="search-bar">Search</article>
-      <article class="social-media">FB, TW, INS</article>
+      <article class="search-bar">
+        <a href="#"><i class="fa-solid fa-search"></i></a>
+        <p>Search by</p>
+      </article>
+      <article class="social-media">
+        <p>Share</p>
+        <div class="list-unstyled social-links">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+        </div>
+      </article>
     <% end %>
   </section>
   <section class="header-right">
