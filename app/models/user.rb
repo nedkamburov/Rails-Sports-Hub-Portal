@@ -12,9 +12,7 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
-  def is_admin?
-    self.role == 'admin'
-  end
+  
   def first_name
     self.name.split.first
   end
