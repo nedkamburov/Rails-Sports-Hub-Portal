@@ -248,7 +248,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap (~> 5.2)
+  bootstrap (~> 5.2.1)
   capybara
   dartsass-rails (~> 0.4.0)
   debug
