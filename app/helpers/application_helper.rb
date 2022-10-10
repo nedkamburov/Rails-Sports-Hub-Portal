@@ -33,4 +33,16 @@ module ApplicationHelper
     "active" if current_page? path
   end
 
+  def switch_dashboards_helper
+    if @is_admin_panel
+      alt_message = 'Switch to users view'
+      link_path = root_path
+    else
+      alt_message = 'Switch to admin view'
+      link_path = admin_root_path
+    end
+
+    link_to image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKFH6q9yjjevT9nhCNFI9kFezyq5RtiAd6q9GUhihua50ljFHm1lMZZ_VpXaNoykXfQOs&usqp=CAU", alt: alt_message),
+            link_path, class: 'switch-dashboards', title: alt_message if current_user&.admin?
+  end
 end

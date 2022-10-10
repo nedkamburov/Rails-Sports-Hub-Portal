@@ -1,17 +1,20 @@
 <header class="header">
-  <article class="logo p-2 bg-danger">
+  <section class="logo header-left p-2 bg-danger">
     <h3><%= link_to 'Sports Hub', root_path %></h3>
-  </article>
-  <% unless @is_admin_panel  %>
-    <article class="search-bar">Search</article>
-    <article class="social-media">FB, TW, INS</article>
-  <% else %>
-    <%= link_to 'Go to User page', root_path %>
-  <% end %>
-  <article>
-    <%= render 'shared/header_user_dropdown' %>
-  </article>
-  <article>
-    <div class="lang">EN</div>
-  </article>
+  </section>
+  <section class="header-middle">
+    <% if !@is_admin_panel  %>
+      <article class="search-bar">Search</article>
+      <article class="social-media">FB, TW, INS</article>
+    <% end %>
+  </section>
+  <section class="header-right">
+    <%= switch_dashboards_helper %>
+    <article>
+      <%= render 'shared/header_user_dropdown' %>
+    </article>
+    <article>
+      <div class="lang">EN</div>
+    </article>
+  </section>
 </header>
