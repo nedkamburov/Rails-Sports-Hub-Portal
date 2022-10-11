@@ -64,9 +64,10 @@ $accent-color2: #B2B2B2;
     width: fit-content;
     height: fit-content;
     justify-self: center;
+
     svg {
-      max-width: 40px;
-      max-height: 40px;
+      max-width: 34px;
+      max-height: 34px;
     }
   }
 
@@ -91,10 +92,14 @@ $accent-color2: #B2B2B2;
       }
     }
 
+    .btn:active, .btn:focus {
+      border: none;
+    }
+
     .user-avatar {
       width: 34px;
       height: 34px;
-      border: 1px solid grey;
+      border: 1px solid $accent-color;
       margin-right: 5px;
       border-radius: 50%;
       background-color: $color;
