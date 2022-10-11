@@ -39,7 +39,7 @@ $accent-color2: #B2B2B2;
   display: grid;
   grid-template-columns: 3fr 2fr;
 
-  article {
+  article, .social-media {
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -56,6 +56,7 @@ $accent-color2: #B2B2B2;
 
   a {
     color: $text-color;
+    margin-left: 20px;
   }
 }
 .header-right {
