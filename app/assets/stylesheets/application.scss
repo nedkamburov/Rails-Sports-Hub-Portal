@@ -177,6 +177,12 @@ $accent-color2: #B2B2B2;
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+//      User Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 // User Side Panel Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .side-panel {
@@ -219,6 +225,70 @@ $accent-color2: #B2B2B2;
     }
   }
 }
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+//      Admin Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+.admin-subheader {
+  height: 78px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px 0 100px;
+  border-bottom: 1px solid $accent-color;
+
+  .page-title {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .page-action-button {
+    font-size: 12px;
+    padding: 10px 20px;
+    background-color: $color;
+    color: $background-color;
+    &:hover {
+      cursor: pointer;
+      background-color: $background-color;
+      color: $color;
+      border: 1px solid $color;
+    }
+  }
+}
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Top Panel Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.admin-top-panel {
+  position: relative;
+  color: $accent-color2;
+
+  ul.navbar {
+    font-weight: bold;
+    padding: 0 10%;
+    box-shadow: 1px 2px 7px $accent-color;
+
+    li {
+      display: inline !important;
+
+      a.nav-link {
+        color: $accent-color2 !important;
+        text-transform: uppercase;
+        padding: 5px;
+
+        &.active {
+          color: $color !important;
+        }
+      }
+    }
+  }
+}
+
+
+
 
 
 

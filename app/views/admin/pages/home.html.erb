@@ -1,8 +1,17 @@
 <div>
-  <h1>Welcome to the Sports Hub Portal</h1>
-  <div>
-    <h3>You are logged in as:</h3>
-    <span><%= current_user.inspect %></span>
+  <article class="admin-subheader">
+    <h4 class="page-title">
+      <%= current_page_title is_admin_page: true %>
+    </h4>
+    <div class="page-action-button">
+      + Add New Article
+    </div>
+  </article>
+  <%= render ('admin_top_panel') %>
+<div>
+  <%= render ('admin_side_panel') %>
+<h3>You are logged in as:</h3>
+  <span><%= current_user.inspect %></span>
     <div><%= "You\'re an admin, #{current_user.first_name}" if current_user&.admin? %></div>
     <div>
       <h4>All Users</h4>
