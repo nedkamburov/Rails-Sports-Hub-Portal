@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def login_helper style=''
+  def login_helper(style = '')
     if current_user.nil?
       (link_to "Sign up", new_user_registration_path, class: style) +
         " ".html_safe +
@@ -133,7 +133,7 @@ module ApplicationHelper
       panel_links.html_safe
   end
 
-  def active? path
+  def active?(path)
     "active" if current_page? path
   end
 
