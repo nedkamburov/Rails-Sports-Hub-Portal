@@ -53,7 +53,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
-  gem 'bootstrap', '~> 5.2.1'
 end
 
 group :development do
@@ -77,3 +76,6 @@ end
 gem "devise", "~> 4.8"
 gem "pundit", "~> 2.2"
 gem "faker", "~> 2.23"
+gem 'bootstrap', '~> 5.2.1'
+
+gem "font-awesome-sass", "~> 6.2"
