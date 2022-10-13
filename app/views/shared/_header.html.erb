@@ -1,0 +1,32 @@
+<header class="header">
+  <section class="logo header-left p-2 bg-danger">
+    <h3><%= link_to 'Sports Hub', root_path %></h3>
+  </section>
+  <section class="header-middle">
+    <% if !@is_admin_panel  %>
+      <article class="search-bar">
+        <a href="#"><i class="fa-solid fa-search"></i></a>
+        <p>Search by</p>
+      </article>
+      <article class="social-media">
+        <p>Share</p>
+        <div class="list-unstyled social-links">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+        </div>
+      </article>
+    <% end %>
+  </section>
+  <section class="header-right">
+    <%= switch_dashboards_helper %>
+    <article>
+      <%= render 'shared/header_user_dropdown' %>
+    </article>
+    <article>
+      <div class="lang">EN
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+      </div>
+    </article>
+  </section>
+</header>

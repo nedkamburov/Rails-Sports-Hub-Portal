@@ -1,0 +1,35 @@
+<%
+  require 'faker'
+  image_avatar = Faker::Avatar.image(format: "jpg", bgset: "bg1")
+%>
+<div class="dropdown user-dropdown">
+  <div class="user-details">
+    <% if current_user.nil? %>
+      <%= login_helper('btns-no-user') %>
+    <% else %>
+      <div class="user-avatar">
+        <%= image_tag image_avatar %>
+      </div>
+      <div>
+        <h5><%= current_user.name %></h5>
+        <h6><%= current_user.role %></h6>
+      </div>
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="user-titles">
+          <h5><%= current_user.name %></h5>
+          <h6><%= current_user.email %></h6>
+        </div>
+        <ul class="list-unstyled list-group">
+          <li><%= link_to 'View profile', root_path %></li>
+          <li><%= link_to 'Change password',  edit_user_registration_path %></li>
+          <li><%= link_to 'My Surveys', root_path %></li>
+          <li><%= link_to 'Team hub', root_path %></li>
+        </ul>
+        <div class="login-logout">
+          <%= login_helper('nav-link') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
