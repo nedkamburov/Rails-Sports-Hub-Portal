@@ -51,8 +51,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "devise", "~> 4.8"
-  gem "pundit", "~> 2.2"
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
   gem 'bootstrap', '~> 5.2.1'
@@ -76,3 +74,6 @@ group :test do
   gem "webdrivers"
   gem "faker", "~> 2.23"
 end
+
+gem "devise", "~> 4.8"
+gem "pundit", "~> 2.2"
