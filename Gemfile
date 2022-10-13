@@ -72,8 +72,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem "faker", "~> 2.23"
 end
 
 gem "devise", "~> 4.8"
 gem "pundit", "~> 2.2"
+gem "faker", "~> 2.23"
