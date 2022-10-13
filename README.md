@@ -1,6 +1,11 @@
 # Rails Sports Hub Portal
 
-A full-stack Sport Portal Hub built with Ruby on Rails <br>
+###A full-stack Sport Portal Hub built with Ruby on Rails 
+
+Access live demo at [https://sportshub.onrender.com](https://sportshub.onrender.com)<br> 
+* it might take up to 30sec to load fully
+
+<br>
 [Link to the Sports Hub Requirements and Architecture](https://github.com/dark-side/lanthanum/tree/master/sports_hub_portal)
 
 ### Technologies: 
