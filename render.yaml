@@ -1,10 +1,12 @@
 databases:
   - name: sportshub # Creates a database named 'sportshub'
     ipAllowList: [] # Only allow internal connections
+    plan: free
 
 services:
   - type: web
     name: sportshub
+    plan: free
     env: ruby # The version is automatically picked up from a .ruby-version file
     buildCommand: "./bin/render-build" # The script we just created above will run this to build our service
     startCommand: "./bin/rails server" # This gets called after build
