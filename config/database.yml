@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: sports_hub_portal_production
   username: sports_hub_portal
   password: <%= ENV["SPORTS_HUB_PORTAL_DATABASE_PASSWORD"] %>
