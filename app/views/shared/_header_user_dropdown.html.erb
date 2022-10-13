@@ -5,7 +5,7 @@
 <div class="dropdown user-dropdown">
   <div class="user-details">
     <% if current_user.nil? %>
-      <%= login_helper 'btns-no-user' %>
+      <%= login_helper('btns-no-user') %>
     <% else %>
       <div class="user-avatar">
         <%= image_tag image_avatar %>
@@ -27,7 +27,7 @@
           <li><%= link_to 'Team hub', root_path %></li>
         </ul>
         <div class="login-logout">
-          <%= login_helper 'nav-link' %>
+          <%= login_helper('nav-link') %>
         </div>
       </div>
     <% end %>
