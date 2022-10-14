@@ -10,5 +10,10 @@ module Admin
       authorize [:admin, :pages]
       @is_admin_panel = true
     end
+
+    def information_architecture
+      authorize [:admin, :pages]
+      @is_admin_panel = true
+    end
   end
 end

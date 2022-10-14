@@ -13,4 +13,8 @@ class Admin::PagesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def information_architecture?
+    user.present?
+  end
+
 end

@@ -69,8 +69,8 @@ module ApplicationHelper
         svg_path: svg_src_path + 'users.svg'
       },
       {
-        url: '/path-to-be-added',
-        title: 'IA',
+        url: admin_information_architecture_path,
+        title: 'Information Architecture',
         svg_path: svg_src_path + 'ia.svg'
       },
       {

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root :to => "pages#home"
     resources :pages
     get "footer", to: "pages#footer"
+    get "information-architecture", to: "pages#information_architecture"
   end
 
   # Defines the root path route ("/")
