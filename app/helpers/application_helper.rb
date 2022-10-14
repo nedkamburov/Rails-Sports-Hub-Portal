@@ -17,76 +17,76 @@ module ApplicationHelper
         title: 'Home'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Team hub'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Lifestyle'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Dealbook'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Video'
       }
     ]
   end
 
   def admin_side_panel_items
-    src_path = 'admin-side-panel/'
+    svg_src_path = 'admin-side-panel/'
     [
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Surveys',
-        svg_path: src_path + 'surveys.svg'
+        svg_path: svg_src_path + 'surveys.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Banners',
-        svg_path: src_path + 'banners.svg'
+        svg_path: svg_src_path + 'banners.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Languages',
-        svg_path: src_path + 'languages.svg'
+        svg_path: svg_src_path + 'languages.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: admin_footer_path,
         title: 'Footer',
-        svg_path: src_path + 'footer.svg'
+        svg_path: svg_src_path + 'footer.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Social Networks',
-        svg_path: src_path + 'social-networks.svg'
+        svg_path: svg_src_path + 'social-networks.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Users',
-        svg_path: src_path + 'users.svg'
+        svg_path: svg_src_path + 'users.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'IA',
-        svg_path: src_path + 'ia.svg'
+        svg_path: svg_src_path + 'ia.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Teams',
-        svg_path: src_path + 'teams.svg'
+        svg_path: svg_src_path + 'teams.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'News Partners',
-        svg_path: src_path + 'news-partners.svg'
+        svg_path: svg_src_path + 'news-partners.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Advertising',
-        svg_path: src_path + 'advertising.svg'
+        svg_path: svg_src_path + 'advertising.svg'
       }
     ]
   end
@@ -95,15 +95,15 @@ module ApplicationHelper
   def mock_sports
     [
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'NBA'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'NFL'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'NASCAR'
       }
     ]
@@ -135,16 +135,6 @@ module ApplicationHelper
 
   def active?(path)
     "active" if current_page? path
-  end
-
-  def current_page_title (is_admin_page: false)
-    title = ''
-    panel_items = side_panel_items.insert(1, *mock_sports)
-    panel_items.each do |item|
-      link_url = is_admin_page ? request.path + item[:url] : item[:url]
-      title = item[:title] if current_page? link_url
-    end
-    title.html_safe
   end
 
   def switch_dashboards_helper

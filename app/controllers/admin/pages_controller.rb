@@ -5,5 +5,10 @@ module Admin
       @users = User.all
       @is_admin_panel = true
     end
+
+    def footer
+      authorize [:admin, :pages]
+      @is_admin_panel = true
+    end
   end
 end

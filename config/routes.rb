@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => "pages#home"
     resources :pages
+    get "footer", to: "pages#footer"
   end
 
   # Defines the root path route ("/")
