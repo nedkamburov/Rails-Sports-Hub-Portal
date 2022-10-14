@@ -77,5 +77,4 @@ gem "devise", "~> 4.8"
 gem "pundit", "~> 2.2"
 gem "faker", "~> 2.23"
 gem 'bootstrap', '~> 5.2.1'
-
 gem "font-awesome-sass", "~> 6.2"
