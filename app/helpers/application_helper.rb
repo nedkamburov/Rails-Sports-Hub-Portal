@@ -13,7 +13,7 @@ module ApplicationHelper
   def side_panel_items
     [
       {
-        url: root_path,
+        url: @is_admin_panel ? admin_root_path : root_path,
         title: 'Home'
       },
       {
@@ -114,8 +114,7 @@ module ApplicationHelper
 
     panel_items = side_panel_items.insert(1, *mock_sports)
     panel_items.each do |item|
-      link_url = is_admin_page ? request.path + item[:url] : item[:url]
-      panel_links << "<#{tag_type}><a href='#{link_url}' class='#{style} #{active? link_url}'>#{item[:title]}</a></#{tag_type}>"
+      panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}'>#{item[:title]}</a></#{tag_type}>"
     end
 
     panel_links.html_safe
