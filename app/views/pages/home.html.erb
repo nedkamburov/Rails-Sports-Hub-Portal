@@ -1,9 +1,7 @@
 <%= render 'side_panel' %>
-<section class="container user-container">
-  <h1>Welcome to the Sports Hub Portal</h1>
-  <div>
-    <h3>You are logged in as:</h3>
-    <span><%= current_user.inspect %></span>
-    <div><%= "You\'re an admin, #{current_user.first_name}" if current_user&.admin? %></div>
-  </div>
-</section>
+<main class="container user-container">
+  <%= render ('main_articles') %>
+  <%= render ('breakdown') %>
+  <%= render ('summary') %>
+</main>
+<%= render ('footer') %>
