@@ -18,7 +18,7 @@ Devise.setup do |config|
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
-  # config.parent_controller = 'DeviseController'
+  config.parent_controller = 'DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -79,8 +79,8 @@ Devise.setup do |config|
   # enable this with :database unless you are using a custom strategy.
   # The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
-  config.http_authenticatable = false
-
+  # config.http_authenticatable = false
+  #
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 
