@@ -1,8 +1,9 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
+import { Turbo } from "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
+Turbo.session.drive = false
 
 function headerDropdownController() {
     const dropdownTrigger = document.querySelector('#dropdownMenuButton')
@@ -18,8 +19,6 @@ function headerDropdownController() {
             }
         });
     })
-
-
 }
 
 headerDropdownController()

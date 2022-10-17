@@ -1,17 +1,20 @@
 @import "bootstrap";
 
 $color: #D72130;
+$text-color: #101010;
 $background-color: #FFFFFF;
 $accent-color: #EDEDED;
 $accent-color2: #B2B2B2;
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Main Header Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 .header {
   display: grid;
   grid-template-columns: 2fr 6fr 3fr;
   align-items: center;
   border-bottom: 1px solid $accent-color;
 }
-
 .logo {
   position: relative;
   text-align: center;
@@ -31,13 +34,12 @@ $accent-color2: #B2B2B2;
     text-decoration: none;
   }
 }
-
 .header-middle {
   height: 100%;
   display: grid;
   grid-template-columns: 3fr 2fr;
 
-  article {
+  article, .social-media {
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -53,7 +55,8 @@ $accent-color2: #B2B2B2;
   }
 
   a {
-    color: black;
+    color: $text-color;
+    margin-left: 20px;
   }
 }
 .header-right {
@@ -154,7 +157,7 @@ $accent-color2: #B2B2B2;
 
         a {
           display: block;
-          color: black;
+          color: $text-color;
           text-decoration: none;
           padding: 10px 25px;
 
@@ -172,7 +175,144 @@ $accent-color2: #B2B2B2;
       }
     }
   }
+
+  .lang {
+    text-align: center;
+  }
 }
+
+
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+//      User Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+.user-container {
+  margin-top: 100px;
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// User Side Panel Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.side-panel {
+  position: relative;
+  max-width: 280px;
+  color: $accent-color2;
+  position: absolute;
+  margin-top: 100px;
+  left: 50px;
+
+  ul.nav {
+    font-weight: bold;
+
+    a.nav-link {
+      position: relative;
+      color: $accent-color2 !important;
+      text-transform: uppercase;
+      padding: 5px;
+
+      &.active {
+        background: none;
+        color: $color !important;
+
+        &:before {
+          position: absolute;
+          left: -8px;
+          content: '•'
+        }
+      }
+    }
+  }
+
+  .social-media {
+    font-size: 18px;
+    max-width: 80px;
+
+    .social-links {
+      a {
+        font-size: 22px;
+        padding: 5px;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+//      Admin Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+.admin-subheader {
+  height: 78px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px 0 100px;
+  border-bottom: 1px solid $accent-color;
+
+  .page-title {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .page-action-button {
+    font-size: 12px;
+    padding: 10px 20px;
+    background-color: $color;
+    color: $background-color;
+    &:hover {
+      cursor: pointer;
+      background-color: $background-color;
+      color: $color;
+      border: 1px solid $color;
+    }
+  }
+}
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Top Panel Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.admin-top-panel {
+  position: relative;
+  color: $accent-color2;
+
+  ul.navbar {
+    font-weight: bold;
+    padding: 0 10%;
+    box-shadow: 1px 2px 7px $accent-color;
+
+    li {
+      display: inline !important;
+
+      a.nav-link {
+        color: $accent-color2 !important;
+        text-transform: uppercase;
+        padding: 5px;
+
+        &.active {
+          color: $color !important;
+        }
+      }
+    }
+  }
+}
+
+.admin-side-panel {
+  position: absolute;
+  padding-top: 40px;
+  width: 4.5rem;
+  height: 100%;
+  border-right: 1px solid $accent-color;
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
 
 
 
