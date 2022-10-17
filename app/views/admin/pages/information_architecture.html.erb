@@ -1,5 +1,8 @@
 <%= render ('admin_header') %>
 <main class="container admin-container">
   <h2>All categories</h2>
+  <% @sports.subcategories.each do |sport| %>
+    <%= sport.title %>
+  <% end %>
   <h3>All subcategories</h3>
 </main>

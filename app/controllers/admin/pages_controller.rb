@@ -14,6 +14,7 @@ module Admin
     def information_architecture
       authorize [:admin, :pages]
       @is_admin_panel = true
+      @sports = Category.find_by(title: 'News')
     end
   end
 end
