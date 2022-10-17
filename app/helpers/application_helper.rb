@@ -115,7 +115,7 @@ module ApplicationHelper
     panel_items = side_panel_items.insert(1, *mock_sports)
     panel_items.each do |item|
       link_url = is_admin_page ? request.path + item[:url] : item[:url]
-      panel_links << "<#{tag_type}><a href='#{link_url}' class='#{style} #{active? link_url}'>#{item[:title]}</a></#{tag_type}>"
+      panel_links << "<#{tag_type}><a href='#{link_url}' class='#{style} #{active_item link_url}'>#{}</a></#{tag_type}>"
     end
 
     panel_links.html_safe
@@ -125,7 +125,7 @@ module ApplicationHelper
       panel_links = ''
 
       admin_side_panel_items.each do |item|
-        panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}' title='#{item[:title]}' data-bs-toggle='tooltip' data-bs-placement='right'>
+        panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active_item item[:url]}' title='#{item[:title]}' data-bs-toggle='tooltip' data-bs-placement='right'>
         #{show_svg(item[:svg_path])}
         </a></#{tag_type}>"
       end
@@ -133,7 +133,7 @@ module ApplicationHelper
       panel_links.html_safe
   end
 
-  def active?(path)
+  def active_item(path)
     "active" if current_page? path
   end
 
