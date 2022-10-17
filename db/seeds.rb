@@ -31,13 +31,15 @@ end
 puts 'All static pages created!'
 
 SPORTS = ['NFL', 'NBA', 'NHL', 'CFB', 'Nascar', 'Golf', 'Soccer']
+NEWS = Category.find_by(title: 'News')
 SPORTS.each do |sport|
-  Category.create!(title: sport, parent_category: Category.find_by(title: 'News'))
+  NEWS.subcategories.create(title: sport)
 end
-puts 'Several sport categories created!'
+puts 'Several sport subcategories created!'
 
-SPORTS_SUBCATEGORIES = ['AFC East', 'AFC North', 'AFC South']
-SPORTS_SUBCATEGORIES.each do |sport_subcategory|
-  Category.create!(title: sport_subcategory, parent_category: Category.find_by(title: 'NFL') )
+SPORTS_TEAMS = ['AFC East', 'AFC North', 'AFC South']
+NFL_SPORT = Subcategory.find_by(title: 'NFL')
+SPORTS_TEAMS.each do |team|
+  NFL_SPORT.teams.create(title: team)
 end
-puts 'Subcategories added to the NFL Category!'
+puts 'Teams added to the NFL subcategory!'
