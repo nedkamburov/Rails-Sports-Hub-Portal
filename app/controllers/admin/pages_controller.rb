@@ -6,13 +6,43 @@ module Admin
     end
 
     def information_architecture
-      @static_pages = Category.all.reject { |page| page.title == 'Home' || page.title == 'News' || !page.parent_category_id.nil? }
-      @sport_categories = Category.find_by(title: 'News').nested_categories
+      @categories = Category.all
+                            .reject { |page| page.title == 'Home' || page.title == 'News' }
+                            .sort_by{ |page| page.position}
     end
 
+    def update
+      respond_to do |format|
+        if @page.update(category_params)
+          format.html { redirect_to pages_path, notice: "Your pages were successfully updated." }
+        else
+          format.html { render :edit }
+        end
+      end
+    end
+
+    def sort
+      params[:order].each do |item|
+        Category.find(item[:id]).update(position: item[:position])
+      end
+
+      head :ok # Make sure Rails doesn't look for a view
+    end
+
+    private
     def set_authorisation_status
       authorize [:admin, :pages]
       @is_admin_panel = true
+    end
+
+    def category_params
+      params.require(:pages).permit(:title,
+                                    :position
+                                    )
+    end
+
+    def set_page
+      @page = Category.find(params[:id])
     end
   end
 end

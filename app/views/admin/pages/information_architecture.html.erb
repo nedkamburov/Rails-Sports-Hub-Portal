@@ -2,22 +2,13 @@
 <main class="container admin-container information-architecture">
   <section class="categories">
     <h2>All pages</h2>
-
-  <% @sport_categories.each do |category| %>
-      <div>
-        <%= "#{category.title} -> #{category.subcategories.count}" %>
-        <% category.subcategories.each do |subcategory| %>
-          <div>&nbsp;&nbsp;Subcategory: <%= subcategory.title %></div>
-          <% subcategory.teams.each do |team| %>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Team: <%= team.title %></div>
-          <% end %>
-        <% end %>
-      </div>
-  <% end %>
-  <% @static_pages.each do |page| %>
-      <div>
-    <%= "#{page.title}" %>
-      </div>
-  <% end %>
+    <ul class="info-architecture-col" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
+      <%= sort_admin_pages_path %>
+      <% @categories.each do |category| %>
+        <li class="col-item" data-id=<%= category.id %> >
+          <%= category.title %>
+        </li>
+      <% end %>
+    </ul>
   </section>
 </main>

@@ -4,6 +4,7 @@ import "controllers"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
 Turbo.session.drive = false
+import Sortable from 'sortablejs';
 
 function headerDropdownController() {
     const dropdownTrigger = document.querySelector('#dropdownMenuButton')
@@ -20,6 +21,4 @@ function headerDropdownController() {
         });
     })
 }
-
 headerDropdownController()
-

@@ -324,6 +324,28 @@ $accent-color2: #B2B2B2;
   }
 }
 
+.information-architecture {
+  .info-architecture-col {
+    list-style: none;
+    width: 200px;
+    text-align: center;
+    text-transform: capitalize;
+    color: $accent-color2;
+
+    .col-item {
+      margin-bottom: 16px;
+      padding: 8px;
+      cursor: grab;
+      border: 2px solid $accent-color;
+
+      &:active {
+        cursor: grabbing;
+        box-shadow: 1px 2px 5px $accent-color;
+      }
+    }
+  }
+}
+
 
 
 

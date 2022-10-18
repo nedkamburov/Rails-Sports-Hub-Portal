@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "pages#home"
-    resources :pages
+    resources :pages do
+      put :sort, on: :collection
+    end
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"
+
   end
 
   # Defines the root path route ("/")

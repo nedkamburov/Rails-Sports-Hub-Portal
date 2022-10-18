@@ -12,8 +12,10 @@ class Admin::PagesPolicy < ApplicationPolicy
   def footer?
     user.present?
   end
-
   def information_architecture?
+    user.present?
+  end
+  def sort?
     user.present?
   end
 
