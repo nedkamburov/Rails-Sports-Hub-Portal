@@ -33,13 +33,20 @@ puts 'All static pages created!'
 SPORTS = ['NFL', 'NBA', 'NHL', 'CFB', 'Nascar', 'Golf', 'Soccer']
 NEWS = Category.find_by(title: 'News')
 SPORTS.each do |sport|
-  NEWS.subcategories.create(title: sport)
+  Category.create!(title: sport, parent_category: NEWS)
 end
-puts 'Several sport subcategories created!'
+puts 'Several sport categories nested in the News category created!'
 
-SPORTS_TEAMS = ['AFC East', 'AFC North', 'AFC South']
-NFL_SPORT = Subcategory.find_by(title: 'NFL')
-SPORTS_TEAMS.each do |team|
-  NFL_SPORT.teams.create(title: team)
+SPORTS_SUBCATEGORIES = ['AFC East', 'AFC North', 'AFC South', 'AFC West']
+NFL_CATEGORY = Category.find_by(title: 'NFL')
+SPORTS_SUBCATEGORIES.each do |subcategory|
+  NFL_CATEGORY.subcategories.create(title: subcategory)
 end
-puts 'Teams added to the NFL subcategory!'
+puts 'Subcategories added to the NFL category!'
+
+SPORTS_TEAMS = ['Houston', 'Memphis', 'Utah Jazz']
+AFC_WEST_SUBCATEGORY = Subcategory.find_by(title: 'AFC West')
+SPORTS_TEAMS.each do |team|
+  AFC_WEST_SUBCATEGORY.teams.create(title: team)
+end
+puts 'Teams added to the AFC West subcategory (part of the NFL category)!'

@@ -6,8 +6,8 @@ module Admin
     end
 
     def information_architecture
-      @static_pages = Category.all.reject { |page| page.title == 'News' || page.title == 'Home'  }
-      @sports = Category.find_by(title: 'News')
+      @static_pages = Category.all.reject { |page| page.title == 'Home' || page.title == 'News' || !page.parent_category_id.nil? }
+      @sport_categories = Category.find_by(title: 'News').nested_categories
     end
 
     def set_authorisation_status
