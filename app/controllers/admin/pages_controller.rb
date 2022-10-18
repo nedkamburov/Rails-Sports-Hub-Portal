@@ -1,6 +1,6 @@
 module Admin
   class PagesController < AdminController
-    before_action :set_authorisation_status, only: %i[ show edit update destroy ]
+    before_action :set_authorisation_status
     def home
       @users = User.all
     end
