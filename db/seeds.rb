@@ -25,15 +25,15 @@ puts '4 Users created successfully! Access them with password: Pass@123'
 #
 
 STATIC_PAGES = ['Home', 'News', 'Team hub', 'Lifestyle', 'Dealbook', 'Video']
-STATIC_PAGES.each do |page|
-  Category.create!(title: page)
+SPORTS = ['NFL', 'NBA', 'NHL', 'CFB', 'Nascar', 'Golf', 'Soccer']
+STATIC_PAGES.each_with_index do |page, i |
+  Category.create!(title: page, position: SPORTS.length + i)
 end
 puts 'All static pages created!'
 
-SPORTS = ['NFL', 'NBA', 'NHL', 'CFB', 'Nascar', 'Golf', 'Soccer']
 NEWS = Category.find_by(title: 'News')
-SPORTS.each do |sport|
-  Category.create!(title: sport, parent_category: NEWS)
+SPORTS.each_with_index do |sport, i|
+  Category.create!(title: sport, parent_category: NEWS, position: i)
 end
 puts 'Several sport categories nested in the News category created!'
 

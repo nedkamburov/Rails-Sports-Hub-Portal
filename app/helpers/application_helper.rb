@@ -27,7 +27,7 @@ module ApplicationHelper
       }
       pages << static_page
     end
-    
+
     pages
   end
 
