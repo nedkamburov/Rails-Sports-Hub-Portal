@@ -16,7 +16,9 @@ module ApplicationHelper
       url: @is_admin_panel ? admin_root_path : root_path,
       title: 'Home' }
 
-    static_pages = Category.all.reject { |page| page.title == 'Home' || page.title == 'News' || !page.parent_category_id.nil? }
+    static_pages = Category.all
+                           .reject { |page| page.title == 'Home' || page.title == 'News' || !page.parent_category_id.nil? }
+                           .sort_by{ |page| page.position}
     static_pages.each do |page|
       slug = page.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       static_page = {
@@ -25,7 +27,7 @@ module ApplicationHelper
       }
       pages << static_page
     end
-
+    
     pages
   end
 
@@ -87,7 +89,7 @@ module ApplicationHelper
 
   def sport_pages
     sports = []
-    sport_categories = Category.find_by(title: 'News').nested_categories
+    sport_categories = Category.find_by(title: 'News').nested_categories.sort_by{ |category| category.position}
     sport_categories.each do |sport|
       slug = sport.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       sport_page = {
