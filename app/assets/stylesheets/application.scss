@@ -325,22 +325,38 @@ $accent-color2: #B2B2B2;
 }
 
 .information-architecture {
-  .info-architecture-col {
-    list-style: none;
-    width: 200px;
-    text-align: center;
-    text-transform: capitalize;
+  .sortable-items {
     color: $accent-color2;
+    margin-top: 50px;
+    display: flex;
 
-    .col-item {
-      margin-bottom: 16px;
-      padding: 8px;
-      cursor: grab;
-      border: 2px solid $accent-color;
+    .col {
+      max-width: 200px;
+      margin-right: 50px;
+      text-align: center;
+      text-transform: capitalize;
 
-      &:active {
-        cursor: grabbing;
-        box-shadow: 1px 2px 5px $accent-color;
+      .col-add-item {
+        margin-bottom: 16px;
+        padding: 6px;
+        cursor: grab;
+        border: 1.5px dashed $accent-color;
+      }
+
+      .col-categories {
+        list-style: none;
+        padding: 0;
+        .col-item, .col-add-item {
+          margin-bottom: 16px;
+          padding: 6px;
+          cursor: grab;
+          border: 1.5px solid $accent-color;
+
+          &:active {
+            cursor: grabbing;
+            box-shadow: 1px 2px 5px $accent-color;
+          }
+        }
       }
     }
   }

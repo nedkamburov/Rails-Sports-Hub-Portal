@@ -1,14 +1,35 @@
 <%= render ('admin_header') %>
 <main class="container admin-container information-architecture">
-  <section class="categories">
-    <h2>All pages</h2>
-    <ul class="info-architecture-col" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
-      <%= sort_admin_pages_path %>
-      <% @categories.each do |category| %>
-        <li class="col-item" data-id=<%= category.id %> >
-          <%= category.title %>
-        </li>
-      <% end %>
-    </ul>
+  <section class="sortable-items">
+    <article class="col">
+      <div class="col-add-item">+ Add Category</div>
+      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
+        <% @categories.each do |category| %>
+          <li class="col-item" data-id=<%= category.id %> >
+            <%= category.title %>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+    <article class="col">
+      <div class="col-add-item" >+ Add Subcategory</div>
+      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
+        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.each do |subcategory| %>
+          <li class="col-item" data-id=<%= subcategory.id %> >
+            <%= subcategory.title %>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+    <article class="col">
+      <div class="col-add-item" >+ Add Team</div>
+      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
+        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.each do |team| %>
+          <li class="col-item" data-id=<%= team.id %> >
+            <%= team.title %>
+          </li>
+        <% end %>
+      </ul>
+    </article>
   </section>
 </main>

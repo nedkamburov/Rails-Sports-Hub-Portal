@@ -11,6 +11,21 @@ module Admin
                             .sort_by{ |page| page.position}
     end
 
+    def new
+      @category = Category.new
+    end
+
+    def create
+      @category = Category.new()
+
+      respond_to do |format|
+        if @category.save
+          format.html { redirect_to pages_path, notice: "Your category is now created." }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+        end
+      end
+    end
     def update
       respond_to do |format|
         if @page.update(category_params)

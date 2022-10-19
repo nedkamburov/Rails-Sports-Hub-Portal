@@ -107,7 +107,7 @@ module ApplicationHelper
 
     panel_items = side_panel_items.insert(1, *sport_pages)
     panel_items.each do |item|
-      panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}'>#{item[:title]}</a></#{tag_type}>"
+      panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active_item item[:url]}'>#{item[:title]}</a></#{tag_type}>"
     end
 
     panel_links.html_safe
