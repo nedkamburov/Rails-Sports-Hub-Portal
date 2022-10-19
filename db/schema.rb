@@ -16,13 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_143249) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
-    t.bigint "parent_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
     t.boolean "read_only", default: false, null: false
     t.string "category_type", default: "articles", null: false
-    t.index ["parent_category_id"], name: "index_categories_on_parent_category_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -57,7 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_143249) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categories", "categories", column: "parent_category_id"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "teams", "subcategories"
 end

@@ -21,21 +21,21 @@ end
 puts '4 Users created successfully! Access them with password: Pass@123'
 
 #
-# Create categories and subcategories
+# Create categories, subcategories and teams
 #
 
-STATIC_PAGES = ['Home', 'News', 'Team hub', 'Lifestyle', 'Dealbook', 'Video']
+STATIC_PAGES = ['Lifestyle', 'Dealbook', 'Video']
 SPORTS = ['NFL', 'NBA', 'NHL', 'CFB', 'Nascar', 'Golf', 'Soccer']
-STATIC_PAGES.each_with_index do |page, i |
-  Category.create!(title: page, position: SPORTS.length + i)
-end
+
+Category.create!(title: STATIC_PAGES[0], position: SPORTS.length + 0, read_only: true, category_type: 'general')
+Category.create!(title: STATIC_PAGES[1], position: SPORTS.length + 1, read_only: true, category_type: 'general')
+Category.create!(title: STATIC_PAGES[2], position: SPORTS.length + 2, read_only: true, category_type: 'videos')
 puts 'All static pages created!'
 
-NEWS = Category.find_by(title: 'News')
 SPORTS.each_with_index do |sport, i|
-  Category.create!(title: sport, parent_category: NEWS, position: i)
+  Category.create!(title: sport, position: i, read_only: false, category_type: 'articles')
 end
-puts 'Several sport categories nested in the News category created!'
+puts 'Several sport categories created!'
 
 SPORTS_SUBCATEGORIES = ['AFC East', 'AFC North', 'AFC South', 'AFC West']
 NFL_CATEGORY = Category.find_by(title: 'NFL')
