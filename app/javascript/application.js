@@ -4,7 +4,6 @@ import "controllers"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
 Turbo.session.drive = false
-import Sortable from 'sortablejs';
 
 function headerDropdownController() {
     const dropdownTrigger = document.querySelector('#dropdownMenuButton')
@@ -13,7 +12,7 @@ function headerDropdownController() {
     dropdownTrigger.addEventListener('click', () => {
         dropdown.classList.toggle('show')
 
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const isClickOutside = !dropdown.contains(event.target) && !dropdownTrigger.contains(event.target);
             if (isClickOutside) {
                 dropdown.classList.remove('show')

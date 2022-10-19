@@ -117,7 +117,7 @@ module ApplicationHelper
       panel_links = ''
 
       admin_side_panel_items.each do |item|
-        panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}' title='#{item[:title]}' data-bs-toggle='tooltip' data-bs-placement='right'>
+        panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active_item item[:url]}' title='#{item[:title]}' data-bs-toggle='tooltip' data-bs-placement='right'>
         #{show_svg(item[:svg_path])}
         </a></#{tag_type}>"
       end
@@ -125,7 +125,7 @@ module ApplicationHelper
       panel_links.html_safe
   end
 
-  def active?(path)
+  def active_item(path)
     "active" if current_page? path
   end
 
