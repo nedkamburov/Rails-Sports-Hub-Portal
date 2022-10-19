@@ -6,9 +6,7 @@ module Admin
     end
 
     def information_architecture
-      @categories = Category.all
-                            .reject { |page| page.title == 'Home' || page.title == 'News' }
-                            .sort_by{ |page| page.position}
+      @categories = Category.all.sort_by{ |page| page.position}
     end
 
     def new
