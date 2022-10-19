@@ -22,4 +22,3 @@ function headerDropdownController() {
 }
 
 headerDropdownController()
-
