@@ -8,6 +8,7 @@ Turbo.session.drive = false
 function headerDropdownController() {
     const dropdownTrigger = document.querySelector('#dropdownMenuButton')
     const dropdown = document.querySelector('.dropdown-menu')
+    if (!dropdownTrigger || !dropdown) return
 
     dropdownTrigger.addEventListener('click', () => {
         dropdown.classList.toggle('show')

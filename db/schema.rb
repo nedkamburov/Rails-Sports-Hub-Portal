@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_143249) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position"
+    t.integer "position", default: 0
     t.boolean "read_only", default: false, null: false
     t.string "category_type", default: "articles", null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_143249) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position"
+    t.integer "position", default: 0
     t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_143249) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position"
+    t.integer "position", default: 0
     t.index ["subcategory_id"], name: "index_teams_on_subcategory_id"
   end
 

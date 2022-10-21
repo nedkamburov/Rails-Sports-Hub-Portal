@@ -2,6 +2,9 @@ module Admin
   class CategoriesController < AdminController
     before_action :set_authorisation_status
 
+    def index
+
+    end
     def new
       @category = Category.new
     end
