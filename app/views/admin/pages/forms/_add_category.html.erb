@@ -1,0 +1,9 @@
+<div class="col-add-item">+ Add Category
+  <div class="popup-add-item">
+    <%= form_with model: Category.new, url: admin_categories_url do |form| %>
+      <%= form.label :title, "Name" %>
+      <%= form.text_field :title, placeholder: 'Name your category' %>
+      <%= form.submit "Add" %>
+    <% end %>
+  </div>
+</div>

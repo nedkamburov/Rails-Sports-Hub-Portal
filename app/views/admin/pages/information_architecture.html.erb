@@ -2,8 +2,7 @@
 <main class="container admin-container information-architecture">
   <section class="sortable-items">
     <article class="col">
-      <div class="col-add-item">+ Add Category
-        <%= render 'admin/shared/add_category' %>
+      <%= render('admin/pages/forms/add_category') %>
       </div>
       <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
         <% @categories.each do |category| %>
@@ -14,9 +13,7 @@
       </ul>
     </article>
     <article class="col">
-      <div class="col-add-item">+ Add Subcategory
-
-      </div>
+      <%= render('admin/pages/forms/add_subcategory') %>
       <ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
           <li class="col-item" data-id=<%= subcategory.id %> >
@@ -26,7 +23,7 @@
       </ul>
     </article>
     <article class="col">
-      <div class="col-add-item">+ Add Team</div>
+      <%= render('admin/pages/forms/add_team') %>
       <ul class="list col-teams" data-controller="sort" data-sort-url="<%= sort_admin_teams_url %>">
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.sort_by { |team| team.position }.each do |team| %>
           <li class="col-item" data-id=<%= team.id %> >

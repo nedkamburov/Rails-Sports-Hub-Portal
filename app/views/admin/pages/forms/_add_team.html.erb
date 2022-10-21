@@ -1,0 +1,10 @@
+<div class="col-add-item">+ Add Team
+  <div class="popup-add-item">
+    <%= form_with model: Team.new, url: admin_teams_url do |form| %>
+      <%= form.label :title, "Name" %>
+      <%= form.text_field :title, placeholder: 'Name your team' %>
+      <%= form.hidden_field :subcategory_id, value: nil %>
+      <%= form.submit "Add" %>
+    <% end %>
+  </div>
+</div>

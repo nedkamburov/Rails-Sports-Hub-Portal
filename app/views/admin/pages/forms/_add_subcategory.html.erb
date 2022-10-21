@@ -1,0 +1,10 @@
+<div class="col-add-item">+ Add Subcategory
+  <div class="popup-add-item">
+    <%= form_with model: Subcategory.new, url: admin_subcategories_url do |form| %>
+      <%= form.label :title, "Name" %>
+      <%= form.text_field :title, placeholder: 'Name your subcategory' %>
+      <%= form.hidden_field :category_id, value: nil %>
+      <%= form.submit "Add" %>
+    <% end %>
+  </div>
+</div>

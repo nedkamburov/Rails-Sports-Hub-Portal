@@ -2,6 +2,9 @@ module Admin
   class SubcategoriesController < AdminController
     before_action :set_authorisation_status
 
+    def index
+    end
+
     def new
       @subcategory = Subcategory.new
     end
@@ -42,7 +45,7 @@ module Admin
       @is_admin_panel = true
     end
 
-    def category_params
+    def subcategory_params
       params.require(:subcategory).permit(:title,
                                           :position,
                                           :category_id

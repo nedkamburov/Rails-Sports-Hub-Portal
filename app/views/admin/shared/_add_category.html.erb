@@ -1,8 +1,0 @@
-<% @category = Category.new %>
-
-<h2>Add new category</h2>
-<%= form_with model: @category, url: admin_categories_path do |form| %>
-  <%= form.label :title, "Name:" %>
-  <%= form.text_field :title %>
-  <%= form.submit "Add" %>
-<% end %>

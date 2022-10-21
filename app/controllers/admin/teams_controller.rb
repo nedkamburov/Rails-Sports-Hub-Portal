@@ -2,6 +2,8 @@ module Admin
   class TeamsController < AdminController
     before_action :set_authorisation_status
 
+    def index
+    end
     def new
       @team = Team.new
     end
@@ -42,7 +44,7 @@ module Admin
       @is_admin_panel = true
     end
 
-    def category_params
+    def team_params
       params.require(:team).permit(:title,
                                    :position,
                                    :subcategory_id
