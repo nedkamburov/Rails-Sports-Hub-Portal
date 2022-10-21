@@ -1,10 +1,16 @@
 <div class="col-add-item">+ Add Subcategory
   <div class="popup-add-item">
-    <%= form_with model: Subcategory.new, url: admin_subcategories_url do |form| %>
-      <%= form.label :title, "Name" %>
-      <%= form.text_field :title, placeholder: 'Name your subcategory' %>
-      <%= form.hidden_field :category_id, value: nil %>
-      <%= form.submit "Add" %>
-    <% end %>
+    <div class="card">
+      <h5>Add New Subcategory</h5>
+      <%= form_with model: Subcategory.new, url: admin_subcategories_url do |form| %>
+        <%= form.label :title, "Name" %>
+        <%= form.text_field :title, placeholder: 'Name your subcategory', class: "form-control" %>
+        <%= form.hidden_field :category_id, value: nil %>
+        <div class="buttons">
+          <%= submit_tag("Cancel", { name: 'cancel', id: 'cancel', type: 'reset', class: 'btn'}) %>
+          <%= form.submit "Add", class:"btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
