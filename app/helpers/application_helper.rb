@@ -93,7 +93,7 @@ module ApplicationHelper
     sport_categories.each do |sport|
       slug = sport.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       sport_page = {
-        url: "/pages/#{slug}",
+        url: "/articles/#{slug}",
         title: sport.title
       }
       sports << sport_page

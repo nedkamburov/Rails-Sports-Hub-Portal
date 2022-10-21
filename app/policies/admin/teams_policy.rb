@@ -1,4 +1,4 @@
-class Admin::PagesPolicy < ApplicationPolicy
+class Admin::TeamsPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,16 +6,19 @@ class Admin::PagesPolicy < ApplicationPolicy
     end
   end
 
-  def home?
+  def new?
     user.present?
   end
-  def footer?
+
+  def create?
     user.present?
   end
-  def information_architecture?
+
+  def update?
     user.present?
   end
-  def show?
+
+  def sort?
     user.present?
   end
 

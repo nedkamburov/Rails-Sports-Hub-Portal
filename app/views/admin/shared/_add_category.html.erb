@@ -1,0 +1,6 @@
+<h2>Add new category</h2>
+<%= form_with model: @category, url: new_admin_category_url do |form| %>
+  <%= form.label :title, "Name:" %>
+  <%= form.text_field :title %>
+  <%= form.submit "Add" %>
+<% end %>

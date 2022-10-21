@@ -15,15 +15,15 @@ export default class extends Controller {
             let updatedOrder = []
             setPositions()
 
-            const items = document.querySelectorAll(".col-item")
-
+            const items = e.target.querySelectorAll(".col-item")
+            console.log(items)
             items.forEach((item, index) => {
                 updatedOrder.push({
                     id: item.dataset.id,
                     position: index + 1
                 })
             })
-
+            console.log(this.data.get('url'))
             fetch(this.data.get('url'), {
                 method: "PUT",
                 headers: {

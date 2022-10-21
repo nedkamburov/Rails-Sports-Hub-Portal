@@ -2,8 +2,10 @@
 <main class="container admin-container information-architecture">
   <section class="sortable-items">
     <article class="col">
-      <div class="col-add-item">+ Add Category</div>
-      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
+      <div class="col-add-item">+ Add Category
+        <%= render 'admin/shared/add_category' %>
+      </div>
+      <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
         <% @categories.each do |category| %>
           <li class="col-item" data-id=<%= category.id %> >
             <%= category.title %>
@@ -12,9 +14,11 @@
       </ul>
     </article>
     <article class="col">
-      <div class="col-add-item" >+ Add Subcategory</div>
-      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
-        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.each do |subcategory| %>
+      <div class="col-add-item">+ Add Subcategory
+
+      </div>
+      <ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
+        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
           <li class="col-item" data-id=<%= subcategory.id %> >
             <%= subcategory.title %>
           </li>
@@ -22,9 +26,9 @@
       </ul>
     </article>
     <article class="col">
-      <div class="col-add-item" >+ Add Team</div>
-      <ul class="col-categories" data-controller="sort" data-sort-url="<%= sort_admin_pages_path %>">
-        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.each do |team| %>
+      <div class="col-add-item">+ Add Team</div>
+      <ul class="list col-teams" data-controller="sort" data-sort-url="<%= sort_admin_teams_url %>">
+        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.sort_by { |team| team.position }.each do |team| %>
           <li class="col-item" data-id=<%= team.id %> >
             <%= team.title %>
           </li>
