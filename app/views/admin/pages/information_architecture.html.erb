@@ -7,6 +7,7 @@
       <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
         <% @categories.each do |category| %>
           <li class="col-item" data-id=<%= category.id %> >
+            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
             <%= category.title %>
             <%= render 'admin/shared/items_actions', item: category %>
           </li>

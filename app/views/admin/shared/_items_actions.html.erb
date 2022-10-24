@@ -1,14 +1,21 @@
-<div>
-  <span>...</span>
-  <div class="dropdown-actions-menu">
-    <%= button_to "Delete", admin_category_path(item), method: :delete, form: {
-                                                                          data: {
-                                                                            turbo: false,
-                                                                            controller: "confirmation",
-                                                                            action: 'submit->confirmation#confirm',
-                                                                            confirmation_message_value: "Are you sure you want to delete?",
-                                                                          }
-                                                                        }
-    %>
+<div class="dropdown">
+    <button class="btn shadow-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <%= show_svg('actions-three-dots.svg') %>
+    </button>
+    <div class="dropdown-menu">
+      <div class="second-actions">
+        <%= show_svg('actions-three-dots.svg') %>
+      </div>
+      <div class="dropdown-item">Move to</div>
+      <div class="dropdown-item">Hide</div>
+      <%= button_to 'Delete', admin_category_path(item), class: 'dropdown-item', method: :delete, form: {
+        data: {
+          turbo: false,
+          controller: 'confirmation',
+          action: 'submit->confirmation#confirm',
+          confirmation_message_value: 'Are you sure you want to delete?',
+        }
+      }
+      %>
+    </div>
   </div>
-</div>

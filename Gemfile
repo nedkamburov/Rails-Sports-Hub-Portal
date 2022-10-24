@@ -76,5 +76,5 @@ end
 
 gem "devise", "~> 4.8"
 gem "pundit", "~> 2.2"
-gem 'bootstrap', '~> 5.2.1'
+gem 'bootstrap', '~> 5.1.3'
 gem "font-awesome-sass", "~> 6.2"
