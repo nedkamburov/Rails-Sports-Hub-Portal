@@ -1,0 +1,14 @@
+<div>
+  <span>...</span>
+  <div class="dropdown-actions-menu">
+    <%= button_to "Delete", admin_category_path(item), method: :delete, form: {
+                                                                          data: {
+                                                                            turbo: false,
+                                                                            controller: "confirmation",
+                                                                            action: 'submit->confirmation#confirm',
+                                                                            confirmation_message_value: "Are you sure you want to delete?",
+                                                                          }
+                                                                        }
+    %>
+  </div>
+</div>

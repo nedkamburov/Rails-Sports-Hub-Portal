@@ -8,6 +8,7 @@
         <% @categories.each do |category| %>
           <li class="col-item" data-id=<%= category.id %> >
             <%= category.title %>
+            <%= render 'admin/shared/items_actions', item: category %>
           </li>
         <% end %>
       </ul>
@@ -18,6 +19,7 @@
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
           <li class="col-item" data-id=<%= subcategory.id %> >
             <%= subcategory.title %>
+            <%#= render 'admin/shared/items_actions' %>
           </li>
         <% end %>
       </ul>
@@ -28,6 +30,7 @@
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.sort_by { |team| team.position }.each do |team| %>
           <li class="col-item" data-id=<%= team.id %> >
             <%= team.title %>
+            <%#= render 'admin/shared/items_actions' %>
           </li>
         <% end %>
       </ul>

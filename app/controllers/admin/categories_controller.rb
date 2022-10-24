@@ -1,10 +1,14 @@
 module Admin
   class CategoriesController < AdminController
+    before_action :set_category, only: %i[ show edit update destroy ]
     before_action :set_authorisation_status
 
     def index
-
     end
+
+    def show
+    end
+
     def new
       @category = Category.new
     end
@@ -31,6 +35,12 @@ module Admin
       end
     end
 
+    def destroy
+      @category.destroy
+
+      redirect_to admin_categories_path, status: :see_other
+    end
+
     def sort
       params[:order].each do |item|
         Category.find(item[:id]).update(position: item[:position])
@@ -51,6 +61,9 @@ module Admin
                                        :read_only,
                                        :category_type
                                       )
+    end
+    def set_category
+      @category = Category.find(params[:id])
     end
   end
 end

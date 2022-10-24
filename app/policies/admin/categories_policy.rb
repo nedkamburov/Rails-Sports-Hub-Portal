@@ -18,6 +18,10 @@ class Admin::CategoriesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def destroy?
+    user.present?
+  end
+
   def sort?
     user.present?
   end
