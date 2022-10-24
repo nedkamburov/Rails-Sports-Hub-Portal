@@ -1,8 +1,12 @@
 module Admin
   class SubcategoriesController < AdminController
     before_action :set_authorisation_status
+    before_action :set_subcategory, only: %i[ show edit update destroy ]
 
     def index
+    end
+
+    def show
     end
 
     def new
@@ -39,6 +43,12 @@ module Admin
       head :ok # Make sure Rails doesn't look for a view
     end
 
+    def destroy
+      @subcategory.destroy
+
+      redirect_to admin_subcategories_path, status: :see_other
+    end
+
     private
     def set_authorisation_status
       authorize [:admin, :subcategories]
@@ -50,6 +60,10 @@ module Admin
                                           :position,
                                           :category_id
                                           )
+    end
+
+    def set_subcategory
+      @subcategory = Subcategory.find(params[:id])
     end
   end
 end

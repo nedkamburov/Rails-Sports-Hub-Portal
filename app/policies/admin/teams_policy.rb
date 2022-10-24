@@ -18,8 +18,11 @@ class Admin::TeamsPolicy < ApplicationPolicy
     user.present?
   end
 
-  def sort?
+  def destroy?
     user.present?
   end
 
+  def sort?
+    user.present?
+  end
 end

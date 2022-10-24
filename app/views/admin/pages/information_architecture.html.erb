@@ -9,7 +9,7 @@
           <li class="col-item" data-id=<%= category.id %> >
             <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
             <%= category.title %>
-            <%= render 'admin/shared/items_actions', item: category %>
+            <%= render 'admin/shared/items_actions', item_path: admin_category_path(category) %>
           </li>
         <% end %>
       </ul>
@@ -19,8 +19,9 @@
       <ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
           <li class="col-item" data-id=<%= subcategory.id %> >
+            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
             <%= subcategory.title %>
-            <%#= render 'admin/shared/items_actions' %>
+            <%= render 'admin/shared/items_actions', item_path: admin_subcategory_path(subcategory) %>
           </li>
         <% end %>
       </ul>
@@ -30,8 +31,9 @@
       <ul class="list col-teams" data-controller="sort" data-sort-url="<%= sort_admin_teams_url %>">
         <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.sort_by { |team| team.position }.each do |team| %>
           <li class="col-item" data-id=<%= team.id %> >
+            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
             <%= team.title %>
-            <%#= render 'admin/shared/items_actions' %>
+            <%= render 'admin/shared/items_actions', item_path: admin_team_path(team) %>
           </li>
         <% end %>
       </ul>

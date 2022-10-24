@@ -1,9 +1,14 @@
 module Admin
   class TeamsController < AdminController
     before_action :set_authorisation_status
+    before_action :set_team, only: %i[ show edit update destroy ]
 
     def index
     end
+
+    def show
+    end
+
     def new
       @team = Team.new
     end
@@ -38,6 +43,12 @@ module Admin
       head :ok # Make sure Rails doesn't look for a view
     end
 
+    def destroy
+      @team.destroy
+
+      redirect_to admin_teams_path, status: :see_other
+    end
+
     private
     def set_authorisation_status
       authorize [:admin, :teams]
@@ -49,6 +60,10 @@ module Admin
                                    :position,
                                    :subcategory_id
                                    )
+    end
+
+    def set_team
+      @team = Team.find(params[:id])
     end
   end
 end

@@ -1,7 +1,7 @@
 module Admin
   class CategoriesController < AdminController
-    before_action :set_category, only: %i[ show edit update destroy ]
     before_action :set_authorisation_status
+    before_action :set_category, only: %i[ show edit update destroy ]
 
     def index
     end
