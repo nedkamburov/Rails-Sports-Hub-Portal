@@ -6,6 +6,10 @@ class Admin::CategoriesPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    user.present?
+  end
+
   def new?
     user.present?
   end
@@ -25,5 +29,4 @@ class Admin::CategoriesPolicy < ApplicationPolicy
   def sort?
     user.present?
   end
-
 end

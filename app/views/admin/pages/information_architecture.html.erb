@@ -1,42 +1,30 @@
 <%= render ('admin_header') %>
 <main class="container admin-container information-architecture">
   <section class="sortable-items">
-    <article class="col">
-      <%= render('admin/pages/forms/add_category') %>
+    <article class="col active">
+        <%= render('admin/pages/forms/add_category') %>
       </div>
-      <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
-        <% @categories.each do |category| %>
-          <li class="col-item" data-id=<%= category.id %> >
-            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
-            <%= category.title %>
-            <%= render 'admin/shared/items_actions', item_path: admin_category_path(category) %>
-          </li>
-        <% end %>
-      </ul>
+      <%= turbo_frame_tag "turbo_categories_frame" do %>
+          <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
+            <% @categories.each do |category| %>
+              <li class="col-item" data-id=<%= category.id %> >
+                <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
+                <%= link_to category.title, admin_category_path(category), data: { turbo_frame: "turbo_subcategories_frame" } %>
+                <%= render 'admin/shared/items_actions', item_path: admin_category_path(category) %>
+              </li>
+            <% end %>
+          </ul>
+      <% end %>
     </article>
-    <article class="col">
-      <%= render('admin/pages/forms/add_subcategory') %>
-      <ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
-        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
-          <li class="col-item" data-id=<%= subcategory.id %> >
-            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
-            <%= subcategory.title %>
-            <%= render 'admin/shared/items_actions', item_path: admin_subcategory_path(subcategory) %>
-          </li>
+    <article class="col" id="col-subcategories">
+        <%= turbo_frame_tag "turbo_subcategories_frame" do %>
+            <div class="parent-not-selected-message">Select a category to show subcategories.</div>
         <% end %>
-      </ul>
     </article>
-    <article class="col">
-      <%= render('admin/pages/forms/add_team') %>
-      <ul class="list col-teams" data-controller="sort" data-sort-url="<%= sort_admin_teams_url %>">
-        <% @categories.find{ |cat| cat.title == 'NFL'}.subcategories.find_by(title: "AFC West").teams.sort_by { |team| team.position }.each do |team| %>
-          <li class="col-item" data-id=<%= team.id %> >
-            <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
-            <%= team.title %>
-            <%= render 'admin/shared/items_actions', item_path: admin_team_path(team) %>
-          </li>
-        <% end %>
-      </ul>
+    <article class="col" id="col-teams">
+      <%= turbo_frame_tag "turbo_teams_frame" do %>
+        <div class="parent-not-selected-message">Select a subcategory to show teams.</div>
+      <% end %>
     </article>
   </section>
 </main>

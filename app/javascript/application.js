@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free"
 Turbo.session.drive = false
 
 popupAddCategoryController()
+
 function popupAddCategoryController() {
     const addButtons = document.querySelectorAll('.col-add-item')
     const popups = document.querySelectorAll('.popup-add-item')
@@ -31,4 +32,5 @@ function popupAddCategoryController() {
             popup.classList.remove('active')
         })
     }
+
 }

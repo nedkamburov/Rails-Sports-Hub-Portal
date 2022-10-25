@@ -333,7 +333,14 @@ $accent-color2: #B2B2B2;
       max-width: 200px;
       margin-right: 50px;
       text-align: center;
-      text-transform: capitalize;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .parent-not-selected-message {
+        text-transform: initial;
+      }
 
       .list {
         list-style: none;
@@ -359,6 +366,7 @@ $accent-color2: #B2B2B2;
           grid-template-columns: 35px 4fr 35px;
           align-items: center;
           justify-content: center;
+          text-transform: uppercase;
 
           .handle-icon {
             opacity: 0;
@@ -397,6 +405,10 @@ $accent-color2: #B2B2B2;
               }
             }
           }
+        }
+
+        &.col-categories {
+          font-weight: bold;
         }
       }
 

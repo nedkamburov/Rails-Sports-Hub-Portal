@@ -6,6 +6,10 @@ class Admin::SubcategoriesPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    user.present?
+  end
+
   def new?
     user.present?
   end
