@@ -5,9 +5,21 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => "pages#home"
     resources :articles
-    resources :categories, :subcategories, :teams do
+
+    resources :categories do
+      resources :subcategories, only: [:create, :index]
       put :sort, on: :collection
     end
+
+    resources :subcategories, except: [:create, :index] do
+      resources :teams, only: [:create, :index]
+      put :sort, on: :collection
+    end
+
+    resources :teams do
+      put :sort, on: :collection
+    end
+
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"
   end

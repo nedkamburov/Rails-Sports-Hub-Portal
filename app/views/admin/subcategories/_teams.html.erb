@@ -1,4 +1,6 @@
-<%= render('admin/pages/forms/add_team') %>
+<div class="col-add-item">
+  <%= link_to '+ Add Team', new_admin_team_path(subcategory_id: subcategory.id), data: { turbo_frame: "turbo_add_item" } %>
+</div>
 <ul class="list col-teams" data-controller="sort" data-sort-url="<%= sort_admin_teams_url %>">
   <% unless subcategory.teams.count > 0 %>
     <div class="parent-not-selected-message">No teams added yet.</div>

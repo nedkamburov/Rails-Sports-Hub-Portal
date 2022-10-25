@@ -12,10 +12,11 @@ module Admin
 
     def create
       @team = Team.new(team_params)
+      @team.subcategory_id = params[:subcategory_id] if params[:subcategory_id]
 
       respond_to do |format|
         if @team.save
-          format.html { redirect_to admin_teams_path, notice: "Your team is now created." }
+          format.html { redirect_to admin_categories_path, notice: "Your team is now created." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
@@ -25,7 +26,7 @@ module Admin
     def update
       respond_to do |format|
         if @team.update(team_params)
-          format.html { redirect_to admin_teams_path, notice: "Your team was successfully updated." }
+          format.html { redirect_to admin_categories_path, notice: "Your team was successfully updated." }
         else
           format.html { render :edit }
         end

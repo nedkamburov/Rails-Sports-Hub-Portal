@@ -1,4 +1,6 @@
-<%= render('admin/pages/forms/add_subcategory') %>
+<div class="col-add-item">
+  <%= link_to '+ Add Subcategory', new_admin_subcategory_path(category_id: category.id), data: { turbo_frame: "turbo_add_item" } %>
+</div>
 <ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
   <% unless category.subcategories.count > 0 %>
     <div class="parent-not-selected-message">No subcategories added yet.</div>

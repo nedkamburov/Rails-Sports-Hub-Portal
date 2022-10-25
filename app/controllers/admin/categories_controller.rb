@@ -49,13 +49,6 @@ module Admin
       head :ok # Make sure Rails doesn't look for a view
     end
 
-    def children
-      binding.pry
-      Category.find(params[:id]).subcategories
-
-      head :ok # Make sure Rails doesn't look for a view
-    end
-
     private
     def set_authorisation_status
       authorize [:admin, :categories]

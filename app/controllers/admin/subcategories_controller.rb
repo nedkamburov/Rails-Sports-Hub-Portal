@@ -10,15 +10,16 @@ module Admin
     end
 
     def new
-      @subcategory = Subcategory.new
+      @subcategory = Subcategory.new()
     end
 
     def create
       @subcategory = Subcategory.new(subcategory_params)
+      @subcategory.category_id = params[:category_id] if params[:category_id]
 
       respond_to do |format|
         if @subcategory.save
-          format.html { redirect_to admin_subcategories_path, notice: "Your subcategory is now created." }
+          format.html { redirect_to admin_categories_path, notice: "Your subcategory is now created." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
@@ -28,7 +29,7 @@ module Admin
     def update
       respond_to do |format|
         if @subcategory.update(subcategory_params)
-          format.html { redirect_to admin_subcategories_path, notice: "Your subcategory was successfully updated." }
+          format.html { redirect_to admin_categories_path, notice: "Your subcategory was successfully updated." }
         else
           format.html { render :edit }
         end
@@ -46,7 +47,7 @@ module Admin
     def destroy
       @subcategory.destroy
 
-      redirect_to admin_subcategories_path, status: :see_other
+      redirect_to admin_categories_path, status: :see_other
     end
 
     private

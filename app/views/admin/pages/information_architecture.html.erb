@@ -1,19 +1,21 @@
 <%= render ('admin_header') %>
 <main class="container admin-container information-architecture">
+  <%= turbo_frame_tag "turbo_add_item" do %>
+    <div class="parent-not-selected-message"></div>
+  <% end %>
   <section class="sortable-items">
     <article class="col active">
-        <%= render('admin/pages/forms/add_category') %>
-      </div>
       <%= turbo_frame_tag "turbo_categories_frame" do %>
-          <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
-            <% @categories.each do |category| %>
-              <li class="col-item" data-id=<%= category.id %> >
-                <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
-                <%= link_to category.title, admin_category_path(category), data: { turbo_frame: "turbo_subcategories_frame" } %>
-                <%= render 'admin/shared/items_actions', item_path: admin_category_path(category) %>
-              </li>
-            <% end %>
-          </ul>
+        <div class="col-add-item"><%= link_to '+ Add Category', new_admin_category_path, data: { turbo_frame: "turbo_add_item" } %></div>
+        <ul class="list col-categories" data-controller="sort" data-sort-url="<%= sort_admin_categories_url %>">
+          <% @categories.each do |category| %>
+            <li class="col-item" data-id=<%= category.id %> >
+              <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
+              <%= link_to category.title, admin_category_path(category), data: { turbo_frame: "turbo_subcategories_frame" } %>
+              <%= render 'admin/shared/items_actions', item_path: admin_category_path(category) %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </article>
     <article class="col" id="col-subcategories">
