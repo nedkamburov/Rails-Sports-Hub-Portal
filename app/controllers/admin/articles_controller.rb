@@ -6,8 +6,8 @@ module Admin
 
     def show
       @category = Category.friendly.find(params[:id])
-      # @articles = @category.articles
       @articles = []
+      @category.subcategories.map {|subcat| subcat.teams.map {|team| @articles.push *team.articles}}
     end
 
     private

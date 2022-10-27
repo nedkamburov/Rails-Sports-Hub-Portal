@@ -8,7 +8,5 @@
   <div>All</div>
 </section>
 <section class="sortable-items">
-  <% @articles.each do |article| %>
-    <%= article.title %>
-  <% end %>
+  <%= render partial: 'admin/articles/article_preview', collection: @articles %>
 </section>

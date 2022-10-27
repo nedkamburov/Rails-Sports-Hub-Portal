@@ -1,0 +1,20 @@
+<article class="article">
+  <div>
+    <%= image_tag article_preview.picture, alt: article_preview.picture_alt %>
+  </div>
+  <div>
+    <div class="article-headline">
+      <%= article_preview.headline %>
+    </div>
+    <div class="article-caption">
+      <%= article_preview.caption %>
+    </div>
+    <div class="article-footer">
+      <div class="article-team">
+        <%= Subcategory.find(article_preview.team.subcategory_id).title %> / <%= article_preview.team.title %>
+      </div>
+      <%= article_preview.status %>
+    </div>
+  </div>
+</article>
+<hr>
