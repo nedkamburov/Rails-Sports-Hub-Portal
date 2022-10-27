@@ -1,6 +1,6 @@
 module Admin
   class ArticlesController < AdminController
-    # before_action :set_authorisation_status
+    before_action :set_authorisation_status
     def index
     end
 

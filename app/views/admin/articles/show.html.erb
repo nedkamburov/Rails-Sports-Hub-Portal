@@ -1,8 +1,11 @@
 <section>
-  <%= link_to "Preview", '' %>
+  <%= link_to("#{articles_path}/#{@category.slug}") do %>
+    <i class="fa-solid fa-eye"></i> Preview
+  <% end %>
   <a href="#"><i class="fa-solid fa-search"></i></a>
 </section>
 <section>
+
   <div>All Subcategories</div>
   <div>All Teams</div>
   <div>All</div>
