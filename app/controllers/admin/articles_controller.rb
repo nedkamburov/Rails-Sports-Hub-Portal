@@ -1,9 +1,13 @@
 module Admin
   class ArticlesController < AdminController
-    before_action :set_authorisation_status
+    # before_action :set_authorisation_status
+    def index
+    end
 
     def show
       @category = Category.friendly.find(params[:id])
+      # @articles = @category.articles
+      @articles = []
     end
 
     private

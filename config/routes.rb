@@ -4,15 +4,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "pages#home"
-    resources :articles
 
     resources :categories do
-      resources :subcategories, only: [:create, :index]
+      resources :subcategories, only: [:index, :create]
       put :sort, on: :collection
     end
 
-    resources :subcategories, except: [:create, :index] do
-      resources :teams, only: [:create, :index]
+    resources :subcategories, except: [:index, :create] do
+      resources :teams, only: [:index, :create]
       put :sort, on: :collection
     end
 
@@ -20,11 +19,15 @@ Rails.application.routes.draw do
       put :sort, on: :collection
     end
 
+    resources :articles
+
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"
   end
 
   # Defines the root path route ("/")
   root :to => "pages#home"
+
+  resources :articles
   resources :pages
 end

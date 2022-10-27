@@ -87,11 +87,12 @@ module ApplicationHelper
   end
 
   def sport_pages
+    # binding.pry
     sports = []
     sport_categories = Category.where(category_type: 'articles').sort_by{ |category| category.position}
     sport_categories.each do |sport|
       sport_page = {
-        url: "#{@is_admin_panel ? admin_root_path : root_path}/articles/#{sport.slug}",
+        url: "#{@is_admin_panel ? admin_root_path : ''}/articles/#{sport.slug}",
         title: sport.title
       }
       sports << sport_page

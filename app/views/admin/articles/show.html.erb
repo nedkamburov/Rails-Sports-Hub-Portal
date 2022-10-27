@@ -1,2 +1,14 @@
-<h1>Test sport category admin</h1>
-<%= @category.title %>
+<section>
+  <%= link_to "Preview", '' %>
+  <a href="#"><i class="fa-solid fa-search"></i></a>
+</section>
+<section>
+  <div>All Subcategories</div>
+  <div>All Teams</div>
+  <div>All</div>
+</section>
+<section class="sortable-items">
+  <% @articles.each do |article| %>
+    <%= article.title %>
+  <% end %>
+</section>
