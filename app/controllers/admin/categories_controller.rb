@@ -63,7 +63,7 @@ module Admin
                                       )
     end
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     end
   end
 end

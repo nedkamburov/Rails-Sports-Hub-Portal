@@ -1,15 +1,43 @@
-<section>
-  <%= link_to("#{articles_path}/#{@category.slug}") do %>
-    <i class="fa-solid fa-eye"></i> Preview
-  <% end %>
-  <a href="#"><i class="fa-solid fa-search"></i></a>
-</section>
-<section>
-
-  <div>All Subcategories</div>
-  <div>All Teams</div>
-  <div>All</div>
-</section>
-<section class="sortable-items">
+<section class="admin-articles container">
+  <section class="articles-actions d-flex justify-content-between">
+    <%= link_to("#{articles_path}/#{@category.slug}") do %>
+      <i class="fa-solid fa-eye"></i> Preview
+    <% end %>
+    <a href="#"><i class="fa-solid fa-search"></i></a>
+  </section>
+  <section class="articles-filters d-flex justify-content-between">
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      All Subcategories
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      All Teams
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      All Locations
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  </section>
+  <section class="articles-list sortable-items d-flex flex-column">
   <%= render partial: 'admin/articles/article_preview', collection: @articles %>
+  </section>
 </section>

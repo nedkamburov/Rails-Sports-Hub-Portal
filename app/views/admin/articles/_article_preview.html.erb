@@ -1,20 +1,19 @@
-<article class="article">
-  <div>
+<section class="article">
+  <article>
     <%= image_tag article_preview.picture, alt: article_preview.picture_alt %>
-  </div>
-  <div>
+  </article>
+  <article class="article-text">
     <div class="article-headline">
       <%= article_preview.headline %>
     </div>
     <div class="article-caption">
       <%= article_preview.caption %>
     </div>
-    <div class="article-footer">
+    <div class="article-footer d-flex justify-content-between">
       <div class="article-team">
         <%= Subcategory.find(article_preview.team.subcategory_id).title %> / <%= article_preview.team.title %>
       </div>
-      <%= article_preview.status %>
+      <div class="status-icon <%= article_preview.status %>"><%= article_preview.status %></div>
     </div>
-  </div>
-</article>
-<hr>
+  </article>
+</section>
