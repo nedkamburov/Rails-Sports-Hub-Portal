@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_27_084319) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_130940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "headline", null: false
+    t.string "caption", null: false
+    t.text "content", null: false
+    t.string "picture", null: false
+    t.string "picture_alt", null: false
+    t.boolean "has_comments", default: false
+    t.integer "status", default: 0
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_articles_on_team_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -68,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_084319) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "teams"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "teams", "subcategories"
 end
