@@ -20,9 +20,8 @@ module ApplicationHelper
                            .reject { |page| page.category_type == 'articles' }
                            .sort_by{ |page| page.position}
     static_pages.each do |page|
-      slug = page.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       static_page = {
-        url: "pages/#{slug}",
+        url: "pages/#{page.slug}",
         title: page.title
       }
       pages << static_page
@@ -91,9 +90,8 @@ module ApplicationHelper
     sports = []
     sport_categories = Category.where(category_type: 'articles').sort_by{ |category| category.position}
     sport_categories.each do |sport|
-      slug = sport.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       sport_page = {
-        url: "/articles/#{slug}",
+        url: "#{@is_admin_panel ? admin_root_path : root_path}/articles/#{sport.slug}",
         title: sport.title
       }
       sports << sport_page
