@@ -330,6 +330,13 @@ $accent-color2: #B2B2B2;
   .articles-actions {
     max-width: 790px;
     margin: auto;
+    a {
+      text-decoration: none;
+      color: $accent-color2;
+    }
+    .preview-btn {
+      color: $color;
+    }
   }
 
   .articles-filters {
@@ -347,9 +354,18 @@ $accent-color2: #B2B2B2;
     margin-top: 48px;
 
     .article {
+      position: relative;
       display: grid;
-      grid-template-columns: 1fr 3fr;
+      grid-template-columns: minmax(280px, 1fr) 2fr;
       padding: 25px;
+
+      .actions-dropdown {
+        position: absolute;
+        right: 0;
+        top: -8px;
+        color: $color;
+        display: none;
+      }
 
       .article-text {
         margin-left: 32px;
@@ -390,6 +406,13 @@ $accent-color2: #B2B2B2;
 
       img {
         width: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        .actions-dropdown {
+          display: block;
+        }
       }
 
       &:active {
@@ -439,40 +462,6 @@ $accent-color2: #B2B2B2;
 
           .handle-icon {
             opacity: 0;
-          }
-
-          .dropdown {
-            .dropdown-menu {
-              position: absolute;
-              top: -48px !important;
-              left: -1px !important;
-
-              .second-actions {
-                position: relative;
-                padding-left: 12px;
-                top: 5px;
-                height: 42px;
-
-                svg {
-                  circle {
-                  fill: $color;
-                  }
-                }
-              }
-
-              .dropdown-item {
-                display: block;
-                color: $text-color;
-                text-decoration: none;
-                padding: 12px 20px;
-
-                &:hover {
-                  color: $color;
-                  background: rgba(215, 33, 48, 0.11);
-                  cursor: pointer;
-                }
-              }
-            }
           }
         }
 
@@ -586,12 +575,43 @@ $accent-color2: #B2B2B2;
       &:before {
         background-color: red;
         filter: blur(10px);
-      }
     }
+  }
 }
 
+.actions-dropdown {
+  .dropdown-menu {
+    position: absolute;
+    top: -48px !important;
+    left: -1px !important;
 
+    .second-actions {
+      position: relative;
+      padding-left: 12px;
+      top: 5px;
+      height: 42px;
 
+      svg {
+        circle {
+          fill: $color;
+        }
+      }
+    }
+
+    .dropdown-item {
+      display: block;
+      color: $text-color;
+      text-decoration: none;
+      padding: 12px 20px;
+
+      &:hover {
+        color: $color;
+        background: rgba(215, 33, 48, 0.11);
+        cursor: pointer;
+      }
+    }
+  }
+}
 
 
 

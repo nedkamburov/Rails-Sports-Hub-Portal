@@ -10,4 +10,7 @@ class Admin::ArticlesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def destroy?
+    user.present?
+  end
 end

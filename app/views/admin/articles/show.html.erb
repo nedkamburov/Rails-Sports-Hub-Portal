@@ -1,7 +1,7 @@
 <%= render ('admin/shared/admin_headers') %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
-    <%= link_to("#{articles_path}/#{@category.slug}") do %>
+    <%= link_to("#{articles_path}/#{@category.slug}", class: "preview-btn") do %>
       <i class="fa-solid fa-eye"></i> Preview
     <% end %>
     <a href="#"><i class="fa-solid fa-search"></i></a>
@@ -38,7 +38,7 @@
     </div>
   </div>
   </section>
-  <section class="articles-list sortable-items d-flex flex-column">
+  <section class="articles-list sortable-items d-flex flex-column" >
   <%= render partial: 'admin/articles/article_preview', collection: @articles %>
   </section>
 </section>
