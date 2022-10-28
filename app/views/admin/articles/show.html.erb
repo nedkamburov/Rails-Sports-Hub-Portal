@@ -12,9 +12,9 @@
       All Subcategories
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <% @category.subcategories.each do |subcat| %>
+        <a class="dropdown-item" href="#"><%= subcat.title %></a>
+      <% end %>
     </div>
   </div>
   <div class="dropdown">
@@ -22,9 +22,11 @@
       All Teams
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <% @category.subcategories.each do |subcat|
+        subcat.teams.each do |team| %>
+        <a class="dropdown-item" href="#"><%= team.title %></a>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="dropdown">
@@ -32,9 +34,8 @@
       All Locations
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" href="#">Location 1</a>
+      <a class="dropdown-item" href="#">Location 2</a>
     </div>
   </div>
   </section>
