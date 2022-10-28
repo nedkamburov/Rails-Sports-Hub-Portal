@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_100534) do
     t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position"
+    t.integer "position", default: 0
     t.index ["team_id"], name: "index_articles_on_team_id"
   end
 

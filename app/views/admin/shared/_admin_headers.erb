@@ -1,11 +1,9 @@
-<% page_action_element = local_assigns.fetch(:page_action, 'Save all changes') %>
+<% page_action_element = local_assigns.fetch(:page_action, content_tag(:div, 'Save all changes', class:'page-action-button'))%>
 <article class="admin-subheader">
   <h4 class="page-title">
     <%= current_page_title %>
   </h4>
-  <div class="page-action-button">
     <%= page_action_element %>
-  </div>
 </article>
 <%= render ('admin/shared/admin_top_panel') %>
 <%= render ('admin/shared/admin_side_panel') %>

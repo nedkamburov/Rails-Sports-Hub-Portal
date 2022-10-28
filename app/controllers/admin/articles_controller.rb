@@ -21,7 +21,7 @@ module Admin
 
       respond_to do |format|
         if @article.save
-          format.html { redirect_to admin_articles_path, notice: "Your article is now created." }
+          format.html { redirect_to admin_root_path, notice: "Your article is now created." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
@@ -34,7 +34,7 @@ module Admin
     def update
       respond_to do |format|
         if @article.update(article_params)
-          format.html { redirect_to admin_articles_path, notice: "Your article was successfully updated." }
+          format.html { redirect_to admin_root_path, notice: "Your article was successfully updated." }
         else
           format.html { render :edit }
         end
@@ -75,7 +75,9 @@ module Admin
                                       :content,
                                       :picture,
                                       :picture_alt,
-                                      :team_id
+                                      :team_id,
+                                      :status,
+                                      :has_comments
       )
     end
 

@@ -265,8 +265,10 @@ $accent-color2: #B2B2B2;
     background-color: $color;
     color: $background-color;
     text-decoration: none;
+    border-radius: 0;
 
-    a {
+    a, button {
+      font-size: inherit;
       color: inherit;
       text-decoration: inherit;
     }
