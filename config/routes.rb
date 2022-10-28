@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       put :sort, on: :collection
     end
 
-    resources :articles
+    resources :articles do
+      put :sort, on: :collection
+    end
 
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"

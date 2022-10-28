@@ -13,4 +13,8 @@ class Admin::ArticlesPolicy < ApplicationPolicy
   def destroy?
     user.present?
   end
+
+  def sort?
+    user.present?
+  end
 end

@@ -19,6 +19,14 @@ module Admin
       redirect_to admin_articles_path, status: :see_other
     end
 
+    def sort
+      params[:order].each do |item|
+        Article.find(item[:id]).update(position: item[:position])
+      end
+
+      head :ok # Make sure Rails doesn't look for a view
+    end
+
     private
     def set_authorisation_status
       authorize [:admin, :articles]
