@@ -264,11 +264,23 @@ $accent-color2: #B2B2B2;
     padding: 10px 20px;
     background-color: $color;
     color: $background-color;
+    text-decoration: none;
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
     &:hover {
       cursor: pointer;
       background-color: $background-color;
       color: $color;
       border: 1px solid $color;
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
     }
   }
 }

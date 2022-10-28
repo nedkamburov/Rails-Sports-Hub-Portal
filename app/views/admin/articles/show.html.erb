@@ -1,4 +1,5 @@
-<%= render ('admin/shared/admin_headers') %>
+<% add_new_article = link_to('+ Add New Article', new_admin_article_url) %>
+<%= render 'admin/shared/admin_headers', page_action: add_new_article %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
     <%= link_to("#{articles_path}/#{@category.slug}", class: "preview-btn") do %>
