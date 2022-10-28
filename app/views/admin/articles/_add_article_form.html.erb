@@ -1,0 +1,30 @@
+<%= form_with model: Category.new, url: admin_categories_url, id: 'add-article-form' do |form| %>
+  <%= form.label :picture, "Picture*" %>
+  <%= form.text_field :picture, placeholder: 'picture-link', class: "form-control" %>
+  <section>
+    <%= form.label :subcategory, "Subcategory" %>
+    <%= collection_select(:article, :headline, Subcategory.all, :id, :title, {prompt: 'Not selected'}) %>
+    <%= form.label :subcategory, "Team" %>
+    <%= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}) %>
+    <%= form.label :subcategory, "Location" %>
+    <%= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}) %>
+  </section>
+  <%= form.label :picture_alt, "Alt.*" %>
+  <%= form.text_field :picture_alt, placeholder: 'Alternative text for the picture', class: "form-control" %>
+  <%= form.label :headline, "Article Headline*" %>
+  <%= form.text_field :headline, placeholder: 'Name', class: "form-control" %>
+  <%= form.label :caption, "Caption*" %>
+  <%= form.text_field :caption, placeholder: 'Write caption text here', class: "form-control" %>
+  <%= form.label :content, "Content*" %>
+  <%= form.text_area :content, placeholder: 'Please add text here', class: "form-control" %>
+  <%= form.label :has_comments, "Comments:" %>
+  <div class="form-check form-switch d-inline-block p-0">
+    <label class="form-check-label" for="flexSwitchCheckChecked">Show</label>
+    <%= form.check_box :has_comments, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked" %>
+  </div>
+
+<!--  <div class="buttons">-->
+    <%#= link_to "Cancel", admin_articles_path, class: 'btn' %>
+    <%#= form.submit "Add", class:"btn", form: "add-article-form"  %>
+<!--  </div>-->
+<% end %>
