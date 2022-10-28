@@ -371,9 +371,17 @@ $accent-color2: #B2B2B2;
       .actions-dropdown {
         position: absolute;
         right: 0;
-        top: -8px;
+        top: -2px;
         color: $color;
         display: none;
+        .dropdown-menu {
+          top: -40px !important;
+
+          .second-actions {
+            top: -2px;
+            height: 20px;
+          }
+        }
       }
 
       .article-text {
@@ -404,7 +412,7 @@ $accent-color2: #B2B2B2;
               margin-right: 6px;
             }
 
-            &.draft {
+            &.unpublished {
               &:before {
                 background-color: $color;
               }
@@ -419,6 +427,7 @@ $accent-color2: #B2B2B2;
 
       &:hover {
         cursor: pointer;
+        box-shadow: 1px 2px 5px $accent-color2;
         .actions-dropdown {
           display: block;
         }
@@ -426,7 +435,6 @@ $accent-color2: #B2B2B2;
 
       &:active {
         cursor: grabbing;
-        box-shadow: 1px 2px 5px $accent-color2;
       }
     }
   }
@@ -613,10 +621,18 @@ $accent-color2: #B2B2B2;
       text-decoration: none;
       padding: 12px 20px;
 
+      a {
+        text-decoration: none;
+        color: $text-color;
+      }
+
       &:hover {
         color: $color;
         background: rgba(215, 33, 48, 0.11);
         cursor: pointer;
+        a {
+          color: $color;
+        }
       }
     }
   }

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
     resources :articles do
       put :sort, on: :collection
+      member do
+        get :toggle_status
+      end
     end
 
     get "footer", to: "pages#footer"
@@ -30,6 +33,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root :to => "pages#home"
 
-  resources :articles
+  resources :articles, only: [:index, :show]
   resources :pages
 end

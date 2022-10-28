@@ -14,6 +14,10 @@ class Admin::ArticlesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def toggle_status?
+    user.present?
+  end
+
   def sort?
     user.present?
   end

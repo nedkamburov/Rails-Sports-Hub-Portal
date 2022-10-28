@@ -16,5 +16,5 @@
       <div class="status-icon <%= article_preview.status %>"><%= article_preview.status %></div>
     </div>
   </article>
-  <%= render 'admin/shared/items_actions', item_path: admin_article_path(article_preview) %>
+  <%= render 'article_items_actions', article: article_preview %>
 </section>

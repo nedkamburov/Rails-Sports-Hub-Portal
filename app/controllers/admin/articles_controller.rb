@@ -19,6 +19,15 @@ module Admin
       redirect_to admin_articles_path, status: :see_other
     end
 
+    def toggle_status
+      @article = Article.find(params[:id])
+      if @article.published? then @article.unpublished!
+      elsif @article.unpublished? then @article.published!
+      end
+
+      redirect_to admin_articles_path, notice: "Status was updated successfully."
+    end
+
     def sort
       params[:order].each do |item|
         Article.find(item[:id]).update(position: item[:position])
