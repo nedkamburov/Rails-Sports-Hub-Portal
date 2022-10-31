@@ -10,3 +10,5 @@ pin "bootstrap", to: 'bootstrap.min.js', preload: true
 pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.2.0/js/all.js"
 pin "sortablejs", to: "https://ga.jspm.io/npm:sortablejs@1.15.0/modular/sortable.esm.js"
 
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.js"

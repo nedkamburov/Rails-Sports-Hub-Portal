@@ -16,7 +16,7 @@
   <%= form.label :caption, "Caption*" %>
   <%= form.text_field :caption, placeholder: 'Write caption text here', class: "form-control" %>
   <%= form.label :content, "Content*" %>
-  <%= form.text_area :content, placeholder: 'Please add text here', class: "form-control" %>
+  <%= form.rich_text_area :content, placeholder: 'Please add text here', class: "form-control customized-min-height"  %>
   <%= form.label :has_comments, "Comments:" %>
   <div class="form-check-comments form-switch d-inline-block p-0">
     <label class="form-check-label" for="flexSwitchCheckChecked">Show</label>
@@ -27,4 +27,3 @@
     <%#= form.submit "Add", class:"btn", form: "add-article-form"  %>
 <!--  </div>-->
 <% end %>
-
