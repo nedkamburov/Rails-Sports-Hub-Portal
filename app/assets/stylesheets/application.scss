@@ -1,10 +1,25 @@
+@use 'sass:string';
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap');
 
 $color: #D72130;
 $text-color: #101010;
 $background-color: #FFFFFF;
-$accent-color: #EDEDED;
-$accent-color2: #B2B2B2;
+$accent-color-light-grey: #EDEDED;
+$accent-color-grey: #B2B2B2;
+$accent-color-dark-grey: #7F8899;
+
+body {
+  font-family: 'Open Sans', Helvetica, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+  font-family: 'Roboto', Helvetica, sans-serif !important;
+}
+
+@mixin toggleSwitchDotInColor($color-dot) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23#{$color-dot}'/%3e%3c/svg%3e")
+}
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Main Header Styling
@@ -13,8 +28,9 @@ $accent-color2: #B2B2B2;
   display: grid;
   grid-template-columns: 2fr 6fr 3fr;
   align-items: center;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 1px solid $accent-color-light-grey;
 }
+
 .logo {
   position: relative;
   text-align: center;
@@ -34,6 +50,7 @@ $accent-color2: #B2B2B2;
     text-decoration: none;
   }
 }
+
 .header-middle {
   height: 100%;
   display: grid;
@@ -44,12 +61,12 @@ $accent-color2: #B2B2B2;
     height: 100%;
     flex-direction: row;
     align-items: center;
-    border-right: 1px solid $accent-color;
+    border-right: 1px solid $accent-color-light-grey;
     padding-left: 30px;
   }
 
   p {
-    color: $accent-color2;
+    color: $accent-color-grey;
     font-size: 20px;
     margin: 0 10px;
   }
@@ -59,6 +76,7 @@ $accent-color2: #B2B2B2;
     margin-left: 20px;
   }
 }
+
 .header-right {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -102,7 +120,7 @@ $accent-color2: #B2B2B2;
     .user-avatar {
       width: 34px;
       height: 34px;
-      border: 1px solid $accent-color2;
+      border: 1px solid $accent-color-grey;
       margin-right: 5px;
       border-radius: 50%;
       background-color: $color;
@@ -122,14 +140,14 @@ $accent-color2: #B2B2B2;
 
     h6 {
       font-size: 10px;
-      color: $accent-color2;
+      color: $accent-color-grey;
       margin: 2px 0 0 0;
     }
 
     .header-dropdown-menu {
       width: 90%;
       border-radius: 0;
-      box-shadow: 1px 2px 7px $accent-color;
+      box-shadow: 1px 2px 7px $accent-color-light-grey;
 
       div {
         padding: 5px 20px;
@@ -137,7 +155,7 @@ $accent-color2: #B2B2B2;
       }
 
       .user-titles {
-        border-bottom: 1px solid $accent-color;
+        border-bottom: 1px solid $accent-color-light-grey;
 
         h5 {
           font-size: 14px;
@@ -146,7 +164,7 @@ $accent-color2: #B2B2B2;
 
         h6 {
           font-size: 10px;
-          color: $accent-color2;
+          color: $accent-color-grey;
           margin: 0;
         }
       }
@@ -170,7 +188,7 @@ $accent-color2: #B2B2B2;
 
       .login-logout {
         padding-top: 10px;
-        border-top: 1px solid $accent-color;
+        border-top: 1px solid $accent-color-light-grey;
       }
     }
   }
@@ -198,17 +216,17 @@ $accent-color2: #B2B2B2;
 .side-panel {
   position: relative;
   max-width: 280px;
-  color: $accent-color2;
+  color: $accent-color-grey;
   position: absolute;
   margin-top: 100px;
   left: 50px;
 
   ul.nav {
-    font-weight: bold;
+    font-weight: 700;
 
     a.nav-link {
       position: relative;
-      color: $accent-color2 !important;
+      color: $accent-color-grey !important;
       text-transform: uppercase;
       padding: 5px;
 
@@ -252,7 +270,8 @@ $accent-color2: #B2B2B2;
   justify-content: space-between;
   align-items: center;
   padding: 10px 100px 0 100px;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 1px solid $accent-color-light-grey;
+  font-weight: 700 !important;
 
   .page-title {
     font-weight: bold;
@@ -260,6 +279,7 @@ $accent-color2: #B2B2B2;
   }
 
   .page-action-button {
+    width: 100px;
     font-size: 12px;
     padding: 10px 20px;
     background-color: $color;
@@ -284,6 +304,11 @@ $accent-color2: #B2B2B2;
         text-decoration: inherit;
       }
     }
+
+    &.secondary {
+      color: $color;
+      background-color: $background-color;
+    }
   }
 }
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -291,18 +316,18 @@ $accent-color2: #B2B2B2;
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-top-panel {
   position: relative;
-  color: $accent-color2;
+  color: $accent-color-grey;
 
   ul.navbar {
     font-weight: bold;
     padding: 0 10%;
-    box-shadow: 1px 2px 7px $accent-color;
+    box-shadow: 1px 2px 7px $accent-color-light-grey;
 
     li {
       display: inline !important;
 
       a.nav-link {
-        color: $accent-color2 !important;
+        color: $accent-color-grey !important;
         text-transform: uppercase;
         padding: 5px;
 
@@ -322,7 +347,7 @@ $accent-color2: #B2B2B2;
   padding-top: 40px;
   width: 4.5rem;
   height: 100%;
-  border-right: 1px solid $accent-color;
+  border-right: 1px solid $accent-color-light-grey;
 
   li {
     margin-bottom: 20px;
@@ -346,7 +371,7 @@ $accent-color2: #B2B2B2;
     margin: auto;
     a {
       text-decoration: none;
-      color: $accent-color2;
+      color: $accent-color-grey;
     }
     .preview-btn {
       color: $color;
@@ -359,7 +384,7 @@ $accent-color2: #B2B2B2;
     margin-top: 48px;
 
     .dropdown {
-      border: 1px solid $accent-color2;
+      border: 1px solid $accent-color-grey;
       border-radius: 0;
       * {
         width: 210px;
@@ -401,7 +426,7 @@ $accent-color2: #B2B2B2;
       .article-text {
         margin-left: 32px;
         font-size: 14px;
-        color: $accent-color2;
+        color: $accent-color-grey;
 
         .article-headline {
           font-size: 16px;
@@ -441,7 +466,7 @@ $accent-color2: #B2B2B2;
 
       &:hover {
         cursor: pointer;
-        box-shadow: 1px 2px 5px $accent-color2;
+        box-shadow: 1px 2px 5px $accent-color-grey;
         .actions-dropdown {
           display: block;
         }
@@ -452,11 +477,58 @@ $accent-color2: #B2B2B2;
       }
     }
   }
+
+  #add-article-form {
+    label {
+      margin: 20px 0 7px 0;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: $accent-color-dark-grey;
+    }
+
+    input, textarea {
+      border-radius: 0;
+    }
+
+    input::placeholder, select, textarea::placeholder {
+      font-size: 12px;
+      color: $accent-color-grey;
+    }
+
+    select::selection {
+      background-color: red;
+    }
+
+    .form-check-comments {
+      .form-check-label {
+        margin-top: 0 !important;
+        color: $color;
+        text-transform: initial;
+      }
+
+      .form-check-input {
+        margin-top: 6px !important;
+        border-radius: 20px;
+
+        &:checked {
+          background-color: $background-color;
+          border-color: $accent-color-grey;
+          @include toggleSwitchDotInColor("D72130");
+        }
+
+        &:focus {
+          border-color: $color;
+          box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+          @include toggleSwitchDotInColor("D72130");
+        }
+      }
+    }
+  }
 }
 
 .information-architecture {
   .sortable-items {
-    color: $accent-color2;
+    color: $accent-color-grey;
     margin-top: 50px;
     display: flex;
 
@@ -472,11 +544,11 @@ $accent-color2: #B2B2B2;
           margin-bottom: 16px;
           padding: 6px;
           cursor: grab;
-          border: 1.5px solid $accent-color;
+          border: 1.5px solid $accent-color-light-grey;
 
           &:active {
             cursor: grabbing;
-            box-shadow: 1px 2px 5px $accent-color;
+            box-shadow: 1px 2px 5px $accent-color-light-grey;
 
             .handle-icon {
               opacity: 1;
@@ -505,7 +577,7 @@ $accent-color2: #B2B2B2;
         margin-bottom: 16px;
         padding: 6px;
         cursor: pointer;
-        border: 1.5px dashed $accent-color;
+        border: 1.5px dashed $accent-color-light-grey;
       }
 
       a {
@@ -553,7 +625,7 @@ $accent-color2: #B2B2B2;
           text-align: left;
 
           label {
-            color: $accent-color2;
+            color: $accent-color-grey;
             font-weight: bold;
           }
 
@@ -651,7 +723,5 @@ $accent-color2: #B2B2B2;
     }
   }
 }
-
-
 
 

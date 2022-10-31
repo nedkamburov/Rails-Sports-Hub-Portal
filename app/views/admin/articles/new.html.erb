@@ -1,6 +1,6 @@
 <% add_new_article_form_options = content_tag :div do
-    content_tag(:a, 'Cancel', href:admin_articles_path, class: 'btn page-action-button') +
-    content_tag(:button, 'Add', name:"commit", form:"add-article-form", class: "btn page-action-button ms-2")
+    content_tag(:a, 'Cancel', href:admin_articles_path, class: 'btn page-action-button secondary') +
+    content_tag(:button, 'Save', name:"commit", form:"add-article-form", class: "btn page-action-button ms-2")
    end %>
 <%= render 'admin/shared/admin_headers', page_action: add_new_article_form_options %>
 <section class="admin-articles container">
