@@ -1,6 +1,16 @@
 <%= form_with model: Article.new, url: admin_articles_path, id: 'add-article-form' do |form| %>
-  <%= form.label :picture, "Picture*" %>
-  <%= form.text_field :picture, placeholder: 'picture-link', class: "form-control" %>
+  <section>
+    <%= form.label :picture, "Picture*", class: "label" %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
+      <%= form.file_field :picture, direct_upload: true, data: { dropzone_target: 'input' } %>
+      <div class="dropzone-msg dz-message needsclick text-gray-600">
+        <div class="camera-icon">
+          <%= show_svg('camera.svg') %>
+        </div>
+        <h3 class="dropzone-msg-desc text-sm"><span class="emphasized">+Add picture</span> or drop it right here<br>You can add next formats: png. jpg. jpeg. tif. 2 MB file size maximum.</h3>
+      </div>
+    </div>
+  </section>
   <section>
     <%= form.label :subcategory, "Subcategory" %>
     <%#= collection_select(:article, :headline, Subcategory.all, :id, :title, {prompt: 'Not selected'}) %>

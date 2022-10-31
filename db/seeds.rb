@@ -81,6 +81,6 @@ articles = [
 ]
 
 articles.each do |article|
-  Article.create!(headline: article.headline, caption: article.caption, content: article.content, picture: article.picture, picture_alt: article.picture_alt, team: article.team)
+  Article.create!(headline: article.headline, caption: article.caption, content: article.content, image: nil, picture_alt: article.picture_alt, team: article.team)
 end
 puts 'Articles have been added to each team from the AFC West subcategory!'

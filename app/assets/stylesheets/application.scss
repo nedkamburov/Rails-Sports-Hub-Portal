@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "./actiontext.css";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap');
+@import "./dropzone.css";
 
 $color: #D72130;
 $text-color: #101010;
@@ -484,6 +485,43 @@ h1, h2, h3, h4, h5, h6, label {
       font-size: 10px;
       text-transform: uppercase;
       color: $accent-color-dark-grey;
+    }
+    .dropzone {
+      min-height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      #article_picture {
+        display: none;
+      }
+
+      .dropzone-msg {
+        .camera-icon {
+          width: 64px;
+          height: 64px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          background-color: $color;
+          border-radius: 50%;
+
+          svg {
+            fill: $background-color;
+          }
+        }
+
+        .dropzone-msg-desc {
+          margin-top: 28px;
+          font-size: 14px;
+          font-family: 'Open Sans';
+
+          .emphasized {
+            color: $color;
+          }
+        }
+      }
     }
 
     input, textarea {
