@@ -374,8 +374,13 @@ h1, h2, h3, h4, h5, h6, label {
       text-decoration: none;
       color: $accent-color-grey;
     }
-    .preview-btn {
-      color: $color;
+  }
+
+  .preview-btn {
+    color: $color !important;
+    text-decoration: none;
+    svg {
+      margin-right: 5px;
     }
   }
 
@@ -435,6 +440,7 @@ h1, h2, h3, h4, h5, h6, label {
           color: $text-color;
           margin-bottom: 22px;
         }
+
         .article-caption {
           margin-bottom: 22px;
         }
@@ -479,7 +485,7 @@ h1, h2, h3, h4, h5, h6, label {
     }
   }
 
-  #add-article-form {
+  #article-form {
     label {
       margin: 20px 0 7px 0;
       font-size: 10px;
@@ -487,10 +493,17 @@ h1, h2, h3, h4, h5, h6, label {
       color: $accent-color-dark-grey;
     }
     .dropzone {
+      position: relative;
       min-height: 450px;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+
+      .existing-image {
+        position: absolute;
+        width: 100%;
+      }
 
       #article_picture {
         display: none;
@@ -522,6 +535,13 @@ h1, h2, h3, h4, h5, h6, label {
           }
         }
       }
+
+      &:hover {
+        .existing-image {
+          z-index: -1;
+          filter: opacity(0.2);
+        }
+      }
     }
 
     input, textarea {
@@ -533,8 +553,19 @@ h1, h2, h3, h4, h5, h6, label {
       color: $accent-color-grey;
     }
 
-    select::selection {
-      background-color: red;
+    .dropdown-menus {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      .dropdown {
+        display: block;
+        min-width: 250px;
+        padding: 8px;
+      }
+
+      select::selection {
+        background-color: red;
+      }
     }
 
     .form-check-comments {
@@ -560,6 +591,12 @@ h1, h2, h3, h4, h5, h6, label {
           @include toggleSwitchDotInColor("EB9097");
         }
       }
+    }
+  }
+
+  .edit-container {
+    .preview-btn {
+      right: 0;
     }
   }
 }

@@ -1,9 +1,10 @@
-<%= form_with model: Article.new, url: admin_articles_path, id: 'add-article-form' do |form| %>
+<%= form_with model: article, url: action_path, id: 'article-form' do |form| %>
   <section>
     <%= form.label :picture, "Picture*", class: "label" %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
+      <%= image_tag article.picture, alt: article.picture_alt, class: 'existing-image' if article.picture.present? %>
       <%= form.file_field :picture, direct_upload: true, data: { dropzone_target: 'input' } %>
-      <div class="dropzone-msg dz-message needsclick text-gray-600">
+      <div class="dropzone-msg dz-message needsclick">
         <div class="camera-icon">
           <%= show_svg('camera.svg') %>
         </div>
@@ -11,13 +12,15 @@
       </div>
     </div>
   </section>
-  <section>
-    <%= form.label :subcategory, "Subcategory" %>
-    <%#= collection_select(:article, :headline, Subcategory.all, :id, :title, {prompt: 'Not selected'}) %>
-    <%= form.label :subcategory, "Team" %>
-    <%= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}, class: 'p-1') %>
-    <%= form.label :subcategory, "Location" %>
-    <%#= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}) %>
+  <section class="dropdown-menus">
+    <article>
+      <%= form.label :subcategory, "Subcategory" %>
+      <%= collection_select(:article, :headline, Subcategory.all, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
+    </article>
+    <article>
+      <%= form.label :subcategory, "Team" %>
+      <%= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
+    </article>
   </section>
   <%= form.label :picture_alt, "Alt.*" %>
   <%= form.text_field :picture_alt, placeholder: 'Alternative text for the picture', class: "form-control" %>
@@ -32,8 +35,4 @@
     <label class="form-check-label" for="flexSwitchCheckChecked">Show</label>
     <%= form.check_box :has_comments, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked" %>
   </div>
-<!--  <div class="buttons">-->
-    <%#= link_to "Cancel", admin_articles_path, class: 'btn' %>
-    <%#= form.submit "Add", class:"btn", form: "add-article-form"  %>
-<!--  </div>-->
 <% end %>
