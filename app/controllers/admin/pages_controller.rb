@@ -6,7 +6,7 @@ module Admin
     end
 
     def information_architecture
-      @categories = Category.all.sort_by{ |page| page.position}
+      @categories = Category.where(category_type: 'articles').order("position ASC")
     end
 
     private

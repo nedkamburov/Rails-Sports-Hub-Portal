@@ -16,9 +16,7 @@ module ApplicationHelper
       url: @is_admin_panel ? admin_root_path : root_path,
       title: 'Home' }
 
-    static_pages = Category.all
-                           .reject { |page| page.category_type == 'articles' }
-                           .sort_by{ |page| page.position}
+    static_pages = Category.where.not(category_type: 'articles').order("position ASC")
     static_pages.each do |page|
       slug = page.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       static_page = {
@@ -89,7 +87,7 @@ module ApplicationHelper
 
   def sport_pages
     sports = []
-    sport_categories = Category.where(category_type: 'articles').sort_by{ |category| category.position}
+    sport_categories = Category.where(category_type: 'articles').order("position ASC")
     sport_categories.each do |sport|
       slug = sport.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       sport_page = {
