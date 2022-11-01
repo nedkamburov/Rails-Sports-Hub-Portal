@@ -1,6 +1,6 @@
 module Admin
   class CategoriesController < AdminController
-    before_action :set_authorisation_status
+    before_action :resource
     before_action :set_category, only: %i[ show edit update destroy ]
 
     def index
@@ -50,11 +50,6 @@ module Admin
     end
 
     private
-    def set_authorisation_status
-      authorize [:admin, :categories]
-      @is_admin_panel = true
-    end
-
     def category_params
       params.require(:category).permit(:title,
                                        :position,
@@ -64,6 +59,10 @@ module Admin
     end
     def set_category
       @category = Category.find(params[:id])
+    end
+
+    def resource
+      :categories
     end
   end
 end

@@ -1,6 +1,6 @@
 module Admin
   class SubcategoriesController < AdminController
-    before_action :set_authorisation_status
+    before_action :resource
     before_action :set_subcategory, only: %i[ show edit update destroy ]
 
     def index
@@ -51,11 +51,6 @@ module Admin
     end
 
     private
-    def set_authorisation_status
-      authorize [:admin, :subcategories]
-      @is_admin_panel = true
-    end
-
     def subcategory_params
       params.require(:subcategory).permit(:title,
                                           :position,
@@ -65,6 +60,10 @@ module Admin
 
     def set_subcategory
       @subcategory = Subcategory.find(params[:id])
+    end
+
+    def resource
+      :subcategories
     end
   end
 end

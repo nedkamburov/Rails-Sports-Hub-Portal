@@ -1,6 +1,6 @@
 module Admin
   class TeamsController < AdminController
-    before_action :set_authorisation_status
+    before_action :resource
     before_action :set_team, only: %i[ show edit update destroy ]
 
     def index
@@ -48,10 +48,6 @@ module Admin
     end
 
     private
-    def set_authorisation_status
-      authorize [:admin, :teams]
-      @is_admin_panel = true
-    end
 
     def team_params
       params.require(:team).permit(:title,
@@ -62,6 +58,10 @@ module Admin
 
     def set_team
       @team = Team.find(params[:id])
+    end
+
+    def resource
+      :teams
     end
   end
 end
