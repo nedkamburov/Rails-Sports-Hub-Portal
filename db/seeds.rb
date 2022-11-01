@@ -9,8 +9,10 @@
 #
 # Create users
 #
+
 require 'faker'
 require 'ostruct'
+require 'open-uri'
 User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nkamb@softserveinc.com", role: 'admin')
 
 3.times do
@@ -80,7 +82,11 @@ articles = [
    team: Team.find_by(title: "Utah Jazz")})
 ]
 
+
 articles.each do |article|
-  Article.create!(headline: article.headline, caption: article.caption, content: article.content, image: nil, picture_alt: article.picture_alt, team: article.team)
+  new_article = Article.create!(headline: article.headline, caption: article.caption, content: article.content, picture_alt: article.picture_alt, team: article.team)
+
+  remote_picture = URI.open(article.picture)
+  new_article.picture.attach(io: remote_picture, filename: article.picture_alt)
 end
 puts 'Articles have been added to each team from the AFC West subcategory!'

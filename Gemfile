@@ -79,3 +79,4 @@ gem "pundit", "~> 2.2"
 gem 'bootstrap', '~> 5.1.3'
 gem "font-awesome-sass", "~> 6.2"
 gem 'friendly_id', '~> 5.4.0'
+gem "open-uri", "~> 0.2.0"
