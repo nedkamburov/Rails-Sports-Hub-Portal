@@ -9,7 +9,6 @@ module Admin
     def show
       @category = Category.friendly.find(params[:id])
       @articles = Article.where(category_id: @category.id)
-                         # .where('headline LIKE ?', "%#{params[:search]}%")
                          .where('headline LIKE :search OR caption LIKE :search', search: "%#{params[:search]}%")
     end
 
