@@ -85,7 +85,6 @@ module ApplicationHelper
   end
 
   def sport_pages
-    # binding.pry
     sports = []
     sport_categories = Category.where(category_type: 'articles').order("position ASC")
     sport_categories.each do |sport|

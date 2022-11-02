@@ -17,7 +17,6 @@ module Admin
     end
 
     def create
-      binding.pry
       @article = Article.new(article_params)
 
       respond_to do |format|

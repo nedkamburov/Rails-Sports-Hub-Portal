@@ -1,6 +1,7 @@
 module Admin
   class CategoriesController < BaseCategoriesController
-    before_action :resource, :model, :set_model
+    before_action :resource, :model
+    before_action :set_model, only: %i[ show edit update destroy ]
 
     private
     def permitted_params
