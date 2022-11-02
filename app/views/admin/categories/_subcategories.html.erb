@@ -1,0 +1,15 @@
+<div class="col-add-item">
+  <%= link_to '+ Add Subcategory', new_admin_subcategory_path(category_id: category.id), data: { turbo_frame: "turbo_add_item" } %>
+</div>
+<ul class="list col-subcategories" data-controller="sort" data-sort-url="<%= sort_admin_subcategories_url %>">
+  <% unless category.subcategories.count > 0 %>
+    <div class="parent-not-selected-message">No subcategories added yet.</div>
+  <% end %>
+  <% category.subcategories.sort_by { |subcat| subcat.position }.each do |subcategory| %>
+    <li class="col-item" data-id=<%= subcategory.id %> >
+      <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
+      <%= link_to subcategory.title, admin_subcategory_path(subcategory), data: { turbo_frame: "turbo_teams_frame" } %>
+      <%= render 'admin/shared/items_actions', item_path: admin_subcategory_path(subcategory) %>
+    </li>
+  <% end %>
+</ul>

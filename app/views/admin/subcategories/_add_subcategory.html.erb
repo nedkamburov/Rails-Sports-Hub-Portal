@@ -1,0 +1,14 @@
+<div class="popup-add-item">
+  <div class="card">
+    <h5>Add New Subcategory</h5>
+    <%= form_with model: Subcategory, url: admin_category_subcategories_url(params[:category_id]) do |form| %>
+      <%= form.label :title, "Name" %>
+      <%= form.text_field :title, placeholder: 'Name your subcategory', class: "form-control" %>
+      <%= form.hidden_field :category_id, {value: params[:category_id]} %>
+      <div class="buttons">
+        <%= link_to "Cancel", '', class: 'btn' %>
+        <%= form.submit "Add", class:"btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+ <div class="popup-add-item">
+    <div class="card">
+      <h5>Add New Category</h5>
+      <%= form_with model: Category.new, url: admin_categories_url do |form| %>
+        <%= form.label :title, "Name" %>
+        <%= form.text_field :title, placeholder: 'Name your category', class: "form-control" %>
+        <div class="buttons">
+          <%= link_to "Cancel", admin_categories_url, class: 'btn' %>
+          <%= form.submit "Add", class:"btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>

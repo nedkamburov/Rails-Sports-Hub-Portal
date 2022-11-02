@@ -9,4 +9,14 @@ class Admin::PagesPolicy < ApplicationPolicy
   def home?
     user.present?
   end
+  def footer?
+    user.present?
+  end
+  def information_architecture?
+    user.present?
+  end
+  def show?
+    user.present?
+  end
+
 end

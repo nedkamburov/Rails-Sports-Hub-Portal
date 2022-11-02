@@ -11,111 +11,101 @@ module ApplicationHelper
   end
 
   def side_panel_items
-    [
-      {
-        url: root_path,
-        title: 'Home'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'Team hub'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'Lifestyle'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'Dealbook'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'Video'
+    pages = []
+    pages << {
+      url: @is_admin_panel ? admin_root_path : root_path,
+      title: 'Home' }
+
+    static_pages = Category.where.not(category_type: 'articles').order("position ASC")
+    static_pages.each do |page|
+      slug = page.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      static_page = {
+        url: "pages/#{slug}",
+        title: page.title
       }
-    ]
+      pages << static_page
+    end
+
+    pages
   end
 
   def admin_side_panel_items
-    src_path = 'admin-side-panel/'
+    svg_src_path = 'admin-side-panel/'
     [
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Surveys',
-        svg_path: src_path + 'surveys.svg'
+        svg_path: svg_src_path + 'surveys.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Banners',
-        svg_path: src_path + 'banners.svg'
+        svg_path: svg_src_path + 'banners.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Languages',
-        svg_path: src_path + 'languages.svg'
+        svg_path: svg_src_path + 'languages.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: admin_footer_path,
         title: 'Footer',
-        svg_path: src_path + 'footer.svg'
+        svg_path: svg_src_path + 'footer.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Social Networks',
-        svg_path: src_path + 'social-networks.svg'
+        svg_path: svg_src_path + 'social-networks.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Users',
-        svg_path: src_path + 'users.svg'
+        svg_path: svg_src_path + 'users.svg'
       },
       {
-        url: 'path-to-be-added',
-        title: 'IA',
-        svg_path: src_path + 'ia.svg'
+        url: admin_information_architecture_path,
+        title: 'Information Architecture',
+        svg_path: svg_src_path + 'ia.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Teams',
-        svg_path: src_path + 'teams.svg'
+        svg_path: svg_src_path + 'teams.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'News Partners',
-        svg_path: src_path + 'news-partners.svg'
+        svg_path: svg_src_path + 'news-partners.svg'
       },
       {
-        url: 'path-to-be-added',
+        url: '/path-to-be-added',
         title: 'Advertising',
-        svg_path: src_path + 'advertising.svg'
+        svg_path: svg_src_path + 'advertising.svg'
       }
     ]
   end
 
-  # Todo: replace this mock with actual Sports when they are added
-  def mock_sports
-    [
-      {
-        url: 'path-to-be-added',
-        title: 'NBA'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'NFL'
-      },
-      {
-        url: 'path-to-be-added',
-        title: 'NASCAR'
+  def sport_pages
+    sports = []
+    sport_categories = Category.where(category_type: 'articles').order("position ASC")
+    sport_categories.each do |sport|
+      slug = sport.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      sport_page = {
+        url: "/articles/#{slug}",
+        title: sport.title
       }
-    ]
+      sports << sport_page
+    end
+
+    sports
   end
 
   def side_panel_helper (style, tag_type, is_admin_page: false)
     panel_links = ''
 
-    panel_items = side_panel_items.insert(1, *mock_sports)
+    panel_items = side_panel_items.insert(1, *sport_pages)
     panel_items.each do |item|
-      link_url = is_admin_page ? request.path + item[:url] : item[:url]
-      panel_links << "<#{tag_type}><a href='#{link_url}' class='#{style} #{active_item link_url}'>#{item[:title]}</a></#{tag_type}>"
+      panel_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active_item item[:url]}'>#{item[:title]}</a></#{tag_type}>"
     end
 
     panel_links.html_safe
@@ -135,16 +125,6 @@ module ApplicationHelper
 
   def active_item(path)
     "active" if current_page? path
-  end
-
-  def current_page_title (is_admin_page: false)
-    title = ''
-    panel_items = side_panel_items.insert(1, *mock_sports)
-    panel_items.each do |item|
-      link_url = is_admin_page ? request.path + item[:url] : item[:url]
-      title = item[:title] if current_page? link_url
-    end
-    title.html_safe
   end
 
   def switch_dashboards_helper

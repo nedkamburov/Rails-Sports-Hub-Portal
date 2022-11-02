@@ -1,9 +1,17 @@
 module Admin
   class PagesController < AdminController
+    before_action :resource
+
     def home
-      authorize [:admin, :pages]
       @users = User.all
-      @is_admin_panel = true
+    end
+
+    def information_architecture
+      @categories = Category.where(category_type: 'articles').order("position ASC")
+    end
+
+    def resource
+      :pages
     end
   end
 end

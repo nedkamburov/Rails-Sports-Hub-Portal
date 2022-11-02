@@ -126,8 +126,7 @@ $accent-color2: #B2B2B2;
       margin: 2px 0 0 0;
     }
 
-    .dropdown-menu {
-      margin-top: 20px !important;
+    .header-dropdown-menu {
       width: 90%;
       border-radius: 0;
       box-shadow: 1px 2px 7px $accent-color;
@@ -159,7 +158,7 @@ $accent-color2: #B2B2B2;
           display: block;
           color: $text-color;
           text-decoration: none;
-          padding: 10px 25px;
+          padding: 10px 20px;
 
           &:hover {
             color: $color;
@@ -293,7 +292,7 @@ $accent-color2: #B2B2B2;
         text-transform: uppercase;
         padding: 5px;
 
-        &.active {
+         &.active {
           color: $color !important;
         }
       }
@@ -301,6 +300,9 @@ $accent-color2: #B2B2B2;
   }
 }
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Side Panel Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-side-panel {
   position: absolute;
   padding-top: 40px;
@@ -310,7 +312,205 @@ $accent-color2: #B2B2B2;
 
   li {
     margin-bottom: 20px;
+
+    a.active {
+      svg {
+        rect {
+          stroke: $color !important;
+        }
+      }
+    }
   }
+}
+
+.information-architecture {
+  .sortable-items {
+    color: $accent-color2;
+    margin-top: 50px;
+    display: flex;
+
+    .col {
+      max-width: 200px;
+      margin-right: 50px;
+      text-align: center;
+
+      .list {
+        list-style: none;
+        padding: 0;
+        .col-item, .col-add-item {
+          margin-bottom: 16px;
+          padding: 6px;
+          cursor: grab;
+          border: 1.5px solid $accent-color;
+
+          &:active {
+            cursor: grabbing;
+            box-shadow: 1px 2px 5px $accent-color;
+
+            .handle-icon {
+              opacity: 1;
+            }
+          }
+        }
+
+        .col-item {
+          display: grid;
+          grid-template-columns: 35px 4fr 35px;
+          align-items: center;
+          justify-content: center;
+
+          .handle-icon {
+            opacity: 0;
+          }
+
+          .dropdown {
+            .dropdown-menu {
+              position: absolute;
+              top: -48px !important;
+              left: -1px !important;
+
+              .second-actions {
+                position: relative;
+                padding-left: 12px;
+                top: 5px;
+                height: 42px;
+
+                svg {
+                  circle {
+                  fill: $color;
+                  }
+                }
+              }
+
+              .dropdown-item {
+                display: block;
+                color: $text-color;
+                text-decoration: none;
+                padding: 12px 20px;
+
+                &:hover {
+                  color: $color;
+                  background: rgba(215, 33, 48, 0.11);
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+
+        &.col-categories {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+
+      .col-add-item {
+        margin-bottom: 16px;
+        padding: 6px;
+        cursor: pointer;
+        border: 1.5px dashed $accent-color;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .parent-not-selected-message {
+        text-transform: initial;
+      }
+    }
+
+  }
+  .popup-add-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+
+      .card {
+        position: absolute;
+        width: 460px;
+        height: 260px;
+        border-radius: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        h5 {
+          position: relative;
+          margin-top: 42px;
+          font-size: 24px;
+          color: $text-color;
+          text-align: center;
+        }
+
+        form {
+          width: 350px;
+          position: relative;
+          margin: auto;
+          left: 0;
+          right: 0;
+          text-align: left;
+
+          label {
+            color: $accent-color2;
+            font-weight: bold;
+          }
+
+          input {
+            border-radius: 0;
+          }
+
+          ::placeholder {
+            opacity: 0.5;
+          }
+
+          .buttons {
+            margin-top: 24px;
+            text-decoration: none;
+            text-align: right;
+
+            input {
+              min-width: 100px;
+            }
+
+            input:first-child {
+              background: $background-color;
+              border: none;
+              color: $color;
+            }
+
+            input:last-child {
+              color: $background-color;
+              background: $color;
+              border: 1px solid $color;
+
+              &:hover {
+                color: $color;
+                background: $background-color;
+              }
+            }
+
+            input:hover {
+              color: $background-color;
+              background: $color;
+            }
+          }
+
+          .btn:active, .btn:focus {
+            border: none;
+          }
+        }
+      }
+
+      &:before {
+        background-color: red;
+        filter: blur(10px);
+      }
+    }
 }
 
 

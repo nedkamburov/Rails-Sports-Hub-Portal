@@ -1,27 +1,6 @@
-<div>
-  <article class="admin-subheader">
-    <h4 class="page-title">
-      <%= current_page_title is_admin_page: true %>
-    </h4>
-    <div class="page-action-button">
-      + Add New Article
-    </div>
-  </article>
-  <%= render ('admin_top_panel') %>
-<div>
-  <%= render ('admin_side_panel') %>
-<section class="container admin-container">
-  <h3>You are logged in as:</h3>
-    <span><%= current_user.inspect %></span>
-      <div><%= "You\'re an admin, #{current_user.first_name}" if current_user&.admin? %></div>
-      <div>
-        <h4>All Users</h4>
-        <% @users.each do |user| %>
-        <div>
-              <p><%=  "#{ user.first_name } #{ user.last_name } (#{ user.role })"  %></p>
-          <p><%= user.email %></p>
-              <hr>
-        </div>
-        <%  end%>
-      </div>
-</section>
+<%= render ('admin_header') %>
+<main class="container admin-container">
+  <%= render ('admin_main_articles') %>
+  <%= render ('admin_breakdown') %>
+  <%= render ('admin_summary') %>
+</main>
