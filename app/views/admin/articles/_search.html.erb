@@ -1,0 +1,16 @@
+<section class="search-mini-bar d-flex">
+  <div class="" data-bs-toggle="collapse" data-bs-target="#collapseSearch">
+    <i class="fa-solid fa-search"></i>
+  </div>
+  <div class="collapse collapse-horizontal" id="collapseSearch">
+    <%= form_with method: :get do |form|  %>
+    <%= form.text_field :search, value: params[:search], placeholder: "Type here to search", autofocus: true %>
+    <section class="position-relative d-inline-block">
+      <%= link_to request.path, class: 'remove-selection' do %>
+          <i class="fa-solid fa-remove"></i>
+      <% end if params[:search].present? %>
+      <%= form.submit 'Search', class: 'btn' %>
+      <% end %>
+    </section>
+  </div>
+</section>

@@ -8,8 +8,9 @@ module Admin
 
     def show
       @category = Category.friendly.find(params[:id])
-      @articles = []
-      @category.subcategories.map {|subcat| subcat.teams.map {|team| @articles.push *team.articles}}
+      @articles = Article.where(category_id: @category.id)
+                         # .where('headline LIKE ?', "%#{params[:search]}%")
+                         .where('headline LIKE :search OR caption LIKE :search', search: "%#{params[:search]}%")
     end
 
     def new
@@ -75,6 +76,7 @@ module Admin
                                       :content,
                                       :picture,
                                       :picture_alt,
+                                      :category_id,
                                       :team_id,
                                       :status,
                                       :has_comments

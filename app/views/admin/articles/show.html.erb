@@ -5,7 +5,7 @@
     <%= link_to("#{articles_path}/#{@category.slug}", class: "preview-btn") do %>
       <i class="fa-solid fa-eye"></i> Preview
     <% end %>
-    <a href="#"><i class="fa-solid fa-search"></i></a>
+    <%= render 'admin/articles/search' %>
   </section>
   <section class="articles-filters d-flex justify-content-between">
   <div class="dropdown">

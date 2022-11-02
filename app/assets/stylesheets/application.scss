@@ -363,6 +363,9 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Side Panel Articles Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-articles {
   max-width: 870px;
   margin-top: 48px;
@@ -757,6 +760,9 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Side Panel Common Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 .actions-dropdown {
   .dropdown-menu {
     position: absolute;
@@ -797,6 +803,32 @@ h1, h2, h3, h4, h5, h6, label {
         }
       }
     }
+  }
+}
+
+.search-mini-bar {
+  height: 36px;
+
+  #collapseSearch {
+    position: relative;
+    top: -4px;
+    margin-left: 10px;
+    overflow: hidden;
+  }
+
+  .remove-selection {
+    position: absolute;
+    top: 5px;
+    right: 10ch;
+  }
+
+  input#search {
+    padding-left: 10px;
+  }
+
+  input::placeholder {
+    font-size: 12px;
+    color: $accent-color-grey;
   }
 }
 
