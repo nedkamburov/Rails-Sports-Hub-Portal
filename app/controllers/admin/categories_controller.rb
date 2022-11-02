@@ -22,4 +22,5 @@ module Admin
     def set_model # TODO: Set the model here as only Category uses friendly Id for now 
       @model = Category.friendly.find(params[:id])
     end
+  end
 end
