@@ -1,2 +1,27 @@
-<h1>Test sport category</h1>
-<%= @category.title %>
+<%= render 'shared/side_panel' %>
+<section class="container article-container">
+  <div class="articles-background-titles">
+    <div class="article-category-title"><%= @category.title %></div>
+    <div class="article-news">News</div>
+  </div>
+  <article class="breadcrumb">
+    <span class="article-category"><%= @category.title %></span> &nbsp; >
+    <%= @team.title %> / <%= @article.headline %>
+  </article>
+  <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture' if @article.picture.present? %>
+  <section class="article-summary">
+    <article>Published / <%= @article.created_at.strftime('%d.%m.%Y') %></article>
+    <article><%= @article.headline %></article>
+    <article><%= @article.caption %></article>
+    <%= render ('article_share') %>
+  </section>
+  <article>
+    <%= @article.content %>
+  </article>
+  <section class="article-comments">
+    Comments (to be added)
+  </section>
+  <section class="article-more">
+    More articles (to be added)
+  </section>
+</section>
