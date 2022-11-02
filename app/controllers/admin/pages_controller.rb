@@ -1,18 +1,17 @@
 module Admin
   class PagesController < AdminController
-    before_action :set_authorisation_status
+    before_action :resource
+
     def home
       @users = User.all
     end
 
     def information_architecture
-      @categories = Category.all.sort_by{ |page| page.position}
+      @categories = Category.where(category_type: 'articles').order("position ASC")
     end
 
-    private
-    def set_authorisation_status
-      authorize [:admin, :pages]
-      @is_admin_panel = true
+    def resource
+      :pages
     end
   end
 end

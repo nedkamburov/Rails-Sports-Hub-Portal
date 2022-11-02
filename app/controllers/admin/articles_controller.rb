@@ -1,6 +1,6 @@
 module Admin
   class ArticlesController < AdminController
-    before_action :set_authorisation_status
+    before_action :resource
     before_action :set_article, only: %i[ edit update destroy toggle_status]
 
     def index
@@ -65,9 +65,8 @@ module Admin
     end
 
     private
-    def set_authorisation_status
-      authorize [:admin, :articles]
-      @is_admin_panel = true
+    def resource
+      :articles
     end
 
     def article_params
