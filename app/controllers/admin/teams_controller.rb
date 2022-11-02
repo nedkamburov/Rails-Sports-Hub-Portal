@@ -1,67 +1,21 @@
 module Admin
-  class TeamsController < AdminController
-    before_action :resource
-    before_action :set_team, only: %i[ show edit update destroy ]
-
-    def index
-    end
-
-    def new
-      @team = Team.new
-    end
-
-    def create
-      @team = Team.new(team_params)
-      @team.subcategory_id = params[:subcategory_id] if params[:subcategory_id]
-
-      respond_to do |format|
-        if @team.save
-          format.html { redirect_to admin_categories_path, notice: "Your team is now created." }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    def update
-      respond_to do |format|
-        if @team.update(team_params)
-          format.html { redirect_to admin_categories_path, notice: "Your team was successfully updated." }
-        else
-          format.html { render :edit }
-        end
-      end
-    end
-
-    def sort
-      params[:order].each do |item|
-        Team.find(item[:id]).update(position: item[:position])
-      end
-
-      head :ok # Make sure Rails doesn't look for a view
-    end
-
-    def destroy
-      @team.destroy
-
-      redirect_to admin_teams_path, status: :see_other
-    end
+  class TeamsController < BaseCategoriesController
+    before_action :resource, :model
 
     private
-
-    def team_params
+    def permitted_params
       params.require(:team).permit(:title,
                                    :position,
                                    :subcategory_id
                                    )
     end
 
-    def set_team
-      @team = Team.find(params[:id])
-    end
-
     def resource
       :teams
+    end
+
+    def model
+      Team
     end
   end
 end

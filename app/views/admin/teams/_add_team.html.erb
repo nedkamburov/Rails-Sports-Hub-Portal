@@ -4,6 +4,7 @@
     <%= form_with model: Team, url: admin_subcategory_teams_path(params[:subcategory_id]) do |form| %>
       <%= form.label :title, "Name" %>
       <%= form.text_field :title, placeholder: 'Name your team', class: "form-control" %>
+      <%= form.hidden_field :subcategory_id, {value: params[:subcategory_id]} %>
       <div class="buttons">
         <%= link_to "Cancel", '', class: 'btn' %>
         <%= form.submit "Add", class:"btn" %>
