@@ -8,16 +8,7 @@
     <%= render 'admin/articles/search' %>
   </section>
   <section class="articles-filters d-flex justify-content-between">
-  <div class="dropdown">
-    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-      All Subcategories
-    </button>
-    <div class="dropdown-menu">
-      <% @category.subcategories.each do |subcat| %>
-        <a class="dropdown-item" href="#"><%= subcat.title %></a>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'admin/articles/dropdown_filter' %>
   <div class="dropdown">
     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
       All Teams
