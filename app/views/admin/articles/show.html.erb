@@ -41,6 +41,10 @@
   </div>
   </section>
   <section class="articles-list sortable-items d-flex flex-column" data-controller="sort" data-sort-url="<%= sort_admin_articles_url %>">
-  <%= render partial: 'admin/articles/article_preview', collection: @articles.sort_by { |article| article.position } %>
+    <% if @articles.present? %>
+      <%= render partial: 'admin/articles/article_preview', collection: @articles.sort_by { |article| article.position } %>
+    <% else %>
+      <div class="no-articles">No articles yet.</div>
+    <% end %>
   </section>
 </section>

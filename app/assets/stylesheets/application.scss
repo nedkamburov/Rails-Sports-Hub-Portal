@@ -410,6 +410,10 @@ h1, h2, h3, h4, h5, h6, label {
   .articles-list {
     margin-top: 48px;
 
+    .no-articles {
+      margin: auto;
+    }
+
     .article {
       position: relative;
       display: grid;
