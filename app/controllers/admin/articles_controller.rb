@@ -10,6 +10,16 @@ module Admin
       @category = Category.friendly.find(params[:id])
       @articles = Article.where(category_id: @category.id)
                          .where('headline LIKE :search OR caption LIKE :search', search: "%#{params[:search]}%")
+                         .order('position ASC')
+
+
+      # # binding.pry
+      # if turbo_frame_request?
+      #   render(partial: 'admin/articles/articles_list', locals: { articles: @articles })
+      # else
+      #   :show
+      # end
+
     end
 
     def new
