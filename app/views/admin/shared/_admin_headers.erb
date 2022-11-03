@@ -1,6 +1,7 @@
 <% page_action_element = local_assigns.fetch(:page_action, content_tag(:div, 'Save all changes', class:'page-action-button'))%>
 <article class="admin-subheader">
   <h4 class="page-title">
+    <%# binding.pry %>
     <%= current_page_title %>
   </h4>
     <%= page_action_element %>

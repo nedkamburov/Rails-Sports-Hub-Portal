@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "turbo_articles_search_frame" do %>
+  <%= form_with method: :get, data: {turbo_frame:'turbo_filtered_articles_frame',
+                                     controller: 'search-form',
+                                     search_form_target: "form"},
+                class: 'd-flex justify-content-between' do |form| %>
+    <%= form.collection_select(:subcategory_id, @subcategories, :id, :title,
+                               {prompt: 'All Subcategories'},
+                               data: { action: "input->search-form#search" },
+                               class: 'dropdown-filter')
+    %>
+    <%= form.collection_select(:team_id, @teams, :id, :title,
+                               {prompt: 'All Teams'},
+                               data: { action: "input->search-form#search" },
+                               class: 'dropdown-filter')
+    %>
+<!--    Todo: Temporary solution until Locations are defined or needed-->
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        All Locations
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Location 1</a>
+        <a class="dropdown-item" href="#">Location 2</a>
+      </div>
+    </div>
+  <% end %>
+<% end %>

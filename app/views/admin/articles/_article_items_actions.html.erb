@@ -11,7 +11,7 @@
                     toggle_status_admin_article_path(article) %>
       </div>
       <div class="dropdown-item">
-        <%= link_to "Edit", edit_admin_article_path(article) %>
+        <%= link_to "Edit", edit_admin_article_path(article, id: @category.id) %>
       </div>
       <div class="dropdown-item">Move</div>
       <%= button_to 'Delete', admin_article_path(article), class: 'dropdown-item', method: :delete, form: {

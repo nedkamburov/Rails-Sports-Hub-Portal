@@ -13,13 +13,14 @@
     </div>
   </section>
   <section class="dropdown-menus">
+    <%= form.hidden_field :category_id, {value: params[:id]} %>
     <article>
       <%= form.label :subcategory, "Subcategory" %>
-      <%= collection_select(:article, :headline, Subcategory.all, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
+      <%= form.collection_select(:subcategory_id, @subcategories, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
     </article>
     <article>
       <%= form.label :subcategory, "Team" %>
-      <%= collection_select(:article, :team_id, Team.all, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
+      <%= form.collection_select(:team_id, @teams, :id, :title, {prompt: 'Not selected'}, class: 'dropdown') %>
     </article>
   </section>
   <%= form.label :picture_alt, "Alt.*" %>

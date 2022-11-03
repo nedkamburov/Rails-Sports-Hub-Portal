@@ -66,6 +66,7 @@ articles = [
    picture: 'https://static.www.nfl.com/image/private/t_editorial_landscape_12_desktop/league/adbl0xyfjjvazdyfisnj',
    picture_alt: 'Lions-owner-picture',
    category: Category.find_by(title: "NFL"),
+   subcategory: Subcategory.find_by(title: "AFC West"),
    team: Team.find_by(title: "Houston")}),
   OpenStruct.new(
    {headline: "NFL Week 8 underdogs: Can injury-stricken Jets best Pats? Will Taylor Heinicke's Commanders win again?",
@@ -74,6 +75,7 @@ articles = [
    picture: 'https://static.www.nfl.com/image/private/t_editorial_landscape_12_desktop/league/iylhn2rlt2ax4sz7406o',
    picture_alt: 'Taylor-Heinicker-jets-pats-picture',
    category: Category.find_by(title: "NFL"),
+   subcategory: Subcategory.find_by(title: "AFC West"),
    team: Team.find_by(title: "Memphis")}),
   OpenStruct.new(
   {headline: "Mike Tomlin not ready to make changes to struggling Steelers offense: 'I don't feel like I'm there'",
@@ -82,12 +84,19 @@ articles = [
    picture: 'https://static.www.nfl.com/image/private/t_editorial_landscape_12_desktop/league/h5cpkr3drmfrjkwcgfor',
    picture_alt: 'Mike-Tomlin-picture',
    category: Category.find_by(title: "NFL"),
+   subcategory: Subcategory.find_by(title: "AFC West"),
    team: Team.find_by(title: "Utah Jazz")})
 ]
 
 
 articles.each do |article|
-  new_article = Article.create!(headline: article.headline, caption: article.caption, content: article.content, picture_alt: article.picture_alt, category: article.category, team: article.team)
+  new_article = Article.create!(headline: article.headline,
+                                caption: article.caption,
+                                content: article.content,
+                                picture_alt: article.picture_alt,
+                                category: article.category,
+                                subcategory: article.subcategory,
+                                team: article.team)
 
   remote_picture = URI.open(article.picture)
   new_article.picture.attach(io: remote_picture, filename: article.picture_alt)
