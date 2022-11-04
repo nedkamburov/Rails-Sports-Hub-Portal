@@ -1,8 +1,7 @@
 module Admin
   class ArticlesController < AdminController
-
+    before_action :set_parent_categories, only: %i[ new show create edit update]
     before_action :set_article, only: %i[ edit update destroy toggle_status]
-    before_action :set_parent_categories, only: %i[ show new create]
 
     def index
     end
@@ -90,10 +89,11 @@ module Admin
     end
 
     def set_parent_categories
-      return unless params[:id].present?
-      @category = Category.friendly.find(params[:id])
-      @subcategories = @category.subcategories
-      @teams = @subcategories.flat_map{ |subcat| subcat.teams}
+      return unless params[:id] or params[:category_slug]
+      category_slug = params[:category_slug].present? ? params[:category_slug] : params[:id]
+      @category = Category.friendly.find(category_slug)
+      @subcategories = @category.subcategories || []
+      @teams = @subcategories.flat_map{ |subcat| subcat.teams} || []
     end
   end
 end
