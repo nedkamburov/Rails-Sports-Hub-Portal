@@ -1,0 +1,21 @@
+<div class="dropdown actions-dropdown">
+    <button class="btn shadow-none" type="button" data-bs-toggle="dropdown">
+     <%= show_svg('actions-three-dots.svg') %>
+    </button>
+    <div class="dropdown-menu">
+      <div class="second-actions">
+        <%= show_svg('actions-three-dots.svg') %>
+      </div>
+      <div class="dropdown-item">
+        <%= link_to article.status == 'published' ? 'Unpublish' : 'Publish',
+                    toggle_status_admin_article_path(article) %>
+      </div>
+      <div class="dropdown-item">
+        <%= link_to "Edit", edit_admin_article_path(article, id: @category.id) %>
+      </div>
+      <div class="dropdown-item">Move</div>
+      <%= button_to 'Delete', admin_article_path(article), class: 'dropdown-item',
+                    method: :delete,
+                    form: { data: { turbo_confirm: "article"} }%>
+    </div>
+  </div>

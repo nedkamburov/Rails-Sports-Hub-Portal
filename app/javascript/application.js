@@ -5,32 +5,18 @@ import "popper"
 import "bootstrap"
 import "@fortawesome/fontawesome-free"
 Turbo.session.drive = false
+import "trix"
+import "@rails/actiontext"
 
-popupAddCategoryController()
+Turbo.setConfirmMethod((recordType, element) => {
+    let dialog = document.getElementById("turbo-confirm")
+    if (recordType) dialog.querySelectorAll(".record-type")
+        .forEach(el => el.textContent = recordType  )
+    dialog.showModal()
 
-function popupAddCategoryController() {
-    const addButtons = document.querySelectorAll('.col-add-item')
-    const popups = document.querySelectorAll('.popup-add-item')
-    if (!addButtons) return
-
-    addButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const popup = e.target.querySelector('.popup-add-item')
-            if (!popup) return
-            const cancelBtn = popup.querySelector('#cancel')
-            hideAllPopups()
-            popup.classList.add('active')
-
-            cancelBtn.addEventListener('click', () => {
-                popup.classList.remove('active')
-            })
-        })
+    return new Promise((resolve, reject) => {
+        dialog.addEventListener("close", () => {
+            resolve(dialog.returnValue == "confirm")
+        }, { once: true })
     })
-
-    function hideAllPopups() {
-        popups.forEach(popup => {
-            popup.classList.remove('active')
-        })
-    }
-
-}
+})

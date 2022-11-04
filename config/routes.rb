@@ -4,20 +4,26 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "pages#home"
-    resources :articles
 
     resources :categories do
-      resources :subcategories, only: [:create, :index]
+      resources :subcategories, only: [:index, :create]
       put :sort, on: :collection
     end
 
-    resources :subcategories, except: [:create, :index] do
-      resources :teams, only: [:create, :index]
+    resources :subcategories, except: [:index, :create] do
+      resources :teams, only: [:index, :create]
       put :sort, on: :collection
     end
 
     resources :teams do
       put :sort, on: :collection
+    end
+
+    resources :articles do
+      put :sort, on: :collection
+      member do
+        get :toggle_status
+      end
     end
 
     get "footer", to: "pages#footer"
@@ -26,5 +32,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root :to => "pages#home"
+
+  resources :articles, only: [:index, :show]
   resources :pages
 end

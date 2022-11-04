@@ -1,10 +1,32 @@
 @import "bootstrap";
+@import "./actiontext.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap");
+@import "./dropzone.css";
 
-$color: #D72130;
+$color: #d72130;
 $text-color: #101010;
-$background-color: #FFFFFF;
-$accent-color: #EDEDED;
-$accent-color2: #B2B2B2;
+$background-color: #ffffff;
+$accent-color-light-grey: #ededed;
+$accent-color-grey: #b2b2b2;
+$accent-color-dark-grey: #7f8899;
+
+body {
+  font-family: "Open Sans", Helvetica, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  font-family: "Roboto", Helvetica, sans-serif !important;
+}
+
+@mixin toggleSwitchDotInColor($color-dot) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23#{$color-dot}'/%3e%3c/svg%3e");
+}
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Main Header Styling
@@ -13,8 +35,9 @@ $accent-color2: #B2B2B2;
   display: grid;
   grid-template-columns: 2fr 6fr 3fr;
   align-items: center;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 1px solid $accent-color-light-grey;
 }
+
 .logo {
   position: relative;
   text-align: center;
@@ -34,22 +57,24 @@ $accent-color2: #B2B2B2;
     text-decoration: none;
   }
 }
+
 .header-middle {
   height: 100%;
   display: grid;
   grid-template-columns: 3fr 2fr;
 
-  article, .social-media {
+  article,
+  .social-media {
     display: flex;
     height: 100%;
     flex-direction: row;
     align-items: center;
-    border-right: 1px solid $accent-color;
+    border-right: 1px solid $accent-color-light-grey;
     padding-left: 30px;
   }
 
   p {
-    color: $accent-color2;
+    color: $accent-color-grey;
     font-size: 20px;
     margin: 0 10px;
   }
@@ -59,6 +84,7 @@ $accent-color2: #B2B2B2;
     margin-left: 20px;
   }
 }
+
 .header-right {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -95,14 +121,15 @@ $accent-color2: #B2B2B2;
       }
     }
 
-    .btn:active, .btn:focus {
+    .btn:active,
+    .btn:focus {
       border: none;
     }
 
     .user-avatar {
       width: 34px;
       height: 34px;
-      border: 1px solid $accent-color2;
+      border: 1px solid $accent-color-grey;
       margin-right: 5px;
       border-radius: 50%;
       background-color: $color;
@@ -122,14 +149,14 @@ $accent-color2: #B2B2B2;
 
     h6 {
       font-size: 10px;
-      color: $accent-color2;
+      color: $accent-color-grey;
       margin: 2px 0 0 0;
     }
 
     .header-dropdown-menu {
       width: 90%;
       border-radius: 0;
-      box-shadow: 1px 2px 7px $accent-color;
+      box-shadow: 1px 2px 7px $accent-color-light-grey;
 
       div {
         padding: 5px 20px;
@@ -137,7 +164,7 @@ $accent-color2: #B2B2B2;
       }
 
       .user-titles {
-        border-bottom: 1px solid $accent-color;
+        border-bottom: 1px solid $accent-color-light-grey;
 
         h5 {
           font-size: 14px;
@@ -146,7 +173,7 @@ $accent-color2: #B2B2B2;
 
         h6 {
           font-size: 10px;
-          color: $accent-color2;
+          color: $accent-color-grey;
           margin: 0;
         }
       }
@@ -170,7 +197,7 @@ $accent-color2: #B2B2B2;
 
       .login-logout {
         padding-top: 10px;
-        border-top: 1px solid $accent-color;
+        border-top: 1px solid $accent-color-light-grey;
       }
     }
   }
@@ -179,8 +206,6 @@ $accent-color2: #B2B2B2;
     text-align: center;
   }
 }
-
-
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -198,17 +223,17 @@ $accent-color2: #B2B2B2;
 .side-panel {
   position: relative;
   max-width: 280px;
-  color: $accent-color2;
+  color: $accent-color-grey;
   position: absolute;
   margin-top: 100px;
   left: 50px;
 
   ul.nav {
-    font-weight: bold;
+    font-weight: 700;
 
     a.nav-link {
       position: relative;
-      color: $accent-color2 !important;
+      color: $accent-color-grey !important;
       text-transform: uppercase;
       padding: 5px;
 
@@ -219,7 +244,7 @@ $accent-color2: #B2B2B2;
         &:before {
           position: absolute;
           left: -8px;
-          content: '•'
+          content: "•";
         }
       }
     }
@@ -252,7 +277,8 @@ $accent-color2: #B2B2B2;
   justify-content: space-between;
   align-items: center;
   padding: 10px 100px 0 100px;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 1px solid $accent-color-light-grey;
+  font-weight: 700 !important;
 
   .page-title {
     font-weight: bold;
@@ -260,15 +286,36 @@ $accent-color2: #B2B2B2;
   }
 
   .page-action-button {
+    min-width: 100px;
     font-size: 12px;
     padding: 10px 20px;
     background-color: $color;
     color: $background-color;
+    text-decoration: none;
+    border-radius: 0;
+
+    a,
+    button {
+      font-size: inherit;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
     &:hover {
       cursor: pointer;
       background-color: $background-color;
       color: $color;
       border: 1px solid $color;
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+    }
+
+    &.secondary {
+      color: $color;
+      background-color: $background-color;
     }
   }
 }
@@ -277,22 +324,22 @@ $accent-color2: #B2B2B2;
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-top-panel {
   position: relative;
-  color: $accent-color2;
+  color: $accent-color-grey;
 
   ul.navbar {
     font-weight: bold;
     padding: 0 10%;
-    box-shadow: 1px 2px 7px $accent-color;
+    box-shadow: 1px 2px 7px $accent-color-light-grey;
 
     li {
       display: inline !important;
 
       a.nav-link {
-        color: $accent-color2 !important;
+        color: $accent-color-grey !important;
         text-transform: uppercase;
         padding: 5px;
 
-         &.active {
+        &.active {
           color: $color !important;
         }
       }
@@ -308,7 +355,7 @@ $accent-color2: #B2B2B2;
   padding-top: 40px;
   width: 4.5rem;
   height: 100%;
-  border-right: 1px solid $accent-color;
+  border-right: 1px solid $accent-color-light-grey;
 
   li {
     margin-bottom: 20px;
@@ -323,9 +370,258 @@ $accent-color2: #B2B2B2;
   }
 }
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Side Panel Articles Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.admin-articles {
+  max-width: 870px;
+  margin-top: 48px;
+
+  .articles-actions {
+    max-width: 790px;
+    margin: auto;
+    a {
+      text-decoration: none;
+      color: $accent-color-grey;
+    }
+  }
+
+  .preview-btn {
+    color: $color !important;
+    text-decoration: none;
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  .articles-filters {
+    max-width: 790px;
+    margin: auto;
+    margin-top: 48px;
+
+    .dropdown,
+    .dropdown-filter {
+      min-width: 210px;
+      padding: 0 10px;
+      border-radius: 0;
+      border: 1px solid $accent-color-grey;
+
+      //Todo: temporary style for the temporary dropdown
+      .dropdown-toggle::after {
+        position: absolute;
+        right: 8px;
+        top: 16px;
+      }
+    }
+  }
+
+  .articles-list {
+    margin-top: 48px;
+
+    .no-articles {
+      margin: auto;
+    }
+
+    .article {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) 2fr;
+      padding: 25px;
+
+      .actions-dropdown {
+        position: absolute;
+        right: 0;
+        top: -2px;
+        color: $color;
+        display: none;
+        .dropdown-menu {
+          top: -40px !important;
+
+          .second-actions {
+            top: -2px;
+            height: 20px;
+          }
+        }
+      }
+
+      .article-text {
+        margin-left: 32px;
+        font-size: 14px;
+        color: $accent-color-grey;
+
+        .article-headline {
+          font-size: 16px;
+          font-weight: bold;
+          color: $text-color;
+          margin-bottom: 22px;
+        }
+
+        .article-caption {
+          margin-bottom: 22px;
+        }
+
+        .article-footer {
+          .status-icon {
+            text-transform: capitalize;
+            &:before {
+              width: 8px;
+              height: 8px;
+              background-color: green;
+              border-radius: 50%;
+              content: "";
+              display: inline-block;
+              margin-right: 6px;
+            }
+
+            &.unpublished {
+              &:before {
+                background-color: $color;
+              }
+            }
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 5px $accent-color-grey;
+        .actions-dropdown {
+          display: block;
+        }
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  #article-form {
+    label {
+      margin: 20px 0 7px 0;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: $accent-color-dark-grey;
+    }
+    .dropzone {
+      position: relative;
+      min-height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      .existing-image {
+        position: absolute;
+        width: 100%;
+      }
+
+      #article_picture {
+        display: none;
+      }
+
+      .dropzone-msg {
+        .camera-icon {
+          width: 64px;
+          height: 64px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          background-color: $color;
+          border-radius: 50%;
+
+          svg {
+            fill: $background-color;
+          }
+        }
+
+        .dropzone-msg-desc {
+          margin-top: 28px;
+          font-size: 14px;
+          font-family: "Open Sans";
+
+          .emphasized {
+            color: $color;
+          }
+        }
+      }
+
+      &:hover {
+        .existing-image {
+          z-index: -1;
+          filter: opacity(0.2);
+        }
+      }
+    }
+
+    input,
+    textarea {
+      border-radius: 0;
+    }
+
+    input::placeholder,
+    select,
+    textarea::placeholder {
+      font-size: 12px;
+      color: $accent-color-grey;
+    }
+
+    .dropdown-menus {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      .dropdown {
+        display: block;
+        min-width: 250px;
+        padding: 8px;
+      }
+
+      select::selection {
+        background-color: red;
+      }
+    }
+
+    .form-check-comments {
+      .form-check-label {
+        margin-top: 0 !important;
+        color: $color;
+        text-transform: initial;
+      }
+
+      .form-check-input {
+        margin-top: 6px !important;
+        border-radius: 20px;
+
+        &:checked {
+          background-color: $background-color;
+          border-color: $accent-color-grey;
+          @include toggleSwitchDotInColor("D72130");
+        }
+
+        &:focus {
+          border-color: $color;
+          box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+          @include toggleSwitchDotInColor("EB9097");
+        }
+      }
+    }
+  }
+
+  .edit-container {
+    .preview-btn {
+      right: 0;
+    }
+  }
+}
+
 .information-architecture {
   .sortable-items {
-    color: $accent-color2;
+    color: $accent-color-grey;
     margin-top: 50px;
     display: flex;
 
@@ -337,15 +633,16 @@ $accent-color2: #B2B2B2;
       .list {
         list-style: none;
         padding: 0;
-        .col-item, .col-add-item {
+        .col-item,
+        .col-add-item {
           margin-bottom: 16px;
           padding: 6px;
           cursor: grab;
-          border: 1.5px solid $accent-color;
+          border: 1.5px solid $accent-color-light-grey;
 
           &:active {
             cursor: grabbing;
-            box-shadow: 1px 2px 5px $accent-color;
+            box-shadow: 1px 2px 5px $accent-color-light-grey;
 
             .handle-icon {
               opacity: 1;
@@ -362,40 +659,6 @@ $accent-color2: #B2B2B2;
           .handle-icon {
             opacity: 0;
           }
-
-          .dropdown {
-            .dropdown-menu {
-              position: absolute;
-              top: -48px !important;
-              left: -1px !important;
-
-              .second-actions {
-                position: relative;
-                padding-left: 12px;
-                top: 5px;
-                height: 42px;
-
-                svg {
-                  circle {
-                  fill: $color;
-                  }
-                }
-              }
-
-              .dropdown-item {
-                display: block;
-                color: $text-color;
-                text-decoration: none;
-                padding: 12px 20px;
-
-                &:hover {
-                  color: $color;
-                  background: rgba(215, 33, 48, 0.11);
-                  cursor: pointer;
-                }
-              }
-            }
-          }
         }
 
         &.col-categories {
@@ -408,7 +671,7 @@ $accent-color2: #B2B2B2;
         margin-bottom: 16px;
         padding: 6px;
         cursor: pointer;
-        border: 1.5px dashed $accent-color;
+        border: 1.5px dashed $accent-color-light-grey;
       }
 
       a {
@@ -419,103 +682,220 @@ $accent-color2: #B2B2B2;
         text-transform: initial;
       }
     }
-
   }
-  .popup-add-item {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 999;
-
-      .card {
-        position: absolute;
-        width: 460px;
-        height: 260px;
-        border-radius: 0;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-
-        h5 {
-          position: relative;
-          margin-top: 42px;
-          font-size: 24px;
-          color: $text-color;
-          text-align: center;
-        }
-
-        form {
-          width: 350px;
-          position: relative;
-          margin: auto;
-          left: 0;
-          right: 0;
-          text-align: left;
-
-          label {
-            color: $accent-color2;
-            font-weight: bold;
-          }
-
-          input {
-            border-radius: 0;
-          }
-
-          ::placeholder {
-            opacity: 0.5;
-          }
-
-          .buttons {
-            margin-top: 24px;
-            text-decoration: none;
-            text-align: right;
-
-            input {
-              min-width: 100px;
-            }
-
-            input:first-child {
-              background: $background-color;
-              border: none;
-              color: $color;
-            }
-
-            input:last-child {
-              color: $background-color;
-              background: $color;
-              border: 1px solid $color;
-
-              &:hover {
-                color: $color;
-                background: $background-color;
-              }
-            }
-
-            input:hover {
-              color: $background-color;
-              background: $color;
-            }
-          }
-
-          .btn:active, .btn:focus {
-            border: none;
-          }
-        }
-      }
-
-      &:before {
-        background-color: red;
-        filter: blur(10px);
-      }
-    }
 }
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Side Panel Common Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.actions-dropdown {
+  .dropdown-menu {
+    position: absolute;
+    top: -48px !important;
+    left: -1px !important;
 
+    .second-actions {
+      position: relative;
+      padding-left: 12px;
+      top: 5px;
+      height: 42px;
 
+      svg {
+        circle {
+          fill: $color;
+        }
+      }
+    }
 
+    .dropdown-item {
+      display: block;
+      color: $text-color;
+      text-decoration: none;
+      padding: 12px 20px;
+      text-transform: initial;
 
+      a {
+        text-decoration: none;
+        color: $text-color;
+      }
 
+      &:hover {
+        color: $color;
+        background: rgba(215, 33, 48, 0.11);
+        cursor: pointer;
+        a {
+          color: $color;
+        }
+      }
+    }
+  }
+}
 
+.popup-add-item,
+#turbo-confirm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  max-width: inherit;
+  max-height: inherit;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  z-index: 999;
+
+  .card {
+    position: absolute;
+    width: 460px;
+    height: 260px;
+    border-radius: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    h5 {
+      position: relative;
+      margin-top: 42px;
+      font-size: 24px;
+      color: $text-color;
+      text-align: center;
+    }
+
+    form {
+      width: 350px;
+      position: relative;
+      margin: auto;
+      left: 0;
+      right: 0;
+      text-align: left;
+
+      label {
+        color: $accent-color-grey;
+        font-weight: bold;
+      }
+
+      input {
+        border-radius: 0;
+      }
+
+      ::placeholder {
+        opacity: 0.5;
+      }
+
+      .buttons {
+        margin-top: 24px;
+        text-decoration: none;
+        text-align: right;
+
+        input,
+        button {
+          min-width: 100px;
+        }
+
+        input:first-child,
+        button:first-child {
+          background: $background-color;
+          border: none;
+          color: $color;
+        }
+
+        input:last-child,
+        button:last-child {
+          color: $background-color;
+          background: $color;
+          border: 1px solid $color;
+
+          &:hover {
+            color: $color;
+            background: $background-color;
+          }
+        }
+
+        input:hover,
+        button:hover {
+          color: $background-color;
+          background: $color;
+        }
+      }
+
+      .btn:active,
+      .btn:focus {
+        border: none;
+      }
+    }
+  }
+
+  &:before {
+    background-color: red;
+    filter: blur(10px);
+  }
+
+  &#turbo-confirm {
+    .card {
+      .dialog-icon {
+        position: absolute;
+        top: -40px;
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        right: 0;
+        left: 0;
+        border-radius: 50%;
+        background-color: $color;
+        color: $background-color;
+
+        svg {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate3d(-50%, -50%, 0);
+        }
+      }
+
+      h5, p {
+        font-family: "Open Sans";
+        font-size: 14px;
+        text-align: center;
+      }
+      h5 {
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      form {
+        .buttons {
+          font-size: 12px;
+          button {
+            min-height: 32px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.search-mini-bar {
+  height: 36px;
+
+  #collapseSearch {
+    position: relative;
+    top: -4px;
+    margin-left: 10px;
+    overflow: hidden;
+  }
+
+  .remove-selection {
+    position: absolute;
+    top: 5px;
+    right: 10ch;
+  }
+
+  input#search {
+    padding-left: 10px;
+  }
+
+  input::placeholder {
+    font-size: 12px;
+    color: $accent-color-grey;
+  }
+}
