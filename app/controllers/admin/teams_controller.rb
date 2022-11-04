@@ -1,6 +1,5 @@
 module Admin
   class TeamsController < BaseCategoriesController
-    before_action :resource, :model
 
     private
     def permitted_params
@@ -14,7 +13,7 @@ module Admin
       :teams
     end
 
-    def model
+    def record
       Team
     end
   end

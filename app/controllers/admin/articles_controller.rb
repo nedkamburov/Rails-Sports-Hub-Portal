@@ -1,6 +1,6 @@
 module Admin
   class ArticlesController < AdminController
-    before_action :resource
+
     before_action :set_article, only: %i[ edit update destroy toggle_status]
     before_action :set_parent_categories, only: %i[ show new create]
 

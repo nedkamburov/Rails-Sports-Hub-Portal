@@ -1,6 +1,5 @@
 module Admin
   class PagesController < AdminController
-    before_action :resource
 
     def home
       @users = User.all
