@@ -12,7 +12,7 @@
     <article class="published-at">Published / <%= @article.created_at.strftime('%d.%m.%Y') %></article>
     <article class="headline"><%= @article.headline %></article>
     <article class="caption"><%= @article.caption %></article>
-    <%= render ('article_share') %>
+    <%= render 'article_share' %>
   </section>
   <section class="article-main">
     <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture' if @article.picture.present? %>
@@ -20,7 +20,7 @@
       <%= @article.content %>
     </section>
     <section class="article-comments">
-      Comments (to be added)
+      <%= render 'comments/comments_section', article: @article %>
     </section>
     <section class="article-more">
       More articles (to be added)
