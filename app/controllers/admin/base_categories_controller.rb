@@ -1,7 +1,6 @@
 module Admin
   class BaseCategoriesController < AdminController
-    before_action :resource
-    before_action :set_model, only: %i[ show edit update destroy ]
+    before_action :set_record, only: %i[ show edit update destroy ]
 
     def index
     end
@@ -10,14 +9,14 @@ module Admin
     end
 
     def new
-      @model = model.new
+      @record = record.new
     end
 
     def create
-      @model = model.new(permitted_params)
+      @record = record.new(permitted_params)
       respond_to do |format|
-        if @model.save
-          format.html { redirect_to admin_categories_path, notice: "Your #{model.model_name.singular} is now created." }
+        if @record.save
+          format.html { redirect_to admin_categories_path, notice: "Your #{record.model_name.singular} is now created." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
@@ -26,8 +25,8 @@ module Admin
 
     def update
       respond_to do |format|
-        if @model.update(permitted_params)
-          format.html { redirect_to admin_categories_path, notice: "Your #{model.model_name.singular} was successfully updated." }
+        if @record.update(permitted_params)
+          format.html { redirect_to admin_categories_path, notice: "Your #{record.model_name.singular} was successfully updated." }
         else
           format.html { render :edit }
         end
@@ -35,22 +34,22 @@ module Admin
     end
 
     def destroy
-      @model.destroy
+      @record.destroy
 
       redirect_to admin_categories_path, status: :see_other
     end
 
     def sort
       params[:order].each do |item|
-        model.find(item[:id]).update(position: item[:position])
+        record.find(item[:id]).update(position: item[:position])
       end
 
       head :ok # Make sure Rails doesn't look for a view
     end
 
     private
-    def set_model
-      @model = model.find(params[:id])
+    def set_record
+      @record = record.find(params[:id])
     end
   end
 end

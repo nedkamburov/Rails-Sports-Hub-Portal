@@ -1,6 +1,5 @@
 module Admin
   class SubcategoriesController < BaseCategoriesController
-    before_action :resource, :model
 
     private
     def permitted_params
@@ -14,7 +13,7 @@ module Admin
       :subcategories
     end
 
-    def model
+    def record
       Subcategory
     end
   end

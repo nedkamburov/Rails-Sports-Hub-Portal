@@ -1,15 +1,18 @@
 module Admin
   class ArticlesController < AdminController
-    before_action :resource
+
     before_action :set_article, only: %i[ edit update destroy toggle_status]
+    before_action :set_parent_categories, only: %i[ show new create]
 
     def index
     end
 
     def show
-      @category = Category.friendly.find(params[:id])
-      @articles = Article.where(category_id: @category.id)
+      @articles = Article.by_category(@category.id)
+                         .by_subcategory(params[:subcategory_id])
+                         .by_team(params[:team_id])
                          .where('headline LIKE :search OR caption LIKE :search', search: "%#{params[:search]}%")
+                         .order('position ASC')
     end
 
     def new
@@ -75,6 +78,7 @@ module Admin
                                       :picture,
                                       :picture_alt,
                                       :category_id,
+                                      :subcategory_id,
                                       :team_id,
                                       :status,
                                       :has_comments
@@ -83,6 +87,13 @@ module Admin
 
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_parent_categories
+      return unless params[:id].present?
+      @category = Category.friendly.find(params[:id])
+      @subcategories = @category.subcategories
+      @teams = @subcategories.flat_map{ |subcat| subcat.teams}
     end
   end
 end

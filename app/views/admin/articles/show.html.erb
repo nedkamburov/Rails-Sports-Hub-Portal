@@ -1,4 +1,4 @@
-<% add_new_article = link_to('+ Add New Article', new_admin_article_url, class: 'page-action-button') %>
+<% add_new_article = link_to('+ Add New Article', new_admin_article_url(id: @category.id), class: 'page-action-button') %>
 <%= render 'admin/shared/admin_headers', page_action: add_new_article %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
@@ -7,40 +7,12 @@
     <% end %>
     <%= render 'admin/articles/search' %>
   </section>
-  <section class="articles-filters d-flex justify-content-between">
-  <div class="dropdown">
-    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-      All Subcategories
-    </button>
-    <div class="dropdown-menu">
-      <% @category.subcategories.each do |subcat| %>
-        <a class="dropdown-item" href="#"><%= subcat.title %></a>
-      <% end %>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-      All Teams
-    </button>
-    <div class="dropdown-menu">
-      <% @category.subcategories.each do |subcat|
-        subcat.teams.each do |team| %>
-        <a class="dropdown-item" href="#"><%= team.title %></a>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-      All Locations
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Location 1</a>
-      <a class="dropdown-item" href="#">Location 2</a>
-    </div>
-  </div>
+  <section class="articles-filters">
+  <%= render 'admin/articles/dropdown_filters' %>
   </section>
-  <section class="articles-list sortable-items d-flex flex-column" data-controller="sort" data-sort-url="<%= sort_admin_articles_url %>">
-  <%= render partial: 'admin/articles/article_preview', collection: @articles.sort_by { |article| article.position } %>
-  </section>
+    <%= turbo_frame_tag "turbo_filtered_articles_frame" do %>
+      <section class="articles-list sortable-items d-flex flex-column" data-controller="sort" data-sort-url="<%= sort_admin_articles_url %>">
+        <%= render 'admin/articles/articles_list', articles: @articles %>
+      </section>
+    <% end %>
 </section>

@@ -1,0 +1,26 @@
+<% if articles.present? %>
+  <% articles.each do |article| %>
+    <section class="article col-item" data-id=<%= article.id %>>
+      <article>
+        <%= image_tag article.picture, alt: article.picture_alt if article.picture.present? %>
+      </article>
+      <article class="article-text">
+        <div class="article-headline">
+          <%= article.headline %>
+        </div>
+        <div class="article-caption">
+          <%= article.caption %>
+        </div>
+        <div class="article-footer d-flex justify-content-between">
+          <div class="article-team">
+            <%= Subcategory.find(article.team.subcategory_id).title %> / <%= article.team.title %>
+          </div>
+          <div class="status-icon <%= article.status %>"><%= article.status %></div>
+        </div>
+      </article>
+      <%= render 'article_items_actions', article: article %>
+    </section>
+  <% end %>
+<% else %>
+  <div class="no-articles">No articles yet.</div>
+<% end %>

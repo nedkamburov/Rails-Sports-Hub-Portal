@@ -1,7 +1,7 @@
 module Admin
   class CategoriesController < BaseCategoriesController
-    before_action :resource, :model
-    before_action :set_model, only: %i[ show edit update destroy ]
+    , :record
+    before_action :set_record, only: %i[ show edit update destroy ]
 
     private
     def permitted_params
@@ -16,12 +16,12 @@ module Admin
       :categories
     end
 
-    def model
+    def record
       Category
     end
 
-    def set_model # TODO: Set the model here as only Category uses friendly Id for now 
-      @model = Category.friendly.find(params[:id])
+    def set_record # TODO: Set the record here as only Category uses friendly Id for now
+      @record = Category.friendly.find(params[:id])
     end
   end
 end

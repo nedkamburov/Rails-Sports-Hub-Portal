@@ -3,14 +3,16 @@
     <i class="fa-solid fa-search"></i>
   </div>
   <div class="collapse collapse-horizontal" id="collapseSearch">
-    <%= form_with method: :get do |form|  %>
-    <%= form.text_field :search, value: params[:search], placeholder: "Type here to search", autofocus: true %>
-    <section class="position-relative d-inline-block">
-      <%= link_to request.path, class: 'remove-selection' do %>
-          <i class="fa-solid fa-remove"></i>
-      <% end if params[:search].present? %>
-      <%= form.submit 'Search', class: 'btn' %>
+    <%= turbo_frame_tag "turbo_articles_search_frame" do %>
+      <%= form_with method: :get, data: {turbo_frame:'turbo_filtered_articles_frame',
+                                         controller: 'search-and-filter-form',
+                                         search_and_filter_form_target: "form"} do |form|  %>
+      <%= form.text_field :search,
+                          value: params[:search],
+                          placeholder: "Type here to search",
+                          autofocus: true,
+                          data: { action: "input->search-and-filter-form#search_and_filter" } %>
       <% end %>
-    </section>
+    <% end %>
   </div>
 </section>
