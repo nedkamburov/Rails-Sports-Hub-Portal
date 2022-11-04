@@ -54,6 +54,7 @@ group :development, :test do
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
   gem "faker", "~> 2.23"
+  gem 'rubocop'
 end
 
 group :development do
