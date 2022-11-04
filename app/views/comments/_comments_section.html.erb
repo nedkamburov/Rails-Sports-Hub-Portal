@@ -1,3 +1,8 @@
-Comments
-<%= render 'comments/comments_form', article: article %>
-<%= render article.comments.order(created_at: :desc) %>
+<article>
+  <div class="comments-header d-flex justify-content-between">
+    <div class="comment-count">Comments (<%= article.comments.count %>)</div>
+    <%= render 'comments/sort_by', article: article %>
+  </div>
+  <%= render 'comments/comments_form', article: article if current_user.present? %>
+  <%= render article.comments.order(created_at: :desc) %>
+</article>
