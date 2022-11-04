@@ -1,14 +1,16 @@
 <dialog id="turbo-confirm">
-  <form method="dialog">
+  <section class="card">
     <div class="dialog-icon">
-      <i class="fa fa-trash" aria-hidden="true"></i>
+      <%= show_svg('garbage-bin.svg') %>
     </div>
-    <h5>You are about to delete an <span class="record-type">item</span></h5>
-    <p>This <span class="record-type">item</span> will be deleted from Sports Hub</p>
-    <p>Are you sure?</p>
-    <div>
-      <button value="cancel">Cancel</button>
-      <button value="confirm">Delete</button>
-    </div>
-  </form>
+    <form method="dialog">
+      <h5>You are about to delete an <span class="record-type">item</span></h5>
+      <p>This <span class="record-type">item</span> will be deleted from Sports Hub<br>
+        Are you sure?</p>
+      <div class="buttons">
+        <button value="cancel">Cancel</button>
+        <button value="confirm">Delete</button>
+      </div>
+    </form>
+  </section>
 </dialog>
