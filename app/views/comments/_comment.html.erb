@@ -1,14 +1,23 @@
 <section class="comment">
   <div class="comment-author"><%= comment.user.name %></div>
   <div class="comment-details">
-    <%= comment.updated_at.strftime('%b %-d') %>
-    <%= 'edited' unless comment.created_at == comment.updated_at %>
+    <span class="comment-date"><%= comment.updated_at.strftime('%b %-d') %></span>
+    <span class="comment-edited-label"><%= 'edited' unless comment.created_at == comment.updated_at %></span>
   </div>
   <div class="comment-content"><%= comment.content %></div>
-  <section class="comment-likes-dislikes d-flex m-0">
-    <span class="comment-likes"><i class="fa-regular fa-thumbs-up"></i><%= comment.likes %></span>
-    <span class="comment-dislikes"><i class="fa-regular fa-thumbs-down"></i><%= comment.dislikes %></span>
+  <section class="comment-footer d-flex justify-content-between">
+    <div class="comment-likes-dislikes">
+      <span class="comment-likes">
+        <i class="fa-regular fa-thumbs-up active"></i>
+        <i class="fa-solid fa-thumbs-up"></i>
+        <%= comment.likes %>
+      </span>
+      <span class="comment-dislikes">
+        <i class="fa-regular fa-thumbs-down active"></i>
+        <i class="fa-solid fa-thumbs-down"></i>
+        <%= comment.dislikes %>
+      </span>
+    </div>
     <%= render 'comments/comment_actions' %>
   </section>
 </section>
-<hr>

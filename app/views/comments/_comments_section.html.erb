@@ -3,6 +3,9 @@
     <div class="comment-count">Comments (<%= article.comments.count %>)</div>
     <%= render 'comments/sort_by', article: article %>
   </div>
-  <%= render 'comments/comments_form', article: article if current_user.present? %>
-  <%= render article.comments.order(created_at: :desc) %>
+  <div class="comments-inner">
+    <%= render 'comments/comments_form', article: article if current_user.present? %>
+    <%= render article.comments.order(created_at: :desc) %>
+  </div>
+  <div class="show-more">Show more <i class="fa-solid fa-chevron-down"></i></div>
 </article>

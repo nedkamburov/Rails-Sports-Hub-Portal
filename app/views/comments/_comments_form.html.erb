@@ -1,4 +1,4 @@
 <%= form_with model: Comment, url: article_comments_path(article) do |form| %>
-  <%= form.text_field :content, placeholder: 'Write a comment', class: "form-control w-75" %>
+  <%= form.text_field :content, required: true, placeholder: 'Write a comment', class: "form-control" %>
   <%= form.submit "Submit", class:"btn d-inline-block" %>
 <% end %>

@@ -6,6 +6,7 @@
 $color: #d72130;
 $text-color: #101010;
 $background-color: #ffffff;
+$accent-color-offwhite-grey: #f8f8f8;
 $accent-color-light-grey: #ededed;
 $accent-color-grey: #b2b2b2;
 $accent-color-dark-grey: #7f8899;
@@ -14,13 +15,7 @@ body {
   font-family: "Open Sans", Helvetica, sans-serif !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
+h1, h2, h3, h4, h5, h6, label {
   font-family: "Roboto", Helvetica, sans-serif !important;
 }
 
@@ -350,7 +345,116 @@ label {
     }
 
     .article-comments {
-      background-color: $accent-color-light-grey;
+      background-color: $accent-color-offwhite-grey;
+      padding: 20px;
+
+      .comments-header {
+        .comment-count {
+          font-weight: 700;
+          font-size: 14px;
+          text-transform: uppercase;
+        }
+      }
+
+      .comments-inner {
+        margin-top: 20px;
+        background-color: $background-color;
+        border: 1px solid $accent-color-light-grey;
+
+        form {
+          height: 64px;
+          display: flex;
+          padding: 0 40px 0 70px;
+          border-bottom: 1px solid $accent-color-light-grey;
+
+          input {
+            font-size: 12px;
+            border: none;
+            color: $accent-color-dark-grey;
+
+            &[type=text]::placeholder {
+              color: $accent-color-grey;
+            }
+          }
+        }
+        .comment {
+          margin: 20px 50px 20px 80px;
+          font-size: 12px;
+
+          .comment-author {
+            font-size: 16px;
+            font-weight: 700;
+          }
+
+          .comment-details {
+            .comment-date {
+              font-weight: 700;
+              color: $accent-color-grey;
+            }
+            .comment-edited-label {
+              margin-left: 5px;
+              color: $accent-color-light-grey;
+            }
+          }
+
+          .comment-content {
+            padding: 10px 0;
+            font-size: 14px;
+            border-bottom: 1px solid $accent-color-light-grey;
+          }
+
+          .comment-footer {
+            max-height: 25px;
+            margin-top: 5px;
+            color: $accent-color-dark-grey;
+
+            .comment-likes-dislikes {
+              span {
+                margin-right: 20px;
+              }
+
+              svg {
+                height: 18px;
+                position: relative;
+                top: 3px;
+                display: none;
+                &.active {
+                  display: inline-block;
+                }
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+
+            .comment-actions {
+              div {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      .show-more {
+        width: fit-content;
+        margin: 20px auto 5px auto;
+        right: 0;
+        left: 0;
+        font-size: 12px;
+        color: $accent-color-grey;
+
+        svg {
+          display: block;
+          margin: auto;
+          right: 0;
+          left: 0;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 }
