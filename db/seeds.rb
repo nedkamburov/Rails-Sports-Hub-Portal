@@ -97,7 +97,6 @@ articles = [
    team: Team.find_by(title: "Utah Jazz")})
 ]
 
-
 articles.each do |article|
   new_article = Article.create!(headline: article.headline,
                                 caption: article.caption,
@@ -111,3 +110,41 @@ articles.each do |article|
   new_article.picture.attach(io: remote_picture, filename: article.picture_alt)
 end
 puts 'Articles have been added to each team from the AFC West subcategory!'
+
+comments = [
+  OpenStruct.new(
+{content: "Great game!",
+    user: User.all[0],
+    article: Article.all[0],
+    likes: 2,
+    dislikes: 0}),
+  OpenStruct.new(
+  {content: "What a waste of time!!!",
+   user: User.all[1],
+   article: Article.all[1],
+   likes: 0,
+   dislikes: 5}),
+  OpenStruct.new(
+  {content: "Good game, boys!",
+   user: User.all[0],
+   article: Article.all[1],
+   likes: 11,
+   dislikes: 4}),
+  OpenStruct.new(
+  {content: "REFERREEEE !!",
+   user: User.all[2],
+   article: Article.all[2],
+   likes: 21,
+   dislikes: 0}),
+  OpenStruct.new(
+  {content: "A joy to watch the game in November. Ahhh ^_^",
+   user: User.all[1],
+   article: Article.all[2],
+   likes: 4,
+   dislikes: 1})
+]
+
+comments.each do |comment|
+  Comment.create!(content: comment.content, user: comment.user, article: comment.article, likes: comment.likes, dislikes: comment.dislikes)
+end
+puts 'Several comments have been added to each article from the AFC West subcategory!'
