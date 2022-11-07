@@ -13,13 +13,22 @@
 require 'faker'
 require 'ostruct'
 require 'open-uri'
-User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nedkamburov@example.com", role: 'admin')
 
-3.times do
+avatars = []
+4.times do
+  avatar_url = Faker::Avatar.image
+  avatars << avatar_url
+end
+
+admin_user = User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nedkamburov@example.com", role: 'admin')
+admin_user.avatar.attach(io: URI.open(avatars[0]), filename: 'admin_user_avatar')
+
+3.times do|i|
   name =  Faker::FunnyName.name
   email = "#{name.split.first}.#{name.split.last}@#{Faker::Internet.domain_name}"
 
-  User.create!(name: name, password: "Pass@123", email: email)
+  new_user = User.create!(name: name, password: "Pass@123", email: email)
+  new_user.avatar.attach(io: URI.open(avatars[i]), filename: "#{name.split.last}_avatar")
 end
 puts '4 Users created successfully! Access them with password: Pass@123'
 
