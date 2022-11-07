@@ -1,5 +1,7 @@
 <section class="comment">
-  <div class="comment-author"><%= comment.user.name %></div>
+  <div class="comment-author">
+    <div class="user-avatar"><%= image_tag comment.user.avatar %></div>
+    <%= comment.user.name %></div>
   <div class="comment-details">
     <span class="comment-date"><%= comment.updated_at.strftime('%b %-d') %></span>
     <span class="comment-edited-label"><%= 'edited' unless comment.created_at == comment.updated_at %></span>

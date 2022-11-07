@@ -28,7 +28,7 @@ admin_user.avatar.attach(io: URI.open(avatars[0]), filename: 'admin_user_avatar'
   email = "#{name.split.first}.#{name.split.last}@#{Faker::Internet.domain_name}"
 
   new_user = User.create!(name: name, password: "Pass@123", email: email)
-  new_user.avatar.attach(io: URI.open(avatars[i]), filename: "#{name.split.last}_avatar")
+  new_user.avatar.attach(io: URI.open(avatars[i+1]), filename: "#{name.split.last}_avatar")
 end
 puts '4 Users created successfully! Access them with password: Pass@123'
 

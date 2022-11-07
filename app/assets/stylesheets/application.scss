@@ -121,21 +121,6 @@ h1, h2, h3, h4, h5, h6, label {
       border: none;
     }
 
-    .user-avatar {
-      width: 34px;
-      height: 34px;
-      border: 1px solid $accent-color-grey;
-      margin-right: 5px;
-      border-radius: 50%;
-      background-color: $accent-color-offwhite-grey;
-      overflow: hidden;
-
-      img {
-        max-width: 34px;
-        max-height: 34px;
-        object-fit: cover;
-      }
-    }
 
     h5 {
       font-size: 14px;
@@ -357,9 +342,16 @@ h1, h2, h3, h4, h5, h6, label {
       }
 
       .comments-inner {
+        position: relative;
         margin-top: 20px;
         background-color: $background-color;
         border: 1px solid $accent-color-light-grey;
+
+        .user-avatar {
+          position: absolute;
+          top: 15px;
+          left: 20px;
+        }
 
         form {
           height: 64px;
@@ -377,13 +369,20 @@ h1, h2, h3, h4, h5, h6, label {
             }
           }
         }
+
         .comment {
+          position: relative;
           margin: 20px 50px 20px 80px;
           font-size: 12px;
 
           .comment-author {
             font-size: 16px;
             font-weight: 700;
+
+            .user-avatar {
+              top: 0;
+              left: -60px;
+            }
           }
 
           .comment-details {
@@ -1094,5 +1093,24 @@ h1, h2, h3, h4, h5, h6, label {
   input::placeholder {
     font-size: 12px;
     color: $accent-color-grey;
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// User Side Panel Common Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border: 1px solid $accent-color-grey;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: $accent-color-offwhite-grey;
+  overflow: hidden;
+
+  img {
+    max-width: 34px;
+    max-height: 34px;
+    object-fit: cover;
   }
 }
