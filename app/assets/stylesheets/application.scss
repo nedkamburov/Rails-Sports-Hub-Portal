@@ -376,89 +376,94 @@ h1, h2, h3, h4, h5, h6, label {
 
         .comments-list {
           padding: 0 50px 0 80px;
+
           .comment {
-          position: relative;
-          margin-top: 20px;
-          font-size: 12px;
+            position: relative;
+            margin-top: 20px;
+            font-size: 12px;
 
-          .comment-author {
-            font-size: 16px;
-            font-weight: 700;
-
-            .user-avatar {
-              top: 0;
-              left: -60px;
-            }
-          }
-
-          .comment-details {
-            .comment-date {
+            .comment-author {
+              font-size: 16px;
               font-weight: 700;
-              color: $accent-color-grey;
-            }
-            .comment-edited-label {
-              margin-left: 5px;
-              color: $accent-color-light-grey;
-            }
-          }
-
-          .comment-content {
-            padding: 10px 0;
-            font-size: 14px;
-            border-bottom: 1px solid $accent-color-light-grey;
-          }
-
-          .comment-footer {
-            margin: 5px 0;
-            color: $accent-color-dark-grey;
-
-            .footer-inner {
-              max-height: 25px;
-
-              .comment-likes-dislikes {
-                span {
-                  margin-right: 20px;
-                }
-
-                svg {
-                  height: 18px;
-                  position: relative;
-                  top: 3px;
-                  display: none;
-                  &.active {
-                    display: inline-block;
-                  }
-                }
-                &:hover {
-                  cursor: pointer;
-                }
-              }
-
-              .comment-actions {
-                div {
-                  margin-left: 10px;
-                }
-              }
-            }
-
-            .comment-form {
-              display: none;
-              position: relative;
 
               .user-avatar {
-                left: 0;
-              }
-
-              form {
-                padding: 0 0 0 50px;
-              }
-
-              &.active {
-                display: block;
+                top: 0;
+                left: -60px;
               }
             }
+
+            .comment-details {
+              .comment-date {
+                font-weight: 700;
+                color: $accent-color-grey;
+              }
+              .comment-edited-label {
+                margin-left: 5px;
+                color: $accent-color-light-grey;
+              }
+            }
+
+            .comment-content {
+              padding: 10px 0;
+              font-size: 14px;
+              border-bottom: 1px solid $accent-color-light-grey;
+            }
+
+            .comment-footer {
+              margin: 5px 0;
+              color: $accent-color-dark-grey;
+
+              .footer-inner {
+                max-height: 25px;
+
+                .comment-likes-dislikes {
+                  span {
+                    margin-right: 20px;
+                  }
+
+                  svg {
+                    height: 18px;
+                    position: relative;
+                    top: 3px;
+                    display: none;
+                    &.active {
+                      display: inline-block;
+                    }
+                  }
+                  &:hover {
+                    cursor: pointer;
+                  }
+                }
+
+                .comment-actions {
+                  div {
+                    margin-left: 10px;
+                  }
+                }
+              }
+
+              .comment-form {
+                display: none;
+                position: relative;
+
+                .user-avatar {
+                  left: 0;
+                }
+
+                form {
+                  padding: 0 0 0 50px;
+                }
+
+                &.active {
+                  display: block;
+                }
+              }
+            }
+
+            .subcomments {
+              margin-left: 60px;
+            }
           }
-        }
         }
       }
 
