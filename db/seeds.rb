@@ -13,7 +13,7 @@
 require 'faker'
 require 'ostruct'
 require 'open-uri'
-User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nkamb@softserveinc.com", role: 'admin')
+User.create!(name: "Ned Kamburov", password: "Pass@123", email: "nedkamburov@example.com", role: 'admin')
 
 3.times do
   name =  Faker::FunnyName.name
