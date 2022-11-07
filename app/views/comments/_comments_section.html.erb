@@ -3,9 +3,11 @@
     <div class="comment-count">Comments (<%= article.comments.count %>)</div>
     <%= render 'comments/sort_by', article: article %>
   </div>
-  <div class="comments-inner">
-    <%= render 'comments/comments_form', article: article if current_user.present? %>
-    <%= render article.comments.includes(:user).order(created_at: :desc) %>
+  <div class="comments-inner" data-controller="article-comments"  >
+    <%= render 'comments/comments_form', article: article, parent_id: nil if current_user.present? %>
+    <div class="comments-list">
+      <%= render article.comments.where(parent_id: nil).includes(:user).order(created_at: :desc) %>
+    </div>
   </div>
   <div class="show-more">Show more <i class="fa-solid fa-chevron-down"></i></div>
 </article>

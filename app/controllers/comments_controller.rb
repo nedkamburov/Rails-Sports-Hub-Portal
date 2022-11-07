@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
           .permit(:content,
                   :user_id,
                   :article_id,
+                  :parent_id,
                   :likes,
                   :dislikes)
           .merge(article_id: params[:article_id])

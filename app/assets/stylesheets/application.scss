@@ -353,26 +353,32 @@ h1, h2, h3, h4, h5, h6, label {
           left: 20px;
         }
 
-        form {
-          height: 64px;
-          display: flex;
-          padding: 0 40px 0 70px;
-          border-bottom: 1px solid $accent-color-light-grey;
+        .comment-form {
+          margin: 10px 0 0 0 !important;
 
-          input {
-            font-size: 12px;
-            border: none;
-            color: $accent-color-dark-grey;
+          form {
+            height: 64px;
+            display: flex;
+            padding: 0 40px 0 70px;
+            border-bottom: 1px solid $accent-color-light-grey;
 
-            &[type=text]::placeholder {
-              color: $accent-color-grey;
+            input {
+              font-size: 12px;
+              border: none;
+              color: $accent-color-dark-grey;
+
+              &[type=text]::placeholder {
+                color: $accent-color-grey;
+              }
             }
           }
         }
 
-        .comment {
+        .comments-list {
+          padding: 0 50px 0 80px;
+          .comment {
           position: relative;
-          margin: 20px 50px 20px 80px;
+          margin-top: 20px;
           font-size: 12px;
 
           .comment-author {
@@ -403,35 +409,56 @@ h1, h2, h3, h4, h5, h6, label {
           }
 
           .comment-footer {
-            max-height: 25px;
-            margin-top: 5px;
+            margin: 5px 0;
             color: $accent-color-dark-grey;
 
-            .comment-likes-dislikes {
-              span {
-                margin-right: 20px;
-              }
+            .footer-inner {
+              max-height: 25px;
 
-              svg {
-                height: 18px;
-                position: relative;
-                top: 3px;
-                display: none;
-                &.active {
-                  display: inline-block;
+              .comment-likes-dislikes {
+                span {
+                  margin-right: 20px;
+                }
+
+                svg {
+                  height: 18px;
+                  position: relative;
+                  top: 3px;
+                  display: none;
+                  &.active {
+                    display: inline-block;
+                  }
+                }
+                &:hover {
+                  cursor: pointer;
                 }
               }
-              &:hover {
-                cursor: pointer;
+
+              .comment-actions {
+                div {
+                  margin-left: 10px;
+                }
               }
             }
 
-            .comment-actions {
-              div {
-                margin-left: 10px;
+            .comment-form {
+              display: none;
+              position: relative;
+
+              .user-avatar {
+                left: 0;
+              }
+
+              form {
+                padding: 0 0 0 50px;
+              }
+
+              &.active {
+                display: block;
               }
             }
           }
+        }
         }
       }
 
