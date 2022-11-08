@@ -145,6 +145,6 @@ comments = [
 ]
 
 comments.each do |comment|
-  Comment.create!(content: comment.content, user: comment.user, article: comment.article, likes: comment.likes, dislikes: comment.dislikes)
+  Comment.create!(content: comment.content, user: comment.user, article: comment.article)
 end
 puts 'Several comments have been added to each article from the AFC West subcategory!'

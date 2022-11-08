@@ -1,14 +1,12 @@
-class CreatePolymorphicLikes < ActiveRecord::Migration[7.0]
+class CreateLikes < ActiveRecord::Migration[7.0]
   def change
     create_table :likes do |t|
       t.references :user, null: false, foreign_key: true
-      t.references :likeable, null: false, foreign_key: true
-      t.string :likeable_type, null: false
+      t.references :comment, null: false, foreign_key: true
 
       t.timestamps
     end
 
-    add_index :likes, [:user_id, :likeable_id, :likeable_type], unique: true
-    add_index :likes, [:likeable_id, :likeable_type]
+    add_index :likes, [:user_id, :comment_id], unique: true
   end
 end

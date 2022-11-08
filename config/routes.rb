@@ -36,5 +36,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show] do
     resources :comments
   end
+
+  resources :likes, only: [:create, :destroy]
+
   resources :pages
 end

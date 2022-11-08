@@ -1,9 +1,5 @@
-class Comment < ApplicationRecord
-  validates :content, :user_id, :article_id, presence: true
-
+class Like < ApplicationRecord
+  validates :user_id, uniqueness: { scope: [:likeable_id, :likeable_type] }
   belongs_to :user
-  belongs_to :article
-  belongs_to :parent, class_name: 'Comment', optional: true
-  has_many :comments, foreign_key: :parent_id
-  has_many :likes, as: :likeable
+  belongs_to :likeable, polymorphic: true
 end

@@ -10,16 +10,13 @@
   <section class="comment-footer d-flex flex-column">
     <div class="footer-inner d-flex justify-content-between">
       <div class="comment-likes-dislikes">
-        <span class="comment-likes">
-          <i class="fa-regular fa-thumbs-up active"></i>
-          <i class="fa-solid fa-thumbs-up"></i>
-          <%= comment.likes %>
-        </span>
-        <span class="comment-dislikes">
-          <i class="fa-regular fa-thumbs-down active"></i>
-          <i class="fa-solid fa-thumbs-down"></i>
-          <%= comment.dislikes %>
-        </span>
+        <%= render 'likes/button', likeable: comment %>
+
+<!--        <span class="comment-dislikes">-->
+<!--          <i class="fa-regular fa-thumbs-down active"></i>-->
+<!--          <i class="fa-solid fa-thumbs-down"></i>-->
+          <%#= comment.dislikes %>
+<!--        </span>-->
       </div>
       <%= render 'comments/comment_actions' %>
     </div>
