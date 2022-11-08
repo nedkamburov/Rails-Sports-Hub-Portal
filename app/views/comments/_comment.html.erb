@@ -13,14 +13,8 @@
         <div class="comment-likes-dislikes">
           <%= render 'likes/button', likeable: comment %>
           <%= render 'dislikes/button', dislikeable: comment %>
-
-  <!--        <span class="comment-dislikes">-->
-  <!--          <i class="fa-regular fa-thumbs-down active"></i>-->
-  <!--          <i class="fa-solid fa-thumbs-down"></i>-->
-            <%#= comment.dislikes %>
-  <!--        </span>-->
         </div>
-        <%= render 'comments/comment_actions' %>
+        <%= render 'comments/comment_actions', comment: comment %>
       </div>
       <%= render 'comments/comments_form', article: comment.article, parent_id: comment.id if current_user.present? %>
     </section>

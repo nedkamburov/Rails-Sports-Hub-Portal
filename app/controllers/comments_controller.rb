@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update ]
+  before_action :set_comment, only: %i[ show edit update destroy ]
 
   def index
   end
@@ -21,15 +21,33 @@ class CommentsController < ApplicationController
       end
   end
 
+  def edit
+  end
+
+  def update
+    binding.pry
+    # respond_to do |format|
+    #   if @comment.update(permitted_params)
+    #     format.html { redirect_to article_path(params[:article_id]), notice: "Your comment was successfully updated." }
+    #   else
+    #     format.html { render :edit }
+    #   end
+    # end
+  end
+
+  def destroy
+    # @comment.destroy
+
+    redirect_to article_path(params[:article_id]), status: :see_other
+  end
+
   private
   def permitted_params
     params.require(:comment)
           .permit(:content,
                   :user_id,
                   :article_id,
-                  :parent_id,
-                  :likes,
-                  :dislikes)
+                  :parent_id)
           .merge(article_id: params[:article_id])
   end
 

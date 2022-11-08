@@ -1,6 +1,5 @@
 module Admin
   class CategoriesController < BaseCategoriesController
-    , :record
     before_action :set_record, only: %i[ show edit update destroy ]
 
     private

@@ -8,14 +8,7 @@
       </div>
       <div class="dropdown-item">Move to</div>
       <div class="dropdown-item">Hide</div>
-      <%= button_to 'Delete', item_path, class: 'dropdown-item', method: :delete, form: {
-        data: {
-          turbo: false,
-          controller: 'confirmation',
-          action: 'submit->confirmation#confirm',
-          confirmation_message_value: 'Are you sure you want to delete?',
-        }
-      }
+      <%= button_to 'Delete', item_path, class: 'dropdown-item', method: :delete, form: { data: { turbo_confirm: item.class.name.downcase} }
       %>
     </div>
   </div>

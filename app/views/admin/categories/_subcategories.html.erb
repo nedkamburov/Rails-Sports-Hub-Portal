@@ -9,7 +9,7 @@
     <li class="col-item" data-id=<%= subcategory.id %> >
       <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
       <%= link_to subcategory.title, admin_subcategory_path(subcategory), data: { turbo_frame: "turbo_teams_frame" } %>
-      <%= render 'admin/shared/items_actions', item_path: admin_subcategory_path(subcategory) %>
+      <%= render 'admin/shared/items_actions', item: subcategory, item_path: admin_subcategory_path(subcategory) %>
     </li>
   <% end %>
 </ul>
