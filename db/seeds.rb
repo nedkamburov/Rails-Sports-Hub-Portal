@@ -115,36 +115,33 @@ comments = [
   OpenStruct.new(
 {content: "Great game!",
     user: User.all[0],
-    article: Article.all[0],
-    likes: 2,
-    dislikes: 0}),
+    article: Article.all[0]}),
   OpenStruct.new(
   {content: "What a waste of time!!!",
    user: User.all[1],
-   article: Article.all[1],
-   likes: 0,
-   dislikes: 5}),
+   article: Article.all[1]}),
   OpenStruct.new(
   {content: "Good game, boys!",
    user: User.all[0],
-   article: Article.all[1],
-   likes: 11,
-   dislikes: 4}),
+   article: Article.all[1]}),
   OpenStruct.new(
-  {content: "REFERREEEE !!",
+  {content: "REFERREEEE!!",
    user: User.all[2],
-   article: Article.all[2],
-   likes: 21,
-   dislikes: 0}),
+   article: Article.all[2]}),
   OpenStruct.new(
   {content: "A joy to watch the game in November. Ahhh ^_^",
    user: User.all[1],
-   article: Article.all[2],
-   likes: 4,
-   dislikes: 1})
+   article: Article.all[2]})
 ]
 
 comments.each do |comment|
   Comment.create!(content: comment.content, user: comment.user, article: comment.article)
 end
 puts 'Several comments have been added to each article from the AFC West subcategory!'
+
+Like.create!(user: User.all[0], likeable: Comment.all[0])
+Like.create!(user: User.all[1], likeable: Comment.all[0])
+Like.create!(user: User.all[0], likeable: Comment.all[1])
+Like.create!(user: User.all[1], likeable: Comment.all[1])
+Like.create!(user: User.all[3], likeable: Comment.all[2])
+puts 'Likes have been added to several comments from the AFC West subcategory!'
