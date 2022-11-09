@@ -19,9 +19,11 @@
     <section class="article-content">
       <%= @article.content %>
     </section>
-    <section class="article-comments">
-      <%= render 'comments/comments_section', article: @article %>
-    </section>
+    <% if @article.has_comments? %>
+      <section class="article-comments">
+        <%= render 'comments/comments_section', article: @article %>
+      </section>
+    <% end %>
     <section class="article-more">
       More articles (to be added)
     </section>

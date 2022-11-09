@@ -23,7 +23,7 @@ module Admin
 
       respond_to do |format|
         if @article.save
-          format.html { redirect_to admin_root_path, notice: "Your article is now created." }
+          format.html { redirect_to admin_article_path(@article.category), notice: "Your article is now created." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
@@ -36,7 +36,7 @@ module Admin
     def update
       respond_to do |format|
         if @article.update(article_params)
-          format.html { redirect_to admin_root_path, notice: "Your article was successfully updated." }
+          format.html { redirect_to admin_article_path(@article.category), notice: "Your article was successfully updated." }
         else
           format.html { render :edit }
         end
@@ -54,7 +54,7 @@ module Admin
       elsif @article.unpublished? then @article.published!
       end
 
-      redirect_to admin_articles_path, notice: "Status was updated successfully."
+      redirect_to admin_article_path(@article.category), notice: "Status was updated successfully."
     end
 
     def sort
