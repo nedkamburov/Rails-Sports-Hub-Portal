@@ -1,7 +1,7 @@
 <section class="comment-form">
   <div class="user-avatar"><%= image_tag current_user.avatar %></div>
-  <%= form_with model: Comment, url: article_comments_path(article) do |form| %>
-    <%= form.text_field :content, required: true, placeholder: "Write a #{parent_id.nil? ? 'comment' : 'reply'}", class: "form-control" %>
+  <%= form_with model: Comment, url: article_comments_path(@article) do |form| %>
+    <%= form.text_field :content, required: true, value: comment&.content, placeholder: "Write a #{parent_id.nil? ? 'comment' : 'reply'}", class: "form-control" %>
     <% if !parent_id.nil? %>
       <%= form.hidden_field :parent_id, {value: parent_id} %>
     <% end %>

@@ -1,0 +1,9 @@
+<section class="comment-form edit-form">
+  <%= form_with model: Comment, url: article_comment_path(@comment.article), method: :put do |form| %>
+    <%= form.text_field :content, required: true, autofocus:true, value: comment&.content, placeholder: "Write a #{parent_id.nil? ? 'comment' : 'reply'}", class: "form-control"%>
+    <% if !parent_id.nil? %>
+      <%= form.hidden_field :parent_id, {value: parent_id} %>
+    <% end %>
+    <%= form.submit "Submit", class:"btn d-inline-block" %>
+  <% end %>
+</section>

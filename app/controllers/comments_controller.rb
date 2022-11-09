@@ -25,18 +25,17 @@ class CommentsController < ApplicationController
   end
 
   def update
-    binding.pry
-    # respond_to do |format|
-    #   if @comment.update(permitted_params)
-    #     format.html { redirect_to article_path(params[:article_id]), notice: "Your comment was successfully updated." }
-    #   else
-    #     format.html { render :edit }
-    #   end
-    # end
+    respond_to do |format|
+      if @comment.update(permitted_params)
+        format.html { redirect_to article_path(params[:article_id]), notice: "Your comment was successfully updated." }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
-    # @comment.destroy
+    @comment.destroy
 
     redirect_to article_path(params[:article_id]), status: :see_other
   end

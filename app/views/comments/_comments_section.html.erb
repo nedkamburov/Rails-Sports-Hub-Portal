@@ -4,7 +4,7 @@
     <%= render 'comments/sort_by', article: article %>
   </div>
   <div class="comments-inner" data-controller="article-comments"  >
-    <%= render 'comments/comments_form', article: article, parent_id: nil if current_user.present? %>
+    <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
     <div class="comments-list">
       <%= render article.comments.where(parent_id: nil).includes(:user).order(created_at: :desc) %>
     </div>

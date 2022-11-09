@@ -6,7 +6,11 @@
     <span class="comment-date"><%= comment.updated_at.strftime('%b %-d') %></span>
     <span class="comment-edited-label"><%= 'edited' unless comment.created_at == comment.updated_at %></span>
   </div>
-  <div class="comment-content"><%= comment.content %></div>
+  <div class="comment-content">
+    <%= turbo_frame_tag "turbo_comment_content_frame" do %>
+        <%= comment.content %>
+    <% end %>
+  </div>
   <% if !current_user.nil? %>
     <section class="comment-footer d-flex flex-column">
       <div class="footer-inner d-flex justify-content-between">
@@ -16,7 +20,7 @@
         </div>
         <%= render 'comments/comment_actions', comment: comment %>
       </div>
-      <%= render 'comments/comments_form', article: comment.article, parent_id: comment.id if current_user.present? %>
+      <%= render 'comments/comments_form', comment: nil, parent_id: comment.id if current_user.present? %>
     </section>
   <% end %>
   <section class="subcomments">

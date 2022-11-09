@@ -26,7 +26,7 @@ class BaseOpinionController < ApplicationController
     end
 
     if !@opposite_opinion.nil?
-      flash[:notice] = 'The oposite opinion is already true. Unmark it to proceed.'
+      flash[:notice] = 'The opposite opinion is already true. Unmark it to proceed.'
       redirect_back(fallback_location: articles_url)
     end
   end

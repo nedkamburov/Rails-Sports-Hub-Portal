@@ -372,6 +372,18 @@ h1, h2, h3, h4, h5, h6, label {
               }
             }
           }
+
+          &.edit-form {
+            form {
+              padding: 0;
+              border-bottom: none;
+
+              input {
+                font-size: 14px;
+                color: initial;
+              }
+            }
+          }
         }
 
         .comments-list {
@@ -399,7 +411,7 @@ h1, h2, h3, h4, h5, h6, label {
               }
               .comment-edited-label {
                 margin-left: 5px;
-                color: $accent-color-light-grey;
+                color: $accent-color-grey;
               }
             }
 
@@ -435,6 +447,10 @@ h1, h2, h3, h4, h5, h6, label {
                 .comment-actions {
                   div {
                     margin-left: 10px;
+                    a {
+                      text-decoration: none;
+                      color: inherit;
+                    }
                   }
                 }
               }
@@ -1141,5 +1157,44 @@ h1, h2, h3, h4, h5, h6, label {
     max-width: 34px;
     max-height: 34px;
     object-fit: cover;
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Common Styling Reset
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
   }
 }
