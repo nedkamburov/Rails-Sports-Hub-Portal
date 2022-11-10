@@ -6,7 +6,7 @@
     <input type="hidden" name="dislike[dislikeable_id]" value="<%= dislikeable.id %>">
     <input type="hidden" name="dislike[dislikeable_type]" value="<%= dislikeable.class.to_s %>">
     <button type="submit" class="btn">
-      <i class="fa-regular fa-thumbs-up"></i>
+      <i class="fa-regular fa-thumbs-down"></i>
     </button>
   </form>
 <% else %>
@@ -14,7 +14,7 @@
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
     <button type="submit" class="btn">
-      <i class="fa-solid fa-thumbs-up"></i>
+      <i class="fa-solid fa-thumbs-down"></i>
     </button>
   </form>
 <% end %>

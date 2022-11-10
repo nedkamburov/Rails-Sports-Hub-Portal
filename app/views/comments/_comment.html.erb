@@ -7,7 +7,7 @@
     <span class="comment-edited-label"><%= 'edited' unless comment.created_at == comment.updated_at %></span>
   </div>
   <div class="comment-content">
-    <%= turbo_frame_tag "turbo_comment_content_frame" do %>
+    <%= turbo_frame_tag "turbo_comment_content_frame_#{comment.id}" do %>
         <%= comment.content %>
     <% end %>
   </div>

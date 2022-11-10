@@ -1,3 +1,3 @@
-<%= turbo_frame_tag "turbo_comment_content_frame" do %>
+<%= turbo_frame_tag "turbo_comment_content_frame_#{@comment.id}" do %>
   <%= render 'comments/comments_edit_form', comment: @comment, parent_id: @comment.parent_id if current_user.present? %>
 <% end %>

@@ -1,7 +1,21 @@
-<%= turbo_stream.append "comments-list" do %>
-  <%= render @comments %>
+<% if @load_more  %>
+  <%= turbo_stream.append "comments-list" do %>
+    <%= render @comments %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "comments-list" do %>
+    <%= render @comments %>
+  <% end %>
 <% end %>
 
 <%= turbo_stream.update "show-more-button" do %>
   <%= render 'shared/show_more_button', pagy: @pagy %>
 <% end %>
+
+<%= turbo_stream.update "comment-general-form" do %>
+  <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
+<% end %>
+
+<%#= turbo_stream.update "comment-counter" do %>
+  <%#= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
+<%# end %>

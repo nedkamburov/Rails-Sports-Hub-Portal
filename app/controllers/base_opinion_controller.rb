@@ -7,14 +7,15 @@ class BaseOpinionController < ApplicationController
     if !@opinion.save
       flash[:notice] = @opinion.errors.full_messages.to_sentence
     end
-
-    redirect_back(fallback_location: articles_url)
+    
+    redirect_back(fallback_location: articles_path)
   end
 
   def destroy
     @opinion = current_user.send(opinion_type).find(params[:id])
     @opinion.destroy
-    redirect_back(fallback_location: articles_url)
+
+    redirect_back(fallback_location: articles_path)
   end
 
   private
@@ -27,7 +28,7 @@ class BaseOpinionController < ApplicationController
 
     if !@opposite_opinion.nil?
       flash[:notice] = 'The opposite opinion is already true. Unmark it to proceed.'
-      redirect_back(fallback_location: articles_url)
+      redirect_back(fallback_location: articles_path)
     end
   end
 end

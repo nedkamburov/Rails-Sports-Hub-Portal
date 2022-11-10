@@ -447,12 +447,17 @@ h1, h2, h3, h4, h5, h6, label {
 
                     button {
                       position: relative;
-                      top: -2px;
                       padding: 0;
                       color: $accent-color-dark-grey;
 
                       &:hover {
                         cursor: pointer;
+                      }
+                    }
+
+                    &.comment-likes {
+                      button {
+                        top: -2px;
                       }
                     }
                   }
