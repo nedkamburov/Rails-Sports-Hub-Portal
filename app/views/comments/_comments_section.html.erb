@@ -4,7 +4,7 @@
     <%= render 'comments/sort_by', article: article %>
   </div>
   <div class="comments-inner" data-controller="article-comments"  >
-    <%= turbo_frame_tag 'comments' do %>
+    <%= turbo_frame_tag 'turbo_sorted_comments_frame' do %>
         <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
         <div class="comments-list" id="comments-list">
             <%= render comments %>

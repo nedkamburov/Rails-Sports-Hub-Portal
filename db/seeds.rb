@@ -137,6 +137,9 @@ comments = [
 comments.each do |comment|
   Comment.create!(content: comment.content, user: comment.user, article: comment.article)
 end
+4.times do |i|
+  Comment.create!(content: comments[i].content, user:  comments[i].user, article:  comments[2].article)
+end
 puts 'Several comments have been added to each article from the AFC West subcategory!'
 
 Like.create!(user: User.all[0], likeable: Comment.all[0])

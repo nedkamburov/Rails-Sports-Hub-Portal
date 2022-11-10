@@ -339,6 +339,19 @@ h1, h2, h3, h4, h5, h6, label {
           font-size: 14px;
           text-transform: uppercase;
         }
+
+        .comments-sort-by {
+          font-size: 12px;
+          color: $color;
+          font-weight: 700;
+
+          select {
+            color: $color;
+            font-weight: 700;
+            border: 0;
+            background: transparent;
+          }
+        }
       }
 
       .comments-inner {
@@ -436,6 +449,7 @@ h1, h2, h3, h4, h5, h6, label {
                       position: relative;
                       top: -2px;
                       padding: 0;
+                      color: $accent-color-dark-grey;
 
                       &:hover {
                         cursor: pointer;

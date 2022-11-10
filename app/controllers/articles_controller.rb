@@ -8,8 +8,11 @@ class ArticlesController < ApplicationController
     @category = Category.find(@article.category_id)
     @team = Team.find(@article.team_id)
 
-    @pagy, @comments = pagy_countless(@article.comments.where(parent_id: nil).includes(:user).order(created_at: :desc),
-                                      items: 4 )
+    @pagy, @comments = pagy_countless(@article.comments
+                                              .where(parent_id: nil)
+                                              .includes(:user)
+                                              .custom_sort_by(params[:sort_by]),
+                                              items: 4 )
   end
 
   private
