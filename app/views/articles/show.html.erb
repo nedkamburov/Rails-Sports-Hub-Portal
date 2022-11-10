@@ -21,7 +21,7 @@
     </section>
     <% if @article.has_comments? %>
       <section class="article-comments">
-        <%= render 'comments/comments_section', article: @article %>
+        <%= render 'comments/comments_section', article: @article, comments: @comments %>
       </section>
     <% end %>
     <section class="article-more">

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   def login_helper(style = '')
     if current_user.nil?

@@ -4,10 +4,13 @@
     <%= render 'comments/sort_by', article: article %>
   </div>
   <div class="comments-inner" data-controller="article-comments"  >
-    <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
-    <div class="comments-list">
-      <%= render article.comments.where(parent_id: nil).includes(:user).order(created_at: :desc) %>
-    </div>
+    <%= turbo_frame_tag 'comments' do %>
+        <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
+        <div class="comments-list" id="comments-list">
+            <%= render comments %>
+        </div>
+
+      <%= render "shared/show_more_button", pagy: @pagy %>
+    <% end %>
   </div>
-  <div class="show-more">Show more <i class="fa-solid fa-chevron-down"></i></div>
 </article>

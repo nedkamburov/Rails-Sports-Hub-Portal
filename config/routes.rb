@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   root :to => "pages#home"
 
   resources :articles, only: [:index, :show] do
+    member do
+      post :show
+    end
     resources :comments
   end
 

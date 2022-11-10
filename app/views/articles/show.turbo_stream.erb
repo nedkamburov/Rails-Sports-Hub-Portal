@@ -1,0 +1,7 @@
+<%= turbo_stream.append "comments-list" do %>
+  <%= render @comments %>
+<% end %>
+
+<%= turbo_stream.update "show-more-button" do %>
+  <%= render 'shared/show_more_button', pagy: @pagy %>
+<% end %>

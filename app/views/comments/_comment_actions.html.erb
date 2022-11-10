@@ -2,7 +2,6 @@
     <section class="comment-actions d-flex">
       <% if current_user == comment.user %>
         <%= turbo_frame_tag "turbo_comment_edit_frame" do %>
-          <%# binding.pry %>
           <div><%= link_to "Edit", edit_article_comment_path(comment, {article_id: comment.article}), data: { turbo_frame: "turbo_comment_content_frame" } %></div>
         <% end %>
       <% end %>
