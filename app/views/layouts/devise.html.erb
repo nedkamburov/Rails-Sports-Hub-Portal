@@ -11,10 +11,15 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render 'shared/header' %>
+    <%= render 'shared/devise_header' %>
     <%#= render 'shared/alerts' %>
-    <section class="container devise-container">
-      <%= yield %>
+    <section class="devise-container">
+      <%= image_tag 'devise-screen-bg.jpg', alt: 'devise-screen-bg', class: 'devise-screen-bg' %>
+      <article class="devise-form">
+        <article class="devise-form-inner">
+        <%= yield %>
+        </article>
+      </article>
     </section>
     <%= render 'shared/confirm_delete_dialog' %>
   </body>

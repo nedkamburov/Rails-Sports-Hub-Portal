@@ -2,14 +2,7 @@
 @import "./actiontext.css";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@700&family=Roboto:wght@400;500;700&display=swap");
 @import "./dropzone.css";
-
-$color: #d72130;
-$text-color: #101010;
-$background-color: #ffffff;
-$accent-color-offwhite-grey: #f8f8f8;
-$accent-color-light-grey: #ededed;
-$accent-color-grey: #b2b2b2;
-$accent-color-dark-grey: #7f8899;
+@import 'style_variables.scss';
 
 body {
   font-family: "Open Sans", Helvetica, sans-serif !important;
@@ -37,6 +30,7 @@ h1, h2, h3, h4, h5, h6, label {
   position: relative;
   text-align: center;
   color: $background-color;
+  background-color: $color;
   height: 80px;
 
   h3 {
@@ -45,6 +39,9 @@ h1, h2, h3, h4, h5, h6, label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 22px;
   }
 
   a {
@@ -908,7 +905,7 @@ h1, h2, h3, h4, h5, h6, label {
       }
 
       select::selection {
-        background-color: red;
+        background-color: $color;
       }
     }
 
