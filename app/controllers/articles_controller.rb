@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
                                              .custom_sort_by(@@sort_criterion),
                                              items: 4 )
     @load_more = params[:page]
+    @more_articles = @category.articles.limit(6).order("RANDOM()")
   end
 
   private

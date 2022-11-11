@@ -7,7 +7,7 @@ class BaseOpinionController < ApplicationController
     if !@opinion.save
       flash[:notice] = @opinion.errors.full_messages.to_sentence
     end
-    
+
     redirect_back(fallback_location: articles_path)
   end
 
