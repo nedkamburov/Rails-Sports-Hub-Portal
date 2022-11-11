@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "password/request_link_sent", to: "custom_devise/passwords#request_link_sent"
-    # get 'passwords/request_link_sent': "devise/passwords#request_link_sent"
     # get 'profile/edit'    => 'devise/registrations#edit',   :as => :edit_user_registration
     # get 'profile/cancel'  => 'devise/registrations#cancel', :as => :cancel_user_registration
   end

@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label 'Email address' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'email@gmail.com', class: 'form-control' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'johndoe@gmail.com', class: 'form-control' %>
   </div>
   <div class="field">
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
