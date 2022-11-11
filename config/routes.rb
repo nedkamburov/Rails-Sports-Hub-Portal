@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: {passwords: 'custom_devise/passwords'}
+
+  devise_scope :user do
+    get "password/request_link_sent", to: "custom_devise/passwords#request_link_sent"
+    # get 'passwords/request_link_sent': "devise/passwords#request_link_sent"
+    # get 'profile/edit'    => 'devise/registrations#edit',   :as => :edit_user_registration
+    # get 'profile/cancel'  => 'devise/registrations#cancel', :as => :cancel_user_registration
+  end
 
   namespace :admin do
     root :to => "pages#home"
