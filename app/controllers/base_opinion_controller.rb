@@ -2,7 +2,7 @@ class BaseOpinionController < ApplicationController
   before_action :check_for_opinion_collision, only: :create
 
   def create
-    @opinion = current_user.send(opinion_type).new(permitted_params)
+    @opinion = current_user.public_send(opinion_type).new(permitted_params)
 
     if !@opinion.save
       flash[:notice] = @opinion.errors.full_messages.to_sentence
@@ -26,9 +26,6 @@ class BaseOpinionController < ApplicationController
       @opposite_opinion = Comment.find(permitted_params[:likeable_id]).dislikes.find_by(user: current_user)
     end
 
-    if !@opposite_opinion.nil?
-      flash[:notice] = 'The opposite opinion is already true. Unmark it to proceed.'
-      redirect_back(fallback_location: articles_path)
-    end
+    @opposite_opinion.destroy! if @opposite_opinion.present?
   end
 end
