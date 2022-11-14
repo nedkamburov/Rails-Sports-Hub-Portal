@@ -9,7 +9,7 @@
     <li class="col-item" data-id=<%= team.id %> >
       <div class="handle-icon"><%= show_svg('drag-n-drop-handle.svg') %></div>
       <%= team.title %>
-      <%= render 'admin/shared/items_actions', item_path: admin_team_path(team) %>
+      <%= render 'admin/shared/items_actions', item: team, item_path: admin_team_path(team) %>
     </li>
   <% end %>
 </ul>

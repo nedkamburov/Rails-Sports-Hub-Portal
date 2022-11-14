@@ -9,6 +9,11 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   after_initialize :set_default_role, if: :new_record?
 
+  has_one_attached :avatar
+  has_many :comments
+  has_many :likes
+  has_many :dislikes
+
   def set_default_role
     self.role ||= :user
   end

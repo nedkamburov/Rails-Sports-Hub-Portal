@@ -4,7 +4,7 @@
       <%= login_helper('btns-no-user') %>
     <% else %>
       <div class="user-avatar">
-        <%= image_tag 'https://robohash.org/quivelitdebitis.jpg?size=300x300&set=set1&bgset=bg1' %>
+        <%= image_tag current_user.avatar %>
       </div>
       <div>
         <h5><%= current_user.name %></h5>

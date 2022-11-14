@@ -1,0 +1,23 @@
+<div class="comment-dislikes d-inline">
+<% dislike = current_user.dislikes.find_by(dislikeable: dislikeable) if !current_user.nil? %>
+<% if dislike.nil? %>
+  <form action="/dislikes" method="post" class="d-inline">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="dislike[dislikeable_id]" value="<%= dislikeable.id %>">
+    <input type="hidden" name="dislike[dislikeable_type]" value="<%= dislikeable.class.to_s %>">
+    <button type="submit" class="btn">
+      <i class="fa-regular fa-thumbs-down"></i>
+    </button>
+  </form>
+<% else %>
+  <form action="<%= dislike_path(dislike) %>" method="post" class="d-inline">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn">
+      <i class="fa-solid fa-thumbs-down"></i>
+    </button>
+  </form>
+<% end %>
+  <%= dislikeable.dislikes.count %>
+</div>
+

@@ -54,6 +54,7 @@ group :development, :test do
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
   gem "faker", "~> 2.23"
+  gem 'rubocop'
 end
 
 group :development do
@@ -80,3 +81,5 @@ gem 'bootstrap', '~> 5.1.3'
 gem "font-awesome-sass", "~> 6.2"
 gem 'friendly_id', '~> 5.4.0'
 gem "open-uri", "~> 0.2.0"
+
+gem "pagy", "~> 5.10"

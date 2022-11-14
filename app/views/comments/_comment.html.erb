@@ -1,0 +1,29 @@
+<section class="comment">
+  <div class="comment-author">
+    <div class="user-avatar"><%= image_tag comment.user.avatar %></div>
+    <%= comment.user.name %></div>
+  <div class="comment-details">
+    <span class="comment-date"><%= comment.updated_at.strftime('%b %-d') %></span>
+    <span class="comment-edited-label"><%= 'edited' unless comment.created_at == comment.updated_at %></span>
+  </div>
+  <div class="comment-content">
+    <%= turbo_frame_tag "turbo_comment_content_frame_#{comment.id}" do %>
+        <%= comment.content %>
+    <% end %>
+  </div>
+  <% if !current_user.nil? %>
+    <section class="comment-footer d-flex flex-column">
+      <div class="footer-inner d-flex justify-content-between">
+        <div class="comment-likes-dislikes">
+          <%= render 'likes/button', likeable: comment %>
+          <%= render 'dislikes/button', dislikeable: comment %>
+        </div>
+        <%= render 'comments/comment_actions', comment: comment %>
+      </div>
+      <%= render 'comments/comments_form', comment: nil, parent_id: comment.id if current_user.present? %>
+    </section>
+  <% end %>
+  <section class="subcomments">
+    <%= render comment.comments.includes(:user).order(created_at: :desc) %>
+  </section>
+</section>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_03_125629) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_134157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_125629) do
     t.string "caption", null: false
     t.string "picture_alt", null: false
     t.boolean "has_comments", default: true, null: false
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 1, null: false
     t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,6 +80,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_125629) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "dislikeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "dislikeable_type"
+    t.index ["dislikeable_id", "dislikeable_type"], name: "index_dislikes_on_dislikeable_id_and_dislikeable_type"
+    t.index ["dislikeable_id"], name: "index_dislikes_on_dislikeable_id"
+    t.index ["user_id", "dislikeable_id", "dislikeable_type"], name: "index_dislikes_on_user_dislikeable_id_and_type", unique: true
+    t.index ["user_id"], name: "index_dislikes_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -89,6 +112,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_125629) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "likeable_type"
+    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
+    t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -128,6 +163,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_125629) do
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "subcategories"
   add_foreign_key "articles", "teams"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
+  add_foreign_key "dislikes", "comments", column: "dislikeable_id"
+  add_foreign_key "dislikes", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "teams", "subcategories"
 end

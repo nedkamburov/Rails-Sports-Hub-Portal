@@ -1,0 +1,14 @@
+<span class="more-articles-title">More Articles</span>
+<section class="more-articles-inner">
+  <% articles.each do |article| %>
+    <article class="article-small">
+      <div class="article-small-preview-image">
+        <%= image_tag article.picture, alt: article.picture_alt, class: 'article-small-picture' if article.picture.present? %>
+      </div>
+      <div class="article-small-preview-content">
+        <div class="article-small-headline"><%= article.headline %></div>
+        <div class="article-small-caption"><%= article.caption %></div>
+      </div>
+    </article>
+  <% end  %>
+</section>
