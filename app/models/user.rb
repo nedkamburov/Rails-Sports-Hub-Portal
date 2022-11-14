@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   validates :name, presence: true
 
   enum role: [:user, :admin]
   after_initialize :set_default_role, if: :new_record?
+  after_create :set_default_avatar
 
   has_one_attached :avatar
   has_many :comments
@@ -16,6 +17,15 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def set_default_avatar
+    if self.avatar.present?
+      return
+    end
+
+    random_avatar = Faker::Avatar.image
+    self.avatar.attach(io: URI.open(random_avatar), filename: "#{self.first_name}_#{self.last_name}_user_avatar")
   end
   
   def first_name
