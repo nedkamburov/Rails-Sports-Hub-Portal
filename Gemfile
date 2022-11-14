@@ -75,11 +75,16 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.8"
+gem 'devise'
+gem "dotenv-rails", "~> 2.8"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem "pundit", "~> 2.2"
+
 gem 'bootstrap', '~> 5.1.3'
 gem "font-awesome-sass", "~> 6.2"
 gem 'friendly_id', '~> 5.4.0'
 gem "open-uri", "~> 0.2.0"
-
 gem "pagy", "~> 5.10"

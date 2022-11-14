@@ -79,21 +79,27 @@ h1, h2, h3, h4, h5, h6, label {
 
 .header-right {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
 
-  .switch-dashboards {
-    width: fit-content;
-    height: fit-content;
-    justify-self: center;
-
-    svg {
-      max-width: 34px;
-      max-height: 34px;
-    }
+  article:first-of-type {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
   }
 
   .user-details {
     display: flex;
+
+    .switch-dashboards {
+      width: fit-content;
+      height: fit-content;
+      justify-self: center;
+
+      svg {
+        max-width: 34px;
+        max-height: 34px;
+      }
+    }
 
     .btns-no-user {
       min-width: 100px;
