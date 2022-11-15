@@ -12,7 +12,7 @@
   </section>
     <%= turbo_frame_tag "turbo_filtered_articles_frame" do %>
       <section class="articles-list sortable-items d-flex flex-column" data-controller="sort" data-sort-url="<%= sort_admin_articles_url %>">
-        <%= render 'admin/articles/articles_list', articles: @articles %>
+        <%= render 'admin/articles/articles_list', articles: @articles, cached: true %>
       </section>
     <% end %>
 </section>

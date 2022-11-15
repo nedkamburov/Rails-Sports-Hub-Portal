@@ -9,7 +9,7 @@
     <div class="comments-inner" data-controller="article-comments">
       <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
           <div class="comments-list" id="comments-list">
-              <%= render comments %>
+              <%= render partial: "comments/comment", collection: comments, cached: true %>
           </div>
     </div>
     <%= render "shared/show_more_button", pagy: @pagy %>
