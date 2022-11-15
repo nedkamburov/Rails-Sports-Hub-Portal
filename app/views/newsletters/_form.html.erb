@@ -1,8 +1,8 @@
 <%= form_for Newsletter.new do |f| %>
   <div class="col-md-12" style="margin: 0 auto; padding: 0;">
     <div class="col-md-6" style="padding: 0;">
-      <%= f.email_field :email, class: 'form-control', placeholder:'Email', required: true, value: current_user.present? ? current_user.email : ''  %>
-      <%= f.hidden_field :name, {value: current_user.present? ? current_user.name : 'test name'} %>
+      <%= f.email_field :email, class: 'form-control', placeholder:'Your email address', required: true, value: current_user.present? ? current_user.email : ''  %>
+      <%= f.hidden_field :name, {value: current_user.present? ? current_user.name : 'name'} %>
     </div>
   </div>
   <div class="col-md-12" style="margin: 0 auto; padding:0;">
