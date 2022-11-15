@@ -18,10 +18,10 @@ gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+# Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -54,7 +54,7 @@ group :development, :test do
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
   gem "faker", "~> 2.23"
-  gem 'rubocop'
+  gem "rubocop"
   gem "letter_opener"
 end
 
@@ -76,16 +76,18 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'devise'
+gem "devise"
 gem "dotenv-rails", "~> 2.8"
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 gem "pundit", "~> 2.2"
 
-gem 'bootstrap', '~> 5.1.3'
+gem "bootstrap", "~> 5.1.3"
 gem "font-awesome-sass", "~> 6.2"
-gem 'friendly_id', '~> 5.4.0'
+gem "friendly_id", "~> 5.4.0"
 gem "open-uri", "~> 0.2.0"
 gem "pagy", "~> 5.10"
+
+gem "whenever", "~> 1.0"

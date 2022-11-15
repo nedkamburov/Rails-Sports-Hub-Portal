@@ -5,7 +5,7 @@
   <br/>
   <% if @articles.present? %>
     <% @articles.each do |article| %>
-      <%= link_to article_url(article), no do %>
+      <%= link_to article_url(article) do %>
         <section class="article col-item">
           <article>
             <%= image_tag article.picture, alt: article.picture_alt, style: "width: 200px;" if article.picture.present? %>
