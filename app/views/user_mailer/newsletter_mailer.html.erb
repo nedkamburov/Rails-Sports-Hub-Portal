@@ -1,0 +1,25 @@
+<section style='font-family: "Open Sans", Helvetica, sans-serif;'>
+  <p> Dear Subscribers: </p>
+  <p> Those are the latest articles on our portal. We invite you to read, share and comment on whatever resonates with you this week.</p>
+
+  <br/>
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      <%= link_to article_url(article), no do %>
+        <section class="article col-item">
+          <article>
+            <%= image_tag article.picture, alt: article.picture_alt, style: "width: 200px;" if article.picture.present? %>
+          </article>
+          <article class="article-text">
+            <div class="article-headline">
+              <%= link_to article.headline, article_url(article) %>
+            </div>
+            <div class="article-caption">
+              <%= article.caption %>
+            </div>
+          </article>
+        </section>
+      <% end %>
+    <% end %>
+  <% end %>
+</section>

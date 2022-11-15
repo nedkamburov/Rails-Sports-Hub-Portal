@@ -1,3 +1,27 @@
 <section class="subfooter">
-  <p>Subfooter section with all kinds of links and newsletter sign-up</p>
+  <section class="footer-links d-flex">
+    <article>
+      <h6 class="mb-4">Company Info</h6>
+      <ul>
+        <li><a href="#">About Sports Hub</a></li>
+        <li><a href="#">News / In the Press</a></li>
+        <li><a href="#">Advertising / Sports Blogger Ad Network</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </article>
+    <article>
+      <h6>Contributors</h6>
+      <ul>
+        <li><a href="#">Featured Writers Program</a></li>
+        <li><a href="#">Featured Team Writers Program</a></li>
+        <li><a href="#">Internship Program</a></li>
+      </ul>
+    </article>
+    <article>
+      <h6>Newsletter</h6>
+      <div>Sign up to receive the latest sports news</div>
+      <%= render 'newsletters/form' %>
+    </article>
+  </section>
 </section>

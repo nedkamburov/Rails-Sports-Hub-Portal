@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'newsletters/create'
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: {passwords: 'custom_devise/passwords', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   devise_scope :user do
@@ -46,6 +47,6 @@ Rails.application.routes.draw do
   end
 
   resources :likes, :dislikes, only: [:create, :destroy]
-
   resources :pages
+  resources :newsletters
 end

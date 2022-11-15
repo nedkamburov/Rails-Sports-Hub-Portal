@@ -82,4 +82,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  # Temporary delivery method for testing instead of sending real emails
+  config.action_mailer.delivery_method = :letter_opener
 end
