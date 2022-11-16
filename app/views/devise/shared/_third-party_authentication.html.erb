@@ -1,0 +1,8 @@
+<section class="third-party-authentication d-flex">
+  <%= button_to user_facebook_omniauth_authorize_path, method: :post do %>
+    <i class="fa-brands fa-facebook-f"></i>
+  <% end %>
+  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+    <i class="fa-brands fa-google"></i>
+  <% end %>
+</section>

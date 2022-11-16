@@ -4,7 +4,7 @@
       <%= login_helper('btns-no-user') %>
     <% else %>
       <div class="user-avatar">
-        <%= image_tag current_user.avatar %>
+        <%= image_tag current_user.avatar if current_user.avatar.present?%>
       </div>
       <div>
         <h5><%= current_user.name %></h5>

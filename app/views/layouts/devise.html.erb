@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SportsHubPortal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "devise", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render 'shared/devise_header' %>
+    <%#= render 'shared/alerts' %>
+    <section class="devise-container">
+      <%= image_tag 'devise-screen-bg.jpg', alt: 'devise-screen-bg', class: 'devise-screen-bg' %>
+      <article class="devise-form">
+        <article class="devise-form-inner">
+        <%= yield %>
+        </article>
+      </article>
+    </section>
+    <%= render 'shared/confirm_delete_dialog' %>
+  </body>
+</html>

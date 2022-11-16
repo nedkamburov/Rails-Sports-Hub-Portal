@@ -1,0 +1,18 @@
+<% page_actions = ''
+   if devise_mapping.recoverable? && controller_name != 'registrations'
+     page_actions = content_tag :div do
+       content_tag(:span, 'Don\'t have an account?') +
+       content_tag(:a, 'Get Started', href: new_registration_path(resource_name), class: "btn")
+     end
+   end
+   if devise_mapping.registerable? && controller_name == 'registrations'
+     page_actions = content_tag :div do
+       content_tag(:span, 'Already have an account?') +
+       content_tag(:a, 'Log In', href: new_session_path(resource_name), class: "btn")
+     end
+   end
+%>
+
+<section class="header_actions">
+  <%= page_actions %>
+</section>
