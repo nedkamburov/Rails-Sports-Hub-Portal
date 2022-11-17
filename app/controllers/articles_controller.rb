@@ -1,12 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article,:published?, :set_comment_sort_criterion, only: %i[ show ]
-
   @@comments_sort_criterion = nil
+
   def index
   end
 
   def show
     @category = Category.find(@article.category_id)
+
     @team = Team.find(@article.team_id)
 
     @pagy, @comments = pagy(@article.comments.where(parent_id: nil)
@@ -14,7 +15,7 @@ class ArticlesController < ApplicationController
                                              .custom_sort_by(@@comments_sort_criterion),
                                              items: 4 )
     @load_more = params[:page]
-    @more_articles = @category.articles.limit(6).order("RANDOM()")
+    @more_articles = @category.articles.where(status: 'published').limit(6).order("RANDOM()")
   end
 
   private
