@@ -1,107 +1,56 @@
 require 'rails_helper'
 
-RSpec.describe Article, type: :model do
-  let(:article) { FactoryBot.build(:article) }
+RSpec.describe Comment, type: :model do
+  let(:comment) { FactoryBot.create(:comment) }
 
   it 'must be valid' do
-    expect(article).to be_valid
+    expect(comment).to be_valid
   end
 
-  describe 'headline' do
+  describe 'author' do
     it 'must be present' do
-      expect(article.headline).to_not be_nil
+      expect(comment.user).to_not be_nil
     end
   end
 
-  describe 'caption' do
+  describe 'article' do
     it 'must be present' do
-      expect(article.caption).to_not be_nil
+      expect(comment.article).to_not be_nil
     end
   end
 
-  describe 'picture_alt' do
-    it 'must be present' do
-      expect(article.picture_alt).to_not be_nil
+  describe 'likes' do
+    it 'must accept likes' do
+      expect { FactoryBot.create(:like, likeable: comment) }.to_not raise_error
+      expect(comment.likes).to_not be_empty
+    end
+
+    it 'must reverse the opinion if a dislike already existed' do
+      dislike = FactoryBot.create(:dislike, dislikeable: comment)
+      expect { FactoryBot.create(:like, likeable: comment) }.to_not raise_error
+      expect(comment.likes).to_not be_empty
+      expect { comment.dislikes.find(id: dislike.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
-  describe 'has_comments' do
-    it 'must be present' do
-      expect(article.has_comments).to_not be_nil
+  describe 'dislikes' do
+    it 'must accept dislikes' do
+      expect { FactoryBot.create(:dislike, dislikeable: comment) }.to_not raise_error
+      expect(comment.dislikes).to_not be_empty
     end
 
-    it 'must be cast to boolean' do
-      expect { article.has_comments = false }.to_not raise_error
-      expect { article.has_comments = 'false' }.to_not raise_error
-      expect { article.has_comments = 1 }.to_not raise_error
-    end
-
-    it 'must be "true" by default' do
-      expect(article.has_comments).to be_truthy
+    it 'must reverse the opinion if a like already existed' do
+      like = FactoryBot.create(:like, likeable: comment)
+      expect { FactoryBot.create(:dislike, dislikeable: comment) }.to_not raise_error
+      expect(comment.dislikes).to_not be_empty
+      expect { comment.likes.find(id: like.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
-  describe 'status' do
-    it 'must be present' do
-      expect(article.status).to_not be_nil
-    end
-
-    it 'must be string (using enum)' do
-      expect(article.status).to be_a(String)
-    end
-
-    it 'must be "published" by default' do
-      expect(article.status).to eq 'published'
-    end
-  end
-
-  describe 'position' do
-    it 'must be present' do
-      expect(article.position).to_not be_nil
-    end
-  end
-
-  describe 'associations' do
-    before(:all) do
-      @article = FactoryBot.create(:article)
-      @parent_category = @article.category
-      @parent_subcategory = @article.subcategory
-      @parent_team = @article.team
-    end
-
-    describe 'parent category' do
-      it 'must be associated with a category' do
-        expect(@article.category).to be == @parent_category
-      end
-
-      it 'must be able to access parent category properties' do
-        expect(@parent_category.title).to eq 'NFL'
-        expect(@parent_category.subcategories).to_not be_nil
-        expect(@parent_category.articles).to_not be_empty
-      end
-    end
-
-    describe 'parent subcategory' do
-      it 'must be associated with a subcategory' do
-        expect(@article.subcategory).to be == @parent_subcategory
-      end
-
-      it 'must be able to access parent subcategory properties' do
-        expect(@parent_subcategory.title).to eq 'AFC West'
-        expect(@parent_subcategory.teams).to_not be_nil
-        expect(@parent_subcategory.articles).to_not be_empty
-      end
-    end
-
-    describe 'parent team' do
-      it 'must be associated with a team' do
-        expect(@article.team).to be == @parent_team
-      end
-
-      it 'must be able to access parent teams properties' do
-        expect(@parent_team.title).to eq 'Memphis'
-        expect(@parent_team.articles).to_not be_empty
-      end
+  describe 'subcomments' do
+    it 'must be able to accept other subcomments' do
+      expect(comment.comments).to be_empty
+      expect { FactoryBot.create(:comment, parent_id: comment.id) }.to_not raise_error
     end
   end
 end

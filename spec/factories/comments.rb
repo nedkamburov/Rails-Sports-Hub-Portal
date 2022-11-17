@@ -1,15 +1,17 @@
 FactoryBot.define do
-  factory :user do
-    name { 'John Doe' }
-    email { 'johndoe@email.com' }
-    password { 'Pass@123' }
-    confirmed_at  { Time.now }
-    after(:build) do |user|
-      user.avatar.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'user-testing.png')), filename: 'user-avatar', content_type: 'image/png')
-    end
+  factory :comment do
+    content { 'Great game!' }
+    user { FactoryBot.create(:user) }
+    article { FactoryBot.create(:article) }
   end
 
-  factory :admin_user, parent: :user do
-    role {'admin'}
+  factory :like do
+    user { FactoryBot.build(:user) }
+    association :likeable, factory: :comment
+  end
+
+  factory :dislike do
+    user { FactoryBot.build(:user) }
+    association :dislikeable, factory: :comment
   end
 end
