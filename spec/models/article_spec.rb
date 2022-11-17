@@ -3,10 +3,8 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   let(:article) { FactoryBot.build(:article) }
 
-  describe 'generally' do
-    it 'must be valid' do
-      expect(article).to be_valid
-    end
+  it 'must be valid' do
+    expect(article).to be_valid
   end
 
   describe 'headline' do
