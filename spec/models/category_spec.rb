@@ -17,7 +17,6 @@ RSpec.describe Category, type: :model do
 
     describe 'position' do
       it 'must be present' do
-
         expect(category.position).to_not be_nil
       end
     end
