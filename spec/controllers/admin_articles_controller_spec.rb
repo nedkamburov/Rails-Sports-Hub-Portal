@@ -54,4 +54,23 @@ RSpec.describe Admin::ArticlesController, type: :controller do
       expect(create_article).to redirect_to(admin_article_path(test_category))
     end
   end
+
+  describe "PUT update" do
+    it "updates an article" do
+      new_article = FactoryBot.create(:article)
+      altered_article = FactoryBot.attributes_for(:article, id: new_article.id, headline: 'Altered!')
+      put :update, params: {category_slug: new_article.category.slug, id: new_article.id, article: altered_article}
+      expect(altered_article).to_not be == new_article
+      expect(Article.find(new_article.id).headline).to eq 'Altered!'
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "deletes an article from the database" do
+      new_article = FactoryBot.create(:article)
+      existing_articles = Article.all.count
+      delete :destroy, params: {id: new_article.id}
+      expect(Article.all.count).to be < existing_articles
+    end
+  end
 end
