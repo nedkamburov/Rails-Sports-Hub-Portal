@@ -28,10 +28,10 @@ h1, h2, h3, h4, h5, h6, label {
 
 .logo {
   position: relative;
+  height: 80px;
   text-align: center;
   color: $background-color;
   background-color: $color;
-  height: 80px;
 
   h3 {
     position: absolute;
@@ -187,6 +187,89 @@ h1, h2, h3, h4, h5, h6, label {
 
   .lang {
     text-align: center;
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Main Footer Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.footer {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  .footer-bottom {
+    height: 80px;
+    color: $background-color;
+    background-color: $color;
+
+    .footer-left {
+      position: relative;
+      width: 18%;
+        h3 {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: "Open Sans";
+          font-weight: 400;
+          font-size: 22px;
+        }
+    }
+    .footer-right {
+      font-size: 12px;
+      padding-top: 24px;
+      padding-right: 55px;
+    }
+  }
+
+  .subfooter {
+    position: relative;
+    border-top: 1px solid $accent-color-grey;
+    left: 19%;
+    padding: 50px 0;
+
+    .footer-links {
+      width: 950px;
+
+      h6 {
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          font-size: 12px;
+          color: $accent-color-grey;
+          margin-bottom: 10px;
+        }
+      }
+
+      .new_newsletter {
+        margin-top: 5px;
+        
+        input {
+          border-radius: 0;
+        }
+
+        .btn {
+          min-width: 100px;
+          text-decoration: none;
+          text-align: center;
+          color: $background-color;
+          background: $color;
+
+          &:hover {
+            color: $color;
+            background: $background-color;
+          }
+        }
+      }
+    }
   }
 }
 
