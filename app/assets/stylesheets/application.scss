@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5, h6, label {
   .subfooter {
     position: relative;
     border-top: 1px solid $accent-color-grey;
-    left: 19%;
+    margin-left: 19%;
     padding: 50px 0;
 
     .footer-links {
@@ -251,7 +251,7 @@ h1, h2, h3, h4, h5, h6, label {
 
       .new_newsletter {
         margin-top: 5px;
-        
+
         input {
           border-radius: 0;
         }
