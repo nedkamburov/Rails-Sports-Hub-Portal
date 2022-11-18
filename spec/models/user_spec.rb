@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
     it 'must be unique and raise an error if somebody wants to use the same email' do
       expect {
         user.save!
-        FactoryBot.create(:user)
+        FactoryBot.create(:user, email: user.email)
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
