@@ -7,9 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @category = Category.find(@article.category_id)
-
     @team = Team.find(@article.team_id)
-
     @pagy, @comments = pagy(@article.comments.where(parent_id: nil)
                                              .includes(:user)
                                              .custom_sort_by(@@comments_sort_criterion),
