@@ -609,24 +609,6 @@ h1, h2, h3, h4, h5, h6, label {
       border-top: 1px solid $accent-color-grey;
       position: relative;
 
-      .more-articles-title {
-        position: absolute;
-        width: fit-content;
-        top: -22px;
-        margin: auto;
-        left: 0;
-        right: 0;
-
-        padding: 10px 20px;
-        border: 1px solid $accent-color-grey;
-        background-color: $background-color;
-        border-radius: 25px;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 14px;
-        font-family: "Open Sans";
-      }
-
       .more-articles-inner {
         margin-top: 50px;
         display: grid;
@@ -680,7 +662,6 @@ h1, h2, h3, h4, h5, h6, label {
 //      Admin Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-
 .admin-subheader {
   height: 78px;
   display: flex;
@@ -730,6 +711,7 @@ h1, h2, h3, h4, h5, h6, label {
     }
   }
 }
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Admin Top Panel Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -782,7 +764,88 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// Admin Side Panel Articles Styling
+// Admin Dashboard Individual Pages Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.admin-home {
+  border: 1px solid black;
+  max-width: 870px;
+  margin-top: 48px;
+
+  .admin-main-articles {
+    border-top: 1px solid $accent-color-grey;
+    position: relative;
+    margin-top: 36px;
+  }
+}
+
+.information-architecture {
+  .sortable-items {
+    color: $accent-color-grey;
+    margin-top: 50px;
+    display: flex;
+
+    .col {
+      max-width: 200px;
+      margin-right: 50px;
+      text-align: center;
+
+      .list {
+        list-style: none;
+        padding: 0;
+        .col-item,
+        .col-add-item {
+          margin-bottom: 16px;
+          padding: 6px;
+          cursor: grab;
+          border: 1.5px solid $accent-color-light-grey;
+
+          &:active {
+            cursor: grabbing;
+            box-shadow: 1px 2px 5px $accent-color-light-grey;
+
+            .handle-icon {
+              opacity: 1;
+            }
+          }
+        }
+
+        .col-item {
+          display: grid;
+          grid-template-columns: 35px 4fr 35px;
+          align-items: center;
+          justify-content: center;
+
+          .handle-icon {
+            opacity: 0;
+          }
+        }
+
+        &.col-categories {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+
+      .col-add-item {
+        margin-bottom: 16px;
+        padding: 6px;
+        cursor: pointer;
+        border: 1.5px dashed $accent-color-light-grey;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .parent-not-selected-message {
+        text-transform: initial;
+      }
+    }
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Dashboard Articles Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-articles {
   max-width: 870px;
@@ -795,14 +858,6 @@ h1, h2, h3, h4, h5, h6, label {
     a {
       text-decoration: none;
       color: $accent-color-grey;
-    }
-  }
-
-  .preview-btn {
-    color: $color !important;
-    text-decoration: none;
-    svg {
-      margin-right: 5px;
     }
   }
 
@@ -1031,74 +1086,8 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
-.information-architecture {
-  .sortable-items {
-    color: $accent-color-grey;
-    margin-top: 50px;
-    display: flex;
-
-    .col {
-      max-width: 200px;
-      margin-right: 50px;
-      text-align: center;
-
-      .list {
-        list-style: none;
-        padding: 0;
-        .col-item,
-        .col-add-item {
-          margin-bottom: 16px;
-          padding: 6px;
-          cursor: grab;
-          border: 1.5px solid $accent-color-light-grey;
-
-          &:active {
-            cursor: grabbing;
-            box-shadow: 1px 2px 5px $accent-color-light-grey;
-
-            .handle-icon {
-              opacity: 1;
-            }
-          }
-        }
-
-        .col-item {
-          display: grid;
-          grid-template-columns: 35px 4fr 35px;
-          align-items: center;
-          justify-content: center;
-
-          .handle-icon {
-            opacity: 0;
-          }
-        }
-
-        &.col-categories {
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-      }
-
-      .col-add-item {
-        margin-bottom: 16px;
-        padding: 6px;
-        cursor: pointer;
-        border: 1.5px dashed $accent-color-light-grey;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      .parent-not-selected-message {
-        text-transform: initial;
-      }
-    }
-  }
-}
-
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// Admin Side Panel Common Styling
+// Admin Dashboard Common Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .actions-dropdown {
   .dropdown-menu {
@@ -1314,8 +1303,16 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
+.preview-btn {
+  color: $color !important;
+  text-decoration: none;
+  svg {
+    margin-right: 5px;
+  }
+}
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// User Side Panel Common Styling
+// User Side Common Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .user-avatar {
   width: 34px;
@@ -1331,6 +1328,28 @@ h1, h2, h3, h4, h5, h6, label {
     max-height: 34px;
     object-fit: cover;
   }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Common Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+.section-title {
+  position: absolute;
+  width: fit-content;
+  top: -22px;
+  margin: auto;
+  left: 0;
+  right: 0;
+
+  padding: 10px 20px;
+  border: 1px solid $accent-color-grey;
+  background-color: $background-color;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: "Open Sans";
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
