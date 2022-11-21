@@ -34,6 +34,10 @@ class Admin::ArticlesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def update_groupings?
+    user.present?
+  end
+
   def sort?
     user.present?
   end

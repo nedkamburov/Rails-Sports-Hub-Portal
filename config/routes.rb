@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
     resources :articles do
       put :sort, on: :collection
+      get :update_groupings, on: :collection
+
       member do
         get :toggle_status
       end

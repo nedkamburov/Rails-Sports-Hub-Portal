@@ -1,0 +1,48 @@
+<%= turbo_frame_tag "turbo_add_main_articles_frame" do %>
+  <%= form_with method: :get, data: {turbo_frame:'turbo_reactive_categories',
+                                     controller: 'search-and-filter-form',
+                                     search_and_filter_form_target: "form"},
+                                     class: "new-thing" do |form| %>
+    <section class="d-flex justify-content-between">
+      <article class="d-flex flex-column">
+        <%= form.label 'Category*' %>
+        <%= form.select(:category_id, @categories.collect {|record| [record.title, record.id]},
+                        {include_blank: 'Not Selected',
+                         selected: params[:category_id].nil? ? {} : params[:category_id]},
+                        required: true,
+                        data: { action: "input->search-and-filter-form#search_and_filter" },
+                        class: 'dropdown-filter')
+        %>
+      </article>
+      <article class="d-flex flex-column">
+        <%= form.label 'Subcategory' %>
+        <%= form.select(:subcategory_id, @subcategories.collect {|record| [record.title, record.id]},
+                        {include_blank: 'Not Selected',
+                         selected: params[:subcategory_id].nil? ? {} : params[:subcategory_id]},
+                        data: { action: "input->search-and-filter-form#search_and_filter" },
+                        class: 'dropdown-filter')
+        %>
+      </article>
+      <article class="d-flex flex-column">
+        <%= form.label 'Team' %>
+        <%= form.select(:team_id, @teams.collect {|record| [record.title, record.id]},
+                        {include_blank: 'Not Selected',
+                         selected: params[:team_id].nil? ? {} : params[:team_id]},
+                        data: { action: "input->search-and-filter-form#search_and_filter" },
+                        class: 'dropdown-filter')
+        %>
+      </article>
+    </section>
+    <section class="d-block">
+      <%= form.label 'Article*' %>
+      <%= form.select(:article_id, @articles.collect {|record| [record.headline, record.id]},
+                      {include_blank: 'Not Selected',
+                       selected: params[:article_id].nil? ? {} : params[:article_id]},
+                      data: { action: "input->search-and-filter-form#search_and_filter" },
+                      class: 'dropdown-filter w-100')
+      %>
+    </section>
+    <%= form.hidden_field :is_part_of_main_articles, value: true %>
+    <%= form.submit '+ Add one more article', name: 'submit-main-articles-form' %>
+  <% end %>
+<% end %>
