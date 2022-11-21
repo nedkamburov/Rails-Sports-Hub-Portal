@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_120721) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_211722) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,16 +128,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_120721) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "main_articles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "newsletters", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photo_of_the_days", force: :cascade do |t|
+    t.integer "singleton_guard"
+    t.string "picture_alt"
+    t.string "title"
+    t.text "description"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["singleton_guard"], name: "index_photo_of_the_days_on_singleton_guard", unique: true
   end
 
   create_table "subcategories", force: :cascade do |t|

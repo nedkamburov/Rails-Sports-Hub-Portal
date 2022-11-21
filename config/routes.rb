@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :photo_of_the_day
+
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"
   end

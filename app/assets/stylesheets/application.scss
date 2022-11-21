@@ -767,7 +767,6 @@ h1, h2, h3, h4, h5, h6, label {
 // Admin Dashboard Individual Pages Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-home {
-  border: 1px solid black;
   max-width: 870px;
   margin-top: 48px;
 
@@ -964,118 +963,6 @@ h1, h2, h3, h4, h5, h6, label {
 
       &:active {
         cursor: grabbing;
-      }
-    }
-  }
-
-  #article-form {
-    label {
-      margin: 20px 0 7px 0;
-      font-size: 10px;
-      text-transform: uppercase;
-      color: $accent-color-dark-grey;
-    }
-    .dropzone {
-      position: relative;
-      min-height: 450px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-
-      .existing-image {
-        position: absolute;
-        width: 100%;
-      }
-
-      #article_picture {
-        display: none;
-      }
-
-      .dropzone-msg {
-        .camera-icon {
-          width: 64px;
-          height: 64px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: auto;
-          background-color: $color;
-          border-radius: 50%;
-
-          svg {
-            fill: $background-color;
-          }
-        }
-
-        .dropzone-msg-desc {
-          margin-top: 28px;
-          font-size: 14px;
-          font-family: "Open Sans";
-
-          .emphasized {
-            color: $color;
-          }
-        }
-      }
-
-      &:hover {
-        .existing-image {
-          z-index: -1;
-          filter: opacity(0.2);
-        }
-      }
-    }
-
-    input,
-    textarea {
-      border-radius: 0;
-    }
-
-    input::placeholder,
-    select,
-    textarea::placeholder {
-      font-size: 12px;
-      color: $accent-color-grey;
-    }
-
-    .dropdown-menus {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      .dropdown {
-        display: block;
-        min-width: 250px;
-        padding: 8px;
-      }
-
-      select::selection {
-        background-color: $color;
-      }
-    }
-
-    .form-check-comments {
-      .form-check-label {
-        margin-top: 0 !important;
-        color: $color;
-        text-transform: initial;
-      }
-
-      .form-check-input {
-        margin-top: 6px !important;
-        border-radius: 20px;
-
-        &:checked {
-          background-color: $background-color;
-          border-color: $accent-color-grey;
-          @include toggleSwitchDotInColor("D72130");
-        }
-
-        &:focus {
-          border-color: $color;
-          box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
-          @include toggleSwitchDotInColor("EB9097");
-        }
       }
     }
   }
@@ -1309,6 +1196,118 @@ h1, h2, h3, h4, h5, h6, label {
   text-decoration: none;
   svg {
     margin-right: 5px;
+  }
+}
+
+.article-form {
+  label {
+    margin: 20px 0 7px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $accent-color-dark-grey;
+  }
+  .dropzone {
+    position: relative;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .existing-image {
+      position: absolute;
+      width: 100%;
+    }
+
+    #article_picture {
+      display: none;
+    }
+
+    .dropzone-msg {
+      .camera-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        background-color: $color;
+        border-radius: 50%;
+
+        svg {
+          fill: $background-color;
+        }
+      }
+
+      .dropzone-msg-desc {
+        margin-top: 28px;
+        font-size: 14px;
+        font-family: "Open Sans";
+
+        .emphasized {
+          color: $color;
+        }
+      }
+    }
+
+    &:hover {
+      .existing-image {
+        z-index: -1;
+        filter: opacity(0.2);
+      }
+    }
+  }
+
+  input,
+  textarea {
+    border-radius: 0;
+  }
+
+  input::placeholder,
+  select,
+  textarea::placeholder {
+    font-size: 12px;
+    color: $accent-color-grey;
+  }
+
+  .dropdown-menus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .dropdown {
+      display: block;
+      min-width: 250px;
+      padding: 8px;
+    }
+
+    select::selection {
+      background-color: $color;
+    }
+  }
+
+  .form-check-comments {
+    .form-check-label {
+      margin-top: 0 !important;
+      color: $color;
+      text-transform: initial;
+    }
+
+    .form-check-input {
+      margin-top: 6px !important;
+      border-radius: 20px;
+
+      &:checked {
+        background-color: $background-color;
+        border-color: $accent-color-grey;
+        @include toggleSwitchDotInColor("D72130");
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+        @include toggleSwitchDotInColor("EB9097");
+      }
+    }
   }
 }
 

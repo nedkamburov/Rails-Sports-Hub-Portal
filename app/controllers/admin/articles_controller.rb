@@ -100,7 +100,8 @@ module Admin
                                       :team_id,
                                       :status,
                                       :has_comments,
-                                      :is_part_of_main_articles
+                                      :is_part_of_main_articles,
+                                      :is_part_of_breakdown
       )
     end
 

@@ -20,6 +20,8 @@ module Admin
         redirect_to update_groupings_admin_articles_path(article_id: params[:article_id],
                                                        grouping_type: params[:grouping_type])
       end
+
+      @photo_of_the_day = PhotoOfTheDay.first
     end
 
     def information_architecture

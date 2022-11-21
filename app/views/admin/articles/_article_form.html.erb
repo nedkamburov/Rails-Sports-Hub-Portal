@@ -1,4 +1,4 @@
-<%= form_with model: article, url: action_path, id: 'article-form' do |form| %>
+<%= form_with model: article, url: action_path, id: 'article-form', class: 'article-form' do |form| %>
   <section>
     <%= form.label :picture, "Picture*", class: "label" %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
