@@ -39,7 +39,7 @@ module Admin
       respond_to do |format|
         if @article.update(article_params)
           format.html {
-            if params['remove-from-main-articles-form'].present?
+            if params['remove_article_from_section'].present?
               redirect_to admin_root_path
             else
               redirect_to admin_article_path(@article.category), notice: "Your article was successfully updated."
@@ -66,8 +66,13 @@ module Admin
     end
 
     def update_groupings
+      # return if Article.where(is_part_of_main_articles: true).count > 5
+
       @article = Article.find(params[:article_id])
-      @article.update(is_part_of_main_articles: true)
+      grouping_type = params[:grouping_type]
+      @article.update(is_part_of_main_articles: true) if (grouping_type== 'grouping_main_articles')
+      @article.update(is_part_of_breakdown: true) if (grouping_type == 'grouping_breakdown')
+
       redirect_to admin_root_path, notice: "Article has been added to the section successfully."
     end
 

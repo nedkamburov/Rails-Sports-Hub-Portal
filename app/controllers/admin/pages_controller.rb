@@ -9,10 +9,17 @@ module Admin
       @articles = Article.where(category_id: params[:category_id])
                          .by_subcategory(params[:subcategory_id])
                          .by_team(params[:team_id])
-                         .where(is_part_of_main_articles: false)
-      @main_articles = Article.where(is_part_of_main_articles: true)
 
-      redirect_to update_groupings_admin_articles_path(article_id: params[:article_id]) if params['submit-main-articles-form'].present?
+      @main_articles_left = @articles.where(is_part_of_main_articles: false)
+      @breakdown_articles_left = @articles.where(is_part_of_breakdown: false)
+
+      @main_articles = Article.where(is_part_of_main_articles: true)
+      @breakdown_articles = Article.where(is_part_of_breakdown: true)
+
+      if params[:add_article_to_section].present?
+        redirect_to update_groupings_admin_articles_path(article_id: params[:article_id],
+                                                       grouping_type: params[:grouping_type])
+      end
     end
 
     def information_architecture

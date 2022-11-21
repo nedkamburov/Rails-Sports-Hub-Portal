@@ -1,3 +1,11 @@
-<section class="admin-breakdown">
-  <p>Admin Breakdown section</p>
+<section class="home-section admin-breakdown">
+  <span class="section-title">Breakdown</span>
+  <section class="mt-5 mb-5">
+    <%= turbo_frame_tag "turbo_reactive_categories_breakdown" do %>
+      <% @breakdown_articles.each do |article| %>
+        <%= render 'admin/pages/home/added_article_form', article: article, type: 'breakdown' %>
+      <% end %>
+      <%= render 'admin/pages/home/add_article_to_section_form', articles_left: @breakdown_articles_left, type: 'breakdown' %>
+    <% end %>
+  </section>
 </section>
