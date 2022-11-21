@@ -46,6 +46,6 @@ Rails.application.routes.draw do
   end
 
   resources :likes, :dislikes, only: [:create, :destroy]
-
   resources :pages
+  resources :newsletters
 end

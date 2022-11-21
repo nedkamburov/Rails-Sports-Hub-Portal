@@ -146,3 +146,6 @@ Like.create!(user: User.all[0], likeable: Comment.all[1])
 Like.create!(user: User.all[1], likeable: Comment.all[1])
 Like.create!(user: User.all[3], likeable: Comment.all[2])
 puts 'Likes have been added to several comments from the AFC West subcategory!'
+
+Newsletter.create!(name: User.last.name, email: User.last.email)
+puts 'The last user is added to the newsletter mailing list.'
