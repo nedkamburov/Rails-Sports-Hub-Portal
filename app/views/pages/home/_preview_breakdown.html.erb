@@ -1,0 +1,16 @@
+<section class="preview-breakdown container p-0">
+  <section class="preview-breakdown-main">
+    <%= link_to article_path(article) do %>
+      <article class="breadcrumb">
+        <span class="article-category"><%= article.category.title %></span>
+      </article>
+      <%= image_tag article.picture, alt: article.picture_alt, class: 'article-picture' if article.picture.present? %>
+      <article class="headline"><%= article.headline %></article>
+    <% end %>
+  </section>
+  <section>
+    <% Article.limit(3).order('RANDOM()').each do |extra_article| %>
+      <%= render 'pages/home/small_card_breakdown', article: extra_article %>
+    <% end %>
+  </section>
+</section>

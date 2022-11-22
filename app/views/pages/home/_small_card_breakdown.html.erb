@@ -1,0 +1,11 @@
+<section class="small-card-breakdown">
+  <%= link_to article_path(article), class: 'article-small' do %>
+    <div class="article-small-preview-image">
+        <%= image_tag article.picture, alt: article.picture_alt, class: 'article-picture' if article.picture.present? %>
+    </div>
+    <div class="article-small-preview-content">
+      <div class="article-small-headline"><%= article.headline %></div>
+      <div class="article-small-caption"><%= article.caption %></div>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,14 @@
+<section class="preview-article container article-container p-0">
+  <article class="breadcrumb">
+    <span class="article-category"><%= article.category.title %></span>
+  </article>
+  <section class="article-summary">
+    <article class="published-at">Published / <%= article.created_at.strftime('%d.%m.%Y') %></article>
+    <article class="headline"><%= article.headline %></article>
+    <article class="caption"><%= article.caption %></article>
+    <article class="more-btn"><%= link_to 'More', article_path(article) %></article>
+  </section>
+  <section class="article-main">
+    <%= image_tag article.picture, alt: article.picture_alt, class: 'article-picture' if article.picture.present? %>
+  </section>
+</section>
