@@ -30,12 +30,6 @@ RSpec.describe Article, type: :model do
       expect(article.has_comments).to_not be_nil
     end
 
-    it 'must be cast to boolean' do
-      expect { article.has_comments = false }.to_not raise_error
-      expect { article.has_comments = 'false' }.to_not raise_error
-      expect { article.has_comments = 1 }.to_not raise_error
-    end
-
     it 'must be "true" by default' do
       expect(article.has_comments).to be_truthy
     end

@@ -10,7 +10,7 @@
       <%= link_to "Forgot password?", new_password_path(resource_name), class: 'forgot-password-link' %>
     <% end %>
     <%= f.label 'Password' %>
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: "#{ @minimum_password_length.nil? ? @minimum_password_length : 8 } + characters (letters and numbers)", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "#{ !@minimum_password_length.nil? ? @minimum_password_length : 8 } + characters (letters and numbers)", class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit "Log in", class: 'btn' %>

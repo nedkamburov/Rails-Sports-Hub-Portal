@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{ @minimum_password_length.nil? ? @minimum_password_length : 8 } + characters (letters and numbers)", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{ !@minimum_password_length.nil? ? @minimum_password_length : 8 } + characters (letters and numbers)", class: 'form-control' %>
   </div>
 
   <div class="field">
