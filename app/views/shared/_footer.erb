@@ -1,12 +1,12 @@
 <footer class="footer">
-  <%= render('footer_navigation') %>
+  <%= render('shared/footer_navigation') %>
   <section class="footer-bottom d-flex justify-content-between">
     <section class="logo footer-left">
       <h3><%= link_to 'Sports Hub', root_path %></h3>
     </section>
     <section class="text-end footer-right">
       <div>Copyright ©2019 Sports Hub</div>
-      <div>Privacy / Terms</div>
+      <div><%= link_to 'Privacy / Terms', "#{root_path}/pages/privacy_terms" %></div>
     </section>
   </section>
 </footer>

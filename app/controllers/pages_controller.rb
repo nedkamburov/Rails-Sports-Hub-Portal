@@ -1,4 +1,11 @@
 class PagesController < ApplicationController
+  rescue_from ::ActionView::MissingTemplate, with: :missing_template
+
+  def show
+    @page = params[:id]
+
+    render corresponding_view
+  end
 
   def home
     @main_articles = Article.where(is_part_of_main_articles: true).order("RANDOM()")
@@ -9,5 +16,16 @@ class PagesController < ApplicationController
   end
 
   def create
+  end
+
+  protected
+
+  def corresponding_view
+      params[:id]
+  end
+
+  def missing_template(exception)
+    render 'show'
+    return
   end
 end

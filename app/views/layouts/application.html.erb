@@ -12,7 +12,9 @@
   <body>
     <%= render 'shared/header' %>
     <%#= render 'shared/alerts' %>
+    <%= render 'shared/side_panel' %>
     <%= yield %>
     <%= render 'shared/confirm_delete_dialog' %>
+    <%= render ('shared/footer') %>
   </body>
 </html>
