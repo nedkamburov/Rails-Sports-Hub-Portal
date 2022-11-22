@@ -9,7 +9,6 @@ import "trix"
 import "@rails/actiontext"
 
 Turbo.setConfirmMethod((recordType, element) => {
-    debugger
     let dialog = document.getElementById("turbo-confirm")
 
     // Populate the dialog window text with a specific record type name

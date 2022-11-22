@@ -2,7 +2,7 @@
 <main class="container user-container">
   <%= render ('pages/home/main_articles') %>
   <%= render ('pages/home/breakdown') %>
-  <%= render ('pages/home/photo_of_the_day') %>
+  <%= render ('pages/home/photo_of_the_day') if @photo_of_the_day.present? %>
   <%= render ('pages/home/summary') %>
 </main>
 <%= render ('footer') %>

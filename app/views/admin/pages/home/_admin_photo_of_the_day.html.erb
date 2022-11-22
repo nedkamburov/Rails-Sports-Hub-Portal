@@ -20,7 +20,7 @@
       <%= form.label :title, "Photo Title*" %>
       <%= form.text_field :title, required: true, placeholder: 'Title', value: @photo_of_the_day&.title, class: "form-control" %>
       <%= form.label :description, "Short Description*" %>
-      <%= form.text_field :description, required: true, placeholder: 'Write description text here', value: @photo_of_the_day&.description, class: "form-control" %>
+      <%= form.text_area :description, required: true, placeholder: 'Write description text here', value: @photo_of_the_day&.description, class: "form-control" %>
       <%= form.label :author, "Author*" %>
       <%= form.text_field :author, required: true, placeholder: 'Author of the photo', value: @photo_of_the_day&.author, class: "form-control" %>
       <%= form.submit 'Save photo', class: 'btn add-more-btn' %>

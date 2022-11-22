@@ -4,11 +4,11 @@
     <span>Photo of the day</span>
   </div>
   <section>
-    <%= image_tag @photo_of_the_day.picture, alt: @photo_of_the_day.picture_alt, class: 'photo-of-the-day-picture' if @photo_of_the_day.picture.present? %>
+    <%= image_tag @photo_of_the_day&.picture, alt: @photo_of_the_day&.picture_alt, class: 'photo-of-the-day-picture' if @photo_of_the_day&.picture.present? %>
       <section class="photo-of-the-day-content">
-        <article class="photo-title"><%= @photo_of_the_day.title %></article>
-        <article class="photo-description"><%= @photo_of_the_day.description %></article>
-        <article class="photo-author"><%= @photo_of_the_day.author %></article>
+        <article class="photo-title"><%= @photo_of_the_day&.title %></article>
+        <article class="photo-description"><%= @photo_of_the_day&.description %></article>
+        <article class="photo-author"><%= @photo_of_the_day&.author %></article>
       </section>
   </section>
 </section>

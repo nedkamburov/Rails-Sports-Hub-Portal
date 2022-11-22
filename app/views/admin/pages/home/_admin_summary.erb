@@ -8,7 +8,7 @@
                                            search_and_filter_form_target: "form"},
                       class:'article-form' do |form| %>
           <label class="form-check-label" for="flexSwitchCheckChecked">Show on the main page</label>
-          <%= form.check_box :has_comments, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked" %>
+          <%= form.check_box :show_on_the_front, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked", checked: true %>
         <% end %>
       </div>
     </div>
@@ -20,7 +20,7 @@
                                            search_and_filter_form_target: "form"},
                       class:'article-form' do |form| %>
           <label class="form-check-label" for="flexSwitchCheckChecked">Show on the main page</label>
-          <%= form.check_box :has_comments, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked" %>
+          <%= form.check_box :show_on_the_front, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked", checked: true %>
         <% end %>
       </div>
     </div>
