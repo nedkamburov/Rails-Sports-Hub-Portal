@@ -5,7 +5,7 @@
       <section>
         <%= form.label :picture, "Picture*", class: "label" %>
         <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
-          <%= image_tag @photo_of_the_day.picture, alt: @photo_of_the_day.picture_alt, class: 'existing-image' if @photo_of_the_day.picture.present? %>
+          <%= image_tag @photo_of_the_day.picture, alt: @photo_of_the_day.picture_alt, class: 'existing-image' if @photo_of_the_day&.picture.present? %>
           <%= form.file_field :picture, required: true, direct_upload: true, data: { dropzone_target: 'input' } %>
           <div class="dropzone-msg dz-message needsclick">
             <div class="camera-icon">
@@ -16,14 +16,14 @@
         </div>
       </section>
       <%= form.label :picture_alt, "Alt.*" %>
-      <%= form.text_field :picture_alt, required: true, placeholder: 'Alternative text for the picture', value: @photo_of_the_day.picture_alt, class: "form-control" %>
+      <%= form.text_field :picture_alt, required: true, placeholder: 'Alternative text for the picture', value: @photo_of_the_day&.picture_alt , class: "form-control" %>
       <%= form.label :title, "Photo Title*" %>
-      <%= form.text_field :title, required: true, placeholder: 'Title', value: @photo_of_the_day.title, class: "form-control" %>
+      <%= form.text_field :title, required: true, placeholder: 'Title', value: @photo_of_the_day&.title, class: "form-control" %>
       <%= form.label :description, "Short Description*" %>
-      <%= form.text_field :description, required: true, placeholder: 'Write description text here', value: @photo_of_the_day.description, class: "form-control" %>
+      <%= form.text_field :description, required: true, placeholder: 'Write description text here', value: @photo_of_the_day&.description, class: "form-control" %>
       <%= form.label :author, "Author*" %>
-      <%= form.text_field :author, required: true, placeholder: 'Author of the photo', value: @photo_of_the_day.author, class: "form-control" %>
-      <%= form.submit 'Save photo', class: 'btn' %>
+      <%= form.text_field :author, required: true, placeholder: 'Author of the photo', value: @photo_of_the_day&.author, class: "form-control" %>
+      <%= form.submit 'Save photo', class: 'btn add-more-btn' %>
     <% end %>
   </section>
 </section>

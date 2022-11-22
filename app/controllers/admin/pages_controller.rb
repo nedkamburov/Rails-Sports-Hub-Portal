@@ -21,7 +21,7 @@ module Admin
                                                        grouping_type: params[:grouping_type])
       end
 
-      @photo_of_the_day = PhotoOfTheDay.first
+      @photo_of_the_day = PhotoOfTheDay.last
     end
 
     def information_architecture

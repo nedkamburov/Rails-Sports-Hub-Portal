@@ -769,12 +769,25 @@ h1, h2, h3, h4, h5, h6, label {
 .admin-home {
   max-width: 870px;
   margin-top: 48px;
+  margin-bottom: 80px;
 
   .home-section {
     border-top: 1px solid $accent-color-grey;
     position: relative;
     margin-top: 36px;
 
+    .added-article {
+      padding: 10px 0;
+      border-bottom: 1px dotted $accent-color-grey;
+    }
+
+    .add-more-btn {
+      padding: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: $color;
+      font-family: "Open Sans", Helvetica, sans-serif;
+    }
   }
 }
 
@@ -1284,29 +1297,29 @@ h1, h2, h3, h4, h5, h6, label {
       background-color: $color;
     }
   }
+}
 
-  .form-check-comments {
-    .form-check-label {
-      margin-top: 0 !important;
-      color: $color;
-      text-transform: initial;
+.form-check-comments {
+  .form-check-label {
+    margin-top: 0 !important;
+    color: $color;
+    text-transform: initial;
+  }
+
+  .form-check-input {
+    margin-top: 6px !important;
+    border-radius: 20px;
+
+    &:checked {
+      background-color: $background-color;
+      border-color: $accent-color-grey;
+      @include toggleSwitchDotInColor("D72130");
     }
 
-    .form-check-input {
-      margin-top: 6px !important;
-      border-radius: 20px;
-
-      &:checked {
-        background-color: $background-color;
-        border-color: $accent-color-grey;
-        @include toggleSwitchDotInColor("D72130");
-      }
-
-      &:focus {
-        border-color: $color;
-        box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
-        @include toggleSwitchDotInColor("EB9097");
-      }
+    &:focus {
+      border-color: $color;
+      box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+      @include toggleSwitchDotInColor("EB9097");
     }
   }
 }
@@ -1389,4 +1402,12 @@ button {
     border: 0;
     padding: 0;
   }
+}
+
+input, select {
+  border-radius: 0 !important;
+}
+
+select {
+  color: $text-color !important;
 }

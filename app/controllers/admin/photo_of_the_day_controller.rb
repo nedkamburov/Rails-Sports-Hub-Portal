@@ -8,7 +8,6 @@ module Admin
 
     def create
       @photo = PhotoOfTheDay.new(photo_params)
-      binding.pry
 
       respond_to do |format|
         if @photo.save

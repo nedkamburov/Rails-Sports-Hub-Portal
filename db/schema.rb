@@ -136,14 +136,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_211722) do
   end
 
   create_table "photo_of_the_days", force: :cascade do |t|
-    t.integer "singleton_guard"
     t.string "picture_alt"
     t.string "title"
     t.text "description"
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["singleton_guard"], name: "index_photo_of_the_days_on_singleton_guard", unique: true
   end
 
   create_table "subcategories", force: :cascade do |t|

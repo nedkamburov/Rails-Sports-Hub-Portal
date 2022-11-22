@@ -2,7 +2,7 @@
   <%= form_with model: article, method: :patch, url: admin_article_path(article), data: {turbo_frame: "turbo_reactive_categories_#{type}",
                                      controller: 'search-and-filter-form',
                                      search_and_filter_form_target: "form"},
-                                     class:'article-form' do |form| %>
+                                     class:'article-form added-article' do |form| %>
     <section class="d-flex justify-content-between">
       <article class="d-flex flex-column w-25">
         <%= form.label 'Category*' %>
