@@ -56,6 +56,7 @@ group :development, :test do
   gem "faker", "~> 2.23"
   gem "rubocop"
   gem "letter_opener"
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -74,6 +75,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'rails-controller-testing'
 end
 
 gem "devise"

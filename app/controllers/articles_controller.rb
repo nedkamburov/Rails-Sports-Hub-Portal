@@ -1,20 +1,19 @@
 class ArticlesController < ApplicationController
-  before_action :set_article,:published?, :set_sort_criterion, only: %i[ show ]
+  before_action :set_article,:published?, :set_comment_sort_criterion, only: %i[ show ]
+  @comments_sort_criterion = nil
 
-  @@sort_criterion = nil
   def index
   end
 
   def show
     @category = Category.find(@article.category_id)
     @team = Team.find(@article.team_id)
-
     @pagy, @comments = pagy(@article.comments.where(parent_id: nil)
                                              .includes(:user)
-                                             .custom_sort_by(@@sort_criterion),
+                                             .custom_sort_by(@comments_sort_criterion),
                                              items: 4 )
     @load_more = params[:page]
-    @more_articles = @category.articles.limit(6).order("RANDOM()")
+    @more_articles = @category.articles.where(status: 'published').limit(6).order("RANDOM()")
   end
 
   private
@@ -29,8 +28,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def set_sort_criterion
-    @@sort_criterion = params[:sort_by] if params[:sort_by]
+  def set_comment_sort_criterion
+    @comments_sort_criterion = params[:sort_by] if params[:sort_by]
   end
 
 end
