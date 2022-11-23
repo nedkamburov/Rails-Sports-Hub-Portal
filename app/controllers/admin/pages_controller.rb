@@ -1,6 +1,6 @@
 module Admin
   class PagesController < AdminController
-
+    layout "application_dashboard"
     def home
       @users = User.all
       @categories = Category.all.where(category_type: 'articles')

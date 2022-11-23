@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   rescue_from ::ActionView::MissingTemplate, with: :missing_template
-
+  
   def show
     @page = params[:id]
 
