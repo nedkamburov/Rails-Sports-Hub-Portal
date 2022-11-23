@@ -13,6 +13,8 @@ class PagesController < ApplicationController
     @photo_of_the_day = PhotoOfTheDay.last
     @most_commented = Article.limit(3).order(created_at: :desc)
     @most_popular = Article.limit(3).order(created_at: :asc)
+
+    @footer_pages = FooterPage.all
   end
 
   def create

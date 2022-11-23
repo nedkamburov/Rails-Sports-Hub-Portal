@@ -23,7 +23,7 @@ module Admin
         end
       end
     end
-    
+
     def destroy
       @footer_page.destroy
 
