@@ -792,14 +792,17 @@ h1, h2, h3, h4, h5, h6, label {
   .page-action-button {
     min-width: 100px;
     font-size: 12px;
-    padding: 10px 20px;
+
     background-color: $color;
     color: $background-color;
     text-decoration: none;
     border-radius: 0;
+    text-align: center;
 
     a,
     button {
+      display: block;
+      padding: 10px 20px;
       font-size: inherit;
       color: inherit;
       text-decoration: inherit;
@@ -858,7 +861,7 @@ h1, h2, h3, h4, h5, h6, label {
 .admin-side-panel {
   position: absolute;
   padding-top: 40px;
-  width: 4.5rem;
+  width: 5.5rem;
   height: 100%;
   border-right: 1px solid $accent-color-light-grey;
 
@@ -878,7 +881,7 @@ h1, h2, h3, h4, h5, h6, label {
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Admin Dashboard Individual Pages Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-.admin-home {
+.admin-page {
   max-width: 870px;
   margin-top: 48px;
   margin-bottom: 80px;
@@ -964,6 +967,80 @@ h1, h2, h3, h4, h5, h6, label {
       }
       .parent-not-selected-message {
         text-transform: initial;
+      }
+    }
+  }
+}
+
+.admin-footer {
+  .footer-pages-table {
+    max-width: 600px;
+
+    .tabs-bar {
+      margin-bottom: 20px;
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      .tab {
+        &:hover {
+          cursor: pointer;
+          color: $color;
+        }
+
+        &.selected {
+          color: $color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .table {
+      border: 1px solid $accent-color-grey;
+      border-bottom: none;
+
+      .table-header, .table-card  {
+        display: grid;
+        grid-template-columns: 5fr 2fr 1fr;
+        padding: 10px 30px;
+        min-height: 50px;
+        align-content: center;
+        border-bottom: 1px solid $accent-color-grey;
+
+        div:not(:first-of-type) {
+          justify-self: center;
+        }
+      }
+
+     .table-header {
+       background-color: $accent-color-light-grey;
+       font-size: 12px;
+       text-transform: uppercase;
+       font-weight: 700;
+       font-family: "Open Sans";
+     }
+
+      .table-card {
+        label {
+          color: $text-color;
+        }
+
+        &:hover {
+          box-shadow: 4px 4px 7px $accent-color-light-grey;
+        }
+
+        .footer-page-toggle {
+          *:hover {
+            cursor: pointer !important;
+          }
+        }
+        .footer-page-delete {
+          color: $accent-color-grey;
+          &:hover {
+            color: $text-color;
+          }
+        }
       }
     }
   }
@@ -1162,15 +1239,15 @@ h1, h2, h3, h4, h5, h6, label {
   .card {
     position: absolute;
     width: 460px;
-    height: 260px;
+    min-height: 260px;
     border-radius: 0;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    padding: 42px 0 20px 0;
 
     h5 {
       position: relative;
-      margin-top: 42px;
       font-size: 24px;
       color: $text-color;
       text-align: center;
@@ -1185,6 +1262,9 @@ h1, h2, h3, h4, h5, h6, label {
       text-align: left;
 
       label {
+        &:not(:first-of-type) {
+          margin-top: 18px;
+        }
         color: $accent-color-grey;
         font-weight: bold;
       }
@@ -1411,7 +1491,7 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
-.form-check-comments {
+.form-check-toggle {
   .form-check-label {
     margin-top: 0 !important;
     color: $color;
@@ -1420,7 +1500,7 @@ h1, h2, h3, h4, h5, h6, label {
 
   .form-check-input {
     margin-top: 6px !important;
-    border-radius: 20px;
+    border-radius: 20px !important;
 
     &:checked {
       background-color: $background-color;

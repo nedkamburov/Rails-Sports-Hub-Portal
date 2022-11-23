@@ -1,0 +1,29 @@
+<article class="table-card">
+  <div class="footer-page-title"><%= footer_page.title %></div>
+  <div class="footer-page-toggle">
+    <%= turbo_frame_tag "turbo_footer_page_table" do %>
+      <%= form_with method: :put, url: toggle_status_admin_footer_page_path(footer_page),
+                                  data: {turbo_frame: 'turbo_footer_page_cards',
+                                  controller: 'search-and-filter-form',
+                                  search_and_filter_form_target: "form"}  do |form| %>
+        <div class="form-check-toggle form-switch d-inline-block p-0">
+          <%= form.check_box :status, class: "form-check-input float-none m-0 mt-1",
+                             id: "flexSwitchCheckChecked",
+                             checked: footer_page.status == 'shown' ? true : false,
+                             data: { action: "input->search-and-filter-form#search_and_filter" } %>
+          <label class="form-check-label" for="flexSwitchCheckChecked"><%= footer_page.status == 'shown' ? 'Show' : 'Hide' %></label>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="footer-page-delete">
+    <%= turbo_frame_tag "turbo_comment_delete_frame" do %>
+      <div>
+          <%= button_to admin_footer_page_path(footer_page), method: :delete,
+                                                             form: { data: { turbo_confirm: "footer page" } } do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</article>

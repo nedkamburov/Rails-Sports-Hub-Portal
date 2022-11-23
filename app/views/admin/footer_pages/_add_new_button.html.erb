@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "turbo_footer_pages_frame" do %>
+  <div class='page-action-button'>
+    <%= link_to '+ Add New Footer Page', new_admin_footer_page_path, data: { turbo_frame: "turbo_add_item" }, id: 'add-new-button' %>
+  </div>
+<% end %>

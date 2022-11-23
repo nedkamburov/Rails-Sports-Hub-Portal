@@ -1,0 +1,27 @@
+<% add_new_footer_page = render "admin/footer_pages/add_new_button"  %>
+<%= render 'admin/shared/admin_headers', page_action: add_new_footer_page %>
+<main class="container admin-page admin-footer">
+  <%= turbo_frame_tag "turbo_add_item" do %>
+  <% end %>
+    <section class="footer-pages-table" data-controller="reactive-table">
+      <div class="tabs-bar">
+          <div class="tab-content d-flex justify-content-between">
+            <% @footer_pages_types.each_with_index do |type, i| %>
+              <a class="tab <%= 'selected' if i == 0 %>" data-reactive-table-target='tab' data-action='click->reactive-table#toggle'  data-toggle-page-type="<%= type[0] %>" data-toggle-url="<%= filter_by_page_type_admin_footer_pages_path(page_type: type[1]) %>"><%= type[0] %></a>
+            <% end %>
+          </div>
+      </div>
+      <section class="table">
+        <section class="table-header">
+          <div>Footer Menu Names</div>
+          <div>Hide/Show</div>
+          <div>Actions</div>
+        </section>
+        <%= turbo_frame_tag 'turbo_footer_page_cards' do %>
+          <section class="table-content d-flex flex-column" data-reactive-table-target='cards'>
+            <%= render partial: 'footer_page', collection: @footer_pages %>
+          </section>
+        <% end %>
+      </section>
+    </section>
+</main>

@@ -1,4 +1,6 @@
-<% add_new_article = link_to('+ Add New Article', new_admin_article_url(category_slug: @category.slug), class: 'page-action-button') %>
+<% add_new_article = content_tag(:div, content_tag(:a, '+ Add New Article',
+                                                   href: new_admin_article_url(category_slug: @category.slug)),
+                                                   class:'page-action-button') %>
 <%= render 'admin/shared/admin_headers', page_action: add_new_article %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
@@ -7,7 +9,6 @@
     <% end %>
     <%= render 'admin/articles/search' %>
   </section>
-
     <%= turbo_frame_tag "turbo_filtered_articles_frame" do %>
     <section class="articles-filters">
       <%= render 'admin/articles/dropdown_filters' %>

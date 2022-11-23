@@ -168,3 +168,16 @@ puts 'Likes have been added to several comments from the AFC West subcategory!'
 
 Newsletter.create!(name: User.last.name, email: User.last.email)
 puts 'The last user is added to the newsletter mailing list.'
+
+FooterPage.create!(title: 'About Sports Hub', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'News / In the Press', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'Advertising / Sports Blogger Ad Network', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'Events', url: "#", page_type: 'Company Info', status: 'hidden')
+FooterPage.create!(title: 'Contact Us', url: "#", page_type: 'Company Info', status: 'shown')
+
+FooterPage.create!(title: 'Featured Writers Program', url: "#", page_type: 'Contributors', status: 'shown')
+FooterPage.create!(title: 'Featured Team Writers Program', url: "#", page_type: 'Contributors', status: 'shown')
+FooterPage.create!(title: 'Internship Program', url: "#", page_type: 'Contributors', status: 'shown')
+
+FooterPage.create!(title: 'Sign up to receive the latest sports news', url: "#", page_type: 'Newsletter', status: 'shown')
+puts 'All footer pages were created.'

@@ -2,7 +2,7 @@
   <div class="articles-summary d-flex w-100 justify-content-between">
     <div class="w-50">
      <h6>Most popular</h6>
-      <div class="form-check-comments form-switch d-inline-block p-0">
+      <div class="form-check-toggle form-switch d-inline-block p-0">
         <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
                                            controller: 'search-and-filter-form',
                                            search_and_filter_form_target: "form"},
@@ -14,7 +14,7 @@
     </div>
     <div class="w-50">
       <h6>Most commented</h6>
-      <div class="form-check-comments form-switch d-inline-block p-0">
+      <div class="form-check-toggle form-switch d-inline-block p-0">
         <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
                                            controller: 'search-and-filter-form',
                                            search_and_filter_form_target: "form"},

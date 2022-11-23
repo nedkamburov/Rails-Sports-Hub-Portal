@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_211722) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_083916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_211722) do
     t.index ["dislikeable_id"], name: "index_dislikes_on_dislikeable_id"
     t.index ["user_id", "dislikeable_id", "dislikeable_type"], name: "index_dislikes_on_user_dislikeable_id_and_type", unique: true
     t.index ["user_id"], name: "index_dislikes_on_user_id"
+  end
+
+  create_table "footer_pages", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "url", null: false
+    t.integer "page_type", null: false
+    t.integer "status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

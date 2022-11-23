@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "password/request_link_sent", to: "custom_devise/passwords#request_link_sent"
-    # get 'profile/edit'    => 'devise/registrations#edit',   :as => :edit_user_registration
-    # get 'profile/cancel'  => 'devise/registrations#cancel', :as => :cancel_user_registration
   end
 
   namespace :admin do
@@ -34,6 +32,13 @@ Rails.application.routes.draw do
     end
 
     resources :photo_of_the_day
+    resources :footer_pages, except: [:edit, :update] do
+      get :filter_by_page_type, on: :collection
+
+      member do
+        put :toggle_status
+      end
+    end
 
     get "footer", to: "pages#footer"
     get "information-architecture", to: "pages#information_architecture"
