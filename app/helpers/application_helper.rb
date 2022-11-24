@@ -20,7 +20,7 @@ module ApplicationHelper
     static_pages = Category.where.not(category_type: 'articles').order("position ASC")
     static_pages.each do |page|
       static_page = {
-        url: "#{page.slug}",
+        url: "pages/#{page.slug}",
         title: page.title
       }
       pages << static_page

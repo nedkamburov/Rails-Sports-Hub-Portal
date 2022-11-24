@@ -3,24 +3,25 @@
     <article>
       <h6><%= FooterPage.page_types.keys[0] %></h6>
       <ul>
-        <% @footer_pages.where(page_type: FooterPage.page_types.keys[0], status: 'shown').each do |page| %>
-          <li><a href="<%= page.url %>"><%= page.title %></a></li>
+        <% FooterPage.where(page_type: FooterPage.page_types.keys[0], status: 'shown').each do |fpage| %>
+          <li>
+            <%= link_to fpage.title, page_path(fpage.url) %></li>
         <% end %>
       </ul>
     </article>
     <article>
       <h6><%= FooterPage.page_types.keys[1] %></h6>
       <ul>
-        <% @footer_pages.where(page_type: FooterPage.page_types.keys[1], status: 'shown').each do |page| %>
-          <li><a href="<%= page.url %>"><%= page.title %></a></li>
+        <% FooterPage.where(page_type: FooterPage.page_types.keys[1], status: 'shown').each do |fpage| %>
+          <li><%= link_to fpage.title, page_path(fpage.url) %></li>
         <% end %>
       </ul>
     </article>
     <article>
       <h6><%= FooterPage.page_types.keys[2] %></h6>
       <ul>
-        <% @footer_pages.where(page_type: FooterPage.page_types.keys[2], status: 'shown').each do |page| %>
-          <div><%= page.title %></div>
+        <% FooterPage.where(page_type: FooterPage.page_types.keys[2], status: 'shown').each do |fpage| %>
+          <div><%= fpage.title %></div>
         <% end %>
       </ul>
       <%= render 'newsletters/form' %>

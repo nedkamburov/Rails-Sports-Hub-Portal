@@ -1,4 +1,10 @@
 class Article < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_article,
+                  against: [:headline, :caption],
+                  associated_against: { rich_text_content: [:body] },
+                  using: { tsearch: { dictionary: 'english' } }
+
   enum status: {unpublished: 0, published: 1}
   validates :headline, :caption, :content, :picture_alt, presence: true
 

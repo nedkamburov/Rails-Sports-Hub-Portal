@@ -4,10 +4,7 @@
   </section>
   <section class="header-middle">
     <% if !@is_admin_panel  %>
-      <article class="search-bar">
-        <a href="#"><i class="fa-solid fa-search"></i></a>
-        <p>Search by</p>
-      </article>
+      <%= render 'pages/full_text_search_bar' %>
       <article class="social-media">
         <p>Share</p>
         <div class="social-links">
@@ -17,6 +14,7 @@
         </div>
       </article>
     <% end %>
+    <%= turbo_frame_tag "turbo_global_search_results", class: 'position-absolute w-100' do %><% end %>
   </section>
   <section class="header-right">
     <article>

@@ -5,4 +5,8 @@ module PagesHelper
 
     current_page ? current_page[:title].html_safe : ''
   end
+
+  def page_path(url)
+    root_path + url
+  end
 end

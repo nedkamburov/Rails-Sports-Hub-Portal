@@ -1,0 +1,13 @@
+<article class="search-bar">
+  <i class="fa-solid fa-search"></i>
+  <%= turbo_frame_tag "turbo_global_search", class: 'w-100' do %>
+    <%= form_with method: :get, url: global_search_pages_url,  data: {turbo_frame:'turbo_global_search_results',
+                                       controller: 'search-and-filter-form',
+                                       search_and_filter_form_target: "form"} do |form|  %>
+      <%= form.text_field :search_term,
+                          value: params[:search_term],
+                          placeholder: "Search by",
+                          data: { action: "input->search-and-filter-form#search_and_filter" } %>
+    <% end %>
+  <% end %>
+</article>
