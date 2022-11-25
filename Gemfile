@@ -77,6 +77,8 @@ group :test do
   gem "webdrivers"
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rails-controller-testing'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner-active_record'
 end
 
 gem "devise"
