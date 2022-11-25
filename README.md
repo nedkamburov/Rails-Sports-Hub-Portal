@@ -49,7 +49,11 @@ Send an email newsletter: <br>
 `rake weekly_newsletter_email`
 
 Run tests: <br>
-`rspec`
+
+```console 
+rspec
+bundle exec cucumber
+```
 
 ### Extras
 Generate a PDF (admins only) with all categories hierarchy by visiting localhost/admin.pdf
