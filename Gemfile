@@ -95,3 +95,7 @@ gem "pagy", "~> 5.10"
 
 gem "whenever", "~> 1.0"
 gem "pg_search", "~> 2.3"
+
+gem "wicked_pdf", "~> 2.6"
+
+gem "wkhtmltopdf-binary", "~> 0.12.6"

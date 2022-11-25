@@ -1,0 +1,35 @@
+<main>
+  <h1>Sports Hub Portal Categories Hierarchy</h1>
+    <section class="categories">
+      <% Category.all.each do |cat| %>
+          <article class="category-container">
+            <div class="title">
+              <h3><strong><%= cat.title %></strong></h3>
+              <h5>Category Type: <%= cat.category_type.capitalize %></h5>
+            </div>
+          </article>
+          <% @subcategories = cat.subcategories
+             if @subcategories.present? %>
+              <article class="subcategories">
+                <% @subcategories.each do |subcat| %>
+                  <article class="subcategory-container">
+                    <div class="title">
+                      <h4><%= subcat.title %></h4>
+                    </div>
+                  </article>
+                  <% @teams = subcat.teams
+                     if @teams.present? %>
+                      <article class="teams">
+                          <% @teams.each do |team| %>
+                            <article class="team-container">
+                              <h6 class="title"><%= team.title %></h6>
+                            </article>
+                          <% end %>
+                      </article>
+                  <% end %>
+                <% end %>
+              </article>
+          <% end %>
+      <% end %>
+   </section>
+</main>
