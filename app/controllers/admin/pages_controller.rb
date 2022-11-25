@@ -26,7 +26,9 @@ module Admin
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: "stats", template: 'admin/pages/stats', layout: 'layouts/stats'  # Excluding ".pdf" extension.
+          render pdf: "categories_stats",
+                 template: 'admin/pages/stats',
+                 layout: 'layouts/stats'
         end
       end
     end

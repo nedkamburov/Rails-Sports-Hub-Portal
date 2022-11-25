@@ -10,15 +10,17 @@ Access live demo at [https://sportshub.onrender.com](https://sportshub.onrender.
 ### Technologies:
 
 - Ruby on Rails
-- JavaScript
+- JavaScript (Stimulus)
 - PostgreSQL
 
 ### Main features:
 
 1. Home page with sports articles
-   - Various categories
-   - Comments
-   - CDN hosted images
+   - Various categories, subcategories and teams
+   - Articles with rich content
+   - Comments on the articles with sorting and filtering options, likes and dislikes
+   - Newsletter
+   - Admin Dashboard to manage all content
 2. Different types of users
 3. Admin panel
 4. Mailing service
@@ -26,10 +28,14 @@ Access live demo at [https://sportshub.onrender.com](https://sportshub.onrender.
 ### Installation instructions
 
 Requirements: <br>
-`rails, postgres, gem`
+`ruby, rails, postgres, gem`
 
 Initialise Postgres Database: <br>
-`rails db:create`
+
+```console
+rails db:create
+rails db:setup
+```
 
 Install the gems and fire up the server: <br>
 
@@ -37,3 +43,13 @@ Install the gems and fire up the server: <br>
 bundle install
 rails server
 ```
+
+### Other CLI functionalities
+Send an email newsletter: <br>
+`rake weekly_newsletter_email`
+
+Run tests: <br>
+`rspec`
+
+### Extras
+Generate a PDF (admins only) with all categories hierarchy by visiting localhost/admin.pdf
