@@ -77,6 +77,8 @@ group :test do
   gem "webdrivers"
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rails-controller-testing'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner-active_record'
 end
 
 gem "devise"
@@ -94,3 +96,8 @@ gem "open-uri", "~> 0.2.0"
 gem "pagy", "~> 5.10"
 
 gem "whenever", "~> 1.0"
+gem "pg_search", "~> 2.3"
+
+gem "wicked_pdf", "~> 2.6"
+
+gem "wkhtmltopdf-binary", "~> 0.12.6"

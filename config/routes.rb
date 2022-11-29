@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   end
 
   resources :likes, :dislikes, only: [:create, :destroy]
-  resources :pages
+  resources :pages do
+    get "global_search", on: :collection
+  end
   resources :newsletters
 end

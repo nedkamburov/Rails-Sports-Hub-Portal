@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "turbo_global_search_results" do %>
+  <section class="search-bar-results">
+    <% search_results.each do |result| %>
+      <div class="search-result">
+        <%= link_to article_path(result.id) do %>
+          <div class="result-breadcrumb">
+            <span class="result-category"><%= result.category.title %></span> <i class="fa-solid fa-chevron-right"></i>
+            <%= result.team.title %> / <%= result.headline %>
+          </div>
+          <%= result.caption %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+<% end %>

@@ -22,6 +22,15 @@ module Admin
       end
 
       @photo_of_the_day = PhotoOfTheDay.last
+
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "categories_stats",
+                 template: 'admin/pages/stats',
+                 layout: 'layouts/stats'
+        end
+      end
     end
 
     def information_architecture

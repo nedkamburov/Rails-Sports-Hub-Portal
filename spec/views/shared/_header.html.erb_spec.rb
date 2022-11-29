@@ -10,7 +10,7 @@ RSpec.describe 'shared/_header.html.erb', type: :view do
 
     it 'contains the search bar' do
       render
-      expect(rendered).to have_selector("article.search-bar", text: "Search by")
+      expect(rendered).to have_field("search_term", placeholder: "Search by")
     end
 
     it 'contains a functional "Sign up" button' do

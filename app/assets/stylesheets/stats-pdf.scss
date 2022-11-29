@@ -1,0 +1,89 @@
+@import 'style_variables.scss';
+
+main {
+  text-align: center;
+
+  h1 {
+    width: 100%;
+    padding: 50px 20px;
+    font-size: 42px;
+    font-family: Roboto;
+    margin-bottom: 20px;
+    background-color: $color;
+    color: $background-color;
+  }
+}
+
+.categories {
+  position: relative;
+  padding: 10% 0 0 25%;
+
+  .category-container {
+    h3 {
+      font-size: 24px;
+      margin-bottom: 2px;
+      color: $accent-color-dark-grey;
+    }
+
+    h5 {
+      font-size: 14px;
+      font-weight: 600;
+      color: $accent-color-grey;
+    }
+  }
+}
+
+.subcategories {
+  position: relative;
+  left: 220px;
+  top: -80px;
+
+  .subcategory-container {
+    h4 {
+      min-height: 25px;
+      font-size: 18px;
+      font-weight: 600;
+      color: $accent-color-dark-grey;
+    }
+  }
+}
+
+.teams {
+  position: relative;
+  left: 220px;
+  top: -55px;
+
+  h6 {
+    min-height: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color;
+  }
+}
+
+.title {
+  text-align: center;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border: 1px solid $accent-color-light-grey;
+  max-width: 200px;
+}
+
+.subcategory-container, .team-container {
+  position: relative;
+  border-left: 1px dashed $accent-color-grey;
+  padding-left: 12px;
+
+  &:before {
+    position: absolute;
+    content: "-";
+    top: 5px;
+    left: 2px;
+    color: $accent-color-grey;
+    font-size: 24px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0;
+}

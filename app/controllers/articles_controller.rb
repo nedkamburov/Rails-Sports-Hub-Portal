@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   def published?
     if @article.status != 'published'
       flash[:notice] = 'You cannot access this article'
-      redirect_back(fallback_location: articles_url)
+      redirect_back(fallback_location: root_path)
     end
   end
 

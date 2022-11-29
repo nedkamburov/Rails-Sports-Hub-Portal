@@ -13,15 +13,19 @@ class PagesController < ApplicationController
     @photo_of_the_day = PhotoOfTheDay.last
     @most_commented = Article.limit(3).order(created_at: :desc)
     @most_popular = Article.limit(3).order(created_at: :asc)
-
-    @footer_pages = FooterPage.all
   end
 
   def create
   end
 
-  protected
+  def global_search
+    search_term = params[:search_term]
+    search_results = Article.search_article(search_term)
 
+    render partial: 'pages/search_results', locals: {search_results: search_results}
+  end
+
+  protected
   def corresponding_view
       params[:id]
   end
