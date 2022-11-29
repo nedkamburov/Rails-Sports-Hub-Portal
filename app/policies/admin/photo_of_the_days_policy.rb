@@ -1,4 +1,4 @@
-class Admin::ArticlesPolicy < ApplicationPolicy
+class Admin::PhotoOfTheDaysPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -27,18 +27,6 @@ class Admin::ArticlesPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present?
-  end
-
-  def toggle_status?
-    user.present?
-  end
-
-  def update_groupings?
-    user.present?
-  end
-
-  def sort?
     user.present?
   end
 end

@@ -1,9 +1,13 @@
-class Admin::ArticlesPolicy < ApplicationPolicy
+class Admin::FooterPagesPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
     end
+  end
+
+  def index?
+    user.present?
   end
 
   def show?
@@ -30,15 +34,11 @@ class Admin::ArticlesPolicy < ApplicationPolicy
     user.present?
   end
 
+  def filter_by_page_type?
+    user.present?
+  end
+
   def toggle_status?
-    user.present?
-  end
-
-  def update_groupings?
-    user.present?
-  end
-
-  def sort?
     user.present?
   end
 end

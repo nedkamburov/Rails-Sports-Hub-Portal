@@ -1,6 +1,10 @@
-<%= render ('admin/shared/admin_headers') %>
-<main class="container admin-container">
-  <%= render ('admin_main_articles') %>
-  <%= render ('admin_breakdown') %>
-  <%= render ('admin_summary') %>
+<%= render 'admin/shared/admin_headers' %>
+<main class="container admin-page">
+  <%= link_to(root_path, class: "preview-btn r-0") do %>
+    <i class="fa-solid fa-eye"></i> Preview
+  <% end %>
+  <%= render ('admin/pages/home/admin_main_articles') %>
+  <%= render ('admin/pages/home/admin_breakdown') %>
+  <%= render ('admin/pages/home/admin_photo_of_the_day') %>
+  <%= render ('admin/pages/home/admin_summary') %>
 </main>

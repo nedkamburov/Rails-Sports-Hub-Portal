@@ -1,0 +1,28 @@
+<section class="admin-summary">
+  <div class="articles-summary d-flex w-100 justify-content-between">
+    <div class="w-50">
+     <h6>Most popular</h6>
+      <div class="form-check-toggle form-switch d-inline-block p-0">
+        <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
+                                           controller: 'search-and-filter-form',
+                                           search_and_filter_form_target: "form"},
+                      class:'article-form' do |form| %>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Show on the main page</label>
+          <%= form.check_box :show_on_the_front, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked", checked: true %>
+        <% end %>
+      </div>
+    </div>
+    <div class="w-50">
+      <h6>Most commented</h6>
+      <div class="form-check-toggle form-switch d-inline-block p-0">
+        <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
+                                           controller: 'search-and-filter-form',
+                                           search_and_filter_form_target: "form"},
+                      class:'article-form' do |form| %>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Show on the main page</label>
+          <%= form.check_box :show_on_the_front, class: "form-check-input float-none m-0 mt-1", id: "flexSwitchCheckChecked", checked: true %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

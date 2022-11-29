@@ -1,0 +1,36 @@
+<%= turbo_frame_tag "turbo_show_main_articles_frame" do %>
+  <%= form_with model: article, method: :patch, url: admin_article_path(article), data: {turbo_frame: "turbo_reactive_categories_#{type}",
+                                     controller: 'search-and-filter-form',
+                                     search_and_filter_form_target: "form"},
+                                     class:'article-form added-article' do |form| %>
+    <section class="d-flex justify-content-between">
+      <article class="d-flex flex-column w-25">
+        <%= form.label 'Category*' %>
+        <select name="category_id" id="category_id" class='dropdown-filter form-control'>
+          <option value="<%= article.category.id %>"><%= article.category.title %></option>
+        </select>
+      </article>
+      <article class="d-flex flex-column w-25">
+        <%= form.label 'Subcategory' %>
+        <select name="subcategory_id" id="subcategory_id" class='dropdown-filter form-control'>
+          <option value="<%= article.subcategory.id %>"><%= article.subcategory.title %></option>
+        </select>
+      </article>
+      <article class="d-flex flex-column w-25">
+        <%= form.label 'Team' %>
+        <select name="team_id" id="team_id" class='dropdown-filter form-control'>
+          <option value="<%= article.team.id %>"><%= article.team.title %></option>
+        </select>
+      </article>
+    </section>
+    <section class="d-block">
+      <%= form.label 'Article*' %>
+      <select name="id" id="id" class='dropdown-filter w-100 form-control'>
+        <option value="<%= article.id %>"><%= article.headline %></option>
+      </select>
+    </section>
+    <%= form.hidden_field :is_part_of_main_articles, value: false if type == 'main_articles' %>
+    <%= form.hidden_field :is_part_of_breakdown, value: false if type == 'breakdown' %>
+    <%= form.submit 'Delete', name: 'remove_article_from_section', class: 'btn add-more-btn' %>
+  <% end %>
+<% end %>

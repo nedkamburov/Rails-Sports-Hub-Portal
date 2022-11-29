@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_093731) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_083916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_093731) do
     t.integer "position", default: 0
     t.bigint "category_id", null: false
     t.bigint "subcategory_id", null: false
+    t.boolean "is_part_of_main_articles", default: false
+    t.boolean "is_part_of_breakdown", default: false
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["subcategory_id"], name: "index_articles_on_subcategory_id"
     t.index ["team_id"], name: "index_articles_on_team_id"
@@ -103,6 +105,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_093731) do
     t.index ["user_id"], name: "index_dislikes_on_user_id"
   end
 
+  create_table "footer_pages", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "url", null: false
+    t.integer "page_type", null: false
+    t.integer "status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -129,6 +140,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_093731) do
   create_table "newsletters", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photo_of_the_days", force: :cascade do |t|
+    t.string "picture_alt"
+    t.string "title"
+    t.text "description"
+    t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

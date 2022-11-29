@@ -63,6 +63,9 @@ SPORTS_TEAMS.each do |team|
 end
 puts 'Teams added to the AFC West subcategory (part of the NFL category)!'
 
+Subcategory.find_by(title: 'AFC East').teams.create(title: 'Chicago')
+
+
 #
 # Create articles
 #
@@ -75,7 +78,9 @@ articles = [
    picture_alt: 'Lions-owner-picture',
    category: Category.find_by(title: "NFL"),
    subcategory: Subcategory.find_by(title: "AFC West"),
-   team: Team.find_by(title: "Houston")
+   team: Team.find_by(title: "Houston"),
+   is_part_of_main_articles: true,
+   is_part_of_breakdown: true
    },
    {headline: "NFL Week 8 underdogs: Can injury-stricken Jets best Pats? Will Taylor Heinicke's Commanders win again?",
    caption: "Simply looking to pass the time reading another NFL.com article while stuck in your cube?",
@@ -84,7 +89,9 @@ articles = [
    picture_alt: 'Taylor-Heinicker-jets-pats-picture',
    category: Category.find_by(title: "NFL"),
    subcategory: Subcategory.find_by(title: "AFC West"),
-   team: Team.find_by(title: "Memphis")
+   team: Team.find_by(title: "Memphis"),
+   is_part_of_main_articles: true,
+   is_part_of_breakdown: true
    },
    {headline: "Mike Tomlin not ready to make changes to struggling Steelers offense: 'I don't feel like I'm there'",
    caption: "Tomlin will continue down the charted course for the time being.",
@@ -93,7 +100,17 @@ articles = [
    picture_alt: 'Mike-Tomlin-picture',
    category: Category.find_by(title: "NFL"),
    subcategory: Subcategory.find_by(title: "AFC West"),
-   team: Team.find_by(title: "Utah Jazz")
+   team: Team.find_by(title: "Utah Jazz"),
+   is_part_of_main_articles: true
+   },
+   {headline: "Bears QB Justin Fields dealing with left shoulder dislocation",
+    caption: "Chicago quarterback Justin Fields is dealing with a left shoulder dislocation",
+    content: "Earlier in the day, Bears head coach Matt Eberflus announced that his dual-threat QB was day to day and Rapoport noted Fields' status for Week 12 against the New York Jets is still to be determined. Thus, there's more clarity on what Fields' ailment is, but no more on his availability. \nFields was also dealing with hamstring tightness on Sunday and though he did not miss any plays against the Falcons, was carted from the sideline to the locker room to get looked at.Just how much -- if any -- time Fields misses offers a wide spectrum of outcomes with a shoulder separation, which somewhat explains why Eberflus said on Monday that Fields was day to day, but would also not rule out it being a season-ending injury. Another factor is the physical toll the second-year QB is taking on his body week after week as the Bears are just 3-8.",
+    picture: 'https://static.www.nfl.com/image/private/t_editorial_landscape_12_desktop/f_auto/league/hfpumxhssgpapjiifpum.jpg',
+    picture_alt: 'Bears-QB-Justin-Fields-picture',
+    category: Category.find_by(title: "NFL"),
+    subcategory: Subcategory.find_by(title: "AFC East"),
+    team: Team.find_by(title: "Chicago")
    }]
 
 articles.each do |article|
@@ -103,8 +120,10 @@ articles.each do |article|
                                 picture_alt: article[:picture_alt],
                                 category: article[:category],
                                 subcategory: article[:subcategory],
-                                team: article[:team])
-
+                                team: article[:team],
+                                is_part_of_main_articles: article[:is_part_of_main_articles],
+                                is_part_of_breakdown: article[:is_part_of_breakdown]
+  )
   remote_picture = URI.open(article[:picture])
   new_article.picture.attach(io: remote_picture, filename: article[:picture_alt])
 end
@@ -149,3 +168,16 @@ puts 'Likes have been added to several comments from the AFC West subcategory!'
 
 Newsletter.create!(name: User.last.name, email: User.last.email)
 puts 'The last user is added to the newsletter mailing list.'
+
+FooterPage.create!(title: 'About Sports Hub', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'News / In the Press', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'Advertising / Sports Blogger Ad Network', url: "#", page_type: 'Company Info', status: 'shown')
+FooterPage.create!(title: 'Events', url: "#", page_type: 'Company Info', status: 'hidden')
+FooterPage.create!(title: 'Contact Us', url: "#", page_type: 'Company Info', status: 'shown')
+
+FooterPage.create!(title: 'Featured Writers Program', url: "#", page_type: 'Contributors', status: 'shown')
+FooterPage.create!(title: 'Featured Team Writers Program', url: "#", page_type: 'Contributors', status: 'shown')
+FooterPage.create!(title: 'Internship Program', url: "#", page_type: 'Contributors', status: 'shown')
+
+FooterPage.create!(title: 'Sign up to receive the latest sports news', url: "#", page_type: 'Newsletter', status: 'shown')
+puts 'All footer pages were created.'

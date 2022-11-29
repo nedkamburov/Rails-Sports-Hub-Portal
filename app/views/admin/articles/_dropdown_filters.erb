@@ -3,16 +3,18 @@
                                      controller: 'search-and-filter-form',
                                      search_and_filter_form_target: "form"},
                 class: 'd-flex justify-content-between' do |form| %>
-    <%= form.collection_select(:subcategory_id, @subcategories, :id, :title,
-                               {prompt: 'All Subcategories'},
-                               data: { action: "input->search-and-filter-form#search_and_filter" },
-                               class: 'dropdown-filter')
+    <%= form.select(:subcategory_id, @subcategories.collect {|record| [record.title, record.id]},
+                                      {include_blank: 'All Subcategories',
+                                       selected: params[:subcategory_id].nil? ? {} : params[:subcategory_id]},
+                                      data: { action: "input->search-and-filter-form#search_and_filter" },
+                                      class: 'dropdown-filter')
     %>
-    <%= form.collection_select(:team_id, @teams, :id, :title,
-                               {prompt: 'All Teams'},
-                               data: { action: "input->search-and-filter-form#search_and_filter" },
-                               class: 'dropdown-filter')
-    %>
+    <%= form.select(:team_id, @teams.collect {|record| [record.title, record.id]},
+                                      {include_blank: 'All Teams',
+                                       selected: params[:team_id].nil? ? {} : params[:team_id]},
+                                      data: { action: "input->search-and-filter-form#search_and_filter" },
+                                      class: 'dropdown-filter')
+     %>
 <!--    Todo: Temporary solution until Locations are defined or needed-->
     <div class="dropdown">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">

@@ -28,10 +28,10 @@ h1, h2, h3, h4, h5, h6, label {
 
 .logo {
   position: relative;
+  height: 80px;
   text-align: center;
   color: $background-color;
   background-color: $color;
-  height: 80px;
 
   h3 {
     position: absolute;
@@ -124,7 +124,6 @@ h1, h2, h3, h4, h5, h6, label {
       border: none;
     }
 
-
     h5 {
       font-size: 14px;
       margin: 0;
@@ -191,13 +190,271 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
+// Main Footer Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.footer {
+  width: 100vw;
+  bottom: 0;
+  .footer-bottom {
+    height: 80px;
+    color: $background-color;
+    background-color: $color;
+
+    .footer-left {
+      position: relative;
+      width: 18%;
+        h3 {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: "Open Sans";
+          font-weight: 400;
+          font-size: 22px;
+        }
+    }
+    .footer-right {
+      font-size: 12px;
+      padding-top: 24px;
+      padding-right: 55px;
+    }
+  }
+
+  .subfooter {
+    position: relative;
+    border-top: 1px solid $accent-color-grey;
+    margin-left: 19%;
+    padding: 50px 0;
+
+    .footer-links {
+      width: 950px;
+
+      h6 {
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          font-size: 12px;
+          color: $accent-color-grey;
+          margin-bottom: 10px;
+        }
+      }
+
+      .new_newsletter {
+        margin-top: 5px;
+
+        input {
+          border-radius: 0;
+        }
+
+        .btn {
+          min-width: 100px;
+          text-decoration: none;
+          text-align: center;
+          color: $background-color;
+          background: $color;
+
+          &:hover {
+            color: $color;
+            background: $background-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 //      User Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 
 .user-container {
-  margin-top: 100px;
+  margin-top: 120px;
+  max-width: 870px;
+  margin-bottom: 80px;
+
+  .home-section {
+    position: relative;
+    margin-top: 36px;
+    padding-top: 50px;
+
+    &.main-articles {
+      margin-top: 0;
+      padding-top: 0;
+
+      .preview-article {
+        .breadcrumb {
+          top: 10px;
+          left: 30px;
+          position: absolute;
+          span {
+            color: #fff !important;
+          }
+        }
+
+        .article-summary {
+          right: -250px;
+        }
+      }
+
+      .small-card-articles {
+        .small-card-article {
+          max-width: 230px;
+          padding: 10px;
+
+          .headline {
+            font-size: 14px;
+            font-weight: 600;
+          }
+
+          .caption {
+            color: $accent-color-grey;
+          }
+
+          .article-picture {
+            padding: 5px;
+            width: 100%;
+          }
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: 2px 2px 10px $accent-color-light-grey;
+            .headline {
+              color: $color;
+            }
+          }
+        }
+      }
+    }
+
+    &.breakdown {
+      border-top: 1px solid $accent-color-grey;
+      .preview-breakdown {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+        position: relative;
+        margin-bottom: 30px;
+
+        .preview-breakdown-main {
+          border: 1px solid $accent-color-dark-grey;
+
+          .breadcrumb {
+            top: 0;
+            position: absolute;
+            background-color: #2F2F2F;
+
+            padding: 10px 30px;
+            span {
+              color: #fff !important;
+            }
+          }
+          .headline {
+            font-size: 18px;
+            padding: 10px;
+            line-height: 22px;
+            font-weight: 600;
+          }
+        }
+
+        .small-card-breakdown {
+          //height: 200px;
+        }
+
+        img {width: 100%;}
+      }
+
+      a:hover {
+        .headline, .caption {
+          color: $color;
+        }
+      }
+    }
+
+    &.photo-of-the-day {
+      border-top: 1px solid $accent-color-grey;
+      position: relative;
+
+      .photo-of-the-day-content {
+        position: absolute;
+        padding: 20px;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: #fff;
+
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.6979166666666667) 70%, rgba(255,255,255,0) 100%);
+
+        .photo-title {
+          font-size: 22px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .photo-description {
+          font-size: 14px;
+          max-width: 500px;
+        }
+
+        .photo-author {
+          font-size: 14px;
+          font-style: italic;
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &.summary {
+      .articles-summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+
+        .most-title {
+          display: block;
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+.page-container {
+  position: relative;
+  margin-top: 120px;
+  max-width: 870px;
+  margin-bottom: 80px;
+
+  .back-link {
+    top: -100px;
+    left: -150px;
+    position: absolute;
+    color: $color;
+
+    a:hover {
+      color: $color !important;
+      font-weight: 700;
+    }
+  }
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -254,30 +511,6 @@ h1, h2, h3, h4, h5, h6, label {
   margin-top: 125px;
   position: relative;
   max-width: 1060px;
-
-  .articles-background-titles {
-    width: 100%;
-    position: absolute;
-    top: 25px;
-    font-size: 140px;
-    font-family: "Roboto Condensed";
-    color: $accent-color-light-grey;
-    text-transform: uppercase;
-    z-index: -1;
-
-    div {
-      position: absolute;
-      transform: rotate(90deg);
-    }
-    .article-category-title {
-      left: -120px;
-    }
-
-    .article-news {
-      top: 420px;
-      right: -50px;
-    }
-  }
 
   .breadcrumb {
     position: absolute;
@@ -526,67 +759,11 @@ h1, h2, h3, h4, h5, h6, label {
       border-top: 1px solid $accent-color-grey;
       position: relative;
 
-      .more-articles-title {
-        position: absolute;
-        width: fit-content;
-        top: -22px;
-        margin: auto;
-        left: 0;
-        right: 0;
-
-        padding: 10px 20px;
-        border: 1px solid $accent-color-grey;
-        background-color: $background-color;
-        border-radius: 25px;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 14px;
-        font-family: "Open Sans";
-      }
-
       .more-articles-inner {
         margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 36px;
-
-        .article-small {
-          display: grid;
-          grid-template-columns: 3fr 4fr;
-          border: 1px solid $accent-color-light-grey;
-
-          .article-small-preview-image {
-            img {
-              margin-bottom: 0;
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-            }
-          }
-
-          .article-small-preview-content {
-            padding: 20px 15px;
-
-            div {
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-            }
-
-            .article-small-headline {
-              -webkit-line-clamp: 1;
-              font-size: 16px;
-              font-weight: 700;
-            }
-
-            .article-small-caption {
-              margin-top: 5px;
-              color: $accent-color-dark-grey;
-              line-height: 19px;
-            }
-          }
-        }
       }
     }
   }
@@ -597,7 +774,6 @@ h1, h2, h3, h4, h5, h6, label {
 //      Admin Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-
 .admin-subheader {
   height: 78px;
   display: flex;
@@ -616,14 +792,17 @@ h1, h2, h3, h4, h5, h6, label {
   .page-action-button {
     min-width: 100px;
     font-size: 12px;
-    padding: 10px 20px;
+
     background-color: $color;
     color: $background-color;
     text-decoration: none;
     border-radius: 0;
+    text-align: center;
 
     a,
     button {
+      display: block;
+      padding: 10px 20px;
       font-size: inherit;
       color: inherit;
       text-decoration: inherit;
@@ -647,6 +826,7 @@ h1, h2, h3, h4, h5, h6, label {
     }
   }
 }
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Admin Top Panel Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -681,7 +861,7 @@ h1, h2, h3, h4, h5, h6, label {
 .admin-side-panel {
   position: absolute;
   padding-top: 40px;
-  width: 4.5rem;
+  width: 5.5rem;
   height: 100%;
   border-right: 1px solid $accent-color-light-grey;
 
@@ -699,7 +879,175 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// Admin Side Panel Articles Styling
+// Admin Dashboard Individual Pages Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+.admin-page {
+  max-width: 870px;
+  margin-top: 48px;
+  margin-bottom: 80px;
+
+  .home-section {
+    border-top: 1px solid $accent-color-grey;
+    position: relative;
+    margin-top: 36px;
+
+    .added-article {
+      padding: 10px 0;
+      border-bottom: 1px dotted $accent-color-grey;
+    }
+
+    .add-more-btn {
+      padding: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: $color;
+      font-family: "Open Sans", Helvetica, sans-serif;
+    }
+  }
+}
+
+.information-architecture {
+  .sortable-items {
+    color: $accent-color-grey;
+    margin-top: 50px;
+    display: flex;
+
+    .col {
+      max-width: 200px;
+      margin-right: 50px;
+      text-align: center;
+
+      .list {
+        list-style: none;
+        padding: 0;
+        .col-item,
+        .col-add-item {
+          margin-bottom: 16px;
+          padding: 6px;
+          cursor: grab;
+          border: 1.5px solid $accent-color-light-grey;
+
+          &:active {
+            cursor: grabbing;
+            box-shadow: 1px 2px 5px $accent-color-light-grey;
+
+            .handle-icon {
+              opacity: 1;
+            }
+          }
+        }
+
+        .col-item {
+          display: grid;
+          grid-template-columns: 35px 4fr 35px;
+          align-items: center;
+          justify-content: center;
+
+          .handle-icon {
+            opacity: 0;
+          }
+        }
+
+        &.col-categories {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+
+      .col-add-item {
+        margin-bottom: 16px;
+        padding: 6px;
+        cursor: pointer;
+        border: 1.5px dashed $accent-color-light-grey;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .parent-not-selected-message {
+        text-transform: initial;
+      }
+    }
+  }
+}
+
+.admin-footer {
+  .footer-pages-table {
+    max-width: 600px;
+
+    .tabs-bar {
+      margin-bottom: 20px;
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      .tab {
+        &:hover {
+          cursor: pointer;
+          color: $color;
+        }
+
+        &.selected {
+          color: $color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .table {
+      border: 1px solid $accent-color-grey;
+      border-bottom: none;
+
+      .table-header, .table-card  {
+        display: grid;
+        grid-template-columns: 5fr 2fr 1fr;
+        padding: 10px 30px;
+        min-height: 50px;
+        align-content: center;
+        border-bottom: 1px solid $accent-color-grey;
+
+        div:not(:first-of-type) {
+          justify-self: center;
+        }
+      }
+
+     .table-header {
+       background-color: $accent-color-light-grey;
+       font-size: 12px;
+       text-transform: uppercase;
+       font-weight: 700;
+       font-family: "Open Sans";
+     }
+
+      .table-card {
+        label {
+          color: $text-color;
+        }
+
+        &:hover {
+          box-shadow: 4px 4px 7px $accent-color-light-grey;
+        }
+
+        .footer-page-toggle {
+          *:hover {
+            cursor: pointer !important;
+          }
+        }
+        .footer-page-delete {
+          color: $accent-color-grey;
+          &:hover {
+            color: $text-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Admin Dashboard Articles Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-articles {
   max-width: 870px;
@@ -712,14 +1060,6 @@ h1, h2, h3, h4, h5, h6, label {
     a {
       text-decoration: none;
       color: $accent-color-grey;
-    }
-  }
-
-  .preview-btn {
-    color: $color !important;
-    text-decoration: none;
-    svg {
-      margin-right: 5px;
     }
   }
 
@@ -829,118 +1169,6 @@ h1, h2, h3, h4, h5, h6, label {
     }
   }
 
-  #article-form {
-    label {
-      margin: 20px 0 7px 0;
-      font-size: 10px;
-      text-transform: uppercase;
-      color: $accent-color-dark-grey;
-    }
-    .dropzone {
-      position: relative;
-      min-height: 450px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-
-      .existing-image {
-        position: absolute;
-        width: 100%;
-      }
-
-      #article_picture {
-        display: none;
-      }
-
-      .dropzone-msg {
-        .camera-icon {
-          width: 64px;
-          height: 64px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: auto;
-          background-color: $color;
-          border-radius: 50%;
-
-          svg {
-            fill: $background-color;
-          }
-        }
-
-        .dropzone-msg-desc {
-          margin-top: 28px;
-          font-size: 14px;
-          font-family: "Open Sans";
-
-          .emphasized {
-            color: $color;
-          }
-        }
-      }
-
-      &:hover {
-        .existing-image {
-          z-index: -1;
-          filter: opacity(0.2);
-        }
-      }
-    }
-
-    input,
-    textarea {
-      border-radius: 0;
-    }
-
-    input::placeholder,
-    select,
-    textarea::placeholder {
-      font-size: 12px;
-      color: $accent-color-grey;
-    }
-
-    .dropdown-menus {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      .dropdown {
-        display: block;
-        min-width: 250px;
-        padding: 8px;
-      }
-
-      select::selection {
-        background-color: $color;
-      }
-    }
-
-    .form-check-comments {
-      .form-check-label {
-        margin-top: 0 !important;
-        color: $color;
-        text-transform: initial;
-      }
-
-      .form-check-input {
-        margin-top: 6px !important;
-        border-radius: 20px;
-
-        &:checked {
-          background-color: $background-color;
-          border-color: $accent-color-grey;
-          @include toggleSwitchDotInColor("D72130");
-        }
-
-        &:focus {
-          border-color: $color;
-          box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
-          @include toggleSwitchDotInColor("EB9097");
-        }
-      }
-    }
-  }
-
   .edit-container {
     .preview-btn {
       right: 0;
@@ -948,74 +1176,8 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
-.information-architecture {
-  .sortable-items {
-    color: $accent-color-grey;
-    margin-top: 50px;
-    display: flex;
-
-    .col {
-      max-width: 200px;
-      margin-right: 50px;
-      text-align: center;
-
-      .list {
-        list-style: none;
-        padding: 0;
-        .col-item,
-        .col-add-item {
-          margin-bottom: 16px;
-          padding: 6px;
-          cursor: grab;
-          border: 1.5px solid $accent-color-light-grey;
-
-          &:active {
-            cursor: grabbing;
-            box-shadow: 1px 2px 5px $accent-color-light-grey;
-
-            .handle-icon {
-              opacity: 1;
-            }
-          }
-        }
-
-        .col-item {
-          display: grid;
-          grid-template-columns: 35px 4fr 35px;
-          align-items: center;
-          justify-content: center;
-
-          .handle-icon {
-            opacity: 0;
-          }
-        }
-
-        &.col-categories {
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-      }
-
-      .col-add-item {
-        margin-bottom: 16px;
-        padding: 6px;
-        cursor: pointer;
-        border: 1.5px dashed $accent-color-light-grey;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      .parent-not-selected-message {
-        text-transform: initial;
-      }
-    }
-  }
-}
-
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// Admin Side Panel Common Styling
+// Admin Dashboard Common Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .actions-dropdown {
   .dropdown-menu {
@@ -1077,15 +1239,15 @@ h1, h2, h3, h4, h5, h6, label {
   .card {
     position: absolute;
     width: 460px;
-    height: 260px;
+    min-height: 260px;
     border-radius: 0;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    padding: 42px 0 20px 0;
 
     h5 {
       position: relative;
-      margin-top: 42px;
       font-size: 24px;
       color: $text-color;
       text-align: center;
@@ -1100,6 +1262,9 @@ h1, h2, h3, h4, h5, h6, label {
       text-align: left;
 
       label {
+        &:not(:first-of-type) {
+          margin-top: 18px;
+        }
         color: $accent-color-grey;
         font-weight: bold;
       }
@@ -1115,7 +1280,7 @@ h1, h2, h3, h4, h5, h6, label {
       .buttons {
         margin-top: 24px;
         text-decoration: none;
-        text-align: right;
+        text-align: center;
 
         input,
         button {
@@ -1231,8 +1396,152 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
+.preview-btn {
+  color: $color !important;
+  text-decoration: none;
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.article-form {
+  label {
+    margin: 20px 0 7px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $accent-color-dark-grey;
+  }
+  .dropzone {
+    position: relative;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .existing-image {
+      position: absolute;
+      width: 100%;
+    }
+
+    #article_picture {
+      display: none;
+    }
+
+    .dropzone-msg {
+      .camera-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        background-color: $color;
+        border-radius: 50%;
+
+        svg {
+          fill: $background-color;
+        }
+      }
+
+      .dropzone-msg-desc {
+        margin-top: 28px;
+        font-size: 14px;
+        font-family: "Open Sans";
+
+        .emphasized {
+          color: $color;
+        }
+      }
+    }
+
+    &:hover {
+      .existing-image {
+        z-index: -1;
+        filter: opacity(0.2);
+      }
+    }
+  }
+
+  input,
+  textarea {
+    border-radius: 0;
+  }
+
+  input::placeholder,
+  select,
+  textarea::placeholder {
+    font-size: 12px;
+    color: $accent-color-grey;
+  }
+
+  .dropdown-menus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .dropdown {
+      display: block;
+      min-width: 250px;
+      padding: 8px;
+    }
+
+    select::selection {
+      background-color: $color;
+    }
+  }
+}
+
+.form-check-toggle {
+  .form-check-label {
+    margin-top: 0 !important;
+    color: $color;
+    text-transform: initial;
+  }
+
+  .form-check-input {
+    margin-top: 6px !important;
+    border-radius: 20px !important;
+
+    &:checked {
+      background-color: $background-color;
+      border-color: $accent-color-grey;
+      @include toggleSwitchDotInColor("D72130");
+    }
+
+    &:focus {
+      border-color: $color;
+      box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+      @include toggleSwitchDotInColor("EB9097");
+    }
+  }
+}
+
+.background-titles {
+  width: 100%;
+  position: absolute;
+  top: 25px;
+  font-size: 140px;
+  font-family: "Roboto Condensed";
+  color: $accent-color-light-grey;
+  text-transform: uppercase;
+  z-index: -1;
+
+  div {
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .article-category-title {
+    left: -120px;
+  }
+
+  .article-news {
+    top: 420px;
+    right: -50px;
+  }
+}
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=
-// User Side Panel Common Styling
+// User Side Common Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .user-avatar {
   width: 34px;
@@ -1250,11 +1559,105 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
+.more-btn {
+  color: $background-color;
+  background-color: $color;
+  width: 200px;
+
+  text-decoration: none;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+
+  &:hover {
+    color: $color;
+    background: $background-color;
+  }
+
+  &:active,
+  &:focus {
+    border: none;
+  }
+
+  a {
+    display: block;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+// Common Styling
+// =-=-=-=-=-=-=-=-=-=-=-=-=
+
+.section-title {
+  position: absolute;
+  width: fit-content;
+  top: -22px;
+  margin: auto;
+  left: 0;
+  right: 0;
+
+  padding: 10px 20px;
+  border: 1px solid $accent-color-grey;
+  background-color: $background-color;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: "Open Sans";
+}
+
+.article-small {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  border: 1px solid $accent-color-light-grey;
+
+  .article-small-preview-image {
+    img {
+      margin-bottom: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .article-small-preview-content {
+    padding: 20px 15px;
+
+    div {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-small-headline {
+      -webkit-line-clamp: 1;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .article-small-caption {
+      margin-top: 5px;
+      color: $accent-color-dark-grey;
+      line-height: 19px;
+    }
+  }
+}
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 // Common Styling Reset
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 
 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
   text-decoration: none;
   color: inherit;
 }
@@ -1287,4 +1690,12 @@ button {
     border: 0;
     padding: 0;
   }
+}
+
+input, select {
+  border-radius: 0 !important;
+}
+
+select {
+  color: $text-color !important;
 }

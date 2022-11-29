@@ -20,7 +20,7 @@ module ApplicationHelper
     static_pages = Category.where.not(category_type: 'articles').order("position ASC")
     static_pages.each do |page|
       static_page = {
-        url: "pages/#{page.slug}",
+        url: "#{page.slug}",
         title: page.title
       }
       pages << static_page
@@ -39,16 +39,11 @@ module ApplicationHelper
       },
       {
         url: '/path-to-be-added',
-        title: 'Banners',
-        svg_path: svg_src_path + 'banners.svg'
-      },
-      {
-        url: '/path-to-be-added',
         title: 'Languages',
         svg_path: svg_src_path + 'languages.svg'
       },
       {
-        url: admin_footer_path,
+        url: admin_footer_pages_path,
         title: 'Footer',
         svg_path: svg_src_path + 'footer.svg'
       },
@@ -71,16 +66,6 @@ module ApplicationHelper
         url: '/path-to-be-added',
         title: 'Teams',
         svg_path: svg_src_path + 'teams.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'News Partners',
-        svg_path: svg_src_path + 'news-partners.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Advertising',
-        svg_path: svg_src_path + 'advertising.svg'
       }
     ]
   end

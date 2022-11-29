@@ -1,0 +1,11 @@
+<section class="home-section admin-main-articles">
+  <span class="section-title">Main Articles</span>
+  <section class="mt-5 mb-5">
+    <%= turbo_frame_tag "turbo_reactive_categories_main_articles" do %>
+      <% @main_articles.each do |article| %>
+          <%= render 'admin/pages/home/added_article_form', article: article, type: 'main_articles' %>
+      <% end %>
+      <%= render 'admin/pages/home/add_article_to_section_form', articles_left: @main_articles_left, type: 'main_articles' %>
+    <% end %>
+  </section>
+</section>

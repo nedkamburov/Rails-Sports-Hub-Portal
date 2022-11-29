@@ -1,0 +1,29 @@
+<section class="subfooter">
+  <section class="footer-links d-flex justify-content-between">
+    <article>
+      <h6><%= FooterPage.page_types.keys[0] %></h6>
+      <ul>
+        <% @footer_pages.where(page_type: FooterPage.page_types.keys[0], status: 'shown').each do |page| %>
+          <li><a href="<%= page.url %>"><%= page.title %></a></li>
+        <% end %>
+      </ul>
+    </article>
+    <article>
+      <h6><%= FooterPage.page_types.keys[1] %></h6>
+      <ul>
+        <% @footer_pages.where(page_type: FooterPage.page_types.keys[1], status: 'shown').each do |page| %>
+          <li><a href="<%= page.url %>"><%= page.title %></a></li>
+        <% end %>
+      </ul>
+    </article>
+    <article>
+      <h6><%= FooterPage.page_types.keys[2] %></h6>
+      <ul>
+        <% @footer_pages.where(page_type: FooterPage.page_types.keys[2], status: 'shown').each do |page| %>
+          <div><%= page.title %></div>
+        <% end %>
+      </ul>
+      <%= render 'newsletters/form' %>
+    </article>
+  </section>
+</section>

@@ -12,7 +12,8 @@
         <%= turbo_frame_tag "turbo_comment_delete_frame" do %>
           <div><%= button_to 'Delete', article_comment_path(comment, {article_id: comment.article}),
                              method: :delete,
-                             form: { data: { turbo_confirm: "comment" } }%></div>
+                             form: { data: { turbo_confirm: "comment" } }%>
+          </div>
         <% end %>
       <% end %>
     </section>

@@ -1,0 +1,14 @@
+<section class="home-section main-articles">
+  <div class="background-titles">
+    <div class="article-category-title">All</div>
+    <div class="article-news">News</div>
+  </div>
+  <section>
+      <%= render 'pages/home/preview_article', article: @main_articles.first %>
+      <section class="small-card-articles d-flex">
+        <% @main_articles.drop(1).each do |article| %>
+          <%= render 'pages/home/small_card_article', article: article %>
+        <% end %>
+      </section>
+  </section>
+</section>

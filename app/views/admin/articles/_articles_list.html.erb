@@ -6,7 +6,7 @@
       </article>
       <article class="article-text">
         <div class="article-headline">
-          <%= article.headline %>
+          <%= link_to article.headline, article_url(article.id) %>
         </div>
         <div class="article-caption">
           <%= article.caption %>

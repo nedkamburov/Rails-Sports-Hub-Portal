@@ -1,0 +1,29 @@
+<section class="home-section admin-photo_of_the_day">
+  <span class="section-title">Photo Of The Day</span>
+  <section class="mt-5 mb-5">
+    <%= form_with model: PhotoOfTheDay, url: admin_photo_of_the_day_index_path, id: 'photo-of-the-day-form', class: 'article-form' do |form| %>
+      <section>
+        <%= form.label :picture, "Picture*", class: "label" %>
+        <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
+          <%= image_tag @photo_of_the_day.picture, alt: @photo_of_the_day.picture_alt, class: 'existing-image' if @photo_of_the_day&.picture.present? %>
+          <%= form.file_field :picture, required: true, direct_upload: true, data: { dropzone_target: 'input' } %>
+          <div class="dropzone-msg dz-message needsclick">
+            <div class="camera-icon">
+              <%= show_svg('camera.svg') %>
+            </div>
+            <h3 class="dropzone-msg-desc text-sm"><span class="emphasized">+Add picture</span> or drop it right here<br>You can add next formats: png. jpg. jpeg. tif. 2 MB file size maximum.</h3>
+          </div>
+        </div>
+      </section>
+      <%= form.label :picture_alt, "Alt.*" %>
+      <%= form.text_field :picture_alt, required: true, placeholder: 'Alternative text for the picture', value: @photo_of_the_day&.picture_alt , class: "form-control" %>
+      <%= form.label :title, "Photo Title*" %>
+      <%= form.text_field :title, required: true, placeholder: 'Title', value: @photo_of_the_day&.title, class: "form-control" %>
+      <%= form.label :description, "Short Description*" %>
+      <%= form.text_area :description, required: true, placeholder: 'Write description text here', value: @photo_of_the_day&.description, class: "form-control" %>
+      <%= form.label :author, "Author*" %>
+      <%= form.text_field :author, required: true, placeholder: 'Author of the photo', value: @photo_of_the_day&.author, class: "form-control" %>
+      <%= form.submit 'Save photo', class: 'btn add-more-btn' %>
+    <% end %>
+  </section>
+</section>
