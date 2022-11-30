@@ -4,8 +4,8 @@
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
       <div class="dropdown-menu header-dropdown-menu">
         <ul class="list-unstyled list-group">
-          <li><%= link_to 'Български', root_path(locale: :bg) %></li>
-          <li><%= link_to 'English', root_path(locale: :en) %></li>
+          <li><%= link_to 'Български', url_for(:locale => :bg) %></li>
+          <li><%= link_to 'English', url_for(:locale => :en) %></li>
         </ul>
       </div>
   </div>
