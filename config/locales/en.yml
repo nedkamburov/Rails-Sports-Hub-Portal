@@ -54,7 +54,7 @@ en:
     unpublish: 'Unpublish'
   general:
     refresh: 'Refresh'
-    delete: 'delete'
+    delete: 'Delete'
     more: 'More'
     edit: 'Edit'
     submit: 'Submit'
