@@ -6,7 +6,7 @@
                                        search_and_filter_form_target: "form"} do |form|  %>
       <%= form.text_field :search_term,
                           value: params[:search_term],
-                          placeholder: "Search by",
+                          placeholder: t('home.search_by'),
                           data: { action: "input->search-and-filter-form#search_and_filter" } %>
     <% end %>
   <% end %>

@@ -6,7 +6,7 @@
     <% if !@is_admin_panel  %>
       <%= render 'pages/full_text_search_bar' %>
       <article class="social-media">
-        <p>Share</p>
+        <p><%= t('home.share') %></p>
         <div class="social-links">
           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#"><i class="fa-brands fa-twitter"></i></a>
@@ -22,9 +22,7 @@
       <%= render 'shared/header_user_dropdown' %>
     </article>
     <article>
-      <div class="lang">EN
-        <button class="btn dropdown-toggle" type="button" id="dropdownLangButton" data-toggle="dropdown"></button>
-      </div>
+      <%= render 'shared/header_lang_dropdown' %>
     </article>
   </section>
 </header>

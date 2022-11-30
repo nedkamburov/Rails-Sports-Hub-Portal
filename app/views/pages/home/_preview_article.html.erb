@@ -3,9 +3,11 @@
     <span class="article-category"><%= article.category.title %></span>
   </article>
   <section class="article-summary">
-    <article class="published-at">Published / <%= article.created_at.strftime('%d.%m.%Y') %></article>
-    <article class="headline"><%= article.headline %></article>
-    <article class="caption"><%= article.caption %></article>
+    <div>
+      <article class="published-at">Published / <%= article.created_at.strftime('%d.%m.%Y') %></article>
+      <article class="headline"><%= article.headline %></article>
+      <article class="caption"><%= article.caption %></article>
+    </div>
     <article class="more-btn"><%= link_to 'More', article_path(article) %></article>
   </section>
   <section class="article-main">

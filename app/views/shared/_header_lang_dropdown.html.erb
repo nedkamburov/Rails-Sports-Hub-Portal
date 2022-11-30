@@ -1,0 +1,12 @@
+<div class="dropdown user-dropdown">
+  <div class="user-details lang">
+    <span class="lang-chosen"><%= I18n.locale %></span>
+      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
+      <div class="dropdown-menu header-dropdown-menu">
+        <ul class="list-unstyled list-group">
+          <li><%= link_to 'Български', root_path(locale: :bg) %></li>
+          <li><%= link_to 'English', root_path(locale: :en) %></li>
+        </ul>
+      </div>
+  </div>
+</div>

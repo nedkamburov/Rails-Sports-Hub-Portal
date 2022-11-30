@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}, controllers: {passwords: 'custom_devise/passwords', omniauth_callbacks: 'users/omniauth_callbacks'}
-
   devise_scope :user do
     get "password/request_link_sent", to: "custom_devise/passwords#request_link_sent"
   end
@@ -44,19 +43,21 @@ Rails.application.routes.draw do
     get "information-architecture", to: "pages#information_architecture"
   end
 
-  # Defines the root path route ("/")
-  root :to => "pages#home"
+  scope "(:locale)", locale: /en|bg/ do
+    # Defines the root path route ("/")
+    root :to => "pages#home"
 
-  resources :articles, only: [:index, :show] do
-    member do
-      post :show
+    resources :articles, only: [:index, :show] do
+      member do
+        post :show
+      end
+      resources :comments
     end
-    resources :comments
-  end
 
-  resources :likes, :dislikes, only: [:create, :destroy]
-  resources :pages do
-    get "global_search", on: :collection
+    resources :likes, :dislikes, only: [:create, :destroy]
+    resources :pages do
+      get "global_search", on: :collection
+    end
+    resources :newsletters
   end
-  resources :newsletters
 end

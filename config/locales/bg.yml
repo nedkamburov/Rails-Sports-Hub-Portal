@@ -29,9 +29,9 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+bg:
   home:
-    home_page: 'Home'
-    search_by: 'Search by'
-    share: 'Share'
-    follow: 'Follow'
+    home_page: 'Начална страница'
+    search_by: 'Търси'
+    share: 'Сподели'
+    follow: 'Последвай'
