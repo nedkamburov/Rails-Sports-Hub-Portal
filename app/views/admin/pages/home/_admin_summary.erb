@@ -1,7 +1,7 @@
 <section class="admin-summary">
   <div class="articles-summary d-flex w-100 justify-content-between">
     <div class="w-50">
-     <h6>Most popular</h6>
+     <h6><%= t('articles.most_popular') %></h6>
       <div class="form-check-toggle form-switch d-inline-block p-0">
         <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
                                            controller: 'search-and-filter-form',
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="w-50">
-      <h6>Most commented</h6>
+      <h6><%= t('articles.most_commented') %></h6>
       <div class="form-check-toggle form-switch d-inline-block p-0">
         <%= form_with method: :get, data: {turbo_frame: "turbo_reactive_summary",
                                            controller: 'search-and-filter-form',

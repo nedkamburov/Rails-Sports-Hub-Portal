@@ -8,7 +8,7 @@
       <article class="headline"><%= article.headline %></article>
       <article class="caption"><%= article.caption %></article>
     </div>
-    <article class="more-btn"><%= link_to 'More', article_path(article) %></article>
+    <article class="more-btn"><%= link_to t('general.more'), article_path(article) %></article>
   </section>
   <section class="article-main">
     <%= image_tag article.picture, alt: article.picture_alt, class: 'article-picture' if article.picture.present? %>

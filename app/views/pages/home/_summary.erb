@@ -1,7 +1,7 @@
 <section class="home-section summary">
   <div class="articles-summary">
     <div>
-      <span class="most-title">Most popular</span>
+      <span class="most-title"><%= t('articles.most_popular') %></span>
       <section class="d-flex flex-column">
         <% @most_commented.each do |article| %>
           <%= render 'pages/home/small_card_breakdown', article: article %>
@@ -9,7 +9,7 @@
       </section>
     </div>
     <div>
-      <span class="most-title">Most commented</span>
+      <span class="most-title"><%= t('articles.most_commented') %></span>
       <section class="d-flex flex-column">
         <% @most_popular.each do |article| %>
           <%= render 'pages/home/small_card_breakdown', article: article %>

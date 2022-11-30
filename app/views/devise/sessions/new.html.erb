@@ -1,4 +1,4 @@
-<h2>Log in to Sports Hub</h2>
+<h2><%= t('devise.general.log_in_to') %> Sports Hub</h2>
 <%= render "devise/shared/third-party_authentication" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -13,6 +13,6 @@
     <%= f.password_field :password, autocomplete: "current-password", placeholder: "#{ !@minimum_password_length.nil? ? @minimum_password_length : 8 } + characters (letters and numbers)", class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit "Log in", class: 'btn' %>
+    <%= f.submit t('devise.general.log_in'), class: 'btn' %>
   </div>
 <% end %>

@@ -1572,11 +1572,14 @@ h1, h2, h3, h4, h5, h6, label {
   z-index: -1;
 
   div {
+    height: 0;
+    width: 0;
     position: absolute;
     transform: rotate(90deg);
   }
   .article-category-title {
-    left: -120px;
+    top: -40px;
+    left: 80px;
   }
 
   .article-news {
@@ -1671,6 +1674,7 @@ h1, h2, h3, h4, h5, h6, label {
 
   .article-small-preview-content {
     padding: 20px 15px;
+    background: $background-color;
 
     div {
       display: -webkit-box;

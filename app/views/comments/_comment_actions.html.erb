@@ -2,15 +2,15 @@
     <section class="comment-actions d-flex">
       <% if current_user == comment.user %>
         <%= turbo_frame_tag "turbo_comment_edit_frame" do %>
-          <div><%= link_to "Edit", edit_article_comment_path(comment, {article_id: comment.article}), data: { turbo_frame: "turbo_comment_content_frame_#{comment.id}" } %></div>
+          <div><%= link_to t('general.edit'), edit_article_comment_path(comment, {article_id: comment.article}), data: { turbo_frame: "turbo_comment_content_frame_#{comment.id}" } %></div>
         <% end %>
       <% end %>
       <div>
-        <%= link_to "Comment", "#", class: "subcomment-form" %>
+        <%= link_to t('articles.comment'), "#", class: "subcomment-form" %>
       </div>
       <% if current_user == comment.user %>
         <%= turbo_frame_tag "turbo_comment_delete_frame" do %>
-          <div><%= button_to 'Delete', article_comment_path(comment, {article_id: comment.article}),
+          <div><%= button_to t('general.delete'), article_comment_path(comment, {article_id: comment.article}),
                              method: :delete,
                              form: { data: { turbo_confirm: "comment" } }%>
           </div>

@@ -1,7 +1,7 @@
 <% if pagy.next %>
   <div class="show-more" id="show-more-button">
     <%= button_to pagy_url_for(pagy, pagy.next)  do %>
-      Show more <i class="fa-solid fa-chevron-down"></i>
+      <%= t('articles.show_more') %> <i class="fa-solid fa-chevron-down"></i>
     <% end %>
   </div>
 <% end %>

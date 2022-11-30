@@ -7,14 +7,14 @@
         <%= show_svg('actions-three-dots.svg') %>
       </div>
       <div class="dropdown-item">
-        <%= link_to article.status == 'published' ? 'Unpublish' : 'Publish',
+        <%= link_to article.status == 'published' ? t('articles.unpublish') : t('articles.publish'),
                     toggle_status_admin_article_path(article) %>
       </div>
       <div class="dropdown-item">
-        <%= link_to "Edit", edit_admin_article_path(article, category_slug: @category.slug) %>
+        <%= link_to t('general.edit'), edit_admin_article_path(article, category_slug: @category.slug) %>
       </div>
       <div class="dropdown-item">Move</div>
-      <%= button_to 'Delete', admin_article_path(article), class: 'dropdown-item',
+      <%= button_to t('general.delete'), admin_article_path(article), class: 'dropdown-item',
                     method: :delete,
                     form: { data: { turbo_confirm: "article"} }%>
     </div>
