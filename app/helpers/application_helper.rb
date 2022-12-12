@@ -3,11 +3,11 @@ module ApplicationHelper
 
   def login_helper(style = '')
     if current_user.nil?
-      (link_to "Sign up", new_user_registration_path, class: style) +
+      (link_to t('devise.general.sign_up'), new_user_registration_path, class: style) +
         " ".html_safe +
-        (link_to "Log in", new_user_session_path, class: style)
+        (link_to t('devise.general.log_in'), new_user_session_path, class: style)
     else
-      link_to "Log out", destroy_user_session_path, method: :delete, class: style
+      link_to t('devise.general.log_out'), destroy_user_session_path, method: :delete, class: style
     end
   end
 
@@ -15,12 +15,12 @@ module ApplicationHelper
     pages = []
     pages << {
       url: @is_admin_panel ? admin_root_path : root_path,
-      title: 'Home' }
+      title: t('home.home_page') }
 
     static_pages = Category.where.not(category_type: 'articles').order("position ASC")
     static_pages.each do |page|
       static_page = {
-        url: "pages/#{page.slug}",
+        url: "/pages/#{page.slug}",
         title: page.title
       }
       pages << static_page

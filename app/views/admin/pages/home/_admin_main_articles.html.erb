@@ -1,5 +1,5 @@
 <section class="home-section admin-main-articles">
-  <span class="section-title">Main Articles</span>
+  <span class="section-title"><%= t('articles.main_articles') %></span>
   <section class="mt-5 mb-5">
     <%= turbo_frame_tag "turbo_reactive_categories_main_articles" do %>
       <% @main_articles.each do |article| %>

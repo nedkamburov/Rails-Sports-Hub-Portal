@@ -1,2 +1,8 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% unless flash.empty? %>
+  <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')
+       message = f[1]
+    %>
+    <section data-controller="flash" data-flash-type="<%= type %>" data-flash-message="<%= message %>"></section>
+  <% end %>
+<% end %>

@@ -192,6 +192,11 @@ h1, h2, h3, h4, h5, h6, label {
 
   .lang {
     text-align: center;
+
+    .lang-chosen {
+      align-self: center;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -285,7 +290,7 @@ h1, h2, h3, h4, h5, h6, label {
 
 .user-page {
   margin-top: 120px;
-  max-width: 870px;
+  max-width: 1060px;
   margin-bottom: 80px;
   min-height: 52vh;
 
@@ -298,6 +303,10 @@ h1, h2, h3, h4, h5, h6, label {
       margin-top: 0;
       padding-top: 0;
 
+      .article-news {
+        right: -72px !important;
+      }
+
       .preview-article {
         .breadcrumb {
           top: 10px;
@@ -309,7 +318,29 @@ h1, h2, h3, h4, h5, h6, label {
         }
 
         .article-summary {
-          right: -250px;
+          right: -12px;
+          padding: 0;
+          div {
+            padding: 30px;
+
+            .caption {
+              margin-bottom: 0;
+            }
+          }
+
+          .more-btn {
+            width: 192px;
+            height: 42px;
+            margin: 0;
+
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
 
@@ -448,7 +479,7 @@ h1, h2, h3, h4, h5, h6, label {
 .page-container {
   position: relative;
   margin-top: 120px;
-  max-width: 870px;
+  max-width: 1060px;
   margin-bottom: 80px;
 
   .back-link {
@@ -515,8 +546,8 @@ h1, h2, h3, h4, h5, h6, label {
 // User Side Panel Articles Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .article-container {
-  margin-top: 125px;
   position: relative;
+  margin-top: 120px;
   max-width: 1060px;
 
   .breadcrumb {
@@ -896,7 +927,7 @@ h1, h2, h3, h4, h5, h6, label {
 // Admin Dashboard Individual Pages Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-page {
-  max-width: 870px;
+  max-width: 1060px;
   margin-top: 48px;
   margin-bottom: 80px;
 
@@ -1064,12 +1095,12 @@ h1, h2, h3, h4, h5, h6, label {
 // Admin Dashboard Articles Styling
 // =-=-=-=-=-=-=-=-=-=-=-=-=
 .admin-articles {
-  max-width: 870px;
+  max-width: 1060px;
   margin-top: 48px;
   padding-bottom: 48px;
 
   .articles-actions {
-    max-width: 790px;
+    max-width: 95%;
     margin: auto;
     a {
       text-decoration: none;
@@ -1078,7 +1109,7 @@ h1, h2, h3, h4, h5, h6, label {
   }
 
   .articles-filters {
-    max-width: 790px;
+    max-width: 95%;
     margin: auto;
     margin-top: 48px;
 
@@ -1541,11 +1572,14 @@ h1, h2, h3, h4, h5, h6, label {
   z-index: -1;
 
   div {
+    height: 0;
+    width: 0;
     position: absolute;
     transform: rotate(90deg);
   }
   .article-category-title {
-    left: -120px;
+    top: -40px;
+    left: 80px;
   }
 
   .article-news {
@@ -1640,6 +1674,7 @@ h1, h2, h3, h4, h5, h6, label {
 
   .article-small-preview-content {
     padding: 20px 15px;
+    background: $background-color;
 
     div {
       display: -webkit-box;

@@ -1,7 +1,7 @@
 <section class="home-section main-articles">
   <div class="background-titles">
-    <div class="article-category-title">All</div>
-    <div class="article-news">News</div>
+    <div class="article-category-title"><%= t('articles.all') %></div>
+    <div class="article-news"><%= t('articles.news') %></div>
   </div>
   <section>
       <%= render 'pages/home/preview_article', article: @main_articles.first %>

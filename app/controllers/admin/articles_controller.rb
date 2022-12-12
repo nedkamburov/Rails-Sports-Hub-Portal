@@ -41,9 +41,11 @@ module Admin
         if @article.update(article_params)
           format.html {
             if params['remove_article_from_section'].present?
+              flash[:notice] = "Your article was successfully deleted from the section."
               redirect_to admin_root_path
             else
-              redirect_to admin_article_path(@article.category), notice: "Your article was successfully updated."
+              flash[:notice] = "Your article was successfully updated."
+              redirect_to admin_article_path(@article.category)
             end
           }
         else
@@ -56,6 +58,7 @@ module Admin
       @article.destroy
 
       redirect_to admin_articles_path, status: :see_other
+      flash[:notice] = "Your article was successfully deleted."
     end
 
     def toggle_status

@@ -1,5 +1,5 @@
 <section class="home-section breakdown">
-  <span class="section-title">Breakdown</span>
+  <span class="section-title"><%= t('articles.breakdown') %></span>
     <% @breakdown_articles.each do |article| %>
       <%= render 'pages/home/preview_breakdown', article: article %>
     <% end %>

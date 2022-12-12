@@ -31,6 +31,6 @@
     </section>
     <%= form.hidden_field :is_part_of_main_articles, value: false if type == 'main_articles' %>
     <%= form.hidden_field :is_part_of_breakdown, value: false if type == 'breakdown' %>
-    <%= form.submit 'Delete', name: 'remove_article_from_section', class: 'btn add-more-btn' %>
+    <%= form.submit t('general.delete'), name: 'remove_article_from_section', class: 'btn add-more-btn' %>
   <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 <article>
   <div class="comments-header d-flex justify-content-between">
     <div class="comment-count" id="comment-count">
-      Comments (<%= article.comments.count %>)
+      <%= t('articles.comments') %> (<%= article.comments.count %>)
     </div>
     <%= render 'comments/sort_by', article: article %>
   </div>

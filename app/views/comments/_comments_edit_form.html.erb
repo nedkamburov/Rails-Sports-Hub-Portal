@@ -4,6 +4,6 @@
     <% if !parent_id.nil? %>
       <%= form.hidden_field :parent_id, {value: parent_id} %>
     <% end %>
-    <%= form.submit "Submit", class:"btn d-inline-block" %>
+    <%= form.submit t('general.submit'), class:"btn d-inline-block" %>
   <% end %>
 </section>
