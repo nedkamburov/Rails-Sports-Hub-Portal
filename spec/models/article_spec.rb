@@ -56,7 +56,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'associations' do
-    before(:all) do
+    before(:each) do
       @article = FactoryBot.create(:article)
       @parent_category = @article.category
       @parent_subcategory = @article.subcategory

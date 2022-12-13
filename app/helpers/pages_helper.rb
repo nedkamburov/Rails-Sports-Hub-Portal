@@ -9,4 +9,12 @@ module PagesHelper
   def page_path(url)
     root_path + url
   end
+
+  def current_page_in_locale(lang)
+    begin
+      url_for(locale: lang)
+    rescue => e
+      root_url(locale: lang)
+    end
+  end
 end
