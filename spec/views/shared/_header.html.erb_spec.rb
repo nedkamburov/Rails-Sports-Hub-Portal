@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe 'shared/_header.html.erb', type: :view do
-
   describe 'without any user logged in' do
     it 'contains the title of the website' do
       render
@@ -15,12 +14,12 @@ RSpec.describe 'shared/_header.html.erb', type: :view do
 
     it 'contains a functional "Sign up" button' do
       render
-      expect(rendered).to have_link('Sign up', href: new_user_registration_path)
+      expect(rendered).to have_link(t('devise.general.sign_up'), href: new_user_registration_path)
     end
 
     it 'contains a functional "Log in" button' do
       render
-      expect(rendered).to have_link('Log in', href: new_user_session_path)
+      expect(rendered).to have_link(t('devise.general.log_in'), href: new_user_session_path)
     end
   end
 
