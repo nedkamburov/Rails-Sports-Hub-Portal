@@ -1045,78 +1045,148 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
-.admin-footer {
-  .footer-pages-table {
-    max-width: 600px;
 
-    .tabs-bar {
-      margin-bottom: 20px;
-      font-family: Roboto;
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
+.admin-user-panel {
+  .reactive-table {
+    max-width: 660px;
+    .table {
+      .table-header, .table-card {
+        grid-template-columns: 5fr 2fr 2fr;
+      }
+      .table-card {
+        padding: 10px 10px 10px 30px;
 
-      .tab {
-        &:hover {
-          cursor: pointer;
-          color: $color;
+        .reactive-table-title {
+          font-weight: 600;
         }
+      }
 
-        &.selected {
-          color: $color;
-          text-decoration: underline;
+      .reactive-table-actions {
+        width: 180px;
+
+        .dropdown, button {
+          width: 100%;
+
+          border-radius: 0;
+
+          .dropdown-menu {
+            width: 100%;
+            min-width: 102%;
+            top: -42px !important;
+            border-radius: 0;
+            text-align: center;
+
+            .dropdown-item {
+              padding: 10px 5px;
+
+              &:hover {
+                background-color: inherit;
+                color: inherit;
+                box-shadow: 4px 4px 7px $accent-color-light-grey;
+              }
+            }
+
+          }
         }
       }
     }
 
-    .table {
-      border: 1px solid $accent-color-grey;
-      border-bottom: none;
+    .table-content {
+      border: none;
+    }
+  }
+}
 
-      .table-header, .table-card  {
-        display: grid;
-        grid-template-columns: 5fr 2fr 1fr;
-        padding: 10px 30px;
-        min-height: 50px;
-        align-content: center;
-        border-bottom: 1px solid $accent-color-grey;
+.reactive-table {
+  max-width: 600px;
 
-        div:not(:first-of-type) {
-          justify-self: center;
-        }
+  .tabs-bar {
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    .tab {
+      &:hover {
+        cursor: pointer;
+        color: $color;
       }
 
-     .table-header {
-       background-color: $accent-color-light-grey;
-       font-size: 12px;
-       text-transform: uppercase;
-       font-weight: 700;
-       font-family: "Open Sans";
-     }
+      &.selected {
+        color: $color;
+        text-decoration: underline;
+      }
+    }
+  }
 
-      .table-card {
-        label {
-          color: $text-color;
+  .table {
+    border: 1px solid $accent-color-grey;
+    border-bottom: none;
+
+    .table-header, .table-card  {
+      display: grid;
+      grid-template-columns: 5fr 2fr 1fr;
+      padding: 10px 30px;
+      min-height: 45px;
+      align-content: center;
+      border-bottom: 1px solid $accent-color-grey;
+
+      div:not(:first-of-type) {
+        justify-self: center;
+      }
+    }
+
+    .table-header {
+      background-color: $accent-color-light-grey;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: "Open Sans";
+    }
+
+    .table-card {
+      label {
+        color: $text-color;
+      }
+
+      &:hover {
+        box-shadow: 4px 4px 7px $accent-color-light-grey;
+      }
+
+      .reactive-table-toggle {
+        *:hover {
+          cursor: pointer !important;
         }
-
+      }
+      .reactive-table-actions {
+        color: $accent-color-grey;
         &:hover {
-          box-shadow: 4px 4px 7px $accent-color-light-grey;
-        }
-
-        .footer-page-toggle {
-          *:hover {
-            cursor: pointer !important;
-          }
-        }
-        .footer-page-delete {
-          color: $accent-color-grey;
-          &:hover {
-            color: $text-color;
-          }
+          color: $text-color;
         }
       }
     }
   }
+
+  .active {
+    color: green;
+  }
+  .activate {
+    color: green !important;
+    background-color: rgba(green, 0.3) !important;
+  }
+  .block {
+    background-color: rgba($accent-color-darkest-grey, 0.3) !important;
+  }
+  .make-admin {
+    color: royalblue !important;
+    background-color: rgba(royalblue, 0.2) !important;
+  }
+  .remove-admin, .delete {
+    color: $color !important;
+    background-color: rgba($color, 0.3) !important;
+  }
+
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1148,7 +1218,6 @@ h1, h2, h3, h4, h5, h6, label {
       border-radius: 0;
       border: 1px solid $accent-color-grey;
 
-      //Todo: temporary style for the temporary dropdown
       .dropdown-toggle::after {
         position: absolute;
         right: 8px;
@@ -1286,7 +1355,7 @@ h1, h2, h3, h4, h5, h6, label {
 
       &:hover {
         color: $color;
-        background: rgba(215, 33, 48, 0.11);
+        background: rgba($color, 0.11);
         cursor: pointer;
         a {
           color: $color;

@@ -1,7 +1,7 @@
 <%= render 'admin/shared/admin_headers' %>
-<main class="container admin-page admin-footer">
-  <%= turbo_frame_tag 'turbo_footer_page_cards' do %>
-    <section class="footer-pages-table" data-controller="reactive-table">
+<main class="container admin-page admin-user-panel">
+  <%= turbo_frame_tag 'turbo_reactive_table_cards' do %>
+    <section class="reactive-table" data-controller="reactive-table">
       <div class="tabs-bar">
           <div class="tab-content d-flex">
             <% @user_roles.each_with_index do |type, i| %>

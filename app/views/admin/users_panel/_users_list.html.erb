@@ -1,14 +1,19 @@
 <% users.each do |user| %>
 <article class="table-card">
-  <div class="footer-page-title"><%= user.name %></div>
-  <div class="footer-page-status">
-    <%= turbo_frame_tag "turbo_footer_page_table" do %>
-      <div>
-        <%= user.access_locked? ? 'Blocked' : 'Active' %>
-      </div>
+  <div class="reactive-table-title d-flex align-items-center p-0">
+    <div class="user-avatar me-2">
+      <%= image_tag user.avatar if user.avatar.present?%>
+    </div>
+    <div class="reactive-table-title"><%= user.name %></div>
+  </div>
+  <div class="reactive-table-status d-flex align-items-center">
+    <% if user.access_locked? %>
+      <div>Blocked</div>
+    <% else %>
+      <div class="active">Active</div>
     <% end %>
   </div>
-  <div class="footer-page-delete">
+  <div class="reactive-table-actions d-flex align-items-center">
     <%= render 'dropdown_actions', user: user, user_path: admin_users_panel_path(user) %>
   </div>
 </article>
