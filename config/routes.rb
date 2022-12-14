@@ -45,7 +45,8 @@ Rails.application.routes.draw do
         get :filter_by_user_role, on: :collection
 
         member do
-          put :toggle_status
+          patch :change_admin_status
+          patch :change_lock_status
         end
       end
 

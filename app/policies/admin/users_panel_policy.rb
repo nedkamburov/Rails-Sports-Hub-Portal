@@ -10,18 +10,6 @@ class Admin::UsersPanelPolicy < ApplicationPolicy
     user.present?
   end
 
-  def show?
-    user.present?
-  end
-
-  def new?
-    user.present?
-  end
-
-  def create?
-    user.present?
-  end
-
   def edit?
     user.present?
   end
@@ -38,7 +26,11 @@ class Admin::UsersPanelPolicy < ApplicationPolicy
     user.present?
   end
 
-  def toggle_status?
+  def change_admin_status?
+    user.present?
+    end
+
+  def change_lock_status?
     user.present?
   end
 end

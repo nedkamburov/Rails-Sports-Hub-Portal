@@ -54,7 +54,7 @@ module ApplicationHelper
       },
       {
         url: admin_users_panel_index_path,
-        title: 'Users Panel',
+        title: 'Users',
         svg_path: svg_src_path + 'users.svg'
       },
       {
