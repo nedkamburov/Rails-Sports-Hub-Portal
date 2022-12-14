@@ -4,7 +4,7 @@ module Admin
     layout "application_dashboard"
 
     def index
-      @all_users = User.all
+      @all_users = User.all.order(:name)
       @admins = @all_users.where(role: :admin)
       @users = @all_users.where(role: :user)
 
@@ -22,7 +22,7 @@ module Admin
       end
     end
 
-    def filter_by_page_type
+    def filter_by_user_role
       users = User.where(role: params[:user_role])
 
       render partial: 'admin/users_panel/users_list', locals: {users: users}
@@ -33,15 +33,15 @@ module Admin
       elsif @user.admin? then @user.user!
       end
 
-      head :ok # Make sure Rails doesn't look for a view
+      redirect_to admin_users_panel_index_path, notice: "The admin status of user #{@user.name} (ID: #{@user.id}) was successfully changed."
     end
 
     def change_lock_status
       if @user.access_locked? then @user.unlock_access!
-      elsif !@user.access_locked? then @user.lock_access!
+      else @user.lock_access!
       end
 
-      head :ok # Make sure Rails doesn't look for a view
+      redirect_to admin_users_panel_index_path, notice: "The status of user #{@user.name} (ID: #{@user.id}) was successfully changed."
     end
 
     def resource

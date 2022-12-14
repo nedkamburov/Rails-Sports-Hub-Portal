@@ -22,7 +22,7 @@ class Admin::UsersPanelPolicy < ApplicationPolicy
     user.present?
   end
 
-  def filter_by_page_type?
+  def filter_by_user_role?
     user.present?
   end
 
