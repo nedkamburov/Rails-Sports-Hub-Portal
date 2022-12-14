@@ -1047,6 +1047,7 @@ h1, h2, h3, h4, h5, h6, label {
 
 
 .admin-user-panel {
+  max-width: 1220px !important;
   .reactive-table {
     max-width: 660px;
     .table {
@@ -1058,6 +1059,10 @@ h1, h2, h3, h4, h5, h6, label {
 
         .reactive-table-title {
           font-weight: 600;
+
+          &:hover {
+            cursor: help;
+          }
         }
       }
 
@@ -1093,6 +1098,55 @@ h1, h2, h3, h4, h5, h6, label {
 
     .table-content {
       border: none;
+    }
+  }
+
+  .general-info {
+    position: relative;
+    top: 36px;
+    width: 320px;
+    border: 1px solid $accent-color-grey;
+
+    h5 {
+      width: 100%;
+      height: 48px;
+      color: $color;
+      font-weight: 400;
+      border-bottom: 1px solid $accent-color-grey;
+      box-shadow: 0px 4px 7px $accent-color-light-grey;
+    }
+
+    .general-info-content {
+      padding: 10px 30px;
+
+      .main-content {
+        padding: 20px 0;
+
+        img {
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          border: 1px solid $accent-color-light-grey;
+        }
+
+        .name {
+          margin-top: 20px;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 24.5px;
+        }
+      }
+
+      .general-info-list {
+        font-size: 14px;
+        span {
+          margin-bottom: 25px;
+        }
+        .label {
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
     }
   }
 }

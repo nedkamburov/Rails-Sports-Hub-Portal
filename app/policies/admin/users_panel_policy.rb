@@ -26,6 +26,10 @@ class Admin::UsersPanelPolicy < ApplicationPolicy
     user.present?
   end
 
+  def get_general_info?
+    user.present?
+  end
+
   def change_admin_status?
     user.present?
     end

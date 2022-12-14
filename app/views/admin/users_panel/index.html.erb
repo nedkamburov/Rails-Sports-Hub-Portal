@@ -1,5 +1,5 @@
 <%= render 'admin/shared/admin_headers' %>
-<main class="container admin-page admin-user-panel">
+<main class="container admin-page admin-user-panel d-flex justify-content-between" data-controller="general-info">
   <%= turbo_frame_tag 'turbo_reactive_table_cards' do %>
     <section class="reactive-table" data-controller="reactive-table">
       <div class="tabs-bar">
@@ -21,4 +21,9 @@
       </section>
     </section>
   <% end %>
+      <%= turbo_frame_tag 'turbo_general_info_panel' do %>
+        <section class="general-info" data-general-info-target='panel'>
+          <%= render partial: 'general_info', locals: {user: @users.first, subscribed: @subscribed_user} %>
+        </section>
+      <% end %>
 </main>

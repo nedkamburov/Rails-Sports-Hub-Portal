@@ -47,6 +47,7 @@ Rails.application.routes.draw do
         member do
           patch :change_admin_status
           patch :change_lock_status
+          get   :get_general_info
         end
       end
 
