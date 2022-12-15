@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_082435) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_093949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,12 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_082435) do
     t.string "picture_alt", null: false
     t.boolean "has_comments", default: true, null: false
     t.integer "status", default: 1, null: false
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 0
     t.bigint "category_id", null: false
-    t.bigint "subcategory_id", null: false
+    t.bigint "subcategory_id"
     t.boolean "is_part_of_main_articles", default: false
     t.boolean "is_part_of_breakdown", default: false
     t.index ["category_id"], name: "index_articles_on_category_id"

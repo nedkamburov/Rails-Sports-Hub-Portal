@@ -12,17 +12,19 @@
       </div>
     </div>
   </section>
-  <section class="dropdown-menus">
-    <%= form.hidden_field :category_id, value: @category.id  %>
-    <article>
-      <%= form.label :subcategory, "Subcategory" %>
-      <%= form.collection_select(:subcategory_id, @subcategories, :id, :title, {prompt: 'Not selected'}, required: true, class: 'dropdown') %>
-    </article>
-    <article>
-      <%= form.label :subcategory, "Team" %>
-      <%= form.collection_select(:team_id, @teams, :id, :title, {prompt: 'Not selected'}, required: true, class: 'dropdown') %>
-    </article>
-  </section>
+  <%= form.hidden_field :category_id, value: @category.id  %>
+  <% if @category.category_type == 'articles' %>
+    <section class="dropdown-menus">
+      <article>
+        <%= form.label :subcategory, "Subcategory" %>
+        <%= form.collection_select(:subcategory_id, @subcategories, :id, :title, {prompt: 'Not selected'}, required: true, class: 'dropdown') %>
+      </article>
+      <article>
+        <%= form.label :subcategory, "Team" %>
+        <%= form.collection_select(:team_id, @teams, :id, :title, {prompt: 'Not selected'}, required: true, class: 'dropdown') %>
+      </article>
+    </section>
+  <% end %>
   <%= form.label :picture_alt, "Alt.*" %>
   <%= form.text_field :picture_alt, placeholder: 'Alternative text for the picture', required: true, class: "form-control" %>
   <%= form.label :headline, "Article Headline*" %>

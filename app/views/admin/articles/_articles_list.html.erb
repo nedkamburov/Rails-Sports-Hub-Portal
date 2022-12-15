@@ -12,9 +12,11 @@
           <%= article.caption %>
         </div>
         <div class="article-footer d-flex justify-content-between">
-          <div class="article-team">
-            <%= Subcategory.find(article.team.subcategory_id).title %> / <%= article.team.title %>
-          </div>
+          <% if @category.category_type == 'articles' %>
+            <div class="article-team">
+              <%= Subcategory.find(article.team.subcategory_id).title %> / <%= article.team.title %>
+            </div>
+          <% end %>
           <div class="status-icon <%= article.status %>"><%= article.status %></div>
         </div>
       </article>

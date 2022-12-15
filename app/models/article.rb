@@ -9,8 +9,8 @@ class Article < ApplicationRecord
   validates :headline, :caption, :content, :picture_alt, presence: true
 
   belongs_to :category
-  belongs_to :subcategory
-  belongs_to :team
+  belongs_to :subcategory, optional: true
+  belongs_to :team, optional: true
   has_one_attached :picture
   has_rich_text :content
   has_many :comments, dependent: :destroy
