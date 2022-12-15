@@ -1,0 +1,15 @@
+<section class="home-section main-articles">
+  <div class="background-titles">
+    <div class="article-category-title"><%= category.title.capitalize %></div>
+    <div class="article-news"><%= t('articles.news') %></div>
+  </div>
+  <section>
+    <%= render 'pages/home/preview_article', article: @main_articles.first %>
+    <section class="small-card-articles d-flex">
+      <% @main_articles.drop(1).each do |article| %>
+        <%= render 'pages/home/small_card_article', article: article %>
+      <% end %>
+    </section>
+  </section>
+</section>
+<%= render ('pages/home/summary') %>

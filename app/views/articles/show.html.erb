@@ -6,7 +6,7 @@
   </div>
   <article class="breadcrumb">
     <span class="article-category"><%= @category.title %></span><i class="fa-solid fa-chevron-right"></i>
-    <%= @team.title %> / <%= @article.headline %>
+    <%= @team ? "#{@team.title} / #{@article.headline}" : @article.headline %>
   </article>
   <section class="article-summary">
     <article class="published-at">Published / <%= @article.created_at.strftime('%d.%m.%Y') %></article>

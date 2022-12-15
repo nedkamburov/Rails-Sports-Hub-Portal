@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article,:published?, :set_comment_sort_criterion, only: %i[ show ]
+  before_action :set_article, :published?, :set_comment_sort_criterion, only: %i[ show ]
   @comments_sort_criterion = nil
 
   def index
@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @category = Category.find(@article.category_id)
-    @team = Team.find(@article.team_id)
+    @team = Team.find(@article.team_id) if @article.team_id
     @pagy, @comments = pagy(@article.comments.where(parent_id: nil)
                                              .includes(:user)
                                              .custom_sort_by(@comments_sort_criterion),

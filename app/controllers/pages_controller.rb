@@ -2,8 +2,11 @@ class PagesController < ApplicationController
   rescue_from ::ActionView::MissingTemplate, with: :missing_template
   
   def show
-    @page = params[:id]
+    @category = Category.friendly.find(params[:id])
+    @main_articles = Article.where(category: @category)
 
+    @most_commented = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :desc)
+    @most_popular = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :asc)
     render corresponding_view
   end
 
