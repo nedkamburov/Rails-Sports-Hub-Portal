@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       end
 
       resources :photo_of_the_day
+
       resources :footer_pages, except: [:edit, :update] do
         get :filter_by_page_type, on: :collection
 
@@ -40,7 +41,16 @@ Rails.application.routes.draw do
         end
       end
 
-      get "footer", to: "pages#footer"
+      resources :users_panel, except: [:edit, :update] do
+        get :filter_by_user_role, on: :collection
+
+        member do
+          patch :change_admin_status
+          patch :change_lock_status
+          get   :get_general_info
+        end
+      end
+
       get "information-architecture", to: "pages#information_architecture"
     end
 

@@ -34,6 +34,7 @@ export default class extends Controller {
     #change_url(target) {
         const page_type = target.dataset.togglePageType
         const addNewButton = document.querySelector('#add-new-button');
+        if (!addNewButton) return
         addNewButton.href = addNewButton.href.replace(/(?<=new).*/, `?page_type=${page_type}`)
     }
 }

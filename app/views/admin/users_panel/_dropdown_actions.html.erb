@@ -1,0 +1,16 @@
+<div class="dropdown actions-dropdown">
+  <button class="btn shadow-none dropdown-toggle <%= user.access_locked? ? 'activate' : 'block' %>" type="button" data-bs-toggle="dropdown">
+    <%= user.access_locked? ? 'Activate' : 'Block' %>
+  </button>
+  <div class="dropdown-menu p-0">
+    <%= button_to user.access_locked? ? 'Activate' : 'Block',
+                  change_lock_status_admin_users_panel_path(user),
+                  class: "dropdown-item #{ user.access_locked? ? 'activate' : 'block' }",
+                  method: :patch %>
+    <%= button_to user.admin? ? 'Remove from Admin' : 'Make Admin',
+                  change_admin_status_admin_users_panel_path(user),
+                  class: "dropdown-item #{ user.admin? ? 'remove-admin' : 'make-admin' }",
+                  method: :patch %>
+    <%= button_to 'Delete', user_path, class: 'dropdown-item delete', method: :delete, form: { data: { turbo_confirm: user.class.name.downcase} } %>
+  </div>
+</div>

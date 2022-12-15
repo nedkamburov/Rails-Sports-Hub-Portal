@@ -422,41 +422,68 @@ h1, h2, h3, h4, h5, h6, label {
       border-top: 1px solid $accent-color-grey;
       position: relative;
 
-      .photo-of-the-day-content {
+
+      .flag {
         position: absolute;
-        padding: 20px;
-        bottom: 0;
-        width: 100%;
-        height: 30%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        color: #fff;
+        top: 10px;
+        height: 120px;
 
-        background: rgb(0,0,0);
-        background: linear-gradient(0deg, rgba(0,0,0,0.6979166666666667) 70%, rgba(255,255,255,0) 100%);
-
-        .photo-title {
-          font-size: 22px;
-          font-weight: 700;
-          margin-bottom: 10px;
+        svg {
+          position: absolute;
+          fill: $color;
+          pointer-events: none;
         }
-
-        .photo-description {
-          font-size: 14px;
-          max-width: 500px;
-        }
-
-        .photo-author {
-          font-size: 14px;
-          font-style: italic;
+        h6 {
+          position: relative;
+          padding: 35px 0 30px 10px;
+          max-width: 64px;
+          color: $background-color;
+          text-transform: uppercase;
+          font-size: 16px;
+          z-index: 1;
         }
       }
 
-      img {
-        width: 100%;
+      section {
+        padding-left: 20px;
+
+        .photo-of-the-day-content {
+          position: absolute;
+          padding: 20px;
+          bottom: 0;
+          width: calc(100% - 20px);
+          height: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          color: #fff;
+
+          background: rgb(0,0,0);
+          background: linear-gradient(0deg, rgba(0,0,0,0.6979166666666667) 70%, rgba(255,255,255,0) 100%);
+
+          .photo-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+          }
+
+          .photo-description {
+            font-size: 14px;
+            max-width: 500px;
+          }
+
+          .photo-author {
+            font-size: 14px;
+            font-style: italic;
+          }
+        }
+
+        img {
+          width: 100%;
+        }
       }
     }
+
 
     &.summary {
       .articles-summary {
@@ -830,8 +857,9 @@ h1, h2, h3, h4, h5, h6, label {
   font-weight: 700 !important;
 
   .page-title {
-    font-weight: bold;
     font-size: 30px;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-weight: 500;
   }
 
   .page-action-button {
@@ -915,7 +943,7 @@ h1, h2, h3, h4, h5, h6, label {
 
     a.active {
       svg {
-        rect {
+        path, rect {
           stroke: $color !important;
         }
       }
@@ -1017,78 +1045,202 @@ h1, h2, h3, h4, h5, h6, label {
   }
 }
 
-.admin-footer {
-  .footer-pages-table {
-    max-width: 600px;
 
-    .tabs-bar {
-      margin-bottom: 20px;
-      font-family: Roboto;
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
+.admin-user-panel {
+  max-width: 1220px !important;
+  .reactive-table {
+    max-width: 660px;
+    .table {
+      .table-header, .table-card {
+        grid-template-columns: 5fr 2fr 2fr;
+      }
+      .table-card {
+        padding: 10px 10px 10px 30px;
 
-      .tab {
-        &:hover {
-          cursor: pointer;
-          color: $color;
+        .reactive-table-title {
+          font-weight: 600;
+
+          &:hover {
+            cursor: help;
+          }
         }
+      }
 
-        &.selected {
-          color: $color;
-          text-decoration: underline;
+      .reactive-table-actions {
+        width: 180px;
+
+        .dropdown, button {
+          width: 100%;
+
+          border-radius: 0;
+
+          .dropdown-menu {
+            width: 100%;
+            min-width: 102%;
+            top: -42px !important;
+            border-radius: 0;
+            text-align: center;
+
+            .dropdown-item {
+              padding: 10px 5px;
+
+              &:hover {
+                background-color: inherit;
+                color: inherit;
+                box-shadow: 4px 4px 7px $accent-color-light-grey;
+              }
+            }
+
+          }
         }
       }
     }
 
-    .table {
-      border: 1px solid $accent-color-grey;
-      border-bottom: none;
+    .table-content {
+      border: none;
+    }
+  }
 
-      .table-header, .table-card  {
-        display: grid;
-        grid-template-columns: 5fr 2fr 1fr;
-        padding: 10px 30px;
-        min-height: 50px;
-        align-content: center;
-        border-bottom: 1px solid $accent-color-grey;
+  .general-info {
+    position: relative;
+    top: 36px;
+    width: 320px;
+    border: 1px solid $accent-color-grey;
 
-        div:not(:first-of-type) {
-          justify-self: center;
+    h5 {
+      width: 100%;
+      height: 48px;
+      color: $color;
+      font-weight: 400;
+      border-bottom: 1px solid $accent-color-grey;
+      box-shadow: 0px 4px 7px $accent-color-light-grey;
+    }
+
+    .general-info-content {
+      padding: 10px 30px;
+
+      .main-content {
+        padding: 20px 0;
+
+        img {
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          border: 1px solid $accent-color-light-grey;
+        }
+
+        .name {
+          margin-top: 20px;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 24.5px;
         }
       }
 
-     .table-header {
-       background-color: $accent-color-light-grey;
-       font-size: 12px;
-       text-transform: uppercase;
-       font-weight: 700;
-       font-family: "Open Sans";
-     }
-
-      .table-card {
-        label {
-          color: $text-color;
+      .general-info-list {
+        font-size: 14px;
+        span {
+          margin-bottom: 25px;
         }
-
-        &:hover {
-          box-shadow: 4px 4px 7px $accent-color-light-grey;
-        }
-
-        .footer-page-toggle {
-          *:hover {
-            cursor: pointer !important;
-          }
-        }
-        .footer-page-delete {
-          color: $accent-color-grey;
-          &:hover {
-            color: $text-color;
-          }
+        .label {
+          font-size: 16px;
+          font-weight: 700;
         }
       }
     }
   }
+}
+
+.reactive-table {
+  max-width: 600px;
+
+  .tabs-bar {
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    .tab {
+      &:hover {
+        cursor: pointer;
+        color: $color;
+      }
+
+      &.selected {
+        color: $color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .table {
+    border: 1px solid $accent-color-grey;
+    border-bottom: none;
+
+    .table-header, .table-card  {
+      display: grid;
+      grid-template-columns: 5fr 2fr 1fr;
+      padding: 10px 30px;
+      min-height: 45px;
+      align-content: center;
+      border-bottom: 1px solid $accent-color-grey;
+
+      div:not(:first-of-type) {
+        justify-self: center;
+      }
+    }
+
+    .table-header {
+      background-color: $accent-color-light-grey;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: "Open Sans";
+    }
+
+    .table-card {
+      label {
+        color: $text-color;
+      }
+
+      &:hover {
+        box-shadow: 4px 4px 7px $accent-color-light-grey;
+      }
+
+      .reactive-table-toggle {
+        *:hover {
+          cursor: pointer !important;
+        }
+      }
+      .reactive-table-actions {
+        color: $accent-color-grey;
+        &:hover {
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  .active {
+    color: green;
+  }
+  .activate {
+    color: green !important;
+    background-color: rgba(green, 0.3) !important;
+  }
+  .block {
+    background-color: rgba($accent-color-darkest-grey, 0.3) !important;
+  }
+  .make-admin {
+    color: royalblue !important;
+    background-color: rgba(royalblue, 0.2) !important;
+  }
+  .remove-admin, .delete {
+    color: $color !important;
+    background-color: rgba($color, 0.3) !important;
+  }
+
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1120,7 +1272,6 @@ h1, h2, h3, h4, h5, h6, label {
       border-radius: 0;
       border: 1px solid $accent-color-grey;
 
-      //Todo: temporary style for the temporary dropdown
       .dropdown-toggle::after {
         position: absolute;
         right: 8px;
@@ -1258,7 +1409,7 @@ h1, h2, h3, h4, h5, h6, label {
 
       &:hover {
         color: $color;
-        background: rgba(215, 33, 48, 0.11);
+        background: rgba($color, 0.11);
         cursor: pointer;
         a {
           color: $color;

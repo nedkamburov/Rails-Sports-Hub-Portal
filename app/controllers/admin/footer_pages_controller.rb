@@ -4,7 +4,7 @@ module Admin
     layout "application_dashboard"
 
     def index
-      @footer_pages = FooterPage.where(page_type: 0)
+      @footer_pages = FooterPage.where(page_type: 0).order(:title)
       @footer_pages_types = FooterPage.page_types
     end
 

@@ -53,7 +53,7 @@ module ApplicationHelper
         svg_path: svg_src_path + 'social-networks.svg'
       },
       {
-        url: '/path-to-be-added',
+        url: admin_users_panel_index_path,
         title: 'Users',
         svg_path: svg_src_path + 'users.svg'
       },

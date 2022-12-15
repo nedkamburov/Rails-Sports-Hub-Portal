@@ -181,3 +181,8 @@ FooterPage.create!(title: 'Internship Program', url: "#", page_type: 'Contributo
 
 FooterPage.create!(title: 'Sign up to receive the latest sports news', url: "#", page_type: 'Newsletter', status: 'shown')
 puts 'All footer pages were created.'
+
+photo_of_the_day = PhotoOfTheDay.create!(picture_alt: 'photo-of-the-day', title: 'Jockeys compete in the Melbourne Cup in Melbourne, Australia.', description: 'This “race that stops a nation” is run at the Flemington Racecourse on the first Tuesday in November. The public holiday in Melbourne ensures that Victoria’s society—both high and low—is on hand along with the thoroughbreds.', author: 'Andrew Brwonbill, AP')
+remote_picture = URI.open('https://i.natgeofe.com/n/b2432c41-1636-426e-8133-cb46316f87e0/83238_16x9.jpg?w=1200')
+photo_of_the_day.picture.attach(io: remote_picture, filename: 'photo_of_the_day-horse_racing')
+puts 'Photo of the day was created.'

@@ -11,7 +11,6 @@ class NewslettersController < ApplicationController
   end
 
   private
-
   def set_newsletter
     @newsletter = Newsletter.find(params[:id])
   end
