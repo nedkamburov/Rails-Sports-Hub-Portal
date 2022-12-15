@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@700&family=Roboto:wght@400;500;700&display=swap");
 @import "./dropzone.css";
 @import 'style_variables.scss';
+@import 'toastr.min.scss';
 
 body {
   font-family: "Open Sans", Helvetica, sans-serif !important;
@@ -1313,6 +1314,7 @@ h1, h2, h3, h4, h5, h6, label {
         margin-left: 32px;
         font-size: 14px;
         color: $accent-color-grey;
+        position: relative;
 
         .article-headline {
           font-size: 16px;
@@ -1326,6 +1328,9 @@ h1, h2, h3, h4, h5, h6, label {
         }
 
         .article-footer {
+          position: absolute;
+          bottom: 0px;
+          
           .status-icon {
             text-transform: capitalize;
             &:before {

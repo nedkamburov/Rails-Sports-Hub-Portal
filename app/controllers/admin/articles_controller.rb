@@ -23,7 +23,6 @@ module Admin
 
     def create
       @article = Article.new(article_params)
-      binding.pry
 
       respond_to do |format|
         if @article.save

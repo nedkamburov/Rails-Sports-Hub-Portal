@@ -4,14 +4,14 @@
       <article>
         <%= image_tag article.picture, alt: article.picture_alt if article.picture.present? %>
       </article>
-      <article class="article-text">
+      <article class="article-text d-flex flex-column">
         <div class="article-headline">
           <%= link_to article.headline, article_url(article.id) %>
         </div>
         <div class="article-caption">
           <%= article.caption %>
         </div>
-        <div class="article-footer d-flex justify-content-between">
+        <div class="article-footer d-flex justify-content-between w-100 text-end">
           <% if @category.category_type == 'articles' %>
             <div class="article-team">
               <%= Subcategory.find(article.team.subcategory_id).title %> / <%= article.team.title %>
