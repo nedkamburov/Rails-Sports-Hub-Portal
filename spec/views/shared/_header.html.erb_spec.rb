@@ -38,7 +38,7 @@ RSpec.describe 'shared/_header.html.erb', type: :view do
 
     it 'contains the role of the user' do
       render
-      expect(rendered).to have_selector(".user-details", text: @user.role)
+      expect(rendered).to have_selector(".user-details", text: @user.role.capitalize)
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe 'shared/_header.html.erb', type: :view do
 
     it 'contains the role of the user' do
       render
-      expect(rendered).to have_selector(".user-details", text: @admin_user.role)
+      expect(rendered).to have_selector(".user-details", text: @admin_user.role.capitalize)
     end
 
     it 'renders the icon to switch to the admin dashboard' do
