@@ -98,6 +98,7 @@ module Admin
                                       :caption,
                                       :content,
                                       :picture,
+                                      :video,
                                       :picture_alt,
                                       :category_id,
                                       :subcategory_id,

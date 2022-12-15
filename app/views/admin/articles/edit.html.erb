@@ -9,5 +9,9 @@
        <i class="fa-solid fa-eye"></i> Preview
      <% end %>
   </article>
-  <%= render 'admin/articles/article_form', article: @article, action_path: admin_article_path %>
+  <% if @category.category_type == 'videos' %>
+    <%= render 'admin/articles/article_video_form', article: @article, action_path: admin_articles_path %>
+  <% else %>
+    <%= render 'admin/articles/article_form', article: @article, action_path: admin_articles_path %>
+  <% end %>
 </section>

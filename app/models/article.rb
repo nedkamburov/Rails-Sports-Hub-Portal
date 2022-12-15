@@ -12,6 +12,7 @@ class Article < ApplicationRecord
   belongs_to :subcategory, optional: true
   belongs_to :team, optional: true
   has_one_attached :picture
+  has_one_attached :video
   has_rich_text :content
   has_many :comments, dependent: :destroy
 

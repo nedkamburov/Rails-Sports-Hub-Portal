@@ -2,7 +2,11 @@
   <% articles.each do |article| %>
     <section class="article col-item" data-id=<%= article.id %>>
       <article>
-        <%= image_tag article.picture, alt: article.picture_alt if article.picture.present? %>
+        <% if article.picture.present? %>
+          <%= image_tag article.picture, alt: article.picture_alt%>
+        <% else %>
+          <%= video_tag url_for(article.video), alt: article.picture_alt, class: 'existing-image' if article.video.present? %>
+        <% end %>
       </article>
       <article class="article-text d-flex flex-column">
         <div class="article-headline">
@@ -24,5 +28,5 @@
     </section>
   <% end %>
 <% else %>
-  <div class="no-articles">No articles yet.</div>
+  <div class="no-articles"><%= t('articles.no_articles_yet') %></div>
 <% end %>

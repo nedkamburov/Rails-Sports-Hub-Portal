@@ -1,30 +1,18 @@
 <%= form_with model: article, url: action_path, id: 'article-form', class: 'article-form' do |form| %>
   <section>
-    <%= form.label :picture, "#{t('articles.picture')}*", class: "label" %>
-    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1" data-dropzone-accepted-files="image/*">
-      <%= image_tag article.picture, alt: article.picture_alt, class: 'existing-image' if article.picture.present? %>
-      <%= form.file_field :picture, direct_upload: true, data: { dropzone_target: 'input' }, required: true %>
+    <%= form.label :video, "#{t('articles.video')}*", class: "label" %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10" data-dropzone-max-files="1" data-dropzone-accepted-files="video/*">
+      <%= video_tag url_for(article.video), alt: article.picture_alt, class: 'existing-image' if article.video.present? %>
+      <%= form.file_field :video, direct_upload: true, data: { dropzone_target: 'input' }, required: true %>
       <div class="dropzone-msg dz-message needsclick">
         <div class="camera-icon">
           <%= show_svg('camera.svg') %>
         </div>
-        <h3 class="dropzone-msg-desc text-sm"><span class="emphasized"><%= t('articles.add_picture') %></span> <%= t('articles.drop_it_here') %><br><%= t('articles.allowed_picture_formats') %></h3>
+        <h3 class="dropzone-msg-desc text-sm"><span class="emphasized"><%= t('articles.add_video') %></span> <%= t('articles.drop_it_here') %><br><%= t('articles.allowed_video_formats') %></h3>
       </div>
     </div>
   </section>
   <%= form.hidden_field :category_id, value: @category.id  %>
-  <% if @category.category_type == 'articles' %>
-    <section class="dropdown-menus">
-      <article>
-        <%= form.label :subcategory, t('general.subcategory') %>
-        <%= form.collection_select(:subcategory_id, @subcategories, :id, :title, {prompt: t('general.not_selected')}, required: true, class: 'dropdown') %>
-      </article>
-      <article>
-        <%= form.label :subcategory, t('general.team') %>
-        <%= form.collection_select(:team_id, @teams, :id, :title, {prompt: t('general.not_selected')}, required: true, class: 'dropdown') %>
-      </article>
-    </section>
-  <% end %>
   <%= form.label :picture_alt, "#{t('articles.alt')}*" %>
   <%= form.text_field :picture_alt, placeholder: t('articles.alt_placeholder'), required: true, class: "form-control" %>
   <%= form.label :headline, "#{t('articles.headline')}*" %>
