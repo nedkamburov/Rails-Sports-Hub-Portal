@@ -15,7 +15,11 @@
     <%= render 'article_share' %>
   </section>
   <section class="article-main">
-    <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture' if @article.picture.present? %>
+    <% if @article.picture.present? %>
+      <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture'%>
+    <% else %>
+      <%= video_tag url_for(@article.video), alt: @article.picture_alt, controls: true, autobuffer: true, class: 'article-picture' if @article.video.present? %>
+    <% end %>
     <section class="article-content">
       <%= @article.content %>
     </section>

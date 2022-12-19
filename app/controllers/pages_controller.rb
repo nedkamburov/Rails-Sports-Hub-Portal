@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   
   def show
     @category = Category.friendly.find(params[:id])
-    @main_articles = Article.where(category: @category)
+    @main_articles = Article.where(category: @category).order(:position)
 
     @most_commented = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :desc)
     @most_popular = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :asc)

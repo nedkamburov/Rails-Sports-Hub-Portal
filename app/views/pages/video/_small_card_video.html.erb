@@ -1,0 +1,11 @@
+<section class="small-card">
+  <%= link_to article_path(video), class: 'article-small' do %>
+    <div class="article-small-preview-video">
+      <%= video_tag url_for(video.video), alt: video.picture_alt, class: 'article-video' if video.video.present? %>
+    </div>
+    <div class="article-small-preview-content d-flex justify-content-between">
+      <div class="article-small-headline"><%= video.headline %></div>
+      <div class="article-small-length"><%= video_duration(video) %></div>
+    </div>
+  <% end %>
+</section>

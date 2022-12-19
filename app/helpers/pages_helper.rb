@@ -17,4 +17,13 @@ module PagesHelper
       root_url(locale: lang)
     end
   end
+
+  def video_duration(video)
+    begin
+      raw_duration = ActiveStorage::Analyzer::VideoAnalyzer.new(video.video.blob).metadata[:duration]
+      Time.at(raw_duration.to_i).utc.strftime("%M:%S") # assumes there won't be videos longer than an hour
+    rescue => e
+      flash[:notice] = "FFMPEG not installed on the system probably"
+    end
+  end
 end
