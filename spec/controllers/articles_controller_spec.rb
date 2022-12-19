@@ -37,22 +37,25 @@ RSpec.describe ArticlesController, type: :controller do
       expect(assigns(:more_articles).count).to be >= 2
     end
 
-    it "returns random @more_articles" do
-      article2 = FactoryBot.create(:article, headline: 'Article 2')
-      article3 = FactoryBot.create(:article, headline: 'Article 3')
-      category.articles.push(article2, article3)
-      random_articles = false
+    context 'articles' do
+      let (:article2) {FactoryBot.create(:article, headline: 'Article 2')}
+      let (:article3) {FactoryBot.create(:article, headline: 'Article 3')}
 
-      5.times do
-        get :show, params: {id: article.id}
-        returned_articles = assigns(:more_articles)
-        if category.articles != returned_articles
-          random_articles = true
-          break
+      it "returns random @more_articles" do
+        category.articles.push(article2, article3)
+        random_articles = false
+
+        5.times do
+          get :show, params: {id: article.id}
+          returned_articles = assigns(:more_articles)
+          if category.articles != returned_articles
+            random_articles = true
+            break
+          end
         end
-      end
 
-      expect(random_articles).to be_truthy
-    end
+        expect(random_articles).to be_truthy
+      end
+      end
   end
 end

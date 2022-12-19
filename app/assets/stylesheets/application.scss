@@ -373,6 +373,38 @@ h1, h2, h3, h4, h5, h6, label {
           }
         }
       }
+
+      .small-card-static-pages {
+        max-width: 820px;
+        max-height: 1000px;
+        background-color: $background-color;
+
+        .small-card-breakdown {
+          width: 100%;
+          padding: 15px 0;
+          border-bottom: 1px solid $accent-color-light-grey;
+
+          &:first-of-type {
+            padding-top: 0;
+            border-bottom: none;
+          }
+
+          .article-small {
+            max-height: 180px;
+            width: 100%;
+            padding: 10px;
+
+            .article-small-preview-image {
+              max-height: 160px;
+              max-width: 285px;
+            }
+
+            &:hover {
+              box-shadow: 1px 2px 7px $accent-color-light-grey;
+            }
+          }
+        }
+      }
     }
 
     &.breakdown {
@@ -403,10 +435,6 @@ h1, h2, h3, h4, h5, h6, label {
             line-height: 22px;
             font-weight: 600;
           }
-        }
-
-        .small-card-breakdown {
-          //height: 200px;
         }
 
         img {width: 100%;}
