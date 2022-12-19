@@ -6,8 +6,10 @@
   <section>
     <%= render 'pages/home/preview_article', article: @main_articles.first %>
     <section class="small-card-static-pages d-flex">
-      <% @main_articles.drop(1).each do |article| %>
-        <%= render 'pages/home/small_card_breakdown', article: article %>
+      <% if @main_articles.length > 1
+           @main_articles.drop(1).each do |article| %>
+          <%= render 'pages/home/small_card_breakdown', article: article %>
+        <% end %>
       <% end %>
     </section>
   </section>

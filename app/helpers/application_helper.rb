@@ -56,7 +56,7 @@ module ApplicationHelper
     sport_categories = Category.where(category_type: 'articles').order("position ASC")
     sport_categories.each do |sport|
       sport_page = {
-        url: "#{@is_admin_panel ? admin_root_path : ''}/articles/#{sport.slug}",
+        url: "#{@is_admin_panel ? admin_root_path : ''}/#{@is_admin_panel ? 'articles' : 'pages'}/#{sport.slug}",
         title: sport.title
       }
       sports << sport_page

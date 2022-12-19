@@ -6,6 +6,10 @@ class PagesController < ApplicationController
     begin
       @category = Category.friendly.find(params[:id])
       @main_articles = Article.where(category: @category).order(:position)
+      if @main_articles.empty?
+        redirect_to root_path, notice: "No articles in this category yet."
+        return
+      end
     rescue ActiveRecord::RecordNotFound => e
     end
 

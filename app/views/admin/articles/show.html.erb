@@ -4,7 +4,7 @@
 <%= render 'admin/shared/admin_headers', page_action: add_new_article %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
-    <%= link_to("#{articles_path}/#{@category.slug}", class: "preview-btn") do %>
+    <%= link_to("#{root_path}/pages/#{@category.slug}", class: "preview-btn") do %>
       <i class="fa-solid fa-eye"></i> Preview
     <% end %>
     <%= render 'admin/articles/search' %>
