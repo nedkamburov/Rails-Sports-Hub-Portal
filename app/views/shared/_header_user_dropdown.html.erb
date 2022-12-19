@@ -17,10 +17,8 @@
           <h6><%= current_user.email %></h6>
         </div>
         <ul class="list-unstyled list-group">
-          <li><%= link_to 'View profile', root_path %></li>
+          <li><%= link_to 'View profile', edit_user_registration_path %></li>
           <li><%= link_to 'Change password',  edit_user_registration_path %></li>
-          <li><%= link_to 'My Surveys', root_path %></li>
-          <li><%= link_to 'Team hub', root_path %></li>
         </ul>
         <div class="login-logout">
           <%= login_helper('nav-link') %>

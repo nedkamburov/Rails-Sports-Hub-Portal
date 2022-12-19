@@ -34,24 +34,9 @@ module ApplicationHelper
     svg_src_path = 'admin-side-panel/'
     [
       {
-        url: '/path-to-be-added',
-        title: 'Surveys',
-        svg_path: svg_src_path + 'surveys.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Languages',
-        svg_path: svg_src_path + 'languages.svg'
-      },
-      {
         url: admin_footer_pages_path,
         title: 'Footer',
         svg_path: svg_src_path + 'footer.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Social Networks',
-        svg_path: svg_src_path + 'social-networks.svg'
       },
       {
         url: admin_users_panel_index_path,
@@ -62,11 +47,6 @@ module ApplicationHelper
         url: admin_information_architecture_path,
         title: 'Information Architecture',
         svg_path: svg_src_path + 'ia.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Teams',
-        svg_path: svg_src_path + 'teams.svg'
       }
     ]
   end
