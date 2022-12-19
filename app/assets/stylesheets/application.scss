@@ -1924,7 +1924,8 @@ h1, h2, h3, h4, h5, h6, label {
   border: 1px solid $accent-color-light-grey;
 
   .article-small-preview-image {
-    img {
+    max-height: 120px;
+    img, video {
       margin-bottom: 0;
       object-fit: cover;
       width: 100%;

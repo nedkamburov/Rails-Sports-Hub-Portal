@@ -1,12 +1,14 @@
 class PagesController < ApplicationController
   rescue_from ::ActionView::MissingTemplate, with: :missing_template
+  before_action :set_most_articles, only: %i[show home]
   
   def show
-    @category = Category.friendly.find(params[:id])
-    @main_articles = Article.where(category: @category).order(:position)
+    begin
+      @category = Category.friendly.find(params[:id])
+      @main_articles = Article.where(category: @category).order(:position)
+    rescue ActiveRecord::RecordNotFound => e
+    end
 
-    @most_commented = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :desc)
-    @most_popular = Article.where.not(category_id: Category.where(category_type: 'videos')).limit(3).order(created_at: :asc)
     render corresponding_view
   end
 
@@ -14,8 +16,6 @@ class PagesController < ApplicationController
     @main_articles = Article.where(is_part_of_main_articles: true).order("RANDOM()")
     @breakdown_articles = Article.where(is_part_of_breakdown: true).order("RANDOM()")
     @photo_of_the_day = PhotoOfTheDay.last
-    @most_commented = Article.limit(3).order(created_at: :desc)
-    @most_popular = Article.limit(3).order(created_at: :asc)
   end
 
   def create
@@ -36,5 +36,11 @@ class PagesController < ApplicationController
   def missing_template(exception)
     render 'show'
     return
+  end
+
+  def set_most_articles
+    articles = Article.includes(comments: :likes).group(['articles.id', 'comments.id', 'likes.id'])
+    @most_popular = articles.order("likes.count desc").first(3)
+    @most_commented = articles.order("comments.count desc").first(3)
   end
 end
