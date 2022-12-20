@@ -28,7 +28,7 @@ Access live demo at [https://sportshub.onrender.com](https://sportshub.onrender.
 ### Installation instructions
 
 Requirements: <br>
-`ruby, rails, postgres, gem`
+`ruby, rails, postgres, gem, image-magick`
 
 Initialise Postgres Database: <br>
 

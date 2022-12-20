@@ -260,14 +260,14 @@ static_page_articles = [
   {headline: "Rory McIlroy's three victories in 2022",
    caption: "He is the current world number one in the Official World Golf Ranking, and has spent over 100 weeks in that position during his career.",
    content: "After climbing back to world number one this year, relive Rory McIlroy's three wins at the Canadian Open, the Tour Championship and CJ Cup. You can watch Rory McIlroy on Sky Sports Golf at 9pm on Tuesday 20 December.",
-   video: 'https://rr4---sn-vgqsknze.googlevideo.com/videoplayback?expire=1671490315&ei=q5agY6rRBJejxN8Px6W20As&ip=51.15.187.61&id=o-AHsmmCLhoRTsEymlw-FmFtyHBUWjrjJDcWoASfiSimzi&itag=135&aitags=133%2C134%2C135%2C136%2C160%2C242%2C243%2C244%2C247%2C278&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=yJX1zzTC3xbSUGafWMygB7EK&gir=yes&clen=18368202&dur=172.705&lmt=1652909936221764&keepalive=yes&fexp=24001373,24007246&c=WEB&txp=5319224&n=J4-Mc56-WpZohy&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wQwIgYpFfA4Q_qtOgTCapSpibJ-yohBetiKisJFRBExNrdd4CHzCjOWAbmLPOYoxqLkNw_3gU01qpuw3rIz1Yz7-x6to%3D&redirect_counter=1&cm2rm=sn-25gky7e&req_id=3f43a5c76488a3ee&cms_redirect=yes&cmsv=e&mh=Sp&mip=46.10.120.166&mm=34&mn=sn-vgqsknze&ms=ltu&mt=1671468085&mv=D&mvi=4&pl=0&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIga59sZVxbRPOc2htZ8uVrHYxSOdyMMGWh-wk-B-d03HMCIQDTfkzmCJ5Y5NgJv4dE_NIEmi0qCZsibFSvOXlYHSZLFg%3D%3D',
+   video_src: 'rory-mcilroy-win-2022.mp4',
    picture_alt: 'Rory McIlroy three victories',
    category: Category.find_by(title: "Video")
   },
   {headline: "Fans go wild as Argentina win the World Cup!",
    caption: "Argentina gets the world cup in Qatar 2022",
    content: "This is how Argentina fans celebrated their World Cup win...",
-   video: 'https://rr4---sn-ab5sznze.googlevideo.com/videoplayback?expire=1671490374&ei=5pagY9aSAsaUWqSXi-gE&ip=51.15.187.61&id=o-AOpnZHYVXmUL0m2allR6di5-JfXxF218Lsu_FokBNZ9r&itag=398&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278%2C394%2C395%2C396%2C397%2C398%2C399&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=3Mnm8yjCKlhBpnZfZabk9QAK&gir=yes&clen=8056794&dur=59.280&lmt=1671433454390377&keepalive=yes&fexp=24001373,24007246&c=WEB&txp=5537434&n=gp1mvMjw9tWtDL&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAJkOkXt6QesN_pA9l-fhLmoyVGrN1NqfvU0loiwffPJlAiEAxq9-AxUXh8oJ_nfaS1T-5MXzaBYv5UAptF5enVrAquc%3D&redirect_counter=1&rm=sn-25grs7s&req_id=d78832f33f42a3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&mh=fK&mip=46.10.120.166&mm=31&mn=sn-ab5sznze&ms=au&mt=1671468274&mv=D&mvi=4&pl=0&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgUSWEwaT8OnK1IN0fFua-Wfo3vKRVmEuemIGxyLU1zEUCIQDasQTT0P_a8aPfXTejj5ugzx_gLJX4i-V10iFLVT_b8g%3D%3D',
+   video_src: 'argentina-world-cup-2022.mp4',
    picture_alt: 'Argentina wins the World Cup 2022',
    category: Category.find_by(title: "Video")
   },
@@ -283,9 +283,8 @@ static_page_articles.each do |article|
   if article[:picture]
     remote_picture = URI.open(article[:picture])
     new_article.picture.attach(io: remote_picture, filename: article[:picture_alt])
-  elsif article[:video]
-    remote_video = URI.open(article[:video])
-    new_article.video.attach(io: remote_video, filename: article[:picture_alt])
+  elsif article[:video_src]
+    new_article.video.attach(io: File.open("#{Rails.root}/app/assets/videos/#{article[:video_src]}"), filename: article[:picture_alt])
   end
 end
 puts 'Articles have been added to each static page category!'
