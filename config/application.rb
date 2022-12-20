@@ -21,5 +21,6 @@ module SportsHubPortal
     config.i18n.available_locales = [:en, :bg]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
+    config.active_storage.variant_processor = :mini_magick
   end
 end
