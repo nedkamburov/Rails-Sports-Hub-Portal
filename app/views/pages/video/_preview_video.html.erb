@@ -1,0 +1,9 @@
+<section class="preview-article container article-container p-0">
+  <section class="article-summary">
+    <article class="headline"><%= video.headline %></article>
+    <article class="more-btn"><%= link_to t('general.more'), article_path(video) %></article>
+  </section>
+  <section class="article-main">
+    <%= video_tag url_for(video.video), alt: video.picture_alt, controls: true, autobuffer: true, class: 'article-video' if video.video.present? %>
+  </section>
+</section>

@@ -6,7 +6,7 @@
   </div>
   <article class="breadcrumb">
     <span class="article-category"><%= @category.title %></span><i class="fa-solid fa-chevron-right"></i>
-    <%= @team.title %> / <%= @article.headline %>
+    <%= @team ? "#{@team.title} / #{@article.headline}" : @article.headline %>
   </article>
   <section class="article-summary">
     <article class="published-at">Published / <%= @article.created_at.strftime('%d.%m.%Y') %></article>
@@ -15,7 +15,11 @@
     <%= render 'article_share' %>
   </section>
   <section class="article-main">
-    <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture' if @article.picture.present? %>
+    <% if @article.picture.present? %>
+      <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture'%>
+    <% else %>
+      <%= video_tag url_for(@article.video), alt: @article.picture_alt, controls: true, autobuffer: true, autoplay: true, class: 'article-picture' if @article.video.present? %>
+    <% end %>
     <section class="article-content">
       <%= @article.content %>
     </section>

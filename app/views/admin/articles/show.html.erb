@@ -4,15 +4,17 @@
 <%= render 'admin/shared/admin_headers', page_action: add_new_article %>
 <section class="admin-articles container">
   <section class="articles-actions d-flex justify-content-between">
-    <%= link_to("#{articles_path}/#{@category.slug}", class: "preview-btn") do %>
+    <%= link_to("#{root_path}/pages/#{@category.slug}", class: "preview-btn") do %>
       <i class="fa-solid fa-eye"></i> Preview
     <% end %>
     <%= render 'admin/articles/search' %>
   </section>
     <%= turbo_frame_tag "turbo_filtered_articles_frame" do %>
-    <section class="articles-filters">
-      <%= render 'admin/articles/dropdown_filters' %>
-    </section>
+    <% if @category.category_type == 'articles' %>
+      <section class="articles-filters">
+        <%= render 'admin/articles/dropdown_filters' %>
+      </section>
+    <% end %>
       <section class="articles-list sortable-items d-flex flex-column" data-controller="sort" data-sort-url="<%= sort_admin_articles_url %>">
         <%= render 'admin/articles/articles_list', articles: @articles, cached: true %>
       </section>

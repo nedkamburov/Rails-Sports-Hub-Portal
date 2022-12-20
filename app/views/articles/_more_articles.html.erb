@@ -3,7 +3,11 @@
   <% articles.each do |article| %>
     <article class="article-small">
       <div class="article-small-preview-image">
-        <%= image_tag article.picture, alt: article.picture_alt, class: 'article-small-picture' if article.picture.present? %>
+        <% if article.picture.present? %>
+          <%= image_tag article.picture, alt: article.picture_alt,class: 'article-small-picture' %>
+        <% else %>
+          <%= video_tag url_for(article.video), alt: article.picture_alt, class: 'article-small-picture' if article.video.present? %>
+        <% end %>
       </div>
       <div class="article-small-preview-content">
         <div class="article-small-headline"><%= article.headline %></div>

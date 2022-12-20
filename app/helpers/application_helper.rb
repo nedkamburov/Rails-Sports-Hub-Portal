@@ -19,8 +19,9 @@ module ApplicationHelper
 
     static_pages = Category.where.not(category_type: 'articles').order("position ASC")
     static_pages.each do |page|
+
       static_page = {
-        url: "/pages/#{page.slug}",
+        url: "#{@is_admin_panel ? admin_root_path : ''}/#{@is_admin_panel ? 'articles' : 'pages'}/#{page.slug}",
         title: page.title
       }
       pages << static_page
@@ -33,24 +34,9 @@ module ApplicationHelper
     svg_src_path = 'admin-side-panel/'
     [
       {
-        url: '/path-to-be-added',
-        title: 'Surveys',
-        svg_path: svg_src_path + 'surveys.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Languages',
-        svg_path: svg_src_path + 'languages.svg'
-      },
-      {
         url: admin_footer_pages_path,
         title: 'Footer',
         svg_path: svg_src_path + 'footer.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Social Networks',
-        svg_path: svg_src_path + 'social-networks.svg'
       },
       {
         url: admin_users_panel_index_path,
@@ -61,11 +47,6 @@ module ApplicationHelper
         url: admin_information_architecture_path,
         title: 'Information Architecture',
         svg_path: svg_src_path + 'ia.svg'
-      },
-      {
-        url: '/path-to-be-added',
-        title: 'Teams',
-        svg_path: svg_src_path + 'teams.svg'
       }
     ]
   end
@@ -75,7 +56,7 @@ module ApplicationHelper
     sport_categories = Category.where(category_type: 'articles').order("position ASC")
     sport_categories.each do |sport|
       sport_page = {
-        url: "#{@is_admin_panel ? admin_root_path : ''}/articles/#{sport.slug}",
+        url: "#{@is_admin_panel ? admin_root_path : ''}/#{@is_admin_panel ? 'articles' : 'pages'}/#{sport.slug}",
         title: sport.title
       }
       sports << sport_page
