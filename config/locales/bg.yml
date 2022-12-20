@@ -69,6 +69,7 @@ bg:
     caption_placeholder: 'Напиши подзаглавието тук'
     content: 'Съдържание'
     content_placeholder: 'Добавете текст тук'
+    log_in_to_leave_a_comment: 'Влез в профила си, за да оставиш коментар'
   general:
     refresh: 'Презареди'
     delete: 'Изтрий'

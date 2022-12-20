@@ -18,7 +18,7 @@
     <% if @article.picture.present? %>
       <%= image_tag @article.picture, alt: @article.picture_alt, class: 'article-picture'%>
     <% else %>
-      <%= video_tag url_for(@article.video), alt: @article.picture_alt, controls: true, autobuffer: true, class: 'article-picture' if @article.video.present? %>
+      <%= video_tag url_for(@article.video), alt: @article.picture_alt, controls: true, autobuffer: true, autoplay: true, class: 'article-picture' if @article.video.present? %>
     <% end %>
     <section class="article-content">
       <%= @article.content %>

@@ -69,6 +69,7 @@ en:
     caption_placeholder: 'Write caption text here'
     content: 'Content'
     content_placeholder: 'Please add text here'
+    log_in_to_leave_a_comment: 'Log in to leave a comment'
   general:
     refresh: 'Refresh'
     delete: 'Delete'

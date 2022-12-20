@@ -7,6 +7,9 @@
   </div>
   <%= turbo_frame_tag 'turbo_sorted_comments_frame' do %>
     <div class="comments-inner" data-controller="article-comments">
+      <% if !current_user.present? %>
+        <div class="user-not-logged-in"> <%= link_to t('articles.log_in_to_leave_a_comment'), new_user_session_path %></div>
+      <% end %>
       <%= render 'comments/comments_form', comment: nil, parent_id: nil if current_user.present? %>
           <div class="comments-list" id="comments-list">
               <%= render partial: "comments/comment", collection: comments, cached: true %>

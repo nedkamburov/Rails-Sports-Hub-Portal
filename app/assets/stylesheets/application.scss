@@ -778,6 +778,13 @@ h1, h2, h3, h4, h5, h6, label {
         background-color: $background-color;
         border: 1px solid $accent-color-light-grey;
 
+        .user-not-logged-in {
+          padding: 20px 30px;
+          text-align: center;
+          color: $color;
+          text-decoration: underline;
+        }
+
         .user-avatar {
           position: absolute;
           top: 15px;
