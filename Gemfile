@@ -53,7 +53,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry", "~> 0.14.1"
   gem "dartsass-rails", "~> 0.4.0"
-  gem "faker", "~> 2.23"
   gem "rubocop"
   gem "letter_opener"
   gem 'factory_bot_rails'
@@ -94,6 +93,7 @@ gem "font-awesome-sass", "~> 6.2"
 gem "friendly_id", "~> 5.4.0"
 gem "open-uri", "~> 0.2.0"
 gem "pagy", "~> 5.10"
+gem "faker", "~> 2.23"
 
 gem "whenever", "~> 1.0"
 gem "pg_search", "~> 2.3"
