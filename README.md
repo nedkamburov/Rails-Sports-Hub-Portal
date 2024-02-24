@@ -3,7 +3,8 @@
 ### A full-stack Sport Portal Hub built with Ruby on Rails
 
 Access live demo at [https://sportshub-6m4y.onrender.com](https://sportshub-6m4y.onrender.com) <br>
-* it might take up to 30 seconds to fully load<br>
+
+- it might take up to 30 seconds to fully load<br>
 
 [Link to the Sports Hub Requirements and Architecture](https://github.com/dark-side/sports-hub)
 
@@ -48,20 +49,22 @@ rails server
 
 1. Load the blueprint on Render and wait for it initialise the database and the web app.
 2. You will have to provide the rails master key in the environment variables.
-3. Use this guide to reset the secret and the public master key [https://discuss.rubyonrails.org/t/rails-master-key-and-per-environment-init/82615/2](https://discuss.rubyonrails.org/t/rails-master-key-and-per-environment-init/82615/2) 
-4. The public one is commited to the repo but the secret one needs to match it and be set in `RAILS_MASTER_KEY` environment variable in the render web app.
+3. Use this guide to reset the secret and the public master key [https://discuss.rubyonrails.org/t/rails-master-key-and-per-environment-init/82615/2](https://discuss.rubyonrails.org/t/rails-master-key-and-per-environment-init/82615/2)
+4. The public one is committed to the repo but the secret one needs to match it and be set in `RAILS_MASTER_KEY` environment variable in the render web app.
 5. The build should proceed, executing all the commands from ./bin/render-build.sh
 
 ### Other CLI functionalities
+
 Send an email newsletter: <br>
 `rake weekly_newsletter_email`
 
 Run tests: <br>
 
-```console 
+```console
 rspec
 bundle exec cucumber
 ```
 
 ### Extras
+
 Generate a PDF (admins only) with all categories hierarchy by visiting localhost/admin.pdf
