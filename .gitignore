@@ -73,3 +73,4 @@ app/assets/builds/*
 .LSOverride
 
 .idea
+/config/master.key
